@@ -13,6 +13,7 @@ import sys
 import base64
 import shutil
 import subprocess
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -24,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "channels.json"
 DATA_PATH = ROOT / "public" / "data" / "dashboard.json"
 API_BASE = "https://www.googleapis.com/youtube/v3"
-RECENT_VIDEO_LIMIT = 12
+RECENT_VIDEO_LIMIT = 50
 MAX_AVATAR_BYTES = 450_000
 
 
@@ -109,6 +110,17 @@ def thumbnail(item: dict[str, Any]) -> str | None:
     return (thumbnails.get("medium") or thumbnails.get("high") or thumbnails.get("default") or {}).get("url")
 
 
+def duration_seconds(value: Any) -> int | None:
+    """Convert a YouTube ISO 8601 duration (for example PT12M08S) to seconds."""
+    if not isinstance(value, str):
+        return None
+    match = re.fullmatch(r"P(?:\d+D)?T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", value)
+    if not match:
+        return None
+    hours, minutes, seconds = (int(part or 0) for part in match.groups())
+    return hours * 3600 + minutes * 60 + seconds
+
+
 def cache_avatar(url: str | None, fallback: str | None) -> str | None:
     """Embed a small channel avatar so the static dashboard has no fragile image dependency."""
     if not url:
@@ -146,6 +158,7 @@ def main() -> None:
     observed_at = iso_now()
     previous = json.loads(DATA_PATH.read_text(encoding="utf-8")) if DATA_PATH.exists() else {}
     previous_by_id = {channel["id"]: channel for channel in previous.get("channels", []) if channel.get("id")}
+    catalog_by_id = {row["id"]: row for row in previous.get("videoCatalog", []) if row.get("id")}
     ids = [target["id"] for target in targets]
     items: list[dict[str, Any]] = []
     for group in chunks(ids):
@@ -162,22 +175,26 @@ def main() -> None:
         video_ids = [row.get("contentDetails", {}).get("videoId") or row.get("snippet", {}).get("resourceId", {}).get("videoId") for row in playlist_items]
         video_map: dict[str, dict[str, Any]] = {}
         for group in chunks([video_id for video_id in video_ids if video_id]):
-            video_map.update({video["id"]: video for video in api_get("videos", part="snippet,statistics", id=",".join(group), maxResults="50").get("items", [])})
+            video_map.update({video["id"]: video for video in api_get("videos", part="snippet,statistics,contentDetails", id=",".join(group), maxResults="50").get("items", [])})
         videos = []
         for video_id in video_ids:
             video = video_map.get(video_id)
             if not video:
                 continue
-            video_snippet, video_stats = video.get("snippet", {}), video.get("statistics", {})
-            videos.append({"id": video_id, "title": video_snippet.get("title", "未命名视频"), "publishedAt": video_snippet.get("publishedAt"), "viewCount": numeric(video_stats.get("viewCount")), "likeCount": numeric(video_stats.get("likeCount")), "thumbnail": thumbnail(video), "url": f"https://www.youtube.com/watch?v={video_id}"})
+            video_snippet, video_stats, video_content = video.get("snippet", {}), video.get("statistics", {}), video.get("contentDetails", {})
+            videos.append({"id": video_id, "title": video_snippet.get("title", "未命名视频"), "publishedAt": video_snippet.get("publishedAt"), "viewCount": numeric(video_stats.get("viewCount")), "likeCount": numeric(video_stats.get("likeCount")), "commentCount": numeric(video_stats.get("commentCount")), "durationSeconds": duration_seconds(video_content.get("duration")), "liveBroadcastContent": video_snippet.get("liveBroadcastContent"), "thumbnail": thumbnail(video), "url": f"https://www.youtube.com/watch?v={video_id}"})
         videos.sort(key=lambda row: row.get("publishedAt") or "", reverse=True)
         prior = previous_by_id.get(target["id"], {})
         history = [{**row, "id": target["id"]} for row in prior.get("history", [])] + [{"id": target["id"], "observedAt": observed_at, "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount"))}]
         history = [row for row in compact_history(history, now) if row["id"] == target["id"]]
         published = [datetime.fromisoformat(video["publishedAt"].replace("Z", "+00:00")) for video in videos if video.get("publishedAt")]
+        for video in videos:
+            catalog_by_id[video["id"]] = {**video, "channelId": target["id"], "channel": target.get("label") or snippet.get("title") or target["id"], "observedAt": observed_at}
         avatar_url = thumbnail(item)
         output_channels.append({"id": target["id"], "name": target.get("label") or snippet.get("title") or target["id"], "url": f"https://www.youtube.com/channel/{target['id']}", "avatar": avatar_url, "avatarDataUrl": cache_avatar(avatar_url, prior.get("avatarDataUrl")), "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount")), "videoCount": numeric(stats.get("videoCount")), "lastPublishedAt": videos[0].get("publishedAt") if videos else None, "uploads7d": sum(1 for date in published if now - date <= timedelta(days=7)), "history": [{key: value for key, value in row.items() if key != "id"} for row in history], "videos": videos})
-    payload = {"generatedAt": observed_at, "collector": {"status": "ok", "message": "已从 YouTube Data API 刷新频道公开数据。", "channelsCollected": len(output_channels)}, "channels": output_channels}
+    catalog = [row for row in catalog_by_id.values() if row.get("channelId") in {channel["id"] for channel in output_channels}]
+    catalog.sort(key=lambda row: row.get("publishedAt") or "", reverse=True)
+    payload = {"generatedAt": observed_at, "collector": {"status": "ok", "message": "已从 YouTube Data API 刷新频道公开数据。", "channelsCollected": len(output_channels)}, "channels": output_channels, "videoCatalog": catalog}
     DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"channelsCollected": len(output_channels), "generatedAt": observed_at}, ensure_ascii=False))
 
