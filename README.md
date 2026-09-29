@@ -46,3 +46,19 @@ $key = Read-Host 'YouTube API Key' -AsSecureString
 ```
 
 密钥只保存在 `.secrets/youtube-api-key.dpapi`，并且不会进入 Git、网页或数据快照。频道头像会优先缓存为数据 URI；当本机网络无法读取图片源时，看板会自动改用频道首字标识，不会显示破图。
+
+## GitHub Pages 自动发布
+
+仓库内的 `.github/workflows/publish-pages.yml` 会在每次推送后发布网页，并每 30 分钟自动采集一次公开数据、保留历史快照后重新发布。
+
+首次连接 GitHub 后，请在仓库网页完成三项一次性设置：
+
+1. `Settings` → `Pages` → `Build and deployment` → `Source`：选择 **GitHub Actions**。
+2. `Settings` → `Secrets and variables` → `Actions`：新建名为 `YOUTUBE_API_KEY` 的 repository secret，并粘贴你的 YouTube Data API 密钥。
+3. `Settings` → `Actions` → `General` → `Workflow permissions`：选择 **Read and write permissions**，让定时任务能把新快照提交回仓库。
+
+之后到 `Actions` 页面手动运行一次 **Refresh and publish dashboard**；页面地址将是：
+
+`https://hzq2493094754-hub.github.io/youtube-channel-dashboard/`
+
+不要把 API 密钥提交到仓库、Issue、README 或网页配置中。
