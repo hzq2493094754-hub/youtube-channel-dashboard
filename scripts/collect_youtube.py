@@ -26,6 +26,7 @@ CONFIG_PATH = ROOT / "config" / "channels.json"
 DATA_PATH = ROOT / "public" / "data" / "dashboard.json"
 API_BASE = "https://www.googleapis.com/youtube/v3"
 RECENT_VIDEO_LIMIT = 50
+FULL_INVENTORY_INTERVAL = timedelta(days=7)
 MAX_AVATAR_BYTES = 450_000
 
 
@@ -159,6 +160,11 @@ def main() -> None:
     previous = json.loads(DATA_PATH.read_text(encoding="utf-8")) if DATA_PATH.exists() else {}
     previous_by_id = {channel["id"]: channel for channel in previous.get("channels", []) if channel.get("id")}
     catalog_by_id = {row["id"]: row for row in previous.get("videoCatalog", []) if row.get("id")}
+    previous_scan = previous.get("collector", {}).get("fullInventoryScannedAt")
+    try:
+        full_inventory = not catalog_by_id or not previous_scan or now - datetime.fromisoformat(previous_scan.replace("Z", "+00:00")) >= FULL_INVENTORY_INTERVAL
+    except (TypeError, ValueError):
+        full_inventory = True
     ids = [target["id"] for target in targets]
     items: list[dict[str, Any]] = []
     for group in chunks(ids):
@@ -171,7 +177,17 @@ def main() -> None:
             continue
         snippet, stats = item.get("snippet", {}), item.get("statistics", {})
         uploads_playlist = item.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads")
-        playlist_items = api_get("playlistItems", part="snippet,contentDetails", playlistId=uploads_playlist, maxResults=str(RECENT_VIDEO_LIMIT)).get("items", []) if uploads_playlist else []
+        playlist_items = []
+        page_token: str | None = None
+        while uploads_playlist:
+            params = {"part": "snippet,contentDetails", "playlistId": uploads_playlist, "maxResults": str(RECENT_VIDEO_LIMIT)}
+            if page_token:
+                params["pageToken"] = page_token
+            page = api_get("playlistItems", **params)
+            playlist_items.extend(page.get("items", []))
+            page_token = page.get("nextPageToken")
+            if not full_inventory or not page_token:
+                break
         video_ids = [row.get("contentDetails", {}).get("videoId") or row.get("snippet", {}).get("resourceId", {}).get("videoId") for row in playlist_items]
         video_map: dict[str, dict[str, Any]] = {}
         for group in chunks([video_id for video_id in video_ids if video_id]):
@@ -184,6 +200,9 @@ def main() -> None:
             video_snippet, video_stats, video_content = video.get("snippet", {}), video.get("statistics", {}), video.get("contentDetails", {})
             videos.append({"id": video_id, "title": video_snippet.get("title", "未命名视频"), "publishedAt": video_snippet.get("publishedAt"), "viewCount": numeric(video_stats.get("viewCount")), "likeCount": numeric(video_stats.get("likeCount")), "commentCount": numeric(video_stats.get("commentCount")), "durationSeconds": duration_seconds(video_content.get("duration")), "liveBroadcastContent": video_snippet.get("liveBroadcastContent"), "thumbnail": thumbnail(video), "url": f"https://www.youtube.com/watch?v={video_id}"})
         videos.sort(key=lambda row: row.get("publishedAt") or "", reverse=True)
+        if full_inventory:
+            present_ids = {video["id"] for video in videos}
+            catalog_by_id = {video_id: row for video_id, row in catalog_by_id.items() if row.get("channelId") != target["id"] or video_id in present_ids}
         prior = previous_by_id.get(target["id"], {})
         history = [{**row, "id": target["id"]} for row in prior.get("history", [])] + [{"id": target["id"], "observedAt": observed_at, "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount"))}]
         history = [row for row in compact_history(history, now) if row["id"] == target["id"]]
@@ -191,10 +210,10 @@ def main() -> None:
         for video in videos:
             catalog_by_id[video["id"]] = {**video, "channelId": target["id"], "channel": target.get("label") or snippet.get("title") or target["id"], "observedAt": observed_at}
         avatar_url = thumbnail(item)
-        output_channels.append({"id": target["id"], "name": target.get("label") or snippet.get("title") or target["id"], "url": f"https://www.youtube.com/channel/{target['id']}", "avatar": avatar_url, "avatarDataUrl": cache_avatar(avatar_url, prior.get("avatarDataUrl")), "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount")), "videoCount": numeric(stats.get("videoCount")), "lastPublishedAt": videos[0].get("publishedAt") if videos else None, "uploads7d": sum(1 for date in published if now - date <= timedelta(days=7)), "history": [{key: value for key, value in row.items() if key != "id"} for row in history], "videos": videos})
+        output_channels.append({"id": target["id"], "name": target.get("label") or snippet.get("title") or target["id"], "url": f"https://www.youtube.com/channel/{target['id']}", "avatar": avatar_url, "avatarDataUrl": cache_avatar(avatar_url, prior.get("avatarDataUrl")), "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount")), "videoCount": numeric(stats.get("videoCount")), "lastPublishedAt": videos[0].get("publishedAt") if videos else None, "uploads7d": sum(1 for date in published if now - date <= timedelta(days=7)), "history": [{key: value for key, value in row.items() if key != "id"} for row in history], "videos": videos[:RECENT_VIDEO_LIMIT]})
     catalog = [row for row in catalog_by_id.values() if row.get("channelId") in {channel["id"] for channel in output_channels}]
     catalog.sort(key=lambda row: row.get("publishedAt") or "", reverse=True)
-    payload = {"generatedAt": observed_at, "collector": {"status": "ok", "message": "已从 YouTube Data API 刷新频道公开数据。", "channelsCollected": len(output_channels)}, "channels": output_channels, "videoCatalog": catalog}
+    payload = {"generatedAt": observed_at, "collector": {"status": "ok", "message": "已从 YouTube Data API 刷新频道公开数据。", "channelsCollected": len(output_channels), "fullInventoryScannedAt": observed_at if full_inventory else previous_scan}, "channels": output_channels, "videoCatalog": catalog}
     DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"channelsCollected": len(output_channels), "generatedAt": observed_at}, ensure_ascii=False))
 
