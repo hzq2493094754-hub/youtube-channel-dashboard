@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T12:02:48Z",
+  "generatedAt": "2026-09-29T14:06:40Z",
   "collector": {
     "status": "ok",
     "message": "已从 YouTube Data API 刷新频道公开数据。",
@@ -11,6 +11,7 @@
       "name": "Amber聊財",
       "url": "https://www.youtube.com/channel/UCMM38YQdOaUiXMFlWzbRlXw",
       "avatar": "https://yt3.ggpht.com/Pf0tpbeBlBzxfICRtmzwJ4nooiQqnnmM78qfoIPmLNgOq9OvtCrDWRFrVoq7RJtrrwQLQzO1=s240-c-k-c0x00ffffff-no-rj",
+      "avatarDataUrl": null,
       "subscriberCount": 13500,
       "channelViews": 1414289,
       "videoCount": 85,
@@ -21,6 +22,11 @@
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 13500,
           "channelViews": 1414289
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 13500,
+          "channelViews": 1414289
         }
       ],
       "videos": [
@@ -28,8 +34,8 @@
           "id": "FRHWXAsGzew",
           "title": "穩定幣正偷偷買走全世界的黃金？一家私人公司，竟買得比一個國家還多！下一步金價怎麼走？ #穩定幣 #Tether #泰達 #黃金 #金價 #比特幣 #美債 #投資 #財經",
           "publishedAt": "2026-09-26T13:00:07Z",
-          "viewCount": 3009,
-          "likeCount": 136,
+          "viewCount": 3024,
+          "likeCount": 137,
           "thumbnail": "https://i.ytimg.com/vi/FRHWXAsGzew/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=FRHWXAsGzew"
         },
@@ -82,7 +88,7 @@
           "id": "Js459KFQe9A",
           "title": "英偉達7天跌掉4000億，只是開始？歐央行聯手芝大：哪怕利潤年年翻倍，早期衝進去的人也注定被清洗！【AI繁榮陷阱EP1】#AI #英偉達 #美股 #科技股 #AI泡沫 #投資 #財經分析",
           "publishedAt": "2026-09-02T12:00:26Z",
-          "viewCount": 8207,
+          "viewCount": 8208,
           "likeCount": 214,
           "thumbnail": "https://i.ytimg.com/vi/Js459KFQe9A/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Js459KFQe9A"
@@ -100,7 +106,7 @@
           "id": "9ik5hYql17M",
           "title": "美英聯手封殺中國黃金！43家企業被拉黑！全球金融戰升級？黃金迎來十倍重估...  #黃金 #金價 #美債 #央行購金 #中國黃金 #金融戰 #財經",
           "publishedAt": "2026-09-01T11:30:25Z",
-          "viewCount": 8253,
+          "viewCount": 8254,
           "likeCount": 244,
           "thumbnail": "https://i.ytimg.com/vi/9ik5hYql17M/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=9ik5hYql17M"
@@ -109,7 +115,7 @@
           "id": "oWE-PsIjDOw",
           "title": "美債5.33%創19年新高！AI巨頭狂發債搶錢，連美國政府都被擠到牆角？ #美債 #AI #利率 #美股 #總經 #財經",
           "publishedAt": "2026-08-31T12:00:19Z",
-          "viewCount": 4471,
+          "viewCount": 4472,
           "likeCount": 224,
           "thumbnail": "https://i.ytimg.com/vi/oWE-PsIjDOw/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=oWE-PsIjDOw"
@@ -118,8 +124,8 @@
           "id": "wtaQxL5B_m0",
           "title": "還在死等降息牛？白嫖了十幾年的便宜錢，現在開始強制買單！40年一週期的全球大清算已經開始……「美日利率博弈 EP3」 #美聯儲 #降息 #高利率 #全球大清算 #美債 #資產配置 #財經分析",
           "publishedAt": "2026-08-30T12:00:01Z",
-          "viewCount": 78295,
-          "likeCount": 738,
+          "viewCount": 78297,
+          "likeCount": 737,
           "thumbnail": "https://i.ytimg.com/vi/wtaQxL5B_m0/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=wtaQxL5B_m0"
         },
@@ -139,6 +145,7 @@
       "name": "小鹿財經 Deer Finance",
       "url": "https://www.youtube.com/channel/UCsWtmTG0UkpuGeeAno4jiGQ",
       "avatar": "https://yt3.ggpht.com/8S03I1M5ktZGcabpsOUZfwoVhpcopaNya9sZgOoCak7DZuGnkTFhnBw8B1w4F6W_Sn1etuJkng=s240-c-k-c0x00ffffff-no-rj",
+      "avatarDataUrl": null,
       "subscriberCount": 14200,
       "channelViews": 646427,
       "videoCount": 71,
@@ -149,6 +156,11 @@
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 14200,
           "channelViews": 646427
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 14200,
+          "channelViews": 646427
         }
       ],
       "videos": [
@@ -156,7 +168,7 @@
           "id": "Lw_5KVPXw9s",
           "title": "美國另類化債真相#stockmarket #股票",
           "publishedAt": "2026-09-26T01:00:01Z",
-          "viewCount": 594,
+          "viewCount": 596,
           "likeCount": 25,
           "thumbnail": "https://i.ytimg.com/vi/Lw_5KVPXw9s/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Lw_5KVPXw9s"
@@ -165,7 +177,7 @@
           "id": "xZmZX3PJqVc",
           "title": "353萬億美元超級債務炸彈！全球都在借新還舊，最後誰來埋單？#stockmarket #美元",
           "publishedAt": "2026-09-25T01:00:08Z",
-          "viewCount": 802,
+          "viewCount": 801,
           "likeCount": 40,
           "thumbnail": "https://i.ytimg.com/vi/xZmZX3PJqVc/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=xZmZX3PJqVc"
@@ -267,6 +279,7 @@
       "name": "艾莉說",
       "url": "https://www.youtube.com/channel/UC9veOeKEZhexYxmMXF_RwCQ",
       "avatar": "https://yt3.ggpht.com/HAtJKK6ZdY-kbTEirRIWFH7zUD70XxHLWRTxRrTamwk-fNTVS1dR2A0_bSN3xYFNh6wz2obK=s240-c-k-c0x00ffffff-no-rj",
+      "avatarDataUrl": null,
       "subscriberCount": 48,
       "channelViews": 8835,
       "videoCount": 6,
@@ -277,6 +290,11 @@
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 48,
           "channelViews": 8835
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 48,
+          "channelViews": 8835
         }
       ],
       "videos": [
@@ -284,7 +302,7 @@
           "id": "dUKxKW_AZB0",
           "title": "353兆債務揭秘！美國獨佔40兆！全球GDP被透支3年！官方CPI是假的，真實通膨卻是8%到10%！ Blue Owl關閘、黑石7%上限、霸菱縮量！私募資金警報拉響！全球買單？",
           "publishedAt": "2026-09-29T00:30:33Z",
-          "viewCount": 6,
+          "viewCount": 8,
           "likeCount": 0,
           "thumbnail": "https://i.ytimg.com/vi/dUKxKW_AZB0/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=dUKxKW_AZB0"
@@ -341,25 +359,40 @@
       "name": "Maple的理財森林",
       "url": "https://www.youtube.com/channel/UC5lCKye2u8Q0BoE5ggY9myw",
       "avatar": "https://yt3.ggpht.com/pMWF2QNsoxnImQg07Dt2tQUMVnZxgPE793m7fi2VrhNdvJoWlsq_tOBMTXPszPInKhtLr1YpYao=s240-c-k-c0x00ffffff-no-rj",
-      "subscriberCount": 97,
+      "avatarDataUrl": null,
+      "subscriberCount": 101,
       "channelViews": 2549,
-      "videoCount": 5,
-      "lastPublishedAt": "2026-09-27T01:30:00Z",
-      "uploads7d": 3,
+      "videoCount": 6,
+      "lastPublishedAt": "2026-09-29T12:30:12Z",
+      "uploads7d": 4,
       "history": [
         {
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 97,
           "channelViews": 2549
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 101,
+          "channelViews": 2549
         }
       ],
       "videos": [
         {
+          "id": "sUMfZvOEhZg",
+          "title": "股票真係有實賺方法？點解愈炒愈容易變「大閘蟹」？普通人應該點樣長線投資？｜ETF｜S&P500｜廣東話",
+          "publishedAt": "2026-09-29T12:30:12Z",
+          "viewCount": 4,
+          "likeCount": 1,
+          "thumbnail": "https://i.ytimg.com/vi/sUMfZvOEhZg/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=sUMfZvOEhZg"
+        },
+        {
           "id": "G-pEZBox2uw",
           "title": "【提早退休】買1萬股 QQQI 真係可以劈炮？每月 $5萬現金流！14%高分派背後有咩代價？⚠️｜香港人稅務重點",
           "publishedAt": "2026-09-27T01:30:00Z",
-          "viewCount": 8400,
-          "likeCount": 48,
+          "viewCount": 8509,
+          "likeCount": 49,
           "thumbnail": "https://i.ytimg.com/vi/G-pEZBox2uw/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=G-pEZBox2uw"
         },
@@ -385,7 +418,7 @@
           "id": "prA2mNugHZs",
           "title": "S&P 500 ETF 點揀？VOO、IVV、SPY、SPYM、CSPX 有咩分別？｜管理費、股息、稅務一次講清｜廣東話",
           "publishedAt": "2026-09-22T12:00:03Z",
-          "viewCount": 192,
+          "viewCount": 195,
           "likeCount": 1,
           "thumbnail": "https://i.ytimg.com/vi/prA2mNugHZs/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=prA2mNugHZs"
@@ -394,7 +427,7 @@
           "id": "UbZuyfp_QtE",
           "title": "點解有錢人愈來愈有錢？明明一直努力，點解仲係追唔上？｜馬太效應｜廣東話",
           "publishedAt": "2026-09-19T01:30:07Z",
-          "viewCount": 734,
+          "viewCount": 738,
           "likeCount": 5,
           "thumbnail": "https://i.ytimg.com/vi/UbZuyfp_QtE/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=UbZuyfp_QtE"
@@ -406,6 +439,7 @@
       "name": "阿誠聊焦點",
       "url": "https://www.youtube.com/channel/UCS1ZlOZTJhOxvWXr3b1v9GA",
       "avatar": "https://yt3.ggpht.com/3QUdBOOdvLiCP7RvqjgAxwW22LXeubkz7hYMAHJXNOVsQ5m0OfjbPJ1ewtnL9AZ3GFoE_f0gXg=s240-c-k-c0x00ffffff-no-rj",
+      "avatarDataUrl": null,
       "subscriberCount": 8,
       "channelViews": 841,
       "videoCount": 13,
@@ -416,6 +450,11 @@
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 8,
           "channelViews": 841
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 8,
+          "channelViews": 841
         }
       ],
       "videos": [
@@ -423,7 +462,7 @@
           "id": "1KSZ7W9_J3Q",
           "title": "騰訊為何變成冤大頭錢包#港股 #台股 #美股 #騰訊#恒生科技#港股 #錢包#美元 #保證金追繳#外資流出#日本央行#提款機 #輝達 #交易心理學 #ai資本開支",
           "publishedAt": "2026-09-28T20:45:28Z",
-          "viewCount": 152,
+          "viewCount": 154,
           "likeCount": 0,
           "thumbnail": "https://i.ytimg.com/vi/1KSZ7W9_J3Q/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=1KSZ7W9_J3Q"
@@ -432,7 +471,7 @@
           "id": "KxPDt_p5w3k",
           "title": "雷曼式爆雷？這次是慢刀子#港股 #台股 #美股 #恒指 #美債#30期國債#利率#財政赤字#美國利息支出#金融危機, 科技股#資產配置#宏觀經濟#阿誠聊焦點 #輝達  #交易心理學 #ai資本開支",
           "publishedAt": "2026-09-28T11:43:50Z",
-          "viewCount": 2,
+          "viewCount": 3,
           "likeCount": 0,
           "thumbnail": "https://i.ytimg.com/vi/KxPDt_p5w3k/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=KxPDt_p5w3k"
@@ -534,6 +573,7 @@
       "name": "喬安說財經",
       "url": "https://www.youtube.com/channel/UCQAo0ws95p-uN7gr0OOHoXg",
       "avatar": "https://yt3.ggpht.com/oWevvT9BSKRYqGAkafvq4fUMKeEwmzqtFJqTWsE4Hc93JAyB3WEB9Mn5NlVhAXpvOuWMnD950A=s240-c-k-c0x00ffffff-no-rj",
+      "avatarDataUrl": null,
       "subscriberCount": 15,
       "channelViews": 1966,
       "videoCount": 6,
@@ -542,6 +582,11 @@
       "history": [
         {
           "observedAt": "2026-09-29T12:02:48Z",
+          "subscriberCount": 15,
+          "channelViews": 1966
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
           "subscriberCount": 15,
           "channelViews": 1966
         }
@@ -560,7 +605,7 @@
           "id": "s0eFljKXQRM",
           "title": "退休金缩水80%！美国化债2.0曝光：上次割自己人，这次全世界排队被割！普通人的钱往哪放？",
           "publishedAt": "2026-09-24T21:30:28Z",
-          "viewCount": 75,
+          "viewCount": 93,
           "likeCount": 5,
           "thumbnail": "https://i.ytimg.com/vi/s0eFljKXQRM/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=s0eFljKXQRM"
@@ -578,7 +623,7 @@
           "id": "CTGvRsBFdpE",
           "title": "國家散架，股市卻暴漲！英國三地獨立派罕見聯手，30年英債收益率逼近6%！漲的是股價，虧的是你的購買力！",
           "publishedAt": "2026-09-23T09:30:12Z",
-          "viewCount": 240,
+          "viewCount": 243,
           "likeCount": 5,
           "thumbnail": "https://i.ytimg.com/vi/CTGvRsBFdpE/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=CTGvRsBFdpE"
@@ -596,7 +641,7 @@
           "id": "2j5gpU3cFFk",
           "title": "25個點隻是幌子！美聯儲三年首次加息，真正要救的是5%美債：特朗普早就看過劇本？",
           "publishedAt": "2026-09-21T06:26:31Z",
-          "viewCount": 979,
+          "viewCount": 980,
           "likeCount": 5,
           "thumbnail": "https://i.ytimg.com/vi/2j5gpU3cFFk/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=2j5gpU3cFFk"
@@ -608,6 +653,7 @@
       "name": "文叔聊財",
       "url": "https://www.youtube.com/channel/UCmhqWEDoPgrg9J129nGuQkQ",
       "avatar": "https://yt3.ggpht.com/WQBN9NFS6FNVYm4_bQtAfL-o5FXZgh3RYK3uVDe8d7WjW95CsE4_iYvxVK8sZ3W0jBCmdfIM=s240-c-k-c0x00ffffff-no-rj",
+      "avatarDataUrl": null,
       "subscriberCount": 5,
       "channelViews": 41,
       "videoCount": 5,
@@ -616,6 +662,11 @@
       "history": [
         {
           "observedAt": "2026-09-29T12:02:48Z",
+          "subscriberCount": 5,
+          "channelViews": 41
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
           "subscriberCount": 5,
           "channelViews": 41
         }
@@ -673,15 +724,21 @@
       "name": "羅拉財富觀",
       "url": "https://www.youtube.com/channel/UCsXJXZI4J_N9r8H9TsORmlA",
       "avatar": "https://yt3.ggpht.com/f8Upq2a2CtKPaGkcJDG609eXDHKSvG6cl218-v1CFEcEaAgzFA7PdxyiGZvWQqb_jRJtrS6_lg=s240-c-k-c0x00ffffff-no-rj",
-      "subscriberCount": 148,
+      "avatarDataUrl": null,
+      "subscriberCount": 149,
       "channelViews": 16405,
       "videoCount": 7,
       "lastPublishedAt": "2026-09-26T06:01:27Z",
-      "uploads7d": 4,
+      "uploads7d": 3,
       "history": [
         {
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 148,
+          "channelViews": 16405
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 149,
           "channelViews": 16405
         }
       ],
@@ -690,7 +747,7 @@
           "id": "bQXdIuwNI_Q",
           "title": "AI造AI！人類淪為AI打工仔？7成程式員失業！基層飯碗遭血洗，全球算力荒大爆，中美算力差距拉大17倍？財富格局大變，三招教你守住資產！",
           "publishedAt": "2026-09-26T06:01:27Z",
-          "viewCount": 2523,
+          "viewCount": 2566,
           "likeCount": 43,
           "thumbnail": "https://i.ytimg.com/vi/bQXdIuwNI_Q/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=bQXdIuwNI_Q"
@@ -717,7 +774,7 @@
           "id": "3zzlwzZkCmA",
           "title": "美國這次真的危險了！40 萬億美債撞上 5% 高利率！全球資金正在尋找第二出口，黃金、比特幣瘋狂吸金！美元霸權最危險的裂縫出現了？普通人的財富大洗牌才剛開始！",
           "publishedAt": "2026-09-22T12:54:48Z",
-          "viewCount": 7674,
+          "viewCount": 7799,
           "likeCount": 116,
           "thumbnail": "https://i.ytimg.com/vi/3zzlwzZkCmA/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=3zzlwzZkCmA"
@@ -726,7 +783,7 @@
           "id": "XaQrpxDHS9s",
           "title": "AI输中国美国玩完了？贝森特暴致命恐惧！坐庄遭反杀！美债冲5%暴雷，日元原油撕裂，拿40万亿国运下注死磕科技霸权，看懂收割剧本，散户如何调仓保命？",
           "publishedAt": "2026-09-21T12:41:47Z",
-          "viewCount": 401,
+          "viewCount": 432,
           "likeCount": 14,
           "thumbnail": "https://i.ytimg.com/vi/XaQrpxDHS9s/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=XaQrpxDHS9s"
@@ -735,7 +792,7 @@
           "id": "7a6EUwFq0hE",
           "title": "比特币跌破8万是陷阱？大资金提前3周进场狂扫5万筹码，趋势反转信号早亮起！比特币黄金走势神同步，传统股债对冲失效，三大指标帶你锁定下一波大趋势！",
           "publishedAt": "2026-09-20T12:00:00Z",
-          "viewCount": 3311,
+          "viewCount": 3377,
           "likeCount": 73,
           "thumbnail": "https://i.ytimg.com/vi/7a6EUwFq0hE/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=7a6EUwFq0hE"
@@ -744,7 +801,7 @@
           "id": "wd6zbALaQyY",
           "title": "銅價一年暴漲五成！AI缺電爆千萬噸銅缺口，下一個「英偉達」藏在礦山裡？美國單月瘋吞剛果全年產量，全球搶礦戰正式打響！",
           "publishedAt": "2026-09-18T16:00:17Z",
-          "viewCount": 644,
+          "viewCount": 691,
           "likeCount": 7,
           "thumbnail": "https://i.ytimg.com/vi/wd6zbALaQyY/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=wd6zbALaQyY"
@@ -756,7 +813,8 @@
       "name": "Amber放大鏡",
       "url": "https://www.youtube.com/channel/UCZNlDT4tKgZS8R6sDuJWwMA",
       "avatar": "https://yt3.ggpht.com/czuSSl1-7trtlN5BP5n7hPS_Pm7cKTX_chp1lqgVggP5apIJkB1CsmVXt0F7WpD4mGg4PIdj=s240-c-k-c0x00ffffff-no-rj",
-      "subscriberCount": 604,
+      "avatarDataUrl": null,
+      "subscriberCount": 611,
       "channelViews": 51418,
       "videoCount": 9,
       "lastPublishedAt": "2026-09-29T12:00:15Z",
@@ -766,6 +824,11 @@
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 604,
           "channelViews": 51418
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 611,
+          "channelViews": 51418
         }
       ],
       "videos": [
@@ -773,8 +836,8 @@
           "id": "qAaROBRCMpM",
           "title": "Cybercab開始載客，特斯拉反跌6%！45輛車撐起213倍市盈率？4000億美元無人車市場靠什麼兌現？【Robotaxi賭局 EP01】#特斯拉 #Robotaxi #自動駕駛 #美股 #財經",
           "publishedAt": "2026-09-29T12:00:15Z",
-          "viewCount": 0,
-          "likeCount": 0,
+          "viewCount": 7,
+          "likeCount": 3,
           "thumbnail": "https://i.ytimg.com/vi/qAaROBRCMpM/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=qAaROBRCMpM"
         },
@@ -818,8 +881,8 @@
           "id": "SiIxAb9gpAw",
           "title": "AI泡沫2027年7月破滅？ 一條預言背後，我逐條查了這些數字 #AI泡沫 #高志凱 #投資 #財經",
           "publishedAt": "2026-09-23T12:00:06Z",
-          "viewCount": 47417,
-          "likeCount": 928,
+          "viewCount": 47805,
+          "likeCount": 938,
           "thumbnail": "https://i.ytimg.com/vi/SiIxAb9gpAw/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=SiIxAb9gpAw"
         },
@@ -827,7 +890,7 @@
           "id": "xqxO7oysX3Q",
           "title": "超強厄爾尼諾或將來襲！日本會是下一個印尼嗎？#厄爾尼諾 #日本 #印尼  #投資 #財經",
           "publishedAt": "2026-09-21T12:00:09Z",
-          "viewCount": 1237,
+          "viewCount": 1238,
           "likeCount": 27,
           "thumbnail": "https://i.ytimg.com/vi/xqxO7oysX3Q/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=xqxO7oysX3Q"
@@ -857,7 +920,8 @@
       "name": "小Lu財經說",
       "url": "https://www.youtube.com/channel/UCTueeHImxv4uLBQKsDEMqjQ",
       "avatar": "https://yt3.ggpht.com/b0OPo5YQsfzCR6jLZTs6H-4EO-EFrqvFHMANy587DDAJGZ6wK_jwjnCr8Es9Z-6E7J01GRtg=s240-c-k-c0x00ffffff-no-rj",
-      "subscriberCount": 683,
+      "avatarDataUrl": null,
+      "subscriberCount": 699,
       "channelViews": 63303,
       "videoCount": 13,
       "lastPublishedAt": "2026-09-29T01:00:07Z",
@@ -867,6 +931,11 @@
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 683,
           "channelViews": 63303
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 699,
+          "channelViews": 63303
         }
       ],
       "videos": [
@@ -874,8 +943,8 @@
           "id": "NfMhtLMYCBU",
           "title": "日本央行犯下40年大錯！如今加息、不加息都是死局 #財經 #投資",
           "publishedAt": "2026-09-29T01:00:07Z",
-          "viewCount": 746,
-          "likeCount": 12,
+          "viewCount": 790,
+          "likeCount": 13,
           "thumbnail": "https://i.ytimg.com/vi/NfMhtLMYCBU/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=NfMhtLMYCBU"
         },
@@ -883,8 +952,8 @@
           "id": "9Mr-ce2n8GU",
           "title": "日本30年「全球提款機」正式關門！847萬億海外資金開始回流，美債美股恐迎流動性巨震，黃金真正大行情要來了？#股票 ",
           "publishedAt": "2026-09-28T02:07:18Z",
-          "viewCount": 16277,
-          "likeCount": 223,
+          "viewCount": 17696,
+          "likeCount": 229,
           "thumbnail": "https://i.ytimg.com/vi/9Mr-ce2n8GU/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=9Mr-ce2n8GU"
         },
@@ -893,7 +962,7 @@
           "title": "從大英帝國到全民囤糧！英國最致命的弱點藏不住了 #財經",
           "publishedAt": "2026-09-27T02:00:33Z",
           "viewCount": 1391,
-          "likeCount": 28,
+          "likeCount": 29,
           "thumbnail": "https://i.ytimg.com/vi/knThJAsA_74/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=knThJAsA_74"
         },
@@ -901,8 +970,8 @@
           "id": "8SC-fo0wT-I",
           "title": "美聯儲加息落地！科技股誰先撐不住？蘋果殺入AI伺服器、英特爾牽手海力士，杰富瑞卻喊9000點！#股票 #stockmarket ",
           "publishedAt": "2026-09-27T01:00:33Z",
-          "viewCount": 3032,
-          "likeCount": 35,
+          "viewCount": 3051,
+          "likeCount": 36,
           "thumbnail": "https://i.ytimg.com/vi/8SC-fo0wT-I/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=8SC-fo0wT-I"
         },
@@ -910,8 +979,8 @@
           "id": "ljjKmWoffYA",
           "title": "Jeremy Grantham三次躲過全球泡沫：這一次，他又看到什麼？ #財經 #美債 #黃金",
           "publishedAt": "2026-09-26T01:00:02Z",
-          "viewCount": 7475,
-          "likeCount": 146,
+          "viewCount": 7518,
+          "likeCount": 148,
           "thumbnail": "https://i.ytimg.com/vi/ljjKmWoffYA/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=ljjKmWoffYA"
         },
@@ -919,8 +988,8 @@
           "id": "ZwtMr5Qtv_8",
           "title": "泰國突然封殺黃金？泰銖被金價綁架，1997危機會重演嗎？黃金正在拖垮泰國？#gold #stock #股票 ",
           "publishedAt": "2026-09-25T01:00:10Z",
-          "viewCount": 24996,
-          "likeCount": 394,
+          "viewCount": 25177,
+          "likeCount": 397,
           "thumbnail": "https://i.ytimg.com/vi/ZwtMr5Qtv_8/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=ZwtMr5Qtv_8"
         },
@@ -928,8 +997,8 @@
           "id": "XFrVxNaXCig",
           "title": "高市早苗被美國盯上！日本加息，美債先遭殃？",
           "publishedAt": "2026-09-23T01:00:14Z",
-          "viewCount": 1311,
-          "likeCount": 26,
+          "viewCount": 1315,
+          "likeCount": 27,
           "thumbnail": "https://i.ytimg.com/vi/XFrVxNaXCig/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=XFrVxNaXCig"
         },
@@ -937,8 +1006,8 @@
           "id": "Vhsgl6rSTuE",
           "title": "華爾街「神預言」再出手：黃金6000美元只是前菜？",
           "publishedAt": "2026-09-22T01:00:39Z",
-          "viewCount": 954,
-          "likeCount": 31,
+          "viewCount": 960,
+          "likeCount": 32,
           "thumbnail": "https://i.ytimg.com/vi/Vhsgl6rSTuE/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=Vhsgl6rSTuE"
         },
@@ -946,8 +1015,8 @@
           "id": "BoHkiOfLRro",
           "title": "美聯儲突然變鷹！加息25基點只是開始？年底還有一刀！",
           "publishedAt": "2026-09-21T01:00:38Z",
-          "viewCount": 1307,
-          "likeCount": 26,
+          "viewCount": 1312,
+          "likeCount": 27,
           "thumbnail": "https://i.ytimg.com/vi/BoHkiOfLRro/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=BoHkiOfLRro"
         },
@@ -955,7 +1024,7 @@
           "id": "O6-wglDeKo0",
           "title": "全球金融體系正在悄悄重置？黃金撤離美國、美債買家開始退場，21家華爾街巨頭聯手打造「新美元」！",
           "publishedAt": "2026-09-20T02:38:11Z",
-          "viewCount": 3751,
+          "viewCount": 3785,
           "likeCount": 82,
           "thumbnail": "https://i.ytimg.com/vi/O6-wglDeKo0/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=O6-wglDeKo0"
@@ -964,8 +1033,8 @@
           "id": "QsYZbJjYpF8",
           "title": "美債撐不住了？貝森特G20逼日本加息，40年前劇本重演！",
           "publishedAt": "2026-09-20T01:56:09Z",
-          "viewCount": 2507,
-          "likeCount": 61,
+          "viewCount": 2514,
+          "likeCount": 62,
           "thumbnail": "https://i.ytimg.com/vi/QsYZbJjYpF8/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=QsYZbJjYpF8"
         },
@@ -973,8 +1042,8 @@
           "id": "NQOCcq-3Yug",
           "title": "美國另類化債真相",
           "publishedAt": "2026-09-19T02:00:27Z",
-          "viewCount": 1337,
-          "likeCount": 28,
+          "viewCount": 1340,
+          "likeCount": 29,
           "thumbnail": "https://i.ytimg.com/vi/NQOCcq-3Yug/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=NQOCcq-3Yug"
         }
@@ -985,6 +1054,7 @@
       "name": "Leo財經",
       "url": "https://www.youtube.com/channel/UCNX9-jzOH4KMbIeuWK8LZaw",
       "avatar": "https://yt3.ggpht.com/ib4UkQkrIbXN1imfrmBZmnno5_4fVaynGTu9YdHBvzigcpsq5ePtSNzKyZaZS2gj-n07C3SCRA=s240-c-k-c0x00ffffff-no-rj",
+      "avatarDataUrl": null,
       "subscriberCount": 10,
       "channelViews": 101,
       "videoCount": 6,
@@ -995,6 +1065,11 @@
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 10,
           "channelViews": 101
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 10,
+          "channelViews": 101
         }
       ],
       "videos": [
@@ -1002,7 +1077,7 @@
           "id": "IU-D3KFogR0",
           "title": "美聯儲失去控制？加息也壓不住美債！ 30年美債收益率為何降不下來？  #美國國債 #美債收益率 #美聯儲 #升息 #全球投資",
           "publishedAt": "2026-09-23T12:30:27Z",
-          "viewCount": 10,
+          "viewCount": 11,
           "likeCount": 2,
           "thumbnail": "https://i.ytimg.com/vi/IU-D3KFogR0/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=IU-D3KFogR0"
@@ -1011,7 +1086,7 @@
           "id": "xL7HQOXc-R0",
           "title": "日本欠債1346萬億！銀行危機又要重演？ #日本國債 #日圓 #金融危機 #全球市場",
           "publishedAt": "2026-09-22T07:30:05Z",
-          "viewCount": 17,
+          "viewCount": 18,
           "likeCount": 3,
           "thumbnail": "https://i.ytimg.com/vi/xL7HQOXc-R0/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=xL7HQOXc-R0"
@@ -1068,19 +1143,34 @@
       "name": "Leo財經觀察",
       "url": "https://www.youtube.com/channel/UCtkUpmfJckdTZyNvyWBl_rg",
       "avatar": "https://yt3.ggpht.com/UTE35AJU84PBzZPJC2rQD6tnSIFP-s07pa8hBKAjqifdvP9bCbQFXs3xApPp1c3SyBpayvUUDTo=s240-c-k-c0x00ffffff-no-rj",
-      "subscriberCount": 8,
+      "avatarDataUrl": null,
+      "subscriberCount": 9,
       "channelViews": 352,
-      "videoCount": 4,
-      "lastPublishedAt": "2026-09-29T10:30:06Z",
-      "uploads7d": 4,
+      "videoCount": 5,
+      "lastPublishedAt": "2026-09-29T12:30:26Z",
+      "uploads7d": 5,
       "history": [
         {
           "observedAt": "2026-09-29T12:02:48Z",
           "subscriberCount": 8,
           "channelViews": 352
+        },
+        {
+          "observedAt": "2026-09-29T14:06:40Z",
+          "subscriberCount": 9,
+          "channelViews": 352
         }
       ],
       "videos": [
+        {
+          "id": "GTPrPUjfUBY",
+          "title": "人民幣失控了？半年1.4萬億美元緊急鎖匯！700億元匯兌損失創十年紀錄！你的美股為什麼也躲不掉？#人民幣 #匯率 #美股 #關稅 #中國經濟 #全球市場 #投資",
+          "publishedAt": "2026-09-29T12:30:26Z",
+          "viewCount": 0,
+          "likeCount": 0,
+          "thumbnail": "https://i.ytimg.com/vi/GTPrPUjfUBY/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=GTPrPUjfUBY"
+        },
         {
           "id": "CHhcvhdMEMI",
           "title": "12天暴漲2000億，轉頭就被封殺！Meta的新AI Muse，到底動了亞馬遜哪塊蛋糕？#meta  #muse #amazon #科技股 #美股投資",
@@ -1094,8 +1184,8 @@
           "id": "u_B5XVzQvjY",
           "title": "銀行也要擠進萬億俱樂部？摩根大通最貴的資產，竟是一個人！ #美國銀行股 #華爾街 #美股投資 #全球市場",
           "publishedAt": "2026-09-28T12:30:38Z",
-          "viewCount": 661,
-          "likeCount": 10,
+          "viewCount": 728,
+          "likeCount": 11,
           "thumbnail": "https://i.ytimg.com/vi/u_B5XVzQvjY/mqdefault.jpg",
           "url": "https://www.youtube.com/watch?v=u_B5XVzQvjY"
         },
@@ -1121,5 +1211,3 @@
     }
   ]
 }
-
-

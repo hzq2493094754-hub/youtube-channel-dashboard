@@ -22,4 +22,27 @@
 python scripts/collect_youtube.py
 ```
 
-建议每 3 小时运行一次。历史快照在 7 天内保留 3 小时间隔，30 天内保留每日值，之后保留每周值。不要把 API Key 写入代码、JSON 或仓库。
+参考看板的运行模式已加入：历史快照在 7 天内保留 3 小时间隔，30 天内保留每日值，之后保留每周值。不要把 API Key 写入代码、JSON 或仓库。
+
+## 本机自动采集
+
+第一次配置时，用当前 Windows 用户的 DPAPI 加密保存密钥：
+
+```powershell
+$key = Read-Host 'YouTube API Key' -AsSecureString
+.\scripts\set_youtube_key.ps1 -ApiKey $key
+```
+
+手动刷新：
+
+```powershell
+.\scripts\update_dashboard.ps1
+```
+
+安装每 30 分钟运行一次的 Windows 计划任务：
+
+```powershell
+.\scripts\install_refresh_task.ps1
+```
+
+密钥只保存在 `.secrets/youtube-api-key.dpapi`，并且不会进入 Git、网页或数据快照。频道头像会优先缓存为数据 URI；当本机网络无法读取图片源时，看板会自动改用频道首字标识，不会显示破图。

@@ -10,6 +10,9 @@ from __future__ import annotations
 import json
 import os
 import sys
+import base64
+import shutil
+import subprocess
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -22,6 +25,7 @@ CONFIG_PATH = ROOT / "config" / "channels.json"
 DATA_PATH = ROOT / "public" / "data" / "dashboard.json"
 API_BASE = "https://www.googleapis.com/youtube/v3"
 RECENT_VIDEO_LIMIT = 12
+MAX_AVATAR_BYTES = 450_000
 
 
 def iso_now() -> str:
@@ -105,6 +109,27 @@ def thumbnail(item: dict[str, Any]) -> str | None:
     return (thumbnails.get("medium") or thumbnails.get("high") or thumbnails.get("default") or {}).get("url")
 
 
+def cache_avatar(url: str | None, fallback: str | None) -> str | None:
+    """Embed a small channel avatar so the static dashboard has no fragile image dependency."""
+    if not url:
+        return fallback
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme != "https" or parsed.hostname not in {"yt3.ggpht.com", "yt3.googleusercontent.com"}:
+        return fallback
+    try:
+        curl = shutil.which("curl.exe") or shutil.which("curl")
+        if not curl:
+            return fallback
+        result = subprocess.run([curl, "--fail", "--silent", "--show-error", "--max-time", "20", "--max-filesize", str(MAX_AVATAR_BYTES), "--proto", "=https", url], capture_output=True, timeout=25)
+        payload = result.stdout
+        if result.returncode or not payload or len(payload) > MAX_AVATAR_BYTES:
+            return fallback
+        mime = "image/jpeg" if payload.startswith(b"\xff\xd8\xff") else "image/png" if payload.startswith(b"\x89PNG\r\n\x1a\n") else "image/webp" if payload.startswith(b"RIFF") and payload[8:12] == b"WEBP" else None
+        return f"data:{mime};base64,{base64.b64encode(payload).decode('ascii')}" if mime else fallback
+    except (OSError, subprocess.SubprocessError):
+        return fallback
+
+
 def main() -> None:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     configured = config.get("channels", [])
@@ -150,7 +175,8 @@ def main() -> None:
         history = [{**row, "id": target["id"]} for row in prior.get("history", [])] + [{"id": target["id"], "observedAt": observed_at, "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount"))}]
         history = [row for row in compact_history(history, now) if row["id"] == target["id"]]
         published = [datetime.fromisoformat(video["publishedAt"].replace("Z", "+00:00")) for video in videos if video.get("publishedAt")]
-        output_channels.append({"id": target["id"], "name": target.get("label") or snippet.get("title") or target["id"], "url": f"https://www.youtube.com/channel/{target['id']}", "avatar": thumbnail(item), "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount")), "videoCount": numeric(stats.get("videoCount")), "lastPublishedAt": videos[0].get("publishedAt") if videos else None, "uploads7d": sum(1 for date in published if now - date <= timedelta(days=7)), "history": [{key: value for key, value in row.items() if key != "id"} for row in history], "videos": videos})
+        avatar_url = thumbnail(item)
+        output_channels.append({"id": target["id"], "name": target.get("label") or snippet.get("title") or target["id"], "url": f"https://www.youtube.com/channel/{target['id']}", "avatar": avatar_url, "avatarDataUrl": cache_avatar(avatar_url, prior.get("avatarDataUrl")), "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount")), "videoCount": numeric(stats.get("videoCount")), "lastPublishedAt": videos[0].get("publishedAt") if videos else None, "uploads7d": sum(1 for date in published if now - date <= timedelta(days=7)), "history": [{key: value for key, value in row.items() if key != "id"} for row in history], "videos": videos})
     payload = {"generatedAt": observed_at, "collector": {"status": "ok", "message": "已从 YouTube Data API 刷新频道公开数据。", "channelsCollected": len(output_channels)}, "channels": output_channels}
     DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"channelsCollected": len(output_channels), "generatedAt": observed_at}, ensure_ascii=False))
