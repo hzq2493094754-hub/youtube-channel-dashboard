@@ -60,12 +60,19 @@
       </div>
     </section>
 
-    <section class="panel inventory-panel" aria-labelledby="allVideosTitle">
-      <header class="trend-title-row"><div><p class="eyebrow">ALL VIDEOS</p><h2 id="allVideosTitle">全部视频播放量</h2><p class="inventory-note">按视频发布时间筛选；播放量为最近一次采集时的公开累计值，并非窗口内新增播放。</p></div><div id="videoPeriod" class="period-switch" aria-label="全部视频时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="all" aria-pressed="true">ALL</button></div></header>
-      <div class="video-filters"><div class="selector-row"><span>频道·多选</span><div id="videoChannels" class="choice-buttons channel-choices" role="group" aria-label="选择视频频道，可多选"></div></div><div class="selector-row"><span>播放排序</span><div id="videoSort" class="choice-buttons compact-choices"><button data-value="desc" aria-pressed="true">↓ 从高到低</button><button data-value="asc" aria-pressed="false">↑ 从低到高</button></div></div></div>
-      <p id="allVideosCount" class="inventory-note" aria-live="polite"></p>
-      <ol id="allVideosList" class="all-videos-list" tabindex="0"></ol>
-    </section>
+    <div class="video-content-columns">
+      <section class="panel inventory-panel" aria-labelledby="allVideosTitle">
+        <header class="trend-title-row"><div><p class="eyebrow">ALL VIDEOS</p><h2 id="allVideosTitle">全部视频播放量</h2><p class="inventory-note">按视频发布时间筛选；播放量为最近一次采集时的公开累计值，并非窗口内新增播放。</p></div><div id="videoPeriod" class="period-switch" aria-label="全部视频时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="all" aria-pressed="true">ALL</button></div></header>
+        <div class="video-filters"><div class="selector-row"><span>频道·多选</span><div id="videoChannels" class="choice-buttons channel-choices" role="group" aria-label="选择视频频道，可多选"></div></div><div class="selector-row"><span>播放排序</span><div id="videoSort" class="choice-buttons compact-choices"><button data-value="desc" aria-pressed="true">↓ 从高到低</button><button data-value="asc" aria-pressed="false">↑ 从低到高</button></div></div></div>
+        <p id="allVideosCount" class="inventory-note" aria-live="polite"></p>
+        <ol id="allVideosList" class="all-videos-list" tabindex="0"></ol>
+      </section>
+
+      <section class="panel recent-updates-panel" aria-labelledby="recentUpdatesTitle">
+        <header class="panel-heading updates-heading"><div><p class="eyebrow">LAST 7 DAYS</p><h2 id="recentUpdatesTitle">近 7 日更新量</h2></div><span id="recentUpdatesCount" class="note"></span></header>
+        <ol id="recentUpdatesList" class="updates-list recent-updates-list" tabindex="0"></ol>
+      </section>
+    </div>
 
     <section id="subscriberGrowthPanel" class="panel subscriber-growth-panel" aria-labelledby="subscriberGrowthTitle">
       <header class="trend-header">
