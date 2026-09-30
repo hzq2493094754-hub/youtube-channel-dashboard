@@ -63,6 +63,21 @@ button { cursor: pointer; }
 .updates-list, .all-videos-list { margin: 0; padding: 0; list-style: none; }
 .updates-list { display: grid; align-content: start; gap: 0; padding-right: 6px; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: var(--line) transparent; }
 .updates-list li, .all-videos-list li { border-bottom: 1px solid rgba(32, 54, 45, .72); }
+.channel-updates-panel { grid-template-rows: auto minmax(0, 1fr) auto; }
+.channel-updates-chart { display: grid; align-content: start; gap: 3px; min-height: 0; padding: 10px 5px 3px 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: var(--line) transparent; }
+.channel-update-row { display: grid; grid-template-columns: minmax(102px, 1.15fr) minmax(92px, 1.1fr) minmax(70px, .55fr); align-items: center; gap: 8px; min-height: 28px; }
+.channel-update-name { display: flex; align-items: center; min-width: 0; gap: 7px; color: var(--text); font-size: 11px; font-weight: 700; text-decoration: none; }
+.channel-update-name:hover, .channel-update-name:focus-visible { color: var(--accent-strong); outline: none; }
+.channel-update-name span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.channel-update-name .mini-avatar { width: 21px; height: 21px; font-size: 9px; }
+.channel-update-track { display: flex; height: 14px; overflow: hidden; border: 1px solid rgba(198, 169, 106, .08); border-radius: 5px; background: rgba(46, 61, 75, .48); }
+.channel-update-track .upload-segment { flex: 0 0 auto; }
+.channel-update-value { display: grid; justify-items: end; gap: 1px; color: var(--text); line-height: 1.05; text-align: right; white-space: nowrap; }
+.channel-update-value b { font-size: 12px; }
+.channel-update-value small { color: var(--muted); font-size: 9px; }
+.channel-updates-footer { padding-top: 8px; border-top: 1px solid var(--line); }
+.channel-updates-footer .trend-legend { gap: 6px 13px; padding-top: 0; }
+.channel-updates-footer .inventory-note { margin-top: 6px; font-size: 10px; line-height: 1.45; }
 .update-link { display: grid; grid-template-columns: 92px minmax(0, 1fr) 18px; align-items: center; gap: 11px; padding: 11px 5px; color: var(--text); text-decoration: none; transition: background .16s ease, transform .16s ease; }
 .update-link:hover, .update-link:focus-visible { outline: none; background: rgba(198, 169, 106, .055); transform: translateX(3px); }
 .video-thumb { position: relative; display: grid; place-items: center; overflow: hidden; width: 92px; aspect-ratio: 16 / 9; border-radius: 8px; color: var(--accent); background: var(--surface-2); }
@@ -190,6 +205,11 @@ button { cursor: pointer; }
   .selector-row { grid-template-columns: 1fr; gap: 4px; }
   .selector-row > span { padding-top: 0; }
   .channel-choices { grid-template-columns: 92px repeat(6, minmax(110px, 1fr)); }
+  .channel-update-row { grid-template-columns: minmax(98px, 1fr) minmax(78px, 1fr) auto; gap: 6px; }
+  .channel-update-name { gap: 5px; font-size: 10px; }
+  .channel-update-name .mini-avatar { width: 18px; height: 18px; }
+  .channel-update-value b { font-size: 11px; }
+  .channel-update-value small { font-size: 8px; }
   .metric-bar-row.is-upload-breakdown { grid-template-columns: minmax(102px, 1fr) minmax(82px, 1fr) auto; gap: 7px; }
   .metric-bar-row.is-upload-breakdown .metric-bar-channel { gap: 5px; font-size: 11px; }
   .metric-bar-row.is-upload-breakdown .mini-avatar { width: 21px; height: 21px; }
