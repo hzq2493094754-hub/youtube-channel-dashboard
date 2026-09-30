@@ -169,6 +169,12 @@ button { cursor: pointer; }
 
 .inventory-panel { margin-top: 16px; padding: 24px; }
 .inventory-panel h2 { font-size: clamp(25px, 3vw, 32px); }
+.video-content-columns { display: grid; grid-template-columns: minmax(0, 1.618fr) minmax(340px, 1fr); gap: 16px; margin-top: 16px; }
+.video-content-columns > .panel { height: 920px; }
+.video-content-columns .inventory-panel { display: flex; flex-direction: column; min-height: 0; margin-top: 0; overflow: hidden; }
+.video-content-columns .all-videos-list { flex: 1 1 auto; min-height: 0; max-height: none; }
+.recent-updates-panel { display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; padding: 24px; overflow: hidden; }
+.recent-updates-list { min-height: 0; padding-top: 2px; }
 .subscriber-growth-panel { margin-top: 16px; padding: 24px; }
 .subscriber-growth-panel h2 { margin: 0; font-size: clamp(25px, 3vw, 32px); letter-spacing: -.04em; }
 .subscriber-growth-figure { min-width: 0; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
@@ -195,9 +201,13 @@ button { cursor: pointer; }
 }
 @media (max-width: 900px) {
   .dashboard { width: min(100% - 24px, 1180px); padding-top: 14px; }
-  .chart-grid, .trend-charts { grid-template-columns: 1fr; }
+  .chart-grid, .trend-charts, .video-content-columns { grid-template-columns: 1fr; }
+  .video-content-columns > .panel { height: auto; }
+  .video-content-columns .inventory-panel { display: block; overflow: visible; }
+  .video-content-columns .all-videos-list { max-height: 640px; }
   .chart-panel { height: auto; min-height: 560px; padding: 18px; overflow: visible; border-radius: 18px; }
   .updates-panel { height: 500px; padding: 18px; border-radius: 18px; }
+  .recent-updates-panel { height: 500px; padding: 18px; border-radius: 18px; }
 }
 @media (max-width: 600px) {
   .trend-panel, .inventory-panel, .subscriber-growth-panel { padding: 18px; border-radius: 18px; }
