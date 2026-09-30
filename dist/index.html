@@ -88,6 +88,60 @@
         </section>
       </div>
     </section>
+
+    <section id="contentInsightsPanel" class="panel insights-panel" aria-labelledby="insightsTitle">
+      <header class="trend-header">
+        <div class="trend-title-row">
+          <div><p class="eyebrow">CONTENT INTELLIGENCE</p><h2 id="insightsTitle">内容洞察</h2><p id="insightsDescription" class="trend-description"></p></div>
+          <div id="insightPeriod" class="period-switch" aria-label="内容洞察时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="true">30D</button><button data-value="all" aria-pressed="false">ALL</button></div>
+        </div>
+        <div class="trend-controls"><div class="selector-row"><span>频道·多选</span><div id="insightChannels" class="choice-buttons channel-choices" role="group" aria-label="选择要分析的频道，可多选"></div></div></div>
+      </header>
+      <div class="insights-grid">
+        <article class="insight-card insight-top-videos" aria-labelledby="insightTopVideosTitle">
+          <header class="insight-card-heading"><div><p class="eyebrow">TOP CONTENT</p><h3 id="insightTopVideosTitle">近期内容表现</h3></div><span id="insightVideoCount" class="note"></span></header>
+          <ol id="insightTopVideos" class="insight-video-list" aria-live="polite"></ol>
+        </article>
+        <article class="insight-card" aria-labelledby="insightEngagementTitle">
+          <header class="insight-card-heading"><div><p class="eyebrow">ENGAGEMENT</p><h3 id="insightEngagementTitle">互动质量排行</h3></div><span class="note">每千次播放</span></header>
+          <div id="insightEngagement" class="insight-ranking" aria-live="polite"></div>
+          <p class="insight-footnote">互动率 =（点赞 + 评论）÷ 播放量；用于横向比较公开互动密度，不代表观看时长或转化。</p>
+        </article>
+        <article class="insight-card insight-mix-card" aria-labelledby="insightMixTitle">
+          <header class="insight-card-heading"><div><p class="eyebrow">CONTENT MIX</p><h3 id="insightMixTitle">内容结构与发布节奏</h3></div></header>
+          <div id="insightMix" aria-live="polite"></div>
+          <div class="cadence-divider"></div>
+          <div id="insightCadence" aria-live="polite"></div>
+        </article>
+      </div>
+      <p id="insightsNote" class="inventory-note"></p>
+    </section>
+
+    <section id="researchPanel" class="panel research-panel" aria-labelledby="researchTitle">
+      <header class="trend-header">
+        <div class="trend-title-row"><div><p class="eyebrow">CONTENT RESEARCH</p><h2 id="researchTitle">深度内容研究</h2><p id="researchDescription" class="trend-description">跟随上方“内容洞察”的时间窗口与频道筛选。</p></div></div>
+      </header>
+      <div class="research-grid">
+        <article class="research-card lifecycle-card" aria-labelledby="lifecycleTitle">
+          <header class="insight-card-heading"><div><p class="eyebrow">LIFECYCLE</p><h3 id="lifecycleTitle">发布后表现曲线</h3></div><label class="video-picker"><span>选择视频</span><select id="lifecycleVideo" aria-label="选择要查看发布后表现的视频"></select></label></header>
+          <div id="lifecycleMilestones" class="lifecycle-milestones" aria-live="polite"></div>
+          <div id="lifecycleChart" class="lifecycle-chart"></div>
+          <p id="lifecycleNote" class="insight-footnote"></p>
+        </article>
+        <article class="research-card metadata-card" aria-labelledby="metadataTitle">
+          <header class="insight-card-heading"><div><p class="eyebrow">METADATA</p><h3 id="metadataTitle">标题、题材与 # 标签</h3></div></header>
+          <div class="research-list-group"><h4>标题关键词</h4><div id="titleKeywords" class="token-ranking" aria-live="polite"></div></div>
+          <div class="research-list-group"><h4>题材 / 分类排行</h4><div id="categoryRanking" class="token-ranking" aria-live="polite"></div></div>
+          <div class="research-list-group"><h4># 标签排行</h4><div id="hashtagRanking" class="token-ranking" aria-live="polite"></div></div>
+        </article>
+        <article class="research-card comments-card" aria-labelledby="commentsResearchTitle">
+          <header class="insight-card-heading"><div><p class="eyebrow">PUBLIC COMMENTS</p><h3 id="commentsResearchTitle">评论话题与高频问题</h3></div><span id="commentSampleCount" class="note"></span></header>
+          <div class="research-list-group"><h4>高频讨论词</h4><div id="commentTopics" class="token-ranking" aria-live="polite"></div></div>
+          <div class="research-list-group question-group"><h4>值得关注的问题</h4><ol id="commentQuestions" class="question-list" aria-live="polite"></ol></div>
+          <p id="commentsResearchNote" class="insight-footnote"></p>
+        </article>
+      </div>
+    </section>
     <div id="loadError" class="load-error" hidden></div>
   </main>
   <script src="app.js" defer></script>
