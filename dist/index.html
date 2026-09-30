@@ -34,32 +34,6 @@
       </article>
     </section>
 
-    <section id="trendPanel" class="panel trend-panel" aria-labelledby="trendTitle">
-      <header class="trend-header">
-        <div class="trend-title-row">
-          <div><p class="eyebrow">VIDEO TREND</p><h2 id="trendTitle">频道内容趋势</h2><p id="trendDescription" class="trend-description"></p></div>
-          <div id="trendPeriod" class="period-switch trend-period-switch" aria-label="频道内容趋势时间窗口"><button data-value="7" aria-pressed="true">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="90" aria-pressed="false">90D</button><button data-value="all" aria-pressed="false">ALL</button></div>
-        </div>
-        <div class="trend-controls">
-          <div class="selector-row"><span>频道·多选</span><div id="trendChannels" class="choice-buttons channel-choices" role="group" aria-label="选择趋势频道，可多选；全部频道显示总和"></div></div>
-          <div class="selector-row"><span>指标</span><div id="trendMetric" class="choice-buttons compact-choices" role="group"><button data-value="views" aria-pressed="true"><i>▶</i>播放量</button><button data-value="subscribers" aria-pressed="false"><i>♟</i>新增订阅</button><button data-value="likes" aria-pressed="false"><i>♥</i>点赞数量</button><button data-value="comments" aria-pressed="false"><i>▰</i>评论数量</button><button data-value="uploads" aria-pressed="false"><i>↻</i>更新数量</button></div></div>
-        </div>
-      </header>
-      <div class="trend-charts">
-        <section class="trend-figure">
-          <header class="figure-heading"><h3 id="aggregateTitle">全部频道总和</h3></header>
-          <div id="trendChart" class="trend-chart"></div>
-          <div id="trendLegend" class="trend-legend"></div>
-        </section>
-        <section class="trend-figure breakdown-figure">
-          <header class="figure-heading"><h3 id="breakdownTitle">各频道数据 · 播放量</h3><div id="breakdownMode" class="choice-buttons breakdown-mode"><button data-value="bar" aria-pressed="true">▥ 柱状图</button><button data-value="line" aria-pressed="false">⌁ 折线图</button></div></header>
-          <div id="breakdownChart"></div>
-          <div id="breakdownLegend" class="trend-legend"></div>
-          <p id="breakdownNote" class="inventory-note"></p>
-        </section>
-      </div>
-    </section>
-
     <div class="video-content-columns">
       <section class="panel inventory-panel" aria-labelledby="allVideosTitle">
         <header class="trend-title-row"><div><p class="eyebrow">ALL VIDEOS</p><h2 id="allVideosTitle">全部视频播放量</h2><p class="inventory-note">按视频发布时间筛选；播放量为最近一次采集时的公开累计值，并非窗口内新增播放。</p></div><div id="videoPeriod" class="period-switch" aria-label="全部视频时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="all" aria-pressed="true">ALL</button></div></header>
@@ -86,6 +60,32 @@
         <div id="subscriberGrowthChart" class="trend-chart" aria-live="polite"></div>
         <div id="subscriberGrowthLegend" class="trend-legend"></div>
         <p id="subscriberGrowthNote" class="inventory-note"></p>
+      </div>
+    </section>
+
+    <section id="trendPanel" class="panel trend-panel" aria-labelledby="trendTitle">
+      <header class="trend-header">
+        <div class="trend-title-row">
+          <div><p class="eyebrow">VIDEO TREND</p><h2 id="trendTitle">频道内容趋势</h2><p id="trendDescription" class="trend-description"></p></div>
+          <div id="trendPeriod" class="period-switch trend-period-switch" aria-label="频道内容趋势时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="true">30D</button><button data-value="90" aria-pressed="false">90D</button><button data-value="all" aria-pressed="false">ALL</button></div>
+        </div>
+        <div class="trend-controls">
+          <div class="selector-row"><span>频道·多选</span><div id="trendChannels" class="choice-buttons channel-choices" role="group" aria-label="选择趋势频道，可多选；全部频道显示总和"></div></div>
+          <div class="selector-row"><span>指标</span><div id="trendMetric" class="choice-buttons compact-choices" role="group"><button data-value="views" aria-pressed="true"><i>▶</i>播放量</button><button data-value="subscribers" aria-pressed="false"><i>♟</i>新增订阅</button><button data-value="likes" aria-pressed="false"><i>♥</i>点赞数量</button><button data-value="comments" aria-pressed="false"><i>▰</i>评论数量</button><button data-value="uploads" aria-pressed="false"><i>↻</i>更新数量</button></div></div>
+        </div>
+      </header>
+      <div class="trend-charts">
+        <section class="trend-figure">
+          <header class="figure-heading"><h3 id="aggregateTitle">全部频道总和</h3></header>
+          <div id="trendChart" class="trend-chart"></div>
+          <div id="trendLegend" class="trend-legend"></div>
+        </section>
+        <section class="trend-figure breakdown-figure">
+          <header class="figure-heading"><h3 id="breakdownTitle">各频道数据 · 播放量</h3><div id="breakdownMode" class="choice-buttons breakdown-mode"><button data-value="bar" aria-pressed="true">▥ 柱状图</button><button data-value="line" aria-pressed="false">⌁ 折线图</button></div></header>
+          <div id="breakdownChart"></div>
+          <div id="breakdownLegend" class="trend-legend"></div>
+          <p id="breakdownNote" class="inventory-note"></p>
+        </section>
       </div>
     </section>
     <div id="loadError" class="load-error" hidden></div>
