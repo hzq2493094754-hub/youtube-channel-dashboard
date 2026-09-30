@@ -154,6 +154,11 @@ button { cursor: pointer; }
 
 .inventory-panel { margin-top: 16px; padding: 24px; }
 .inventory-panel h2 { font-size: clamp(25px, 3vw, 32px); }
+.subscriber-growth-panel { margin-top: 16px; padding: 24px; }
+.subscriber-growth-panel h2 { margin: 0; font-size: clamp(25px, 3vw, 32px); letter-spacing: -.04em; }
+.subscriber-growth-figure { min-width: 0; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+.subscriber-growth-figure .trend-chart { min-height: 330px; }
+.subscriber-growth-figure .trend-legend { margin-top: 8px; }
 .video-filters { display: grid; min-width: 0; gap: 12px; margin-top: 20px; }
 .video-filters .choice-buttons:not(.channel-choices) { flex-wrap: wrap; overflow: visible; }
 .all-videos-list { max-height: 640px; margin-top: 16px; padding-right: 8px; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: var(--line) transparent; }
@@ -180,7 +185,7 @@ button { cursor: pointer; }
   .updates-panel { height: 500px; padding: 18px; border-radius: 18px; }
 }
 @media (max-width: 600px) {
-  .trend-panel, .inventory-panel { padding: 18px; border-radius: 18px; }
+  .trend-panel, .inventory-panel, .subscriber-growth-panel { padding: 18px; border-radius: 18px; }
   .trend-title-row { flex-direction: column; gap: 12px; }
   .selector-row { grid-template-columns: 1fr; gap: 4px; }
   .selector-row > span { padding-top: 0; }
