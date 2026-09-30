@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T13:58:47Z",
+  "generatedAt": "2026-09-30T14:08:01Z",
   "collector": {
     "status": "ok",
     "message": "已从 YouTube Data API 刷新频道公开数据。",
@@ -50,7 +50,7 @@
           "channelViews": 1414862
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 13500,
           "channelViews": 1414862
         }
@@ -701,7 +701,7 @@
           "channelViews": 646501
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 14200,
           "channelViews": 646501
         }
@@ -1352,7 +1352,7 @@
           "channelViews": 8957
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 50,
           "channelViews": 8957
         }
@@ -1374,7 +1374,7 @@
           "id": "dUKxKW_AZB0",
           "title": "353兆債務揭秘！美國獨佔40兆！全球GDP被透支3年！官方CPI是假的，真實通膨卻是8%到10%！ Blue Owl關閘、黑石7%上限、霸菱縮量！私募資金警報拉響！全球買單？",
           "publishedAt": "2026-09-29T00:30:33Z",
-          "viewCount": 28,
+          "viewCount": 27,
           "likeCount": 0,
           "commentCount": 0,
           "durationSeconds": 714,
@@ -1422,7 +1422,7 @@
           "id": "AjWHdU4rcZY",
           "title": "英國窮到發瘋？第二城市破產、退休金差點爆倉：英國工業衰退、能源危機、脫歐反噬！美國反向收割！經濟嚴重衰退！英國還有救？",
           "publishedAt": "2026-09-21T00:00:05Z",
-          "viewCount": 8707,
+          "viewCount": 8709,
           "likeCount": 95,
           "commentCount": 13,
           "durationSeconds": 877,
@@ -1487,7 +1487,7 @@
           "channelViews": 2549
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 142,
           "channelViews": 2549
         }
@@ -1499,7 +1499,7 @@
           "publishedAt": "2026-09-29T12:30:12Z",
           "viewCount": 77,
           "likeCount": 4,
-          "commentCount": 2,
+          "commentCount": 3,
           "durationSeconds": 867,
           "liveBroadcastContent": "none",
           "thumbnail": "https://i.ytimg.com/vi/sUMfZvOEhZg/mqdefault.jpg",
@@ -1521,7 +1521,7 @@
           "id": "cme1luk-CPw",
           "title": "高達16厘息係咪伏？8種收息工具大拆解！定期/債券/高息ETF/Covered Call點樣揀？｜理財新手必睇｜廣東話",
           "publishedAt": "2026-09-26T01:30:23Z",
-          "viewCount": 932,
+          "viewCount": 921,
           "likeCount": 11,
           "commentCount": 0,
           "durationSeconds": 1119,
@@ -1610,7 +1610,7 @@
           "channelViews": 841
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 8,
           "channelViews": 841
         }
@@ -1829,7 +1829,7 @@
           "channelViews": 2078
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 18,
           "channelViews": 2078
         }
@@ -1952,7 +1952,7 @@
           "channelViews": 48
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 5,
           "channelViews": 48
         }
@@ -2075,7 +2075,7 @@
           "channelViews": 17715
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 163,
           "channelViews": 17715
         }
@@ -2157,7 +2157,7 @@
           "id": "wd6zbALaQyY",
           "title": "銅價一年暴漲五成！AI缺電爆千萬噸銅缺口，下一個「英偉達」藏在礦山裡？美國單月瘋吞剛果全年產量，全球搶礦戰正式打響！",
           "publishedAt": "2026-09-18T16:00:17Z",
-          "viewCount": 756,
+          "viewCount": 825,
           "likeCount": 8,
           "commentCount": 2,
           "durationSeconds": 792,
@@ -2173,7 +2173,7 @@
       "url": "https://www.youtube.com/channel/UCZNlDT4tKgZS8R6sDuJWwMA",
       "avatar": "https://yt3.ggpht.com/czuSSl1-7trtlN5BP5n7hPS_Pm7cKTX_chp1lqgVggP5apIJkB1CsmVXt0F7WpD4mGg4PIdj=s240-c-k-c0x00ffffff-no-rj",
       "avatarDataUrl": "data:image/jpeg;base64,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",
-      "subscriberCount": 682,
+      "subscriberCount": 683,
       "channelViews": 51418,
       "videoCount": 10,
       "lastPublishedAt": "2026-09-30T12:00:08Z",
@@ -2210,8 +2210,8 @@
           "channelViews": 51418
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
-          "subscriberCount": 682,
+          "observedAt": "2026-09-30T14:08:01Z",
+          "subscriberCount": 683,
           "channelViews": 51418
         }
       ],
@@ -2256,7 +2256,7 @@
           "id": "P7oUKn_cm1o",
           "title": "大模型跌成白菜價，蘋果一款折疊屏收割？AI低谷，蘋果開始吃紅利！淘金熱最後誰賺了大錢... #AI #蘋果 #折疊屏 #美股 #投資 #財經 ",
           "publishedAt": "2026-09-26T12:00:16Z",
-          "viewCount": 199,
+          "viewCount": 205,
           "likeCount": 8,
           "commentCount": 2,
           "durationSeconds": 830,
@@ -2292,8 +2292,8 @@
           "id": "SiIxAb9gpAw",
           "title": "AI泡沫2027年7月破滅？ 一條預言背後，我逐條查了這些數字 #AI泡沫 #高志凱 #投資 #財經",
           "publishedAt": "2026-09-23T12:00:06Z",
-          "viewCount": 53904,
-          "likeCount": 1058,
+          "viewCount": 53941,
+          "likeCount": 1059,
           "commentCount": 20,
           "durationSeconds": 176,
           "liveBroadcastContent": "none",
@@ -2381,7 +2381,7 @@
           "channelViews": 83018
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 787,
           "channelViews": 83018
         }
@@ -2403,7 +2403,7 @@
           "id": "NfMhtLMYCBU",
           "title": "日本央行犯下40年大錯！如今加息、不加息都是死局 #財經 #投資",
           "publishedAt": "2026-09-29T01:00:07Z",
-          "viewCount": 1212,
+          "viewCount": 1214,
           "likeCount": 28,
           "commentCount": 0,
           "durationSeconds": 156,
@@ -2415,7 +2415,7 @@
           "id": "9Mr-ce2n8GU",
           "title": "日本30年「全球提款機」正式關門！847萬億海外資金開始回流，美債美股恐迎流動性巨震，黃金真正大行情要來了？#股票 ",
           "publishedAt": "2026-09-28T02:07:18Z",
-          "viewCount": 25476,
+          "viewCount": 25499,
           "likeCount": 261,
           "commentCount": 16,
           "durationSeconds": 710,
@@ -2427,7 +2427,7 @@
           "id": "knThJAsA_74",
           "title": "從大英帝國到全民囤糧！英國最致命的弱點藏不住了 #財經",
           "publishedAt": "2026-09-27T02:00:33Z",
-          "viewCount": 1414,
+          "viewCount": 1413,
           "likeCount": 31,
           "commentCount": 1,
           "durationSeconds": 145,
@@ -2439,7 +2439,7 @@
           "id": "8SC-fo0wT-I",
           "title": "美聯儲加息落地！科技股誰先撐不住？蘋果殺入AI伺服器、英特爾牽手海力士，杰富瑞卻喊9000點！#股票 #stockmarket ",
           "publishedAt": "2026-09-27T01:00:33Z",
-          "viewCount": 3280,
+          "viewCount": 3287,
           "likeCount": 38,
           "commentCount": 1,
           "durationSeconds": 697,
@@ -2451,7 +2451,7 @@
           "id": "ljjKmWoffYA",
           "title": "Jeremy Grantham三次躲過全球泡沫：這一次，他又看到什麼？ #財經 #美債 #黃金",
           "publishedAt": "2026-09-26T01:00:02Z",
-          "viewCount": 8031,
+          "viewCount": 8005,
           "likeCount": 155,
           "commentCount": 1,
           "durationSeconds": 146,
@@ -2463,7 +2463,7 @@
           "id": "ZwtMr5Qtv_8",
           "title": "泰國突然封殺黃金？泰銖被金價綁架，1997危機會重演嗎？黃金正在拖垮泰國？#gold #stock #股票 ",
           "publishedAt": "2026-09-25T01:00:10Z",
-          "viewCount": 27489,
+          "viewCount": 27509,
           "likeCount": 453,
           "commentCount": 29,
           "durationSeconds": 789,
@@ -2487,7 +2487,7 @@
           "id": "Vhsgl6rSTuE",
           "title": "華爾街「神預言」再出手：黃金6000美元只是前菜？",
           "publishedAt": "2026-09-22T01:00:39Z",
-          "viewCount": 987,
+          "viewCount": 986,
           "likeCount": 33,
           "commentCount": 0,
           "durationSeconds": 131,
@@ -2499,7 +2499,7 @@
           "id": "BoHkiOfLRro",
           "title": "美聯儲突然變鷹！加息25基點只是開始？年底還有一刀！",
           "publishedAt": "2026-09-21T01:00:38Z",
-          "viewCount": 1361,
+          "viewCount": 1360,
           "likeCount": 28,
           "commentCount": 0,
           "durationSeconds": 166,
@@ -2511,7 +2511,7 @@
           "id": "O6-wglDeKo0",
           "title": "全球金融體系正在悄悄重置？黃金撤離美國、美債買家開始退場，21家華爾街巨頭聯手打造「新美元」！",
           "publishedAt": "2026-09-20T02:38:11Z",
-          "viewCount": 3965,
+          "viewCount": 3966,
           "likeCount": 85,
           "commentCount": 3,
           "durationSeconds": 580,
@@ -2535,7 +2535,7 @@
           "id": "NQOCcq-3Yug",
           "title": "美國另類化債真相",
           "publishedAt": "2026-09-19T02:00:27Z",
-          "viewCount": 1366,
+          "viewCount": 1365,
           "likeCount": 32,
           "commentCount": 1,
           "durationSeconds": 134,
@@ -2547,7 +2547,7 @@
           "id": "QbW23txjo9s",
           "title": "英國被掏空了？300年帝國，最後竟成了華爾街獵物！300年日不落帝國如何被掏空：工業消失、金融失控、脫歐反噬，普通人正在買單！",
           "publishedAt": "2026-09-19T01:00:27Z",
-          "viewCount": 12657,
+          "viewCount": 12664,
           "likeCount": 160,
           "commentCount": 23,
           "durationSeconds": 831,
@@ -2600,7 +2600,7 @@
           "channelViews": 109
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 10,
           "channelViews": 109
         }
@@ -2735,7 +2735,7 @@
           "channelViews": 352
         },
         {
-          "observedAt": "2026-09-30T13:58:47Z",
+          "observedAt": "2026-09-30T14:08:01Z",
           "subscriberCount": 11,
           "channelViews": 352
         }
@@ -2781,7 +2781,7 @@
           "id": "u_B5XVzQvjY",
           "title": "銀行也要擠進萬億俱樂部？摩根大通最貴的資產，竟是一個人！ #美國銀行股 #華爾街 #美股投資 #全球市場",
           "publishedAt": "2026-09-28T12:30:38Z",
-          "viewCount": 1175,
+          "viewCount": 1176,
           "likeCount": 12,
           "commentCount": 0,
           "durationSeconds": 177,
@@ -2830,7 +2830,7 @@
       "url": "https://www.youtube.com/watch?v=Ek8cm8kBHzc",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Ri7ufxD8MYk",
@@ -2845,7 +2845,7 @@
       "url": "https://www.youtube.com/watch?v=Ri7ufxD8MYk",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "bXtXcrxh1gs",
@@ -2860,7 +2860,7 @@
       "url": "https://www.youtube.com/watch?v=bXtXcrxh1gs",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "_EdjkHwrQ0g",
@@ -2875,7 +2875,7 @@
       "url": "https://www.youtube.com/watch?v=_EdjkHwrQ0g",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "zPH3EZTC5Cc",
@@ -2890,7 +2890,7 @@
       "url": "https://www.youtube.com/watch?v=zPH3EZTC5Cc",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "GTPrPUjfUBY",
@@ -2905,7 +2905,7 @@
       "url": "https://www.youtube.com/watch?v=GTPrPUjfUBY",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "sUMfZvOEhZg",
@@ -2913,14 +2913,14 @@
       "publishedAt": "2026-09-29T12:30:12Z",
       "viewCount": 77,
       "likeCount": 4,
-      "commentCount": 2,
+      "commentCount": 3,
       "durationSeconds": 867,
       "liveBroadcastContent": "none",
       "thumbnail": "https://i.ytimg.com/vi/sUMfZvOEhZg/mqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=sUMfZvOEhZg",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "qAaROBRCMpM",
@@ -2935,7 +2935,7 @@
       "url": "https://www.youtube.com/watch?v=qAaROBRCMpM",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "CHhcvhdMEMI",
@@ -2950,7 +2950,7 @@
       "url": "https://www.youtube.com/watch?v=CHhcvhdMEMI",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "jUAkgY92L5A",
@@ -2965,13 +2965,13 @@
       "url": "https://www.youtube.com/watch?v=jUAkgY92L5A",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "NfMhtLMYCBU",
       "title": "日本央行犯下40年大錯！如今加息、不加息都是死局 #財經 #投資",
       "publishedAt": "2026-09-29T01:00:07Z",
-      "viewCount": 1212,
+      "viewCount": 1214,
       "likeCount": 28,
       "commentCount": 0,
       "durationSeconds": 156,
@@ -2980,13 +2980,13 @@
       "url": "https://www.youtube.com/watch?v=NfMhtLMYCBU",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "dUKxKW_AZB0",
       "title": "353兆債務揭秘！美國獨佔40兆！全球GDP被透支3年！官方CPI是假的，真實通膨卻是8%到10%！ Blue Owl關閘、黑石7%上限、霸菱縮量！私募資金警報拉響！全球買單？",
       "publishedAt": "2026-09-29T00:30:33Z",
-      "viewCount": 28,
+      "viewCount": 27,
       "likeCount": 0,
       "commentCount": 0,
       "durationSeconds": 714,
@@ -2995,7 +2995,7 @@
       "url": "https://www.youtube.com/watch?v=dUKxKW_AZB0",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "1KSZ7W9_J3Q",
@@ -3010,13 +3010,13 @@
       "url": "https://www.youtube.com/watch?v=1KSZ7W9_J3Q",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "u_B5XVzQvjY",
       "title": "銀行也要擠進萬億俱樂部？摩根大通最貴的資產，竟是一個人！ #美國銀行股 #華爾街 #美股投資 #全球市場",
       "publishedAt": "2026-09-28T12:30:38Z",
-      "viewCount": 1175,
+      "viewCount": 1176,
       "likeCount": 12,
       "commentCount": 0,
       "durationSeconds": 177,
@@ -3025,7 +3025,7 @@
       "url": "https://www.youtube.com/watch?v=u_B5XVzQvjY",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Ju9tSfnclYc",
@@ -3040,7 +3040,7 @@
       "url": "https://www.youtube.com/watch?v=Ju9tSfnclYc",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "9AX2SrL8rWQ",
@@ -3055,7 +3055,7 @@
       "url": "https://www.youtube.com/watch?v=9AX2SrL8rWQ",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "KxPDt_p5w3k",
@@ -3070,7 +3070,7 @@
       "url": "https://www.youtube.com/watch?v=KxPDt_p5w3k",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "aMnvYEZXKNM",
@@ -3085,7 +3085,7 @@
       "url": "https://www.youtube.com/watch?v=aMnvYEZXKNM",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "9YpZGI1__Rk",
@@ -3100,7 +3100,7 @@
       "url": "https://www.youtube.com/watch?v=9YpZGI1__Rk",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "AemKf5n_sVY",
@@ -3115,13 +3115,13 @@
       "url": "https://www.youtube.com/watch?v=AemKf5n_sVY",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "9Mr-ce2n8GU",
       "title": "日本30年「全球提款機」正式關門！847萬億海外資金開始回流，美債美股恐迎流動性巨震，黃金真正大行情要來了？#股票 ",
       "publishedAt": "2026-09-28T02:07:18Z",
-      "viewCount": 25476,
+      "viewCount": 25499,
       "likeCount": 261,
       "commentCount": 16,
       "durationSeconds": 710,
@@ -3130,7 +3130,7 @@
       "url": "https://www.youtube.com/watch?v=9Mr-ce2n8GU",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "fIB5gBx6TQY",
@@ -3145,13 +3145,13 @@
       "url": "https://www.youtube.com/watch?v=fIB5gBx6TQY",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "knThJAsA_74",
       "title": "從大英帝國到全民囤糧！英國最致命的弱點藏不住了 #財經",
       "publishedAt": "2026-09-27T02:00:33Z",
-      "viewCount": 1414,
+      "viewCount": 1413,
       "likeCount": 31,
       "commentCount": 1,
       "durationSeconds": 145,
@@ -3160,7 +3160,7 @@
       "url": "https://www.youtube.com/watch?v=knThJAsA_74",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "G-pEZBox2uw",
@@ -3175,13 +3175,13 @@
       "url": "https://www.youtube.com/watch?v=G-pEZBox2uw",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "8SC-fo0wT-I",
       "title": "美聯儲加息落地！科技股誰先撐不住？蘋果殺入AI伺服器、英特爾牽手海力士，杰富瑞卻喊9000點！#股票 #stockmarket ",
       "publishedAt": "2026-09-27T01:00:33Z",
-      "viewCount": 3280,
+      "viewCount": 3287,
       "likeCount": 38,
       "commentCount": 1,
       "durationSeconds": 697,
@@ -3190,7 +3190,7 @@
       "url": "https://www.youtube.com/watch?v=8SC-fo0wT-I",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "FRHWXAsGzew",
@@ -3205,13 +3205,13 @@
       "url": "https://www.youtube.com/watch?v=FRHWXAsGzew",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "P7oUKn_cm1o",
       "title": "大模型跌成白菜價，蘋果一款折疊屏收割？AI低谷，蘋果開始吃紅利！淘金熱最後誰賺了大錢... #AI #蘋果 #折疊屏 #美股 #投資 #財經 ",
       "publishedAt": "2026-09-26T12:00:16Z",
-      "viewCount": 199,
+      "viewCount": 205,
       "likeCount": 8,
       "commentCount": 2,
       "durationSeconds": 830,
@@ -3220,7 +3220,7 @@
       "url": "https://www.youtube.com/watch?v=P7oUKn_cm1o",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "d8JsDYTyO7c",
@@ -3235,7 +3235,7 @@
       "url": "https://www.youtube.com/watch?v=d8JsDYTyO7c",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "bQXdIuwNI_Q",
@@ -3250,7 +3250,7 @@
       "url": "https://www.youtube.com/watch?v=bQXdIuwNI_Q",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "H4Wtkaggbbg",
@@ -3265,13 +3265,13 @@
       "url": "https://www.youtube.com/watch?v=H4Wtkaggbbg",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "cme1luk-CPw",
       "title": "高達16厘息係咪伏？8種收息工具大拆解！定期/債券/高息ETF/Covered Call點樣揀？｜理財新手必睇｜廣東話",
       "publishedAt": "2026-09-26T01:30:23Z",
-      "viewCount": 932,
+      "viewCount": 921,
       "likeCount": 11,
       "commentCount": 0,
       "durationSeconds": 1119,
@@ -3280,7 +3280,7 @@
       "url": "https://www.youtube.com/watch?v=cme1luk-CPw",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "bcZ-Ii79PKY",
@@ -3295,13 +3295,13 @@
       "url": "https://www.youtube.com/watch?v=bcZ-Ii79PKY",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "ljjKmWoffYA",
       "title": "Jeremy Grantham三次躲過全球泡沫：這一次，他又看到什麼？ #財經 #美債 #黃金",
       "publishedAt": "2026-09-26T01:00:02Z",
-      "viewCount": 8031,
+      "viewCount": 8005,
       "likeCount": 155,
       "commentCount": 1,
       "durationSeconds": 146,
@@ -3310,7 +3310,7 @@
       "url": "https://www.youtube.com/watch?v=ljjKmWoffYA",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Lw_5KVPXw9s",
@@ -3325,7 +3325,7 @@
       "url": "https://www.youtube.com/watch?v=Lw_5KVPXw9s",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "P0uadN55Xl0",
@@ -3340,7 +3340,7 @@
       "url": "https://www.youtube.com/watch?v=P0uadN55Xl0",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "L284RJeXjvY",
@@ -3355,13 +3355,13 @@
       "url": "https://www.youtube.com/watch?v=L284RJeXjvY",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "ZwtMr5Qtv_8",
       "title": "泰國突然封殺黃金？泰銖被金價綁架，1997危機會重演嗎？黃金正在拖垮泰國？#gold #stock #股票 ",
       "publishedAt": "2026-09-25T01:00:10Z",
-      "viewCount": 27489,
+      "viewCount": 27509,
       "likeCount": 453,
       "commentCount": 29,
       "durationSeconds": 789,
@@ -3370,7 +3370,7 @@
       "url": "https://www.youtube.com/watch?v=ZwtMr5Qtv_8",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "xZmZX3PJqVc",
@@ -3385,7 +3385,7 @@
       "url": "https://www.youtube.com/watch?v=xZmZX3PJqVc",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "s0eFljKXQRM",
@@ -3400,7 +3400,7 @@
       "url": "https://www.youtube.com/watch?v=s0eFljKXQRM",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "vznpH0ROLwA",
@@ -3415,7 +3415,7 @@
       "url": "https://www.youtube.com/watch?v=vznpH0ROLwA",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "TxKQteZ_tMg",
@@ -3430,7 +3430,7 @@
       "url": "https://www.youtube.com/watch?v=TxKQteZ_tMg",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "ArbD4sVQoZw",
@@ -3445,7 +3445,7 @@
       "url": "https://www.youtube.com/watch?v=ArbD4sVQoZw",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "hZITRcnMZ1k",
@@ -3460,7 +3460,7 @@
       "url": "https://www.youtube.com/watch?v=hZITRcnMZ1k",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "3pbe4T1JKxM",
@@ -3475,7 +3475,7 @@
       "url": "https://www.youtube.com/watch?v=3pbe4T1JKxM",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "0O6WjcqsZB8",
@@ -3490,7 +3490,7 @@
       "url": "https://www.youtube.com/watch?v=0O6WjcqsZB8",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "idofW1UqFsQ",
@@ -3505,7 +3505,7 @@
       "url": "https://www.youtube.com/watch?v=idofW1UqFsQ",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "IU-D3KFogR0",
@@ -3520,14 +3520,14 @@
       "url": "https://www.youtube.com/watch?v=IU-D3KFogR0",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "SiIxAb9gpAw",
       "title": "AI泡沫2027年7月破滅？ 一條預言背後，我逐條查了這些數字 #AI泡沫 #高志凱 #投資 #財經",
       "publishedAt": "2026-09-23T12:00:06Z",
-      "viewCount": 53904,
-      "likeCount": 1058,
+      "viewCount": 53941,
+      "likeCount": 1059,
       "commentCount": 20,
       "durationSeconds": 176,
       "liveBroadcastContent": "none",
@@ -3535,7 +3535,7 @@
       "url": "https://www.youtube.com/watch?v=SiIxAb9gpAw",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "LfjUJxK_Vm4",
@@ -3550,7 +3550,7 @@
       "url": "https://www.youtube.com/watch?v=LfjUJxK_Vm4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "yj_xOmVjxgQ",
@@ -3565,7 +3565,7 @@
       "url": "https://www.youtube.com/watch?v=yj_xOmVjxgQ",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "CTGvRsBFdpE",
@@ -3580,7 +3580,7 @@
       "url": "https://www.youtube.com/watch?v=CTGvRsBFdpE",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "8FEOLZ664ro",
@@ -3595,7 +3595,7 @@
       "url": "https://www.youtube.com/watch?v=8FEOLZ664ro",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "qm-B25pGNSQ",
@@ -3610,7 +3610,7 @@
       "url": "https://www.youtube.com/watch?v=qm-B25pGNSQ",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "XFrVxNaXCig",
@@ -3625,7 +3625,7 @@
       "url": "https://www.youtube.com/watch?v=XFrVxNaXCig",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "DnNfoVHAyAk",
@@ -3640,7 +3640,7 @@
       "url": "https://www.youtube.com/watch?v=DnNfoVHAyAk",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "3zzlwzZkCmA",
@@ -3655,7 +3655,7 @@
       "url": "https://www.youtube.com/watch?v=3zzlwzZkCmA",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "prA2mNugHZs",
@@ -3670,7 +3670,7 @@
       "url": "https://www.youtube.com/watch?v=prA2mNugHZs",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "-xX_n4kjg7g",
@@ -3685,7 +3685,7 @@
       "url": "https://www.youtube.com/watch?v=-xX_n4kjg7g",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "xsyI2nxWUII",
@@ -3700,7 +3700,7 @@
       "url": "https://www.youtube.com/watch?v=xsyI2nxWUII",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "xL7HQOXc-R0",
@@ -3715,7 +3715,7 @@
       "url": "https://www.youtube.com/watch?v=xL7HQOXc-R0",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "fGzUs32mjmo",
@@ -3730,7 +3730,7 @@
       "url": "https://www.youtube.com/watch?v=fGzUs32mjmo",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "gfDxV5Fh4jc",
@@ -3745,13 +3745,13 @@
       "url": "https://www.youtube.com/watch?v=gfDxV5Fh4jc",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Vhsgl6rSTuE",
       "title": "華爾街「神預言」再出手：黃金6000美元只是前菜？",
       "publishedAt": "2026-09-22T01:00:39Z",
-      "viewCount": 987,
+      "viewCount": 986,
       "likeCount": 33,
       "commentCount": 0,
       "durationSeconds": 131,
@@ -3760,7 +3760,7 @@
       "url": "https://www.youtube.com/watch?v=Vhsgl6rSTuE",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "XaQrpxDHS9s",
@@ -3775,7 +3775,7 @@
       "url": "https://www.youtube.com/watch?v=XaQrpxDHS9s",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "yZgO2P3IWQM",
@@ -3790,7 +3790,7 @@
       "url": "https://www.youtube.com/watch?v=yZgO2P3IWQM",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "xqxO7oysX3Q",
@@ -3805,7 +3805,7 @@
       "url": "https://www.youtube.com/watch?v=xqxO7oysX3Q",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Mg3Ca9agmZs",
@@ -3820,7 +3820,7 @@
       "url": "https://www.youtube.com/watch?v=Mg3Ca9agmZs",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "2j5gpU3cFFk",
@@ -3835,7 +3835,7 @@
       "url": "https://www.youtube.com/watch?v=2j5gpU3cFFk",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "8DfTXWvQYws",
@@ -3850,13 +3850,13 @@
       "url": "https://www.youtube.com/watch?v=8DfTXWvQYws",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "BoHkiOfLRro",
       "title": "美聯儲突然變鷹！加息25基點只是開始？年底還有一刀！",
       "publishedAt": "2026-09-21T01:00:38Z",
-      "viewCount": 1361,
+      "viewCount": 1360,
       "likeCount": 28,
       "commentCount": 0,
       "durationSeconds": 166,
@@ -3865,13 +3865,13 @@
       "url": "https://www.youtube.com/watch?v=BoHkiOfLRro",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "AjWHdU4rcZY",
       "title": "英國窮到發瘋？第二城市破產、退休金差點爆倉：英國工業衰退、能源危機、脫歐反噬！美國反向收割！經濟嚴重衰退！英國還有救？",
       "publishedAt": "2026-09-21T00:00:05Z",
-      "viewCount": 8707,
+      "viewCount": 8709,
       "likeCount": 95,
       "commentCount": 13,
       "durationSeconds": 877,
@@ -3880,7 +3880,7 @@
       "url": "https://www.youtube.com/watch?v=AjWHdU4rcZY",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "xEzMeo1Enec",
@@ -3895,7 +3895,7 @@
       "url": "https://www.youtube.com/watch?v=xEzMeo1Enec",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "7a6EUwFq0hE",
@@ -3910,7 +3910,7 @@
       "url": "https://www.youtube.com/watch?v=7a6EUwFq0hE",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "unYL1_NTQXw",
@@ -3925,7 +3925,7 @@
       "url": "https://www.youtube.com/watch?v=unYL1_NTQXw",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "3tUB9tmJOtg",
@@ -3940,13 +3940,13 @@
       "url": "https://www.youtube.com/watch?v=3tUB9tmJOtg",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "O6-wglDeKo0",
       "title": "全球金融體系正在悄悄重置？黃金撤離美國、美債買家開始退場，21家華爾街巨頭聯手打造「新美元」！",
       "publishedAt": "2026-09-20T02:38:11Z",
-      "viewCount": 3965,
+      "viewCount": 3966,
       "likeCount": 85,
       "commentCount": 3,
       "durationSeconds": 580,
@@ -3955,7 +3955,7 @@
       "url": "https://www.youtube.com/watch?v=O6-wglDeKo0",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "QsYZbJjYpF8",
@@ -3970,7 +3970,7 @@
       "url": "https://www.youtube.com/watch?v=QsYZbJjYpF8",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "aR-hxqNfDvw",
@@ -3985,13 +3985,13 @@
       "url": "https://www.youtube.com/watch?v=aR-hxqNfDvw",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "NQOCcq-3Yug",
       "title": "美國另類化債真相",
       "publishedAt": "2026-09-19T02:00:27Z",
-      "viewCount": 1366,
+      "viewCount": 1365,
       "likeCount": 32,
       "commentCount": 1,
       "durationSeconds": 134,
@@ -4000,7 +4000,7 @@
       "url": "https://www.youtube.com/watch?v=NQOCcq-3Yug",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "UbZuyfp_QtE",
@@ -4015,13 +4015,13 @@
       "url": "https://www.youtube.com/watch?v=UbZuyfp_QtE",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "QbW23txjo9s",
       "title": "英國被掏空了？300年帝國，最後竟成了華爾街獵物！300年日不落帝國如何被掏空：工業消失、金融失控、脫歐反噬，普通人正在買單！",
       "publishedAt": "2026-09-19T01:00:27Z",
-      "viewCount": 12657,
+      "viewCount": 12664,
       "likeCount": 160,
       "commentCount": 23,
       "durationSeconds": 831,
@@ -4030,7 +4030,7 @@
       "url": "https://www.youtube.com/watch?v=QbW23txjo9s",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "JDycQBrAkKQ",
@@ -4045,13 +4045,13 @@
       "url": "https://www.youtube.com/watch?v=JDycQBrAkKQ",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "wd6zbALaQyY",
       "title": "銅價一年暴漲五成！AI缺電爆千萬噸銅缺口，下一個「英偉達」藏在礦山裡？美國單月瘋吞剛果全年產量，全球搶礦戰正式打響！",
       "publishedAt": "2026-09-18T16:00:17Z",
-      "viewCount": 756,
+      "viewCount": 825,
       "likeCount": 8,
       "commentCount": 2,
       "durationSeconds": 792,
@@ -4060,7 +4060,7 @@
       "url": "https://www.youtube.com/watch?v=wd6zbALaQyY",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "_lTVcdfA37w",
@@ -4075,7 +4075,7 @@
       "url": "https://www.youtube.com/watch?v=_lTVcdfA37w",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "woM5Vxx1ieY",
@@ -4090,7 +4090,7 @@
       "url": "https://www.youtube.com/watch?v=woM5Vxx1ieY",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "VsWReCff3Ok",
@@ -4105,7 +4105,7 @@
       "url": "https://www.youtube.com/watch?v=VsWReCff3Ok",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "t22DOaxlELU",
@@ -4120,7 +4120,7 @@
       "url": "https://www.youtube.com/watch?v=t22DOaxlELU",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Mdl-xHbNDEs",
@@ -4135,7 +4135,7 @@
       "url": "https://www.youtube.com/watch?v=Mdl-xHbNDEs",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "PTqEvYdHxVE",
@@ -4150,7 +4150,7 @@
       "url": "https://www.youtube.com/watch?v=PTqEvYdHxVE",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "pzu0jONf2C0",
@@ -4165,7 +4165,7 @@
       "url": "https://www.youtube.com/watch?v=pzu0jONf2C0",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "wvmK7XfJiJk",
@@ -4180,7 +4180,7 @@
       "url": "https://www.youtube.com/watch?v=wvmK7XfJiJk",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "xmc8O8X3hdU",
@@ -4195,7 +4195,7 @@
       "url": "https://www.youtube.com/watch?v=xmc8O8X3hdU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "tdLT_wX9YIo",
@@ -4210,7 +4210,7 @@
       "url": "https://www.youtube.com/watch?v=tdLT_wX9YIo",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "aNBHNVGA79M",
@@ -4225,7 +4225,7 @@
       "url": "https://www.youtube.com/watch?v=aNBHNVGA79M",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Js459KFQe9A",
@@ -4240,7 +4240,7 @@
       "url": "https://www.youtube.com/watch?v=Js459KFQe9A",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "H7rc1mnZk-U",
@@ -4255,7 +4255,7 @@
       "url": "https://www.youtube.com/watch?v=H7rc1mnZk-U",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "DMUs4RhBJZ4",
@@ -4270,7 +4270,7 @@
       "url": "https://www.youtube.com/watch?v=DMUs4RhBJZ4",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "hpc2ANBqqGk",
@@ -4285,7 +4285,7 @@
       "url": "https://www.youtube.com/watch?v=hpc2ANBqqGk",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "9ik5hYql17M",
@@ -4300,7 +4300,7 @@
       "url": "https://www.youtube.com/watch?v=9ik5hYql17M",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "-ZwXgi7zUbI",
@@ -4315,7 +4315,7 @@
       "url": "https://www.youtube.com/watch?v=-ZwXgi7zUbI",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "cBAcjbyJO48",
@@ -4330,7 +4330,7 @@
       "url": "https://www.youtube.com/watch?v=cBAcjbyJO48",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "oWE-PsIjDOw",
@@ -4345,7 +4345,7 @@
       "url": "https://www.youtube.com/watch?v=oWE-PsIjDOw",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "0-J-1FMeU9A",
@@ -4360,7 +4360,7 @@
       "url": "https://www.youtube.com/watch?v=0-J-1FMeU9A",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "wtaQxL5B_m0",
@@ -4375,7 +4375,7 @@
       "url": "https://www.youtube.com/watch?v=wtaQxL5B_m0",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "IFQr5yNDnxY",
@@ -4390,7 +4390,7 @@
       "url": "https://www.youtube.com/watch?v=IFQr5yNDnxY",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "thQsMOKApmk",
@@ -4405,7 +4405,7 @@
       "url": "https://www.youtube.com/watch?v=thQsMOKApmk",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "hTKb8bpcNho",
@@ -4420,7 +4420,7 @@
       "url": "https://www.youtube.com/watch?v=hTKb8bpcNho",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "28EUHO_rNkU",
@@ -4435,7 +4435,7 @@
       "url": "https://www.youtube.com/watch?v=28EUHO_rNkU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "9KWCFyvIEh8",
@@ -4450,7 +4450,7 @@
       "url": "https://www.youtube.com/watch?v=9KWCFyvIEh8",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "pDgdvk-ZWm4",
@@ -4465,7 +4465,7 @@
       "url": "https://www.youtube.com/watch?v=pDgdvk-ZWm4",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "-o0Ri__1Lh4",
@@ -4480,7 +4480,7 @@
       "url": "https://www.youtube.com/watch?v=-o0Ri__1Lh4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "pFjQZ0uC1a4",
@@ -4495,7 +4495,7 @@
       "url": "https://www.youtube.com/watch?v=pFjQZ0uC1a4",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "6bU1IIlbIPE",
@@ -4510,7 +4510,7 @@
       "url": "https://www.youtube.com/watch?v=6bU1IIlbIPE",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "bvWwlckaXtM",
@@ -4525,7 +4525,7 @@
       "url": "https://www.youtube.com/watch?v=bvWwlckaXtM",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "N53tEPTrds0",
@@ -4540,7 +4540,7 @@
       "url": "https://www.youtube.com/watch?v=N53tEPTrds0",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "BRTjN8j6XQw",
@@ -4555,7 +4555,7 @@
       "url": "https://www.youtube.com/watch?v=BRTjN8j6XQw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Iz1g4tgGXCU",
@@ -4570,7 +4570,7 @@
       "url": "https://www.youtube.com/watch?v=Iz1g4tgGXCU",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "en7sPx_bKVE",
@@ -4585,7 +4585,7 @@
       "url": "https://www.youtube.com/watch?v=en7sPx_bKVE",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "wiBzIlH3DrM",
@@ -4600,7 +4600,7 @@
       "url": "https://www.youtube.com/watch?v=wiBzIlH3DrM",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "O7vMqutsSUk",
@@ -4615,7 +4615,7 @@
       "url": "https://www.youtube.com/watch?v=O7vMqutsSUk",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "wtU-Hc6BmWs",
@@ -4630,7 +4630,7 @@
       "url": "https://www.youtube.com/watch?v=wtU-Hc6BmWs",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "KN312o9CnwA",
@@ -4645,7 +4645,7 @@
       "url": "https://www.youtube.com/watch?v=KN312o9CnwA",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "RbAuhAoiOQI",
@@ -4660,7 +4660,7 @@
       "url": "https://www.youtube.com/watch?v=RbAuhAoiOQI",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "bdWYmGmvPCw",
@@ -4675,7 +4675,7 @@
       "url": "https://www.youtube.com/watch?v=bdWYmGmvPCw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "taHT-oRLaHE",
@@ -4690,7 +4690,7 @@
       "url": "https://www.youtube.com/watch?v=taHT-oRLaHE",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "sMMdWcmeG7U",
@@ -4705,7 +4705,7 @@
       "url": "https://www.youtube.com/watch?v=sMMdWcmeG7U",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "gFyZUK7n2nI",
@@ -4720,7 +4720,7 @@
       "url": "https://www.youtube.com/watch?v=gFyZUK7n2nI",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Hd6ygS1q7GI",
@@ -4735,7 +4735,7 @@
       "url": "https://www.youtube.com/watch?v=Hd6ygS1q7GI",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "rS112nQ_Rts",
@@ -4750,7 +4750,7 @@
       "url": "https://www.youtube.com/watch?v=rS112nQ_Rts",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "A3GCoIfT9zs",
@@ -4765,7 +4765,7 @@
       "url": "https://www.youtube.com/watch?v=A3GCoIfT9zs",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "IwY9EFhwJ-Y",
@@ -4780,7 +4780,7 @@
       "url": "https://www.youtube.com/watch?v=IwY9EFhwJ-Y",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "2OronVJ0PVQ",
@@ -4795,7 +4795,7 @@
       "url": "https://www.youtube.com/watch?v=2OronVJ0PVQ",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "g8xSjEmhk6M",
@@ -4810,7 +4810,7 @@
       "url": "https://www.youtube.com/watch?v=g8xSjEmhk6M",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "n4IKFGX2o28",
@@ -4825,7 +4825,7 @@
       "url": "https://www.youtube.com/watch?v=n4IKFGX2o28",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Fjxw_yszNfg",
@@ -4840,7 +4840,7 @@
       "url": "https://www.youtube.com/watch?v=Fjxw_yszNfg",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "kRGbg93WVeU",
@@ -4855,7 +4855,7 @@
       "url": "https://www.youtube.com/watch?v=kRGbg93WVeU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "MsFZw5iEMVA",
@@ -4870,7 +4870,7 @@
       "url": "https://www.youtube.com/watch?v=MsFZw5iEMVA",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "XtHGU0Fp2BY",
@@ -4885,7 +4885,7 @@
       "url": "https://www.youtube.com/watch?v=XtHGU0Fp2BY",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "G2HnXw9f0Fw",
@@ -4900,7 +4900,7 @@
       "url": "https://www.youtube.com/watch?v=G2HnXw9f0Fw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "1flmtUm0yqM",
@@ -4915,7 +4915,7 @@
       "url": "https://www.youtube.com/watch?v=1flmtUm0yqM",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "AuJdnj5kiH0",
@@ -4930,7 +4930,7 @@
       "url": "https://www.youtube.com/watch?v=AuJdnj5kiH0",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "wpr1grQpN-Y",
@@ -4945,7 +4945,7 @@
       "url": "https://www.youtube.com/watch?v=wpr1grQpN-Y",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "GnJs8x6UGr4",
@@ -4960,7 +4960,7 @@
       "url": "https://www.youtube.com/watch?v=GnJs8x6UGr4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Wc_xZ9RQOEw",
@@ -4975,7 +4975,7 @@
       "url": "https://www.youtube.com/watch?v=Wc_xZ9RQOEw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "4Rv8PBjAKqk",
@@ -4990,7 +4990,7 @@
       "url": "https://www.youtube.com/watch?v=4Rv8PBjAKqk",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "lomhK-_aiDs",
@@ -5005,7 +5005,7 @@
       "url": "https://www.youtube.com/watch?v=lomhK-_aiDs",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "7Py4XU-L_zI",
@@ -5020,7 +5020,7 @@
       "url": "https://www.youtube.com/watch?v=7Py4XU-L_zI",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "kGcOl8vfyAM",
@@ -5035,7 +5035,7 @@
       "url": "https://www.youtube.com/watch?v=kGcOl8vfyAM",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "4Wsr8WeTVi8",
@@ -5050,7 +5050,7 @@
       "url": "https://www.youtube.com/watch?v=4Wsr8WeTVi8",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "wFgVzAgi8w8",
@@ -5065,7 +5065,7 @@
       "url": "https://www.youtube.com/watch?v=wFgVzAgi8w8",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "NWKLuE7Nkkw",
@@ -5080,7 +5080,7 @@
       "url": "https://www.youtube.com/watch?v=NWKLuE7Nkkw",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "L4-W1gUdafY",
@@ -5095,7 +5095,7 @@
       "url": "https://www.youtube.com/watch?v=L4-W1gUdafY",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "8i01PIwTVBU",
@@ -5110,7 +5110,7 @@
       "url": "https://www.youtube.com/watch?v=8i01PIwTVBU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "evM0iR5-BmU",
@@ -5125,7 +5125,7 @@
       "url": "https://www.youtube.com/watch?v=evM0iR5-BmU",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "gwB0gG0A6n8",
@@ -5140,7 +5140,7 @@
       "url": "https://www.youtube.com/watch?v=gwB0gG0A6n8",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "TV12Zdr5KjQ",
@@ -5155,7 +5155,7 @@
       "url": "https://www.youtube.com/watch?v=TV12Zdr5KjQ",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "6gcaKuWXdIY",
@@ -5170,7 +5170,7 @@
       "url": "https://www.youtube.com/watch?v=6gcaKuWXdIY",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "GoUVcGHPHYc",
@@ -5185,7 +5185,7 @@
       "url": "https://www.youtube.com/watch?v=GoUVcGHPHYc",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "lrT8R3iy0-U",
@@ -5200,7 +5200,7 @@
       "url": "https://www.youtube.com/watch?v=lrT8R3iy0-U",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "F5SBV2SQEVs",
@@ -5215,7 +5215,7 @@
       "url": "https://www.youtube.com/watch?v=F5SBV2SQEVs",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "ZRE1jIoyLr4",
@@ -5230,7 +5230,7 @@
       "url": "https://www.youtube.com/watch?v=ZRE1jIoyLr4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "EQny9wSti1k",
@@ -5245,7 +5245,7 @@
       "url": "https://www.youtube.com/watch?v=EQny9wSti1k",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "S7F8z9ldwYI",
@@ -5260,7 +5260,7 @@
       "url": "https://www.youtube.com/watch?v=S7F8z9ldwYI",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Hn0ODjLVgog",
@@ -5275,7 +5275,7 @@
       "url": "https://www.youtube.com/watch?v=Hn0ODjLVgog",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "-3vjrVD8Syw",
@@ -5290,7 +5290,7 @@
       "url": "https://www.youtube.com/watch?v=-3vjrVD8Syw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "ySPGLMYvGl4",
@@ -5305,7 +5305,7 @@
       "url": "https://www.youtube.com/watch?v=ySPGLMYvGl4",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "_9vlW3e_icA",
@@ -5320,7 +5320,7 @@
       "url": "https://www.youtube.com/watch?v=_9vlW3e_icA",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "fj3waa3pLxU",
@@ -5335,7 +5335,7 @@
       "url": "https://www.youtube.com/watch?v=fj3waa3pLxU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "_wgMtQPRnFA",
@@ -5350,7 +5350,7 @@
       "url": "https://www.youtube.com/watch?v=_wgMtQPRnFA",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "Eg-S9mPh_Ng",
@@ -5365,7 +5365,7 @@
       "url": "https://www.youtube.com/watch?v=Eg-S9mPh_Ng",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "buJY2gcC-gc",
@@ -5380,7 +5380,7 @@
       "url": "https://www.youtube.com/watch?v=buJY2gcC-gc",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "tJgioa-E5V4",
@@ -5395,7 +5395,7 @@
       "url": "https://www.youtube.com/watch?v=tJgioa-E5V4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "GtIk6tMPYzM",
@@ -5410,7 +5410,7 @@
       "url": "https://www.youtube.com/watch?v=GtIk6tMPYzM",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "KZX5Ws4ihNM",
@@ -5425,7 +5425,7 @@
       "url": "https://www.youtube.com/watch?v=KZX5Ws4ihNM",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "55SiuFEOF9Q",
@@ -5440,7 +5440,7 @@
       "url": "https://www.youtube.com/watch?v=55SiuFEOF9Q",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "efIOo06Boto",
@@ -5470,7 +5470,7 @@
       "url": "https://www.youtube.com/watch?v=272_krqVK58",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "jBbrYqMiym4",
@@ -5515,7 +5515,7 @@
       "url": "https://www.youtube.com/watch?v=0jctFcp8w6c",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "FXM3SSbS-2Y",
@@ -5530,7 +5530,7 @@
       "url": "https://www.youtube.com/watch?v=FXM3SSbS-2Y",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "btAUTcy_NUw",
@@ -5560,7 +5560,7 @@
       "url": "https://www.youtube.com/watch?v=XQQXUpIePZo",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "A4hUHFc5u3Y",
@@ -5590,7 +5590,7 @@
       "url": "https://www.youtube.com/watch?v=7SIfu1RGvC0",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "x8xu6GFG6bk",
@@ -5620,7 +5620,7 @@
       "url": "https://www.youtube.com/watch?v=9GBMh3c48RY",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "v7Mj9w1GCaA",
@@ -5710,7 +5710,7 @@
       "url": "https://www.youtube.com/watch?v=V40hWyGBemQ",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "cTPMhN43NuY",
@@ -5770,7 +5770,7 @@
       "url": "https://www.youtube.com/watch?v=dtH317ITN6o",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T13:58:47Z"
+      "observedAt": "2026-09-30T14:08:01Z"
     },
     {
       "id": "xLlqwZcvL6c",
