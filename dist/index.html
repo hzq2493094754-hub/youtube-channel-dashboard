@@ -1,9 +1,73 @@
 <!doctype html>
-<html lang="zh-HK"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07110d"><meta name="description" content="YouTube 频道的公开订阅、播放、更新数量与全部视频数据"><title>YouTube 频道数据</title><link rel="stylesheet" href="styles.css"><style>.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}</style></head>
-<body><main class="dashboard"><h1 class="sr-only">YouTube 频道数据</h1>
-<section class="summary-grid" aria-label="频道汇总">
-<article class="panel chart-panel"><header class="panel-heading"><div><p class="eyebrow">SUBSCRIBERS</p><h2>公开订阅合计</h2></div><div class="metric-actions"><span id="subscriberNote" class="note"></span><div id="subscriberPeriod" class="period-switch" aria-label="公开订阅比较区间"><button data-period="7" aria-pressed="true">7D</button><button data-period="30" aria-pressed="false">30D</button><button data-period="all" aria-pressed="false">ALL</button></div></div></header><div id="subscriberChart" class="donut" aria-live="polite"></div></article>
-<article class="panel chart-panel"><header class="panel-heading"><div><p class="eyebrow">CHANNEL VIEWS</p><h2>频道总播放合计</h2></div><div class="metric-actions"><span id="viewsNote" class="note"></span><div id="viewsPeriod" class="period-switch" aria-label="频道播放比较区间"><button data-period="7" aria-pressed="true">7D</button><button data-period="30" aria-pressed="false">30D</button><button data-period="all" aria-pressed="false">ALL</button></div></div></header><div id="viewsChart" class="donut" aria-live="polite"></div></article>
-<article class="panel updates-panel"><header class="panel-heading updates-heading"><div><p class="eyebrow">LAST 7 DAYS</p><h2>近 7 日更新</h2></div><span id="updateCount" class="note"></span></header><ol id="updatesList" class="updates-list"></ol></article></section>
-<section class="panel trend-panel" aria-labelledby="trendTitle"><header class="trend-header"><div class="trend-title-row"><div><p class="eyebrow">VIDEO TREND</p><h2 id="trendTitle">频道内容趋势</h2><p id="trendDescription" class="trend-description"></p></div><div id="trendPeriod" class="period-switch" aria-label="频道内容趋势时间窗口"><button data-value="7" aria-pressed="true">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="90" aria-pressed="false">90D</button><button data-value="all" aria-pressed="false">ALL</button></div></div><div class="trend-controls"><div class="selector-row"><span>频道·多选</span><div id="trendChannels" class="choice-buttons" role="group"></div></div><div class="selector-row"><span>指标</span><div id="trendMetric" class="choice-buttons" role="group"><button data-value="views" aria-pressed="true">▶ 播放量</button><button data-value="subscribers" aria-pressed="false">♟ 新增订阅</button><button data-value="likes" aria-pressed="false">♥ 点赞数量</button><button data-value="comments" aria-pressed="false">▰ 评论数量</button><button data-value="uploads" aria-pressed="false">↻ 更新数量</button></div></div></div></header><div class="trend-charts"><section class="trend-figure"><header class="figure-heading"><h3 id="aggregateTitle">全部频道总和</h3></header><div id="trendChart" class="line-chart"></div><div id="trendLegend" class="trend-legend"></div></section><section class="trend-figure"><header class="figure-heading"><h3>各频道数据</h3><div id="breakdownMode" class="choice-buttons breakdown-mode"><button data-value="bar" aria-pressed="true">▥ 柱状图</button><button data-value="line" aria-pressed="false">⌁ 折线图</button></div></header><div id="breakdownChart"></div><div id="breakdownLegend" class="trend-legend"></div><p id="breakdownNote" class="inventory-note"></p></section></div></section>
-<section class="panel inventory-panel" aria-labelledby="allVideosTitle"><header class="trend-title-row"><div><p class="eyebrow">ALL VIDEOS</p><h2 id="allVideosTitle">全部视频播放量</h2><p class="inventory-note">按视频发布时间筛选；播放量为最近一次采集时的公开累计值，并非窗口内新增播放。</p></div><div id="videoPeriod" class="period-switch"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="all" aria-pressed="true">ALL</button></div></header><div class="video-filters"><div class="selector-row"><span>频道·多选</span><div id="videoChannels" class="choice-buttons" role="group"></div></div><div class="selector-row"><span>播放排序</span><div id="videoSort" class="choice-buttons"><button data-value="desc" aria-pressed="true">↓ 从高到低</button><button data-value="asc" aria-pressed="false">↑ 从低到高</button></div></div></div><p id="allVideosCount" class="inventory-note" aria-live="polite"></p><ol id="allVideosList" class="all-videos-list" tabindex="0"></ol></section><div id="loadError" class="load-error" hidden></div></main><script src="app.js" defer></script></body></html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07100d">
+  <meta name="description" content="YouTube 频道的公开订阅、播放、更新数量与全部视频数据">
+  <title>YouTube 频道数据</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="dashboard">
+    <h1 class="sr-only">YouTube 频道数据</h1>
+
+    <section class="chart-grid" aria-label="频道汇总">
+      <article class="panel chart-panel">
+        <header class="panel-heading">
+          <div><p class="eyebrow">SUBSCRIBERS</p><h2>公开订阅合计</h2></div>
+          <div class="metric-actions"><span id="subscriberNote" class="note"></span><div id="subscriberPeriod" class="period-switch" aria-label="公开订阅比较区间"><button data-period="7" aria-pressed="true">7D</button><button data-period="30" aria-pressed="false">30D</button><button data-period="all" aria-pressed="false">ALL</button></div></div>
+        </header>
+        <div id="subscriberChart" class="donut" aria-live="polite"></div>
+      </article>
+      <article class="panel chart-panel">
+        <header class="panel-heading">
+          <div><p class="eyebrow">CHANNEL VIEWS</p><h2>频道总播放合计</h2></div>
+          <div class="metric-actions"><span id="viewsNote" class="note"></span><div id="viewsPeriod" class="period-switch" aria-label="频道播放比较区间"><button data-period="7" aria-pressed="true">7D</button><button data-period="30" aria-pressed="false">30D</button><button data-period="all" aria-pressed="false">ALL</button></div></div>
+        </header>
+        <div id="viewsChart" class="donut" aria-live="polite"></div>
+      </article>
+      <article class="panel updates-panel" aria-labelledby="updatesTitle">
+        <header class="panel-heading updates-heading"><div><p class="eyebrow">LAST 7 DAYS</p><h2 id="updatesTitle">近 7 日更新</h2></div><span id="updateCount" class="note"></span></header>
+        <ol id="updatesList" class="updates-list"></ol>
+      </article>
+    </section>
+
+    <section id="trendPanel" class="panel trend-panel" aria-labelledby="trendTitle">
+      <header class="trend-header">
+        <div class="trend-title-row">
+          <div><p class="eyebrow">VIDEO TREND</p><h2 id="trendTitle">频道内容趋势</h2><p id="trendDescription" class="trend-description"></p></div>
+          <div id="trendPeriod" class="period-switch trend-period-switch" aria-label="频道内容趋势时间窗口"><button data-value="7" aria-pressed="true">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="90" aria-pressed="false">90D</button><button data-value="all" aria-pressed="false">ALL</button></div>
+        </div>
+        <div class="trend-controls">
+          <div class="selector-row"><span>频道·多选</span><div id="trendChannels" class="choice-buttons channel-choices" role="group" aria-label="选择趋势频道，可多选；全部频道显示总和"></div></div>
+          <div class="selector-row"><span>指标</span><div id="trendMetric" class="choice-buttons compact-choices" role="group"><button data-value="views" aria-pressed="true"><i>▶</i>播放量</button><button data-value="subscribers" aria-pressed="false"><i>♟</i>新增订阅</button><button data-value="likes" aria-pressed="false"><i>♥</i>点赞数量</button><button data-value="comments" aria-pressed="false"><i>▰</i>评论数量</button><button data-value="uploads" aria-pressed="false"><i>↻</i>更新数量</button></div></div>
+        </div>
+      </header>
+      <div class="trend-charts">
+        <section class="trend-figure">
+          <header class="figure-heading"><h3 id="aggregateTitle">全部频道总和</h3></header>
+          <div id="trendChart" class="trend-chart"></div>
+          <div id="trendLegend" class="trend-legend"></div>
+        </section>
+        <section class="trend-figure breakdown-figure">
+          <header class="figure-heading"><h3 id="breakdownTitle">各频道数据 · 播放量</h3><div id="breakdownMode" class="choice-buttons breakdown-mode"><button data-value="bar" aria-pressed="true">▥ 柱状图</button><button data-value="line" aria-pressed="false">⌁ 折线图</button></div></header>
+          <div id="breakdownChart"></div>
+          <div id="breakdownLegend" class="trend-legend"></div>
+          <p id="breakdownNote" class="inventory-note"></p>
+        </section>
+      </div>
+    </section>
+
+    <section class="panel inventory-panel" aria-labelledby="allVideosTitle">
+      <header class="trend-title-row"><div><p class="eyebrow">ALL VIDEOS</p><h2 id="allVideosTitle">全部视频播放量</h2><p class="inventory-note">按视频发布时间筛选；播放量为最近一次采集时的公开累计值，并非窗口内新增播放。</p></div><div id="videoPeriod" class="period-switch" aria-label="全部视频时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="all" aria-pressed="true">ALL</button></div></header>
+      <div class="video-filters"><div class="selector-row"><span>频道·多选</span><div id="videoChannels" class="choice-buttons channel-choices" role="group" aria-label="选择视频频道，可多选"></div></div><div class="selector-row"><span>播放排序</span><div id="videoSort" class="choice-buttons compact-choices"><button data-value="desc" aria-pressed="true">↓ 从高到低</button><button data-value="asc" aria-pressed="false">↑ 从低到高</button></div></div></div>
+      <p id="allVideosCount" class="inventory-note" aria-live="polite"></p>
+      <ol id="allVideosList" class="all-videos-list" tabindex="0"></ol>
+    </section>
+    <div id="loadError" class="load-error" hidden></div>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
+
