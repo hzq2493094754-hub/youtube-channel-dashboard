@@ -5,7 +5,7 @@ const integer = new Intl.NumberFormat("zh-HK", { maximumFractionDigits: 0 });
 const dateTime = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
 const dateOnly = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit" });
 let data = { channels: [], catalog: [], generatedAt: null };
-const state = { subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true };
+const state = { subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "30", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null };
 
 const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 const number = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
@@ -378,7 +378,148 @@ function renderSubscriberGrowth() {
     : `${periodName(period)} · 所选频道尚无可用的公开订阅历史快照。`;
 }
 
-function render() { renderSubscribers(); renderViews(); renderUpdates(); renderRecentUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); }
+function insightSource() {
+  const chosen = state.insightAllMode ? data.channels : data.channels.filter((channel) => state.insightChannels.has(channel.id));
+  const chosenIds = new Set(chosen.map((channel) => channel.id));
+  const rows = data.catalog.filter((video) => chosenIds.has(video.channelId) && at(video.publishedAt) >= periodStart(state.insightPeriod) && at(video.publishedAt) <= asOf());
+  return { chosen, rows };
+}
+
+function renderInsights() {
+  const period = state.insightPeriod;
+  const { chosen, rows } = insightSource();
+  const viewCount = rows.reduce((sum, video) => sum + (number(video.viewCount) || 0), 0);
+  const interactionCount = rows.reduce((sum, video) => sum + (number(video.likeCount) || 0) + (number(video.commentCount) || 0), 0);
+  const engagement = viewCount ? interactionCount / viewCount * 1000 : null;
+  $("insightPeriod").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === period)));
+  channelChoices("insightChannels", state.insightChannels, "insight", state.insightAllMode);
+  $("insightsDescription").textContent = `${periodName(period)} · ${state.insightAllMode ? "全部频道" : `已选 ${chosen.length} 个频道`}的内容表现、互动密度与发布节奏。`;
+  $("insightVideoCount").textContent = `${exact(rows.length)} 条视频`;
+
+  const topVideos = [...rows].sort((a, b) => (number(b.viewCount) || 0) - (number(a.viewCount) || 0) || at(b.publishedAt) - at(a.publishedAt)).slice(0, 5);
+  $("insightTopVideos").innerHTML = topVideos.length ? topVideos.map((video, index) => {
+    const views = number(video.viewCount) || 0, likes = number(video.likeCount) || 0, comments = number(video.commentCount) || 0;
+    const rate = views ? (likes + comments) / views * 1000 : null;
+    return `<li><a href="${esc(video.url)}" target="_blank" rel="noopener noreferrer"><b class="insight-rank">${index + 1}</b>${videoThumb(video)}<span class="insight-video-copy"><strong>${esc(video.title)}</strong><span>${esc(video.channel)} · ${time(video.publishedAt)}</span></span><span class="insight-video-value"><b>${fmt(views)}</b><small>播放 · ${rate == null ? "—" : rate.toFixed(1)}‰ 互动</small></span></a></li>`;
+  }).join("") : `<li class="empty">所选窗口内暂无已采集视频。</li>`;
+
+  const engagementRows = chosen.map((channel) => {
+    const videos = rows.filter((video) => video.channelId === channel.id);
+    const views = videos.reduce((sum, video) => sum + (number(video.viewCount) || 0), 0);
+    const interactions = videos.reduce((sum, video) => sum + (number(video.likeCount) || 0) + (number(video.commentCount) || 0), 0);
+    return { channel, videos: videos.length, views, interactions, rate: views ? interactions / views * 1000 : null };
+  }).filter((row) => row.rate != null).sort((a, b) => b.rate - a.rate || b.views - a.views);
+  const maxRate = Math.max(1, ...engagementRows.map((row) => row.rate));
+  $("insightEngagement").innerHTML = engagementRows.length ? engagementRows.map((row, index) => `<div class="insight-ranking-row"><span class="insight-rank">${index + 1}</span><a href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a><span class="insight-rate-track"><i style="width:${row.rate / maxRate * 100}%"></i></span><span class="insight-rate-value"><b>${row.rate.toFixed(1)}‰</b><small>${exact(row.interactions)} 次互动 · ${row.videos} 条</small></span></div>`).join("") : `<div class="empty">所选窗口内暂无可比较的播放与互动数据。</div>`;
+
+  const split = uploadSplit(rows), total = Math.max(1, split.total);
+  const mixPart = (label, count, kind) => `<span><i class="series-dot upload-${kind}-dot"></i><b>${label}</b><strong>${exact(count)} 条</strong><small>${(count / total * 100).toFixed(0)}%</small></span>`;
+  $("insightMix").innerHTML = `<div class="content-mix-track" role="img" aria-label="内容结构：长视频 ${split.long} 条，Shorts ${split.short} 条，其他 ${split.other} 条"><i class="upload-segment upload-segment--long" style="width:${split.long / total * 100}%"></i><i class="upload-segment upload-segment--short" style="width:${split.short / total * 100}%"></i><i class="upload-segment upload-segment--other" style="width:${split.other / total * 100}%"></i></div><div class="content-mix-values">${mixPart("长视频", split.long, "long")}${mixPart("短视频", split.short, "short")}${mixPart("直播 / 其他", split.other, "other")}</div>`;
+
+  const weekdayLabels = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
+  const weekdays = Array(7).fill(0);
+  rows.forEach((video) => { const weekday = (new Date(`${day(video.publishedAt)}T00:00:00Z`).getUTCDay() + 6) % 7; weekdays[weekday] += 1; });
+  const maxWeekday = Math.max(1, ...weekdays);
+  const peakIndex = weekdays.indexOf(Math.max(...weekdays));
+  $("insightCadence").innerHTML = `<div class="cadence-heading"><b>发布节奏</b><span>最多发布：${weekdayLabels[peakIndex]} · ${exact(weekdays[peakIndex])} 条</span></div><div class="cadence-bars">${weekdays.map((count, index) => `<span title="${weekdayLabels[index]} ${count} 条"><i style="height:${Math.max(count ? 10 : 2, count / maxWeekday * 100)}%"></i><b>${exact(count)}</b><small>${weekdayLabels[index]}</small></span>`).join("")}</div>`;
+  $("insightsNote").textContent = `${periodName(period)} · ${exact(rows.length)} 条视频 · 当前累计播放 ${exact(viewCount)} · 公开互动 ${exact(interactionCount)}${engagement == null ? "" : ` · 整体互动密度 ${engagement.toFixed(1)}‰`}。播放与互动均为最近一次采集时的公开累计值，不是窗口内新增。`;
+}
+
+const RESEARCH_STOP_WORDS = new Set(["这个", "那个", "我们", "你们", "他们", "就是", "不是", "可以", "真的", "视频", "老师", "谢谢", "感谢", "请问", "一个", "什么", "怎么", "为何", "因为", "觉得", "还是", "已经", "没有", "今天", "现在", "这样", "内容", "看到", "希望", "分享", "分析", "影片", "频道", "财经", "投资", "市场", "the", "and", "with", "this", "that", "for", "from", "your", "you", "are", "is", "to", "of", "in", "on"]);
+const wordSegmenter = typeof Intl.Segmenter === "function" ? new Intl.Segmenter("zh-Hant", { granularity: "word" }) : null;
+
+function researchTokens(text) {
+  const source = String(text || "").replace(/https?:\/\/\S+/gi, " ").replace(/#[\p{L}\p{N}_-]+/gu, " ");
+  const values = wordSegmenter
+    ? [...wordSegmenter.segment(source)].filter((part) => part.isWordLike).map((part) => part.segment)
+    : source.match(/[\p{Script=Han}]{2,}|[A-Za-z][A-Za-z0-9-]{2,}/gu) || [];
+  return [...new Set(values.map((value) => value.trim().toLocaleLowerCase()).filter((value) => value.length >= 2 && value.length <= 18 && !/^\d+$/.test(value) && !RESEARCH_STOP_WORDS.has(value)))];
+}
+
+function rankedTerms(rows, textForRow) {
+  const totals = new Map();
+  rows.forEach((row) => researchTokens(textForRow(row)).forEach((term) => totals.set(term, (totals.get(term) || 0) + 1)));
+  return [...totals].map(([label, count]) => ({ label, count })).sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, "zh-HK")).slice(0, 8);
+}
+
+function rankedHashtags(rows) {
+  const totals = new Map();
+  rows.forEach((video) => {
+    const tags = new Set();
+    [video.title, ...(Array.isArray(video.tags) ? video.tags : [])].forEach((source) => {
+      const text = String(source || "");
+      const matches = text.match(/#[\p{L}\p{N}_-]+/gu) || [];
+      matches.forEach((tag) => tags.add(tag.slice(1).toLocaleLowerCase()));
+      if (!matches.length && source && Array.isArray(video.tags) && video.tags.includes(source)) tags.add(text.replace(/^#/, "").trim().toLocaleLowerCase());
+    });
+    tags.forEach((tag) => { if (tag.length >= 2 && tag.length <= 40) totals.set(tag, (totals.get(tag) || 0) + 1); });
+  });
+  return [...totals].map(([label, count]) => ({ label: `#${label}`, count })).sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, "zh-HK")).slice(0, 8);
+}
+
+function renderTokenRanking(targetId, rows, emptyMessage) {
+  $(targetId).innerHTML = rows.length
+    ? rows.map((row, index) => `<div class="token-row"><span>${index + 1}</span><b>${esc(row.label)}</b><small>${exact(row.count)} 条</small></div>`).join("")
+    : `<p class="research-empty">${esc(emptyMessage)}</p>`;
+}
+
+function lifecycleHistory(video) {
+  const fallbackAt = video.observedAt || data.generatedAt;
+  const rows = [...(Array.isArray(video.metricHistory) ? video.metricHistory : []), { observedAt: fallbackAt, viewCount: video.viewCount, likeCount: video.likeCount, commentCount: video.commentCount }]
+    .filter((row) => row.observedAt && Number.isFinite(at(row.observedAt)))
+    .sort((a, b) => at(a.observedAt) - at(b.observedAt));
+  return [...new Map(rows.map((row) => [row.observedAt, row])).values()];
+}
+
+function lifecycleMilestone(history, publishedAt, days) {
+  const target = at(publishedAt) + days * 86400000;
+  const sample = history.find((row) => at(row.observedAt) >= target);
+  return sample && at(sample.observedAt) - target <= 36 * 3600000 ? number(sample.viewCount) : null;
+}
+
+function renderResearch() {
+  const { rows } = insightSource();
+  $("researchDescription").textContent = `${periodName(state.insightPeriod)} · ${state.insightAllMode ? "全部频道" : `已选 ${state.insightChannels.size} 个频道`}；性能曲线会随每次自动采集补齐。`;
+  const videoOptions = [...rows].sort((a, b) => at(b.publishedAt) - at(a.publishedAt)).slice(0, 60);
+  if (!videoOptions.some((video) => video.id === state.lifecycleVideoId)) state.lifecycleVideoId = videoOptions[0]?.id || null;
+  $("lifecycleVideo").innerHTML = videoOptions.length ? videoOptions.map((video) => `<option value="${esc(video.id)}"${video.id === state.lifecycleVideoId ? " selected" : ""}>${esc(video.channel)} · ${esc(video.title).slice(0, 58)}</option>`).join("") : `<option value="">暂无可选视频</option>`;
+  const lifecycleVideo = videoOptions.find((video) => video.id === state.lifecycleVideoId);
+  if (!lifecycleVideo) {
+    $("lifecycleMilestones").innerHTML = "";
+    $("lifecycleChart").innerHTML = `<div class="empty">所选窗口内暂无视频。</div>`;
+    $("lifecycleNote").textContent = "";
+  } else {
+    const history = lifecycleHistory(lifecycleVideo);
+    const published = at(lifecycleVideo.publishedAt);
+    const byDay = new Map();
+    history.forEach((row) => { const age = Math.max(0, Math.floor((at(row.observedAt) - published) / 86400000)); if (age <= 30) byDay.set(age, row); });
+    const points = [...byDay].sort((a, b) => a[0] - b[0]).map(([age, row]) => ({ key: `D${age}`, value: number(row.viewCount) || 0 }));
+    const milestones = [1, 7, 30].map((days) => ({ days, value: lifecycleMilestone(history, lifecycleVideo.publishedAt, days) }));
+    $("lifecycleMilestones").innerHTML = milestones.map((item) => `<span><small>D${item.days}</small><b>${item.value == null ? "—" : fmt(item.value)}</b><em>累计播放</em></span>`).join("");
+    drawLineChart("lifecycleChart", [{ id: lifecycleVideo.id, name: lifecycleVideo.title, color: "#c6a96a", points }], "发布后累计播放", []);
+    $("lifecycleNote").textContent = `已保存 ${history.length} 个性能快照；D1 / D7 / D30 仅在目标日后 36 小时内有快照时显示，避免将后期累计值误当作早期表现。`;
+  }
+
+  renderTokenRanking("titleKeywords", rankedTerms(rows, (video) => video.title), "所选窗口内暂无标题关键词。");
+  const categories = new Map();
+  rows.forEach((video) => {
+    const label = String(video.categoryTitle || "").trim();
+    if (label) categories.set(label, (categories.get(label) || 0) + 1);
+  });
+  renderTokenRanking("categoryRanking", [...categories].map(([label, count]) => ({ label, count })).sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, "zh-HK")).slice(0, 6), "分类将在下一次采集后显示。");
+  renderTokenRanking("hashtagRanking", rankedHashtags(rows), "所选窗口内没有可识别的 # 标签。");
+
+  const samples = rows.flatMap((video) => (Array.isArray(video.commentSamples) ? video.commentSamples : []).map((comment) => ({ ...comment, video })));
+  $("commentSampleCount").textContent = samples.length ? `${exact(samples.length)} 条公开样本` : "等待首次采集";
+  renderTokenRanking("commentTopics", rankedTerms(samples, (comment) => comment.text), "尚未取得公开评论样本。下一次采集后显示。");
+  const questions = samples.filter((comment) => /[？?]/.test(String(comment.text || ""))).sort((a, b) => (number(b.likeCount) || 0) - (number(a.likeCount) || 0) || at(b.publishedAt) - at(a.publishedAt)).slice(0, 3);
+  $("commentQuestions").innerHTML = questions.length ? questions.map((comment) => `<li><span>${esc(comment.text)}</span><small>${esc(comment.video.channel)} · ${exact(comment.likeCount)} 赞</small></li>`).join("") : `<li class="research-empty">尚未采到带问号的公开评论。</li>`;
+  $("commentsResearchNote").textContent = samples.length
+    ? `只使用采样到的公开顶级评论（不展示用户名）；高频词按出现过该词的评论数统计，不能代表全部评论。`
+    : `采集器会按频道轮换抽样近期可评论视频，每条最多保存 25 条公开顶级评论。`;
+}
+
+function render() { renderSubscribers(); renderViews(); renderUpdates(); renderRecentUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); renderInsights(); renderResearch(); }
 
 function bindControls() {
   document.addEventListener("click", (event) => {
@@ -392,24 +533,31 @@ function bindControls() {
     if (inGroup("videoPeriod")) { state.videoPeriod = button.dataset.value; renderInventory(); return; }
     if (inGroup("videoSort")) { state.videoSort = button.dataset.value; renderInventory(); return; }
     if (inGroup("subscriberGrowthPeriod")) { state.subscriberGrowthPeriod = button.dataset.value; renderSubscriberGrowth(); return; }
+    if (inGroup("insightPeriod")) { state.insightPeriod = button.dataset.value; renderInsights(); renderResearch(); return; }
     const action = button.dataset.action; if (!action) return;
-    const [kind, value] = action.split(":"); const ids = allChannelIds(); const target = kind === "trend" ? state.trendChannels : kind === "subscriberGrowth" ? state.subscriberGrowthChannels : state.videoChannels;
+    const [kind, value] = action.split(":"); const ids = allChannelIds(); const target = kind === "trend" ? state.trendChannels : kind === "subscriberGrowth" ? state.subscriberGrowthChannels : kind === "insight" ? state.insightChannels : state.videoChannels;
     if (value === "all") {
       target.clear();
       if (kind === "trend") state.trendAllMode = true;
       if (kind === "subscriberGrowth") state.subscriberGrowthAllMode = true;
+      if (kind === "insight") state.insightAllMode = true;
     } else if (value === "select") {
       target.clear(); ids.forEach((id) => target.add(id));
       if (kind === "trend") state.trendAllMode = false;
       if (kind === "subscriberGrowth") state.subscriberGrowthAllMode = false;
+      if (kind === "insight") state.insightAllMode = false;
     } else {
       if (kind === "trend" && state.trendAllMode) { state.trendAllMode = false; target.clear(); }
       if (kind === "subscriberGrowth" && state.subscriberGrowthAllMode) { state.subscriberGrowthAllMode = false; target.clear(); }
+      if (kind === "insight" && state.insightAllMode) { state.insightAllMode = false; target.clear(); }
       if (target.has(value)) target.delete(value); else target.add(value);
     }
-    if (kind === "trend") renderTrend(); else if (kind === "subscriberGrowth") renderSubscriberGrowth(); else renderInventory();
+    if (kind === "trend") renderTrend(); else if (kind === "subscriberGrowth") renderSubscriberGrowth(); else if (kind === "insight") { renderInsights(); renderResearch(); } else renderInventory();
   });
-  window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); } });
+  document.addEventListener("change", (event) => {
+    if (event.target?.id === "lifecycleVideo") { state.lifecycleVideoId = event.target.value || null; renderResearch(); }
+  });
+  window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); renderResearch(); } });
 }
 
 async function init() {
