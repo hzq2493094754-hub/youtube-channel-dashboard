@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T14:08:01Z",
+  "generatedAt": "2026-09-30T14:08:46Z",
   "collector": {
     "status": "ok",
     "message": "已从 YouTube Data API 刷新频道公开数据。",
@@ -50,7 +50,7 @@
           "channelViews": 1414862
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 13500,
           "channelViews": 1414862
         }
@@ -108,7 +108,7 @@
           "id": "wvmK7XfJiJk",
           "title": "三星26兆遺產稅剛繳清，SK海力士就要赴美募資290億！韓國財閥為何集體出走？ #韓國 #財閥 #三星 #SK海力士 #遺產稅 #美股 #財經",
           "publishedAt": "2026-09-13T13:30:22Z",
-          "viewCount": 5735,
+          "viewCount": 5736,
           "likeCount": 245,
           "commentCount": 9,
           "durationSeconds": 179,
@@ -120,7 +120,7 @@
           "id": "tdLT_wX9YIo",
           "title": "貝森特定日本生死，背後是75年來最大權力越界……央行獨立還是幻覺？全球匯市緊盯「貝森特主義」！ #貝森特 #日本 #美聯儲 #央行獨立 #日圓 #全球經濟 #財經",
           "publishedAt": "2026-09-10T08:17:00Z",
-          "viewCount": 8570,
+          "viewCount": 8571,
           "likeCount": 231,
           "commentCount": 23,
           "durationSeconds": 726,
@@ -132,7 +132,7 @@
           "id": "Js459KFQe9A",
           "title": "英偉達7天跌掉4000億，只是開始？歐央行聯手芝大：哪怕利潤年年翻倍，早期衝進去的人也注定被清洗！【AI繁榮陷阱EP1】#AI #英偉達 #美股 #科技股 #AI泡沫 #投資 #財經分析",
           "publishedAt": "2026-09-02T12:00:26Z",
-          "viewCount": 8214,
+          "viewCount": 8215,
           "likeCount": 214,
           "commentCount": 17,
           "durationSeconds": 648,
@@ -204,7 +204,7 @@
           "id": "thQsMOKApmk",
           "title": "2300億市值蒸發、6百萬人面臨失業！印度IT神話為何18個月崩盤？AI時代的第一個「亡國」案例 #印度 #AI失業 #IT產業 #全球經濟 #財經分析",
           "publishedAt": "2026-08-29T10:00:39Z",
-          "viewCount": 166102,
+          "viewCount": 166101,
           "likeCount": 1387,
           "commentCount": 186,
           "durationSeconds": 946,
@@ -240,7 +240,7 @@
           "id": "6bU1IIlbIPE",
           "title": "美債5.33%危機紅線！貝森特為何壓不住？美國需要一次可控的「信用風險釋放」！#美債 #貝森特 #美聯儲 #美股 #美國財政 #信用風險 #財經",
           "publishedAt": "2026-08-27T10:00:25Z",
-          "viewCount": 72729,
+          "viewCount": 72730,
           "likeCount": 852,
           "commentCount": 81,
           "durationSeconds": 766,
@@ -348,7 +348,7 @@
           "id": "A3GCoIfT9zs",
           "title": "30年0虧損的傳奇操盤手，突然重押這個方向，釋放什麼信號？#傳奇操盤手 #AI #美股 #投資風向 #華爾街 #聰明錢 #財經",
           "publishedAt": "2026-08-19T12:00:27Z",
-          "viewCount": 6874,
+          "viewCount": 6875,
           "likeCount": 237,
           "commentCount": 9,
           "durationSeconds": 178,
@@ -468,7 +468,7 @@
           "id": "NWKLuE7Nkkw",
           "title": "日圓一夜暴漲600點！17年最擠空頭倉位爆倉！美國救日圓是假，真正怕的是10萬億美元美債？#日圓 #美債 #美元 #日本央行 #金融市場 #全球經濟",
           "publishedAt": "2026-08-08T10:30:25Z",
-          "viewCount": 26547,
+          "viewCount": 26548,
           "likeCount": 585,
           "commentCount": 52,
           "durationSeconds": 669,
@@ -540,7 +540,7 @@
           "id": "lrT8R3iy0-U",
           "title": "淨利潤暴漲298%，兜裡卻沒錢了？谷歌、特斯拉自由現金流集體轉負！下游砸幾千億賭未來，上游已經把未來五年的錢鎖進口袋... #AI #美股 #科技股 #人工智能 #AI泡沫",
           "publishedAt": "2026-07-31T12:30:08Z",
-          "viewCount": 4392,
+          "viewCount": 4394,
           "likeCount": 210,
           "commentCount": 31,
           "durationSeconds": 653,
@@ -701,7 +701,7 @@
           "channelViews": 646501
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 14200,
           "channelViews": 646501
         }
@@ -975,7 +975,7 @@
           "id": "IwY9EFhwJ-Y",
           "title": "印度GDP假帳騙資！牛糞也算GDP？貧民窟也算房產？外商排隊送人頭？外資5年蒸發99%！印度先撐不住了？ #金融危機#財經#日圓#美債#日債",
           "publishedAt": "2026-08-19T09:09:15Z",
-          "viewCount": 43370,
+          "viewCount": 43369,
           "likeCount": 818,
           "commentCount": 182,
           "durationSeconds": 493,
@@ -1035,7 +1035,7 @@
           "id": "G2HnXw9f0Fw",
           "title": "黃金定價權在哪？英國重建黃金結算系統！貝萊德提前布局，歐洲、亞洲搶奪實物黃金中心！下一輪大錢要去哪？",
           "publishedAt": "2026-08-15T01:00:35Z",
-          "viewCount": 23260,
+          "viewCount": 23258,
           "likeCount": 429,
           "commentCount": 63,
           "durationSeconds": 735,
@@ -1352,7 +1352,7 @@
           "channelViews": 8957
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 50,
           "channelViews": 8957
         }
@@ -1374,7 +1374,7 @@
           "id": "dUKxKW_AZB0",
           "title": "353兆債務揭秘！美國獨佔40兆！全球GDP被透支3年！官方CPI是假的，真實通膨卻是8%到10%！ Blue Owl關閘、黑石7%上限、霸菱縮量！私募資金警報拉響！全球買單？",
           "publishedAt": "2026-09-29T00:30:33Z",
-          "viewCount": 27,
+          "viewCount": 29,
           "likeCount": 0,
           "commentCount": 0,
           "durationSeconds": 714,
@@ -1487,7 +1487,7 @@
           "channelViews": 2549
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 142,
           "channelViews": 2549
         }
@@ -1497,9 +1497,9 @@
           "id": "sUMfZvOEhZg",
           "title": "股票真係有實賺方法？點解愈炒愈容易變「大閘蟹」？普通人應該點樣長線投資？｜ETF｜S&P500｜廣東話",
           "publishedAt": "2026-09-29T12:30:12Z",
-          "viewCount": 77,
+          "viewCount": 84,
           "likeCount": 4,
-          "commentCount": 3,
+          "commentCount": 2,
           "durationSeconds": 867,
           "liveBroadcastContent": "none",
           "thumbnail": "https://i.ytimg.com/vi/sUMfZvOEhZg/mqdefault.jpg",
@@ -1521,7 +1521,7 @@
           "id": "cme1luk-CPw",
           "title": "高達16厘息係咪伏？8種收息工具大拆解！定期/債券/高息ETF/Covered Call點樣揀？｜理財新手必睇｜廣東話",
           "publishedAt": "2026-09-26T01:30:23Z",
-          "viewCount": 921,
+          "viewCount": 918,
           "likeCount": 11,
           "commentCount": 0,
           "durationSeconds": 1119,
@@ -1610,7 +1610,7 @@
           "channelViews": 841
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 8,
           "channelViews": 841
         }
@@ -1829,7 +1829,7 @@
           "channelViews": 2078
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 18,
           "channelViews": 2078
         }
@@ -1952,7 +1952,7 @@
           "channelViews": 48
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 5,
           "channelViews": 48
         }
@@ -2075,7 +2075,7 @@
           "channelViews": 17715
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 163,
           "channelViews": 17715
         }
@@ -2133,7 +2133,7 @@
           "id": "XaQrpxDHS9s",
           "title": "AI输中国美国玩完了？贝森特暴致命恐惧！坐庄遭反杀！美债冲5%暴雷，日元原油撕裂，拿40万亿国运下注死磕科技霸权，看懂收割剧本，散户如何调仓保命？",
           "publishedAt": "2026-09-21T12:41:47Z",
-          "viewCount": 477,
+          "viewCount": 478,
           "likeCount": 15,
           "commentCount": 0,
           "durationSeconds": 803,
@@ -2210,7 +2210,7 @@
           "channelViews": 51418
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 683,
           "channelViews": 51418
         }
@@ -2220,7 +2220,7 @@
           "id": "Ek8cm8kBHzc",
           "title": "AI風暴先打穿印度IT？2300億市值蒸發、600萬人飯碗告急，下一個輪到誰？ #印度IT #AI失業 #人工智能 #全球經濟 #科技股 #投資 #財經",
           "publishedAt": "2026-09-30T12:00:08Z",
-          "viewCount": 4,
+          "viewCount": 40,
           "likeCount": 0,
           "commentCount": 0,
           "durationSeconds": 171,
@@ -2244,7 +2244,7 @@
           "id": "Ju9tSfnclYc",
           "title": "預估值2萬億衝刺IPO，CEO卻喊AI慢下來？Anthropic一邊拚上市、一邊踩煞車？ #Claude #AI #ipo  #OpenAI #美股 #科技股 #投資",
           "publishedAt": "2026-09-28T12:00:19Z",
-          "viewCount": 553,
+          "viewCount": 559,
           "likeCount": 7,
           "commentCount": 1,
           "durationSeconds": 179,
@@ -2256,7 +2256,7 @@
           "id": "P7oUKn_cm1o",
           "title": "大模型跌成白菜價，蘋果一款折疊屏收割？AI低谷，蘋果開始吃紅利！淘金熱最後誰賺了大錢... #AI #蘋果 #折疊屏 #美股 #投資 #財經 ",
           "publishedAt": "2026-09-26T12:00:16Z",
-          "viewCount": 205,
+          "viewCount": 204,
           "likeCount": 8,
           "commentCount": 2,
           "durationSeconds": 830,
@@ -2381,7 +2381,7 @@
           "channelViews": 83018
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 787,
           "channelViews": 83018
         }
@@ -2403,7 +2403,7 @@
           "id": "NfMhtLMYCBU",
           "title": "日本央行犯下40年大錯！如今加息、不加息都是死局 #財經 #投資",
           "publishedAt": "2026-09-29T01:00:07Z",
-          "viewCount": 1214,
+          "viewCount": 1212,
           "likeCount": 28,
           "commentCount": 0,
           "durationSeconds": 156,
@@ -2415,7 +2415,7 @@
           "id": "9Mr-ce2n8GU",
           "title": "日本30年「全球提款機」正式關門！847萬億海外資金開始回流，美債美股恐迎流動性巨震，黃金真正大行情要來了？#股票 ",
           "publishedAt": "2026-09-28T02:07:18Z",
-          "viewCount": 25499,
+          "viewCount": 25513,
           "likeCount": 261,
           "commentCount": 16,
           "durationSeconds": 710,
@@ -2427,7 +2427,7 @@
           "id": "knThJAsA_74",
           "title": "從大英帝國到全民囤糧！英國最致命的弱點藏不住了 #財經",
           "publishedAt": "2026-09-27T02:00:33Z",
-          "viewCount": 1413,
+          "viewCount": 1414,
           "likeCount": 31,
           "commentCount": 1,
           "durationSeconds": 145,
@@ -2439,7 +2439,7 @@
           "id": "8SC-fo0wT-I",
           "title": "美聯儲加息落地！科技股誰先撐不住？蘋果殺入AI伺服器、英特爾牽手海力士，杰富瑞卻喊9000點！#股票 #stockmarket ",
           "publishedAt": "2026-09-27T01:00:33Z",
-          "viewCount": 3287,
+          "viewCount": 3280,
           "likeCount": 38,
           "commentCount": 1,
           "durationSeconds": 697,
@@ -2451,7 +2451,7 @@
           "id": "ljjKmWoffYA",
           "title": "Jeremy Grantham三次躲過全球泡沫：這一次，他又看到什麼？ #財經 #美債 #黃金",
           "publishedAt": "2026-09-26T01:00:02Z",
-          "viewCount": 8005,
+          "viewCount": 8007,
           "likeCount": 155,
           "commentCount": 1,
           "durationSeconds": 146,
@@ -2499,7 +2499,7 @@
           "id": "BoHkiOfLRro",
           "title": "美聯儲突然變鷹！加息25基點只是開始？年底還有一刀！",
           "publishedAt": "2026-09-21T01:00:38Z",
-          "viewCount": 1360,
+          "viewCount": 1361,
           "likeCount": 28,
           "commentCount": 0,
           "durationSeconds": 166,
@@ -2511,7 +2511,7 @@
           "id": "O6-wglDeKo0",
           "title": "全球金融體系正在悄悄重置？黃金撤離美國、美債買家開始退場，21家華爾街巨頭聯手打造「新美元」！",
           "publishedAt": "2026-09-20T02:38:11Z",
-          "viewCount": 3966,
+          "viewCount": 3965,
           "likeCount": 85,
           "commentCount": 3,
           "durationSeconds": 580,
@@ -2535,7 +2535,7 @@
           "id": "NQOCcq-3Yug",
           "title": "美國另類化債真相",
           "publishedAt": "2026-09-19T02:00:27Z",
-          "viewCount": 1365,
+          "viewCount": 1366,
           "likeCount": 32,
           "commentCount": 1,
           "durationSeconds": 134,
@@ -2600,7 +2600,7 @@
           "channelViews": 109
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 10,
           "channelViews": 109
         }
@@ -2735,7 +2735,7 @@
           "channelViews": 352
         },
         {
-          "observedAt": "2026-09-30T14:08:01Z",
+          "observedAt": "2026-09-30T14:08:46Z",
           "subscriberCount": 11,
           "channelViews": 352
         }
@@ -2769,7 +2769,7 @@
           "id": "CHhcvhdMEMI",
           "title": "Muse上線12天，Meta暴漲2000億！這個AI為何突然被封殺？你的錢包成了巨頭的新戰場？  #meta  #muse #amazon #科技股 #美股投資",
           "publishedAt": "2026-09-29T10:30:06Z",
-          "viewCount": 583,
+          "viewCount": 585,
           "likeCount": 5,
           "commentCount": 0,
           "durationSeconds": 178,
@@ -2821,7 +2821,7 @@
       "id": "Ek8cm8kBHzc",
       "title": "AI風暴先打穿印度IT？2300億市值蒸發、600萬人飯碗告急，下一個輪到誰？ #印度IT #AI失業 #人工智能 #全球經濟 #科技股 #投資 #財經",
       "publishedAt": "2026-09-30T12:00:08Z",
-      "viewCount": 4,
+      "viewCount": 40,
       "likeCount": 0,
       "commentCount": 0,
       "durationSeconds": 171,
@@ -2830,7 +2830,7 @@
       "url": "https://www.youtube.com/watch?v=Ek8cm8kBHzc",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Ri7ufxD8MYk",
@@ -2845,7 +2845,7 @@
       "url": "https://www.youtube.com/watch?v=Ri7ufxD8MYk",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "bXtXcrxh1gs",
@@ -2860,7 +2860,7 @@
       "url": "https://www.youtube.com/watch?v=bXtXcrxh1gs",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "_EdjkHwrQ0g",
@@ -2875,7 +2875,7 @@
       "url": "https://www.youtube.com/watch?v=_EdjkHwrQ0g",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "zPH3EZTC5Cc",
@@ -2890,7 +2890,7 @@
       "url": "https://www.youtube.com/watch?v=zPH3EZTC5Cc",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "GTPrPUjfUBY",
@@ -2905,22 +2905,22 @@
       "url": "https://www.youtube.com/watch?v=GTPrPUjfUBY",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "sUMfZvOEhZg",
       "title": "股票真係有實賺方法？點解愈炒愈容易變「大閘蟹」？普通人應該點樣長線投資？｜ETF｜S&P500｜廣東話",
       "publishedAt": "2026-09-29T12:30:12Z",
-      "viewCount": 77,
+      "viewCount": 84,
       "likeCount": 4,
-      "commentCount": 3,
+      "commentCount": 2,
       "durationSeconds": 867,
       "liveBroadcastContent": "none",
       "thumbnail": "https://i.ytimg.com/vi/sUMfZvOEhZg/mqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=sUMfZvOEhZg",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "qAaROBRCMpM",
@@ -2935,13 +2935,13 @@
       "url": "https://www.youtube.com/watch?v=qAaROBRCMpM",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "CHhcvhdMEMI",
       "title": "Muse上線12天，Meta暴漲2000億！這個AI為何突然被封殺？你的錢包成了巨頭的新戰場？  #meta  #muse #amazon #科技股 #美股投資",
       "publishedAt": "2026-09-29T10:30:06Z",
-      "viewCount": 583,
+      "viewCount": 585,
       "likeCount": 5,
       "commentCount": 0,
       "durationSeconds": 178,
@@ -2950,7 +2950,7 @@
       "url": "https://www.youtube.com/watch?v=CHhcvhdMEMI",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "jUAkgY92L5A",
@@ -2965,13 +2965,13 @@
       "url": "https://www.youtube.com/watch?v=jUAkgY92L5A",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "NfMhtLMYCBU",
       "title": "日本央行犯下40年大錯！如今加息、不加息都是死局 #財經 #投資",
       "publishedAt": "2026-09-29T01:00:07Z",
-      "viewCount": 1214,
+      "viewCount": 1212,
       "likeCount": 28,
       "commentCount": 0,
       "durationSeconds": 156,
@@ -2980,13 +2980,13 @@
       "url": "https://www.youtube.com/watch?v=NfMhtLMYCBU",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "dUKxKW_AZB0",
       "title": "353兆債務揭秘！美國獨佔40兆！全球GDP被透支3年！官方CPI是假的，真實通膨卻是8%到10%！ Blue Owl關閘、黑石7%上限、霸菱縮量！私募資金警報拉響！全球買單？",
       "publishedAt": "2026-09-29T00:30:33Z",
-      "viewCount": 27,
+      "viewCount": 29,
       "likeCount": 0,
       "commentCount": 0,
       "durationSeconds": 714,
@@ -2995,7 +2995,7 @@
       "url": "https://www.youtube.com/watch?v=dUKxKW_AZB0",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "1KSZ7W9_J3Q",
@@ -3010,7 +3010,7 @@
       "url": "https://www.youtube.com/watch?v=1KSZ7W9_J3Q",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "u_B5XVzQvjY",
@@ -3025,13 +3025,13 @@
       "url": "https://www.youtube.com/watch?v=u_B5XVzQvjY",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Ju9tSfnclYc",
       "title": "預估值2萬億衝刺IPO，CEO卻喊AI慢下來？Anthropic一邊拚上市、一邊踩煞車？ #Claude #AI #ipo  #OpenAI #美股 #科技股 #投資",
       "publishedAt": "2026-09-28T12:00:19Z",
-      "viewCount": 553,
+      "viewCount": 559,
       "likeCount": 7,
       "commentCount": 1,
       "durationSeconds": 179,
@@ -3040,7 +3040,7 @@
       "url": "https://www.youtube.com/watch?v=Ju9tSfnclYc",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "9AX2SrL8rWQ",
@@ -3055,7 +3055,7 @@
       "url": "https://www.youtube.com/watch?v=9AX2SrL8rWQ",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "KxPDt_p5w3k",
@@ -3070,7 +3070,7 @@
       "url": "https://www.youtube.com/watch?v=KxPDt_p5w3k",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "aMnvYEZXKNM",
@@ -3085,7 +3085,7 @@
       "url": "https://www.youtube.com/watch?v=aMnvYEZXKNM",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "9YpZGI1__Rk",
@@ -3100,7 +3100,7 @@
       "url": "https://www.youtube.com/watch?v=9YpZGI1__Rk",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "AemKf5n_sVY",
@@ -3115,13 +3115,13 @@
       "url": "https://www.youtube.com/watch?v=AemKf5n_sVY",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "9Mr-ce2n8GU",
       "title": "日本30年「全球提款機」正式關門！847萬億海外資金開始回流，美債美股恐迎流動性巨震，黃金真正大行情要來了？#股票 ",
       "publishedAt": "2026-09-28T02:07:18Z",
-      "viewCount": 25499,
+      "viewCount": 25513,
       "likeCount": 261,
       "commentCount": 16,
       "durationSeconds": 710,
@@ -3130,7 +3130,7 @@
       "url": "https://www.youtube.com/watch?v=9Mr-ce2n8GU",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "fIB5gBx6TQY",
@@ -3145,13 +3145,13 @@
       "url": "https://www.youtube.com/watch?v=fIB5gBx6TQY",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "knThJAsA_74",
       "title": "從大英帝國到全民囤糧！英國最致命的弱點藏不住了 #財經",
       "publishedAt": "2026-09-27T02:00:33Z",
-      "viewCount": 1413,
+      "viewCount": 1414,
       "likeCount": 31,
       "commentCount": 1,
       "durationSeconds": 145,
@@ -3160,7 +3160,7 @@
       "url": "https://www.youtube.com/watch?v=knThJAsA_74",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "G-pEZBox2uw",
@@ -3175,13 +3175,13 @@
       "url": "https://www.youtube.com/watch?v=G-pEZBox2uw",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "8SC-fo0wT-I",
       "title": "美聯儲加息落地！科技股誰先撐不住？蘋果殺入AI伺服器、英特爾牽手海力士，杰富瑞卻喊9000點！#股票 #stockmarket ",
       "publishedAt": "2026-09-27T01:00:33Z",
-      "viewCount": 3287,
+      "viewCount": 3280,
       "likeCount": 38,
       "commentCount": 1,
       "durationSeconds": 697,
@@ -3190,7 +3190,7 @@
       "url": "https://www.youtube.com/watch?v=8SC-fo0wT-I",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "FRHWXAsGzew",
@@ -3205,13 +3205,13 @@
       "url": "https://www.youtube.com/watch?v=FRHWXAsGzew",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "P7oUKn_cm1o",
       "title": "大模型跌成白菜價，蘋果一款折疊屏收割？AI低谷，蘋果開始吃紅利！淘金熱最後誰賺了大錢... #AI #蘋果 #折疊屏 #美股 #投資 #財經 ",
       "publishedAt": "2026-09-26T12:00:16Z",
-      "viewCount": 205,
+      "viewCount": 204,
       "likeCount": 8,
       "commentCount": 2,
       "durationSeconds": 830,
@@ -3220,7 +3220,7 @@
       "url": "https://www.youtube.com/watch?v=P7oUKn_cm1o",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "d8JsDYTyO7c",
@@ -3235,7 +3235,7 @@
       "url": "https://www.youtube.com/watch?v=d8JsDYTyO7c",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "bQXdIuwNI_Q",
@@ -3250,7 +3250,7 @@
       "url": "https://www.youtube.com/watch?v=bQXdIuwNI_Q",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "H4Wtkaggbbg",
@@ -3265,13 +3265,13 @@
       "url": "https://www.youtube.com/watch?v=H4Wtkaggbbg",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "cme1luk-CPw",
       "title": "高達16厘息係咪伏？8種收息工具大拆解！定期/債券/高息ETF/Covered Call點樣揀？｜理財新手必睇｜廣東話",
       "publishedAt": "2026-09-26T01:30:23Z",
-      "viewCount": 921,
+      "viewCount": 918,
       "likeCount": 11,
       "commentCount": 0,
       "durationSeconds": 1119,
@@ -3280,7 +3280,7 @@
       "url": "https://www.youtube.com/watch?v=cme1luk-CPw",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "bcZ-Ii79PKY",
@@ -3295,13 +3295,13 @@
       "url": "https://www.youtube.com/watch?v=bcZ-Ii79PKY",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "ljjKmWoffYA",
       "title": "Jeremy Grantham三次躲過全球泡沫：這一次，他又看到什麼？ #財經 #美債 #黃金",
       "publishedAt": "2026-09-26T01:00:02Z",
-      "viewCount": 8005,
+      "viewCount": 8007,
       "likeCount": 155,
       "commentCount": 1,
       "durationSeconds": 146,
@@ -3310,7 +3310,7 @@
       "url": "https://www.youtube.com/watch?v=ljjKmWoffYA",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Lw_5KVPXw9s",
@@ -3325,7 +3325,7 @@
       "url": "https://www.youtube.com/watch?v=Lw_5KVPXw9s",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "P0uadN55Xl0",
@@ -3340,7 +3340,7 @@
       "url": "https://www.youtube.com/watch?v=P0uadN55Xl0",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "L284RJeXjvY",
@@ -3355,7 +3355,7 @@
       "url": "https://www.youtube.com/watch?v=L284RJeXjvY",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "ZwtMr5Qtv_8",
@@ -3370,7 +3370,7 @@
       "url": "https://www.youtube.com/watch?v=ZwtMr5Qtv_8",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "xZmZX3PJqVc",
@@ -3385,7 +3385,7 @@
       "url": "https://www.youtube.com/watch?v=xZmZX3PJqVc",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "s0eFljKXQRM",
@@ -3400,7 +3400,7 @@
       "url": "https://www.youtube.com/watch?v=s0eFljKXQRM",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "vznpH0ROLwA",
@@ -3415,7 +3415,7 @@
       "url": "https://www.youtube.com/watch?v=vznpH0ROLwA",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "TxKQteZ_tMg",
@@ -3430,7 +3430,7 @@
       "url": "https://www.youtube.com/watch?v=TxKQteZ_tMg",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "ArbD4sVQoZw",
@@ -3445,7 +3445,7 @@
       "url": "https://www.youtube.com/watch?v=ArbD4sVQoZw",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "hZITRcnMZ1k",
@@ -3460,7 +3460,7 @@
       "url": "https://www.youtube.com/watch?v=hZITRcnMZ1k",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "3pbe4T1JKxM",
@@ -3475,7 +3475,7 @@
       "url": "https://www.youtube.com/watch?v=3pbe4T1JKxM",
       "channelId": "UCtkUpmfJckdTZyNvyWBl_rg",
       "channel": "Leo財經觀察",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "0O6WjcqsZB8",
@@ -3490,7 +3490,7 @@
       "url": "https://www.youtube.com/watch?v=0O6WjcqsZB8",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "idofW1UqFsQ",
@@ -3505,7 +3505,7 @@
       "url": "https://www.youtube.com/watch?v=idofW1UqFsQ",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "IU-D3KFogR0",
@@ -3520,7 +3520,7 @@
       "url": "https://www.youtube.com/watch?v=IU-D3KFogR0",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "SiIxAb9gpAw",
@@ -3535,7 +3535,7 @@
       "url": "https://www.youtube.com/watch?v=SiIxAb9gpAw",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "LfjUJxK_Vm4",
@@ -3550,7 +3550,7 @@
       "url": "https://www.youtube.com/watch?v=LfjUJxK_Vm4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "yj_xOmVjxgQ",
@@ -3565,7 +3565,7 @@
       "url": "https://www.youtube.com/watch?v=yj_xOmVjxgQ",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "CTGvRsBFdpE",
@@ -3580,7 +3580,7 @@
       "url": "https://www.youtube.com/watch?v=CTGvRsBFdpE",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "8FEOLZ664ro",
@@ -3595,7 +3595,7 @@
       "url": "https://www.youtube.com/watch?v=8FEOLZ664ro",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "qm-B25pGNSQ",
@@ -3610,7 +3610,7 @@
       "url": "https://www.youtube.com/watch?v=qm-B25pGNSQ",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "XFrVxNaXCig",
@@ -3625,7 +3625,7 @@
       "url": "https://www.youtube.com/watch?v=XFrVxNaXCig",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "DnNfoVHAyAk",
@@ -3640,7 +3640,7 @@
       "url": "https://www.youtube.com/watch?v=DnNfoVHAyAk",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "3zzlwzZkCmA",
@@ -3655,7 +3655,7 @@
       "url": "https://www.youtube.com/watch?v=3zzlwzZkCmA",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "prA2mNugHZs",
@@ -3670,7 +3670,7 @@
       "url": "https://www.youtube.com/watch?v=prA2mNugHZs",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "-xX_n4kjg7g",
@@ -3685,7 +3685,7 @@
       "url": "https://www.youtube.com/watch?v=-xX_n4kjg7g",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "xsyI2nxWUII",
@@ -3700,7 +3700,7 @@
       "url": "https://www.youtube.com/watch?v=xsyI2nxWUII",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "xL7HQOXc-R0",
@@ -3715,7 +3715,7 @@
       "url": "https://www.youtube.com/watch?v=xL7HQOXc-R0",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "fGzUs32mjmo",
@@ -3730,7 +3730,7 @@
       "url": "https://www.youtube.com/watch?v=fGzUs32mjmo",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "gfDxV5Fh4jc",
@@ -3745,7 +3745,7 @@
       "url": "https://www.youtube.com/watch?v=gfDxV5Fh4jc",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Vhsgl6rSTuE",
@@ -3760,13 +3760,13 @@
       "url": "https://www.youtube.com/watch?v=Vhsgl6rSTuE",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "XaQrpxDHS9s",
       "title": "AI输中国美国玩完了？贝森特暴致命恐惧！坐庄遭反杀！美债冲5%暴雷，日元原油撕裂，拿40万亿国运下注死磕科技霸权，看懂收割剧本，散户如何调仓保命？",
       "publishedAt": "2026-09-21T12:41:47Z",
-      "viewCount": 477,
+      "viewCount": 478,
       "likeCount": 15,
       "commentCount": 0,
       "durationSeconds": 803,
@@ -3775,7 +3775,7 @@
       "url": "https://www.youtube.com/watch?v=XaQrpxDHS9s",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "yZgO2P3IWQM",
@@ -3790,7 +3790,7 @@
       "url": "https://www.youtube.com/watch?v=yZgO2P3IWQM",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "xqxO7oysX3Q",
@@ -3805,7 +3805,7 @@
       "url": "https://www.youtube.com/watch?v=xqxO7oysX3Q",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Mg3Ca9agmZs",
@@ -3820,7 +3820,7 @@
       "url": "https://www.youtube.com/watch?v=Mg3Ca9agmZs",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "2j5gpU3cFFk",
@@ -3835,7 +3835,7 @@
       "url": "https://www.youtube.com/watch?v=2j5gpU3cFFk",
       "channelId": "UCQAo0ws95p-uN7gr0OOHoXg",
       "channel": "喬安說財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "8DfTXWvQYws",
@@ -3850,13 +3850,13 @@
       "url": "https://www.youtube.com/watch?v=8DfTXWvQYws",
       "channelId": "UCmhqWEDoPgrg9J129nGuQkQ",
       "channel": "文叔聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "BoHkiOfLRro",
       "title": "美聯儲突然變鷹！加息25基點只是開始？年底還有一刀！",
       "publishedAt": "2026-09-21T01:00:38Z",
-      "viewCount": 1360,
+      "viewCount": 1361,
       "likeCount": 28,
       "commentCount": 0,
       "durationSeconds": 166,
@@ -3865,7 +3865,7 @@
       "url": "https://www.youtube.com/watch?v=BoHkiOfLRro",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "AjWHdU4rcZY",
@@ -3880,7 +3880,7 @@
       "url": "https://www.youtube.com/watch?v=AjWHdU4rcZY",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "xEzMeo1Enec",
@@ -3895,7 +3895,7 @@
       "url": "https://www.youtube.com/watch?v=xEzMeo1Enec",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "7a6EUwFq0hE",
@@ -3910,7 +3910,7 @@
       "url": "https://www.youtube.com/watch?v=7a6EUwFq0hE",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "unYL1_NTQXw",
@@ -3925,7 +3925,7 @@
       "url": "https://www.youtube.com/watch?v=unYL1_NTQXw",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "3tUB9tmJOtg",
@@ -3940,13 +3940,13 @@
       "url": "https://www.youtube.com/watch?v=3tUB9tmJOtg",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "O6-wglDeKo0",
       "title": "全球金融體系正在悄悄重置？黃金撤離美國、美債買家開始退場，21家華爾街巨頭聯手打造「新美元」！",
       "publishedAt": "2026-09-20T02:38:11Z",
-      "viewCount": 3966,
+      "viewCount": 3965,
       "likeCount": 85,
       "commentCount": 3,
       "durationSeconds": 580,
@@ -3955,7 +3955,7 @@
       "url": "https://www.youtube.com/watch?v=O6-wglDeKo0",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "QsYZbJjYpF8",
@@ -3970,7 +3970,7 @@
       "url": "https://www.youtube.com/watch?v=QsYZbJjYpF8",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "aR-hxqNfDvw",
@@ -3985,13 +3985,13 @@
       "url": "https://www.youtube.com/watch?v=aR-hxqNfDvw",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "NQOCcq-3Yug",
       "title": "美國另類化債真相",
       "publishedAt": "2026-09-19T02:00:27Z",
-      "viewCount": 1365,
+      "viewCount": 1366,
       "likeCount": 32,
       "commentCount": 1,
       "durationSeconds": 134,
@@ -4000,7 +4000,7 @@
       "url": "https://www.youtube.com/watch?v=NQOCcq-3Yug",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "UbZuyfp_QtE",
@@ -4015,7 +4015,7 @@
       "url": "https://www.youtube.com/watch?v=UbZuyfp_QtE",
       "channelId": "UC5lCKye2u8Q0BoE5ggY9myw",
       "channel": "Maple的理財森林",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "QbW23txjo9s",
@@ -4030,7 +4030,7 @@
       "url": "https://www.youtube.com/watch?v=QbW23txjo9s",
       "channelId": "UCTueeHImxv4uLBQKsDEMqjQ",
       "channel": "小Lu財經說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "JDycQBrAkKQ",
@@ -4045,7 +4045,7 @@
       "url": "https://www.youtube.com/watch?v=JDycQBrAkKQ",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "wd6zbALaQyY",
@@ -4060,7 +4060,7 @@
       "url": "https://www.youtube.com/watch?v=wd6zbALaQyY",
       "channelId": "UCsXJXZI4J_N9r8H9TsORmlA",
       "channel": "羅拉財富觀",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "_lTVcdfA37w",
@@ -4075,7 +4075,7 @@
       "url": "https://www.youtube.com/watch?v=_lTVcdfA37w",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "woM5Vxx1ieY",
@@ -4090,7 +4090,7 @@
       "url": "https://www.youtube.com/watch?v=woM5Vxx1ieY",
       "channelId": "UCZNlDT4tKgZS8R6sDuJWwMA",
       "channel": "Amber放大鏡",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "VsWReCff3Ok",
@@ -4105,7 +4105,7 @@
       "url": "https://www.youtube.com/watch?v=VsWReCff3Ok",
       "channelId": "UCNX9-jzOH4KMbIeuWK8LZaw",
       "channel": "Leo財經",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "t22DOaxlELU",
@@ -4120,7 +4120,7 @@
       "url": "https://www.youtube.com/watch?v=t22DOaxlELU",
       "channelId": "UC9veOeKEZhexYxmMXF_RwCQ",
       "channel": "艾莉說",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Mdl-xHbNDEs",
@@ -4135,7 +4135,7 @@
       "url": "https://www.youtube.com/watch?v=Mdl-xHbNDEs",
       "channelId": "UCS1ZlOZTJhOxvWXr3b1v9GA",
       "channel": "阿誠聊焦點",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "PTqEvYdHxVE",
@@ -4150,7 +4150,7 @@
       "url": "https://www.youtube.com/watch?v=PTqEvYdHxVE",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "pzu0jONf2C0",
@@ -4165,13 +4165,13 @@
       "url": "https://www.youtube.com/watch?v=pzu0jONf2C0",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "wvmK7XfJiJk",
       "title": "三星26兆遺產稅剛繳清，SK海力士就要赴美募資290億！韓國財閥為何集體出走？ #韓國 #財閥 #三星 #SK海力士 #遺產稅 #美股 #財經",
       "publishedAt": "2026-09-13T13:30:22Z",
-      "viewCount": 5735,
+      "viewCount": 5736,
       "likeCount": 245,
       "commentCount": 9,
       "durationSeconds": 179,
@@ -4180,7 +4180,7 @@
       "url": "https://www.youtube.com/watch?v=wvmK7XfJiJk",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "xmc8O8X3hdU",
@@ -4195,13 +4195,13 @@
       "url": "https://www.youtube.com/watch?v=xmc8O8X3hdU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "tdLT_wX9YIo",
       "title": "貝森特定日本生死，背後是75年來最大權力越界……央行獨立還是幻覺？全球匯市緊盯「貝森特主義」！ #貝森特 #日本 #美聯儲 #央行獨立 #日圓 #全球經濟 #財經",
       "publishedAt": "2026-09-10T08:17:00Z",
-      "viewCount": 8570,
+      "viewCount": 8571,
       "likeCount": 231,
       "commentCount": 23,
       "durationSeconds": 726,
@@ -4210,7 +4210,7 @@
       "url": "https://www.youtube.com/watch?v=tdLT_wX9YIo",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "aNBHNVGA79M",
@@ -4225,13 +4225,13 @@
       "url": "https://www.youtube.com/watch?v=aNBHNVGA79M",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Js459KFQe9A",
       "title": "英偉達7天跌掉4000億，只是開始？歐央行聯手芝大：哪怕利潤年年翻倍，早期衝進去的人也注定被清洗！【AI繁榮陷阱EP1】#AI #英偉達 #美股 #科技股 #AI泡沫 #投資 #財經分析",
       "publishedAt": "2026-09-02T12:00:26Z",
-      "viewCount": 8214,
+      "viewCount": 8215,
       "likeCount": 214,
       "commentCount": 17,
       "durationSeconds": 648,
@@ -4240,7 +4240,7 @@
       "url": "https://www.youtube.com/watch?v=Js459KFQe9A",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "H7rc1mnZk-U",
@@ -4255,7 +4255,7 @@
       "url": "https://www.youtube.com/watch?v=H7rc1mnZk-U",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "DMUs4RhBJZ4",
@@ -4270,7 +4270,7 @@
       "url": "https://www.youtube.com/watch?v=DMUs4RhBJZ4",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "hpc2ANBqqGk",
@@ -4285,7 +4285,7 @@
       "url": "https://www.youtube.com/watch?v=hpc2ANBqqGk",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "9ik5hYql17M",
@@ -4300,7 +4300,7 @@
       "url": "https://www.youtube.com/watch?v=9ik5hYql17M",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "-ZwXgi7zUbI",
@@ -4315,7 +4315,7 @@
       "url": "https://www.youtube.com/watch?v=-ZwXgi7zUbI",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "cBAcjbyJO48",
@@ -4330,7 +4330,7 @@
       "url": "https://www.youtube.com/watch?v=cBAcjbyJO48",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "oWE-PsIjDOw",
@@ -4345,7 +4345,7 @@
       "url": "https://www.youtube.com/watch?v=oWE-PsIjDOw",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "0-J-1FMeU9A",
@@ -4360,7 +4360,7 @@
       "url": "https://www.youtube.com/watch?v=0-J-1FMeU9A",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "wtaQxL5B_m0",
@@ -4375,7 +4375,7 @@
       "url": "https://www.youtube.com/watch?v=wtaQxL5B_m0",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "IFQr5yNDnxY",
@@ -4390,13 +4390,13 @@
       "url": "https://www.youtube.com/watch?v=IFQr5yNDnxY",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "thQsMOKApmk",
       "title": "2300億市值蒸發、6百萬人面臨失業！印度IT神話為何18個月崩盤？AI時代的第一個「亡國」案例 #印度 #AI失業 #IT產業 #全球經濟 #財經分析",
       "publishedAt": "2026-08-29T10:00:39Z",
-      "viewCount": 166102,
+      "viewCount": 166101,
       "likeCount": 1387,
       "commentCount": 186,
       "durationSeconds": 946,
@@ -4405,7 +4405,7 @@
       "url": "https://www.youtube.com/watch?v=thQsMOKApmk",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "hTKb8bpcNho",
@@ -4420,7 +4420,7 @@
       "url": "https://www.youtube.com/watch?v=hTKb8bpcNho",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "28EUHO_rNkU",
@@ -4435,7 +4435,7 @@
       "url": "https://www.youtube.com/watch?v=28EUHO_rNkU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "9KWCFyvIEh8",
@@ -4450,7 +4450,7 @@
       "url": "https://www.youtube.com/watch?v=9KWCFyvIEh8",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "pDgdvk-ZWm4",
@@ -4465,7 +4465,7 @@
       "url": "https://www.youtube.com/watch?v=pDgdvk-ZWm4",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "-o0Ri__1Lh4",
@@ -4480,7 +4480,7 @@
       "url": "https://www.youtube.com/watch?v=-o0Ri__1Lh4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "pFjQZ0uC1a4",
@@ -4495,13 +4495,13 @@
       "url": "https://www.youtube.com/watch?v=pFjQZ0uC1a4",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "6bU1IIlbIPE",
       "title": "美債5.33%危機紅線！貝森特為何壓不住？美國需要一次可控的「信用風險釋放」！#美債 #貝森特 #美聯儲 #美股 #美國財政 #信用風險 #財經",
       "publishedAt": "2026-08-27T10:00:25Z",
-      "viewCount": 72729,
+      "viewCount": 72730,
       "likeCount": 852,
       "commentCount": 81,
       "durationSeconds": 766,
@@ -4510,7 +4510,7 @@
       "url": "https://www.youtube.com/watch?v=6bU1IIlbIPE",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "bvWwlckaXtM",
@@ -4525,7 +4525,7 @@
       "url": "https://www.youtube.com/watch?v=bvWwlckaXtM",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "N53tEPTrds0",
@@ -4540,7 +4540,7 @@
       "url": "https://www.youtube.com/watch?v=N53tEPTrds0",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "BRTjN8j6XQw",
@@ -4555,7 +4555,7 @@
       "url": "https://www.youtube.com/watch?v=BRTjN8j6XQw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Iz1g4tgGXCU",
@@ -4570,7 +4570,7 @@
       "url": "https://www.youtube.com/watch?v=Iz1g4tgGXCU",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "en7sPx_bKVE",
@@ -4585,7 +4585,7 @@
       "url": "https://www.youtube.com/watch?v=en7sPx_bKVE",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "wiBzIlH3DrM",
@@ -4600,7 +4600,7 @@
       "url": "https://www.youtube.com/watch?v=wiBzIlH3DrM",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "O7vMqutsSUk",
@@ -4615,7 +4615,7 @@
       "url": "https://www.youtube.com/watch?v=O7vMqutsSUk",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "wtU-Hc6BmWs",
@@ -4630,7 +4630,7 @@
       "url": "https://www.youtube.com/watch?v=wtU-Hc6BmWs",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "KN312o9CnwA",
@@ -4645,7 +4645,7 @@
       "url": "https://www.youtube.com/watch?v=KN312o9CnwA",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "RbAuhAoiOQI",
@@ -4660,7 +4660,7 @@
       "url": "https://www.youtube.com/watch?v=RbAuhAoiOQI",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "bdWYmGmvPCw",
@@ -4675,7 +4675,7 @@
       "url": "https://www.youtube.com/watch?v=bdWYmGmvPCw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "taHT-oRLaHE",
@@ -4690,7 +4690,7 @@
       "url": "https://www.youtube.com/watch?v=taHT-oRLaHE",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "sMMdWcmeG7U",
@@ -4705,7 +4705,7 @@
       "url": "https://www.youtube.com/watch?v=sMMdWcmeG7U",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "gFyZUK7n2nI",
@@ -4720,7 +4720,7 @@
       "url": "https://www.youtube.com/watch?v=gFyZUK7n2nI",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Hd6ygS1q7GI",
@@ -4735,7 +4735,7 @@
       "url": "https://www.youtube.com/watch?v=Hd6ygS1q7GI",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "rS112nQ_Rts",
@@ -4750,13 +4750,13 @@
       "url": "https://www.youtube.com/watch?v=rS112nQ_Rts",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "A3GCoIfT9zs",
       "title": "30年0虧損的傳奇操盤手，突然重押這個方向，釋放什麼信號？#傳奇操盤手 #AI #美股 #投資風向 #華爾街 #聰明錢 #財經",
       "publishedAt": "2026-08-19T12:00:27Z",
-      "viewCount": 6874,
+      "viewCount": 6875,
       "likeCount": 237,
       "commentCount": 9,
       "durationSeconds": 178,
@@ -4765,13 +4765,13 @@
       "url": "https://www.youtube.com/watch?v=A3GCoIfT9zs",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "IwY9EFhwJ-Y",
       "title": "印度GDP假帳騙資！牛糞也算GDP？貧民窟也算房產？外商排隊送人頭？外資5年蒸發99%！印度先撐不住了？ #金融危機#財經#日圓#美債#日債",
       "publishedAt": "2026-08-19T09:09:15Z",
-      "viewCount": 43370,
+      "viewCount": 43369,
       "likeCount": 818,
       "commentCount": 182,
       "durationSeconds": 493,
@@ -4780,7 +4780,7 @@
       "url": "https://www.youtube.com/watch?v=IwY9EFhwJ-Y",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "2OronVJ0PVQ",
@@ -4795,7 +4795,7 @@
       "url": "https://www.youtube.com/watch?v=2OronVJ0PVQ",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "g8xSjEmhk6M",
@@ -4810,7 +4810,7 @@
       "url": "https://www.youtube.com/watch?v=g8xSjEmhk6M",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "n4IKFGX2o28",
@@ -4825,7 +4825,7 @@
       "url": "https://www.youtube.com/watch?v=n4IKFGX2o28",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Fjxw_yszNfg",
@@ -4840,7 +4840,7 @@
       "url": "https://www.youtube.com/watch?v=Fjxw_yszNfg",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "kRGbg93WVeU",
@@ -4855,7 +4855,7 @@
       "url": "https://www.youtube.com/watch?v=kRGbg93WVeU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "MsFZw5iEMVA",
@@ -4870,7 +4870,7 @@
       "url": "https://www.youtube.com/watch?v=MsFZw5iEMVA",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "XtHGU0Fp2BY",
@@ -4885,13 +4885,13 @@
       "url": "https://www.youtube.com/watch?v=XtHGU0Fp2BY",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "G2HnXw9f0Fw",
       "title": "黃金定價權在哪？英國重建黃金結算系統！貝萊德提前布局，歐洲、亞洲搶奪實物黃金中心！下一輪大錢要去哪？",
       "publishedAt": "2026-08-15T01:00:35Z",
-      "viewCount": 23260,
+      "viewCount": 23258,
       "likeCount": 429,
       "commentCount": 63,
       "durationSeconds": 735,
@@ -4900,7 +4900,7 @@
       "url": "https://www.youtube.com/watch?v=G2HnXw9f0Fw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "1flmtUm0yqM",
@@ -4915,7 +4915,7 @@
       "url": "https://www.youtube.com/watch?v=1flmtUm0yqM",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "AuJdnj5kiH0",
@@ -4930,7 +4930,7 @@
       "url": "https://www.youtube.com/watch?v=AuJdnj5kiH0",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "wpr1grQpN-Y",
@@ -4945,7 +4945,7 @@
       "url": "https://www.youtube.com/watch?v=wpr1grQpN-Y",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "GnJs8x6UGr4",
@@ -4960,7 +4960,7 @@
       "url": "https://www.youtube.com/watch?v=GnJs8x6UGr4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Wc_xZ9RQOEw",
@@ -4975,7 +4975,7 @@
       "url": "https://www.youtube.com/watch?v=Wc_xZ9RQOEw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "4Rv8PBjAKqk",
@@ -4990,7 +4990,7 @@
       "url": "https://www.youtube.com/watch?v=4Rv8PBjAKqk",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "lomhK-_aiDs",
@@ -5005,7 +5005,7 @@
       "url": "https://www.youtube.com/watch?v=lomhK-_aiDs",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "7Py4XU-L_zI",
@@ -5020,7 +5020,7 @@
       "url": "https://www.youtube.com/watch?v=7Py4XU-L_zI",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "kGcOl8vfyAM",
@@ -5035,7 +5035,7 @@
       "url": "https://www.youtube.com/watch?v=kGcOl8vfyAM",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "4Wsr8WeTVi8",
@@ -5050,7 +5050,7 @@
       "url": "https://www.youtube.com/watch?v=4Wsr8WeTVi8",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "wFgVzAgi8w8",
@@ -5065,13 +5065,13 @@
       "url": "https://www.youtube.com/watch?v=wFgVzAgi8w8",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "NWKLuE7Nkkw",
       "title": "日圓一夜暴漲600點！17年最擠空頭倉位爆倉！美國救日圓是假，真正怕的是10萬億美元美債？#日圓 #美債 #美元 #日本央行 #金融市場 #全球經濟",
       "publishedAt": "2026-08-08T10:30:25Z",
-      "viewCount": 26547,
+      "viewCount": 26548,
       "likeCount": 585,
       "commentCount": 52,
       "durationSeconds": 669,
@@ -5080,7 +5080,7 @@
       "url": "https://www.youtube.com/watch?v=NWKLuE7Nkkw",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "L4-W1gUdafY",
@@ -5095,7 +5095,7 @@
       "url": "https://www.youtube.com/watch?v=L4-W1gUdafY",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "8i01PIwTVBU",
@@ -5110,7 +5110,7 @@
       "url": "https://www.youtube.com/watch?v=8i01PIwTVBU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "evM0iR5-BmU",
@@ -5125,7 +5125,7 @@
       "url": "https://www.youtube.com/watch?v=evM0iR5-BmU",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "gwB0gG0A6n8",
@@ -5140,7 +5140,7 @@
       "url": "https://www.youtube.com/watch?v=gwB0gG0A6n8",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "TV12Zdr5KjQ",
@@ -5155,7 +5155,7 @@
       "url": "https://www.youtube.com/watch?v=TV12Zdr5KjQ",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "6gcaKuWXdIY",
@@ -5170,7 +5170,7 @@
       "url": "https://www.youtube.com/watch?v=6gcaKuWXdIY",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "GoUVcGHPHYc",
@@ -5185,13 +5185,13 @@
       "url": "https://www.youtube.com/watch?v=GoUVcGHPHYc",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "lrT8R3iy0-U",
       "title": "淨利潤暴漲298%，兜裡卻沒錢了？谷歌、特斯拉自由現金流集體轉負！下游砸幾千億賭未來，上游已經把未來五年的錢鎖進口袋... #AI #美股 #科技股 #人工智能 #AI泡沫",
       "publishedAt": "2026-07-31T12:30:08Z",
-      "viewCount": 4392,
+      "viewCount": 4394,
       "likeCount": 210,
       "commentCount": 31,
       "durationSeconds": 653,
@@ -5200,7 +5200,7 @@
       "url": "https://www.youtube.com/watch?v=lrT8R3iy0-U",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "F5SBV2SQEVs",
@@ -5215,7 +5215,7 @@
       "url": "https://www.youtube.com/watch?v=F5SBV2SQEVs",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "ZRE1jIoyLr4",
@@ -5230,7 +5230,7 @@
       "url": "https://www.youtube.com/watch?v=ZRE1jIoyLr4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "EQny9wSti1k",
@@ -5245,7 +5245,7 @@
       "url": "https://www.youtube.com/watch?v=EQny9wSti1k",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "S7F8z9ldwYI",
@@ -5260,7 +5260,7 @@
       "url": "https://www.youtube.com/watch?v=S7F8z9ldwYI",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Hn0ODjLVgog",
@@ -5275,7 +5275,7 @@
       "url": "https://www.youtube.com/watch?v=Hn0ODjLVgog",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "-3vjrVD8Syw",
@@ -5290,7 +5290,7 @@
       "url": "https://www.youtube.com/watch?v=-3vjrVD8Syw",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "ySPGLMYvGl4",
@@ -5305,7 +5305,7 @@
       "url": "https://www.youtube.com/watch?v=ySPGLMYvGl4",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "_9vlW3e_icA",
@@ -5320,7 +5320,7 @@
       "url": "https://www.youtube.com/watch?v=_9vlW3e_icA",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "fj3waa3pLxU",
@@ -5335,7 +5335,7 @@
       "url": "https://www.youtube.com/watch?v=fj3waa3pLxU",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "_wgMtQPRnFA",
@@ -5350,7 +5350,7 @@
       "url": "https://www.youtube.com/watch?v=_wgMtQPRnFA",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "Eg-S9mPh_Ng",
@@ -5365,7 +5365,7 @@
       "url": "https://www.youtube.com/watch?v=Eg-S9mPh_Ng",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "buJY2gcC-gc",
@@ -5380,7 +5380,7 @@
       "url": "https://www.youtube.com/watch?v=buJY2gcC-gc",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "tJgioa-E5V4",
@@ -5395,7 +5395,7 @@
       "url": "https://www.youtube.com/watch?v=tJgioa-E5V4",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "GtIk6tMPYzM",
@@ -5410,7 +5410,7 @@
       "url": "https://www.youtube.com/watch?v=GtIk6tMPYzM",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "KZX5Ws4ihNM",
@@ -5425,7 +5425,7 @@
       "url": "https://www.youtube.com/watch?v=KZX5Ws4ihNM",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "55SiuFEOF9Q",
@@ -5440,7 +5440,7 @@
       "url": "https://www.youtube.com/watch?v=55SiuFEOF9Q",
       "channelId": "UCMM38YQdOaUiXMFlWzbRlXw",
       "channel": "Amber聊財",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "efIOo06Boto",
@@ -5470,7 +5470,7 @@
       "url": "https://www.youtube.com/watch?v=272_krqVK58",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "jBbrYqMiym4",
@@ -5515,7 +5515,7 @@
       "url": "https://www.youtube.com/watch?v=0jctFcp8w6c",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "FXM3SSbS-2Y",
@@ -5530,7 +5530,7 @@
       "url": "https://www.youtube.com/watch?v=FXM3SSbS-2Y",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "btAUTcy_NUw",
@@ -5560,7 +5560,7 @@
       "url": "https://www.youtube.com/watch?v=XQQXUpIePZo",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "A4hUHFc5u3Y",
@@ -5590,7 +5590,7 @@
       "url": "https://www.youtube.com/watch?v=7SIfu1RGvC0",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "x8xu6GFG6bk",
@@ -5620,7 +5620,7 @@
       "url": "https://www.youtube.com/watch?v=9GBMh3c48RY",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "v7Mj9w1GCaA",
@@ -5710,7 +5710,7 @@
       "url": "https://www.youtube.com/watch?v=V40hWyGBemQ",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "cTPMhN43NuY",
@@ -5770,7 +5770,7 @@
       "url": "https://www.youtube.com/watch?v=dtH317ITN6o",
       "channelId": "UCsWtmTG0UkpuGeeAno4jiGQ",
       "channel": "小鹿財經 Deer Finance",
-      "observedAt": "2026-09-30T14:08:01Z"
+      "observedAt": "2026-09-30T14:08:46Z"
     },
     {
       "id": "xLlqwZcvL6c",
