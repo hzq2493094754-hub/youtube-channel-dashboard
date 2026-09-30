@@ -219,8 +219,8 @@ function drawLineChart(targetId, series, metricLabel, detailSeries = series) {
     const key = list[0].point.key;
     const detail = list.map(({ row, point }) => {
       const videos = detailsFor(row, key);
-      const kinds = videos.reduce((acc, video) => { acc[videoClass(video)] += 1; return acc; }, { long: 0, short: 0, live: 0 });
-      const summary = state.trendMetric === "uploads" ? `${videos.length} 条视频 · 长 ${kinds.long} / 短 ${kinds.short} / 直播 ${kinds.live}` : videos.length ? `${videos.length} 条视频 · ${videos.slice(0, 2).map((video) => video.title).join(" · ")}` : "当天没有可展开的视频明细";
+      const kinds = uploadSplit(videos);
+      const summary = state.trendMetric === "uploads" ? `${videos.length} 条视频 · 长 ${kinds.long} / 短 ${kinds.short}${kinds.other ? ` / 其他 ${kinds.other}` : ""}` : videos.length ? `${videos.length} 条视频 · ${videos.slice(0, 2).map((video) => video.title).join(" · ")}` : "当天没有可展开的视频明细";
       return `<div class="trend-tooltip-row"><span><i style="background:${row.color}"></i>${esc(row.name)}</span><b>${fmt(point.value)}</b><small>${esc(summary)}</small></div>`;
     }).join("");
     tip.innerHTML = `<strong>${key} · ${esc(metricLabel)}</strong>${detail}`;
@@ -244,7 +244,19 @@ function drawLineChart(targetId, series, metricLabel, detailSeries = series) {
   svg.addEventListener("pointerleave", () => { tip.hidden = true; crosshair.hidden = true; target.querySelectorAll(".trend-point").forEach((dot) => dot.classList.remove("is-nearest")); });
 }
 
-function videoClass(video) { if (video.liveBroadcastContent === "live" || video.liveBroadcastContent === "upcoming") return "live"; if (number(video.durationSeconds) != null && Number(video.durationSeconds) <= 180) return "short"; return "long"; }
+function videoClass(video) {
+  if (video.liveBroadcastContent === "live" || video.liveBroadcastContent === "upcoming" || number(video.durationSeconds) == null) return "other";
+  const title = String(video.title || "");
+  return /(?:^|\s)#shorts?\b/i.test(title) || Number(video.durationSeconds) <= 180 ? "short" : "long";
+}
+
+function uploadSplit(videos) {
+  return videos.reduce((split, video) => {
+    split[videoClass(video)] += 1;
+    split.total += 1;
+    return split;
+  }, { long: 0, short: 0, other: 0, total: 0 });
+}
 function metricTotal(channel, period, metric) { if (metric === "subscribers") return subscriberDelta(channel, period); return videosFor(channel.id, period).reduce((sum, video) => sum + valueForMetric(video, metric), 0); }
 
 function renderBreakdown(series, metricLabel) {
@@ -259,19 +271,26 @@ function renderBreakdown(series, metricLabel) {
     return;
   }
   const chosen = state.trendAllMode ? data.channels : data.channels.filter((channel) => state.trendChannels.has(channel.id));
-  const rows = chosen.map((channel) => ({ channel, value: metricTotal(channel, period, metric) })).sort((a, b) => (number(b.value) || -Infinity) - (number(a.value) || -Infinity));
+  const rows = chosen.map((channel) => {
+    const videos = videosFor(channel.id, period);
+    return { channel, value: metricTotal(channel, period, metric), videos, split: uploadSplit(videos) };
+  }).sort((a, b) => (number(b.value) || -Infinity) - (number(a.value) || -Infinity));
   const maximum = Math.max(1, ...rows.map((row) => Math.abs(number(row.value) || 0)));
   target.innerHTML = `<div class="breakdown-bars">${rows.map((row) => {
     const width = Math.abs(number(row.value) || 0) / maximum * 100;
-    const videos = videosFor(row.channel.id, period);
-    const groups = videos.reduce((map, video) => { const key = videoClass(video); map[key] = (map[key] || 0) + 1; return map; }, { long: 0, short: 0, live: 0 });
     const stack = metric === "uploads"
-      ? `<span class="bar-track stacked"><i style="width:${width * groups.long / Math.max(1, videos.length)}%;background:#5f9c91"></i><i style="width:${width * groups.short / Math.max(1, videos.length)}%;background:#c6a96a"></i><i style="width:${width * groups.live / Math.max(1, videos.length)}%;background:#c98d72"></i></span>`
+      ? `<span class="bar-track stacked upload-stack" role="img" aria-label="${esc(row.channel.name)}：长视频 ${row.split.long} 条，Shorts ${row.split.short} 条${row.split.other ? `，其他 ${row.split.other} 条` : ""}"><i class="upload-segment upload-segment--long" style="width:${width * row.split.long / Math.max(1, row.split.total)}%"></i><i class="upload-segment upload-segment--short" style="width:${width * row.split.short / Math.max(1, row.split.total)}%"></i>${row.split.other ? `<i class="upload-segment upload-segment--other" style="width:${width * row.split.other / Math.max(1, row.split.total)}%"></i>` : ""}</span>`
       : `<span class="bar-track"><span style="width:${width}%;background:${row.channel.color || COLORS[data.channels.indexOf(row.channel) % COLORS.length]}"></span></span>`;
-    return `<div class="metric-bar-row"><a class="metric-bar-channel" href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a>${stack}<b class="metric-bar-value">${exact(row.value)}</b></div>`;
+    const value = metric === "uploads"
+      ? `<span class="metric-bar-value update-value"><b>${exact(row.split.total)} 条</b><small>长 ${row.split.long} · 短 ${row.split.short}${row.split.other ? ` · 其他 ${row.split.other}` : ""}</small></span>`
+      : `<b class="metric-bar-value">${exact(row.value)}</b>`;
+    return `<div class="metric-bar-row${metric === "uploads" ? " is-upload-breakdown" : ""}"><a class="metric-bar-channel" href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a>${stack}${value}</div>`;
   }).join("")}</div>`;
-  $("breakdownLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot" style="background:#5f9c91"></i>长视频</span><span><i class="series-dot" style="background:#c6a96a"></i>短视频</span><span><i class="series-dot" style="background:#c98d72"></i>直播</span>` : "";
-  $("breakdownNote").textContent = `${periodName(period)} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
+  const hasOtherUploads = rows.some((row) => row.split.other > 0);
+  $("breakdownLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot upload-long-dot"></i>长视频</span><span><i class="series-dot upload-short-dot"></i>短视频</span>${hasOtherUploads ? `<span><i class="series-dot upload-other-dot"></i>其他</span>` : ""}` : "";
+  $("breakdownNote").textContent = metric === "uploads"
+    ? `${periodName(period)} · ${rows.length} 个频道 · 带 #Shorts 标记或时长不超过 3 分钟归为短视频，其余为长视频；直播、待播或缺少时长的项目仅计入总数。`
+    : `${periodName(period)} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
 }
 
 function renderTrend() {
