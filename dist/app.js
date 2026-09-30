@@ -5,12 +5,13 @@ const integer = new Intl.NumberFormat("zh-HK", { maximumFractionDigits: 0 });
 const dateTime = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
 const dateOnly = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit" });
 let data = { channels: [], catalog: [], generatedAt: null };
-const state = { subscriberPeriod: "7", viewsPeriod: "7", trendPeriod: "7", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set() };
+const state = { subscriberPeriod: "7", viewsPeriod: "7", trendPeriod: "7", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true };
 
 const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 const number = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
 const fmt = (value) => number(value) == null ? "—" : compact.format(Number(value));
 const exact = (value) => number(value) == null ? "—" : integer.format(Number(value));
+const signedExact = (value) => number(value) == null ? "—" : `${Number(value) > 0 ? "+" : ""}${exact(value)}`;
 const signedPercent = (value) => `${Number(value) > 0 ? "+" : ""}${Number(value).toFixed(2)}%`;
 const at = (value) => new Date(value).getTime();
 const asOf = () => at(data.generatedAt) || Date.now();
@@ -184,11 +185,28 @@ function channelSeries(channel, keys, period, metric) {
   return { id: channel.id, name: channel.name, color: COLORS[data.channels.findIndex((item) => item.id === channel.id) % COLORS.length], points: keys.map((key) => ({ key, value: values.get(key) })) };
 }
 
+function subscriberGrowthSeries(channel, keys, period) {
+  const history = channelHistory(channel).filter((row) => number(row.subscriberCount) != null).sort((a, b) => at(a.observedAt) - at(b.observedAt));
+  const base = baseline(channel, period);
+  const baseValue = number(base?.subscriberCount);
+  if (baseValue == null) return { id: channel.id, name: channel.name, color: COLORS[data.channels.findIndex((item) => item.id === channel.id) % COLORS.length], points: keys.map((key) => ({ key, value: null })), baseValue: null, currentValue: number(channel.subscriberCount), startedAt: null };
+  const baseTime = at(base.observedAt), baseKey = day(base.observedAt);
+  const dailySamples = new Map();
+  history.filter((row) => at(row.observedAt) >= baseTime).forEach((row) => dailySamples.set(day(row.observedAt), Number(row.subscriberCount)));
+  let latest = null;
+  const points = keys.map((key) => {
+    if (key === baseKey) latest = baseValue;
+    else if (dailySamples.has(key)) latest = dailySamples.get(key);
+    return { key, value: latest == null ? null : latest - baseValue };
+  });
+  return { id: channel.id, name: channel.name, color: COLORS[data.channels.findIndex((item) => item.id === channel.id) % COLORS.length], points, baseValue, currentValue: number(channel.subscriberCount), startedAt: base.observedAt };
+}
+
 function aggregateSeries(series, keys, label) {
   return { id: "aggregate", name: label, color: COLORS[0], points: keys.map((key, index) => ({ key, value: series.reduce((sum, row) => sum + (number(row.points[index]?.value) || 0), 0) })) };
 }
 
-function drawLineChart(targetId, series, metricLabel, detailSeries = series) {
+function drawLineChart(targetId, series, metricLabel, detailSeries = series, tooltipSummary = null) {
   const target = $(targetId);
   const points = series.flatMap((row) => row.points).filter((row) => number(row.value) != null);
   if (!points.length) { target.innerHTML = `<div class="empty">暂无可用数据。</div>`; return; }
@@ -220,7 +238,7 @@ function drawLineChart(targetId, series, metricLabel, detailSeries = series) {
     const detail = list.map(({ row, point }) => {
       const videos = detailsFor(row, key);
       const kinds = uploadSplit(videos);
-      const summary = state.trendMetric === "uploads" ? `${videos.length} 条视频 · 长 ${kinds.long} / 短 ${kinds.short}${kinds.other ? ` / 其他 ${kinds.other}` : ""}` : videos.length ? `${videos.length} 条视频 · ${videos.slice(0, 2).map((video) => video.title).join(" · ")}` : "当天没有可展开的视频明细";
+      const summary = tooltipSummary ? tooltipSummary(row, point, key) : state.trendMetric === "uploads" ? `${videos.length} 条视频 · 长 ${kinds.long} / 短 ${kinds.short}${kinds.other ? ` / 其他 ${kinds.other}` : ""}` : videos.length ? `${videos.length} 条视频 · ${videos.slice(0, 2).map((video) => video.title).join(" · ")}` : "当天没有可展开的视频明细";
       return `<div class="trend-tooltip-row"><span><i style="background:${row.color}"></i>${esc(row.name)}</span><b>${fmt(point.value)}</b><small>${esc(summary)}</small></div>`;
     }).join("");
     tip.innerHTML = `<strong>${key} · ${esc(metricLabel)}</strong>${detail}`;
@@ -323,7 +341,27 @@ function renderInventory() {
   $("allVideosList").innerHTML = rows.length ? rows.map((row) => `<li><a class="video-link" href="${esc(row.url)}" target="_blank" rel="noopener noreferrer">${videoThumb(row)}<span class="video-copy"><strong>${esc(row.title)}</strong><span class="video-meta"><b>${esc(row.channel)}</b><time>${time(row.publishedAt)}</time></span></span><span class="views-cell"><b>${exact(row.viewCount)}</b><small>次播放</small></span></a></li>`).join("") : `<li class="empty">所选频道在该时间窗口内暂无已采集视频。</li>`;
 }
 
-function render() { renderSubscribers(); renderViews(); renderUpdates(); renderTrend(); renderInventory(); }
+function renderSubscriberGrowth() {
+  const period = state.subscriberGrowthPeriod;
+  const selected = state.subscriberGrowthAllMode ? data.channels : data.channels.filter((channel) => state.subscriberGrowthChannels.has(channel.id));
+  const keys = rangeKeys(period, "subscribers");
+  const series = selected.filter((channel) => number(channel.subscriberCount) != null).map((channel) => subscriberGrowthSeries(channel, keys, period));
+  const populated = series.filter((row) => row.points.some((point) => number(point.value) != null));
+  const starts = populated.map((row) => row.startedAt).filter(Boolean).map(at);
+  $("subscriberGrowthPeriod").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === period)));
+  channelChoices("subscriberGrowthChannels", state.subscriberGrowthChannels, "subscriberGrowth", state.subscriberGrowthAllMode);
+  $("subscriberGrowthDescription").textContent = `${periodName(period)} · 每条折线以该频道窗口内首个可用公开订阅快照为 0，展示之后的净变化。`;
+  drawLineChart("subscriberGrowthChart", populated, "订阅净变化", populated, (row, point) => `订阅净变化 ${signedExact(point.value)} · 当前公开订阅 ${exact(row.currentValue)}`);
+  $("subscriberGrowthLegend").innerHTML = populated.map((row) => {
+    const latest = [...row.points].reverse().find((point) => number(point.value) != null)?.value;
+    return `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)} <b>${signedExact(latest)} · 当前 ${exact(row.currentValue)}</b></span>`;
+  }).join("");
+  $("subscriberGrowthNote").textContent = populated.length
+    ? `${periodName(period)} · 已选择 ${selected.length} 个频道，其中 ${populated.length} 个有公开订阅快照；共同可比较记录自 ${day(Math.max(...starts))} 起。未采集日沿用最近一次公开快照。`
+    : `${periodName(period)} · 所选频道尚无可用的公开订阅历史快照。`;
+}
+
+function render() { renderSubscribers(); renderViews(); renderUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); }
 
 function bindControls() {
   document.addEventListener("click", (event) => {
@@ -336,21 +374,25 @@ function bindControls() {
     if (inGroup("breakdownMode")) { state.breakdownMode = button.dataset.value; renderTrend(); return; }
     if (inGroup("videoPeriod")) { state.videoPeriod = button.dataset.value; renderInventory(); return; }
     if (inGroup("videoSort")) { state.videoSort = button.dataset.value; renderInventory(); return; }
+    if (inGroup("subscriberGrowthPeriod")) { state.subscriberGrowthPeriod = button.dataset.value; renderSubscriberGrowth(); return; }
     const action = button.dataset.action; if (!action) return;
-    const [kind, value] = action.split(":"); const ids = allChannelIds(); const target = kind === "trend" ? state.trendChannels : state.videoChannels;
+    const [kind, value] = action.split(":"); const ids = allChannelIds(); const target = kind === "trend" ? state.trendChannels : kind === "subscriberGrowth" ? state.subscriberGrowthChannels : state.videoChannels;
     if (value === "all") {
       target.clear();
       if (kind === "trend") state.trendAllMode = true;
+      if (kind === "subscriberGrowth") state.subscriberGrowthAllMode = true;
     } else if (value === "select") {
       target.clear(); ids.forEach((id) => target.add(id));
       if (kind === "trend") state.trendAllMode = false;
+      if (kind === "subscriberGrowth") state.subscriberGrowthAllMode = false;
     } else {
       if (kind === "trend" && state.trendAllMode) { state.trendAllMode = false; target.clear(); }
+      if (kind === "subscriberGrowth" && state.subscriberGrowthAllMode) { state.subscriberGrowthAllMode = false; target.clear(); }
       if (target.has(value)) target.delete(value); else target.add(value);
     }
-    if (kind === "trend") renderTrend(); else renderInventory();
+    if (kind === "trend") renderTrend(); else if (kind === "subscriberGrowth") renderSubscriberGrowth(); else renderInventory();
   });
-  window.addEventListener("resize", () => { if (data.channels.length) renderTrend(); });
+  window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); } });
 }
 
 async function init() {
