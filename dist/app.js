@@ -160,6 +160,12 @@ function renderUpdates() {
   $("updatesNote").textContent = `近 7 日 · 共 ${total} 条更新 · 带 #Shorts 标记或时长不超过 3 分钟归为短视频；直播、待播或缺少时长的项目仅计入总数。`;
 }
 
+function renderRecentUpdates() {
+  const rows = data.catalog.filter((row) => at(row.publishedAt) >= periodStart("7") && at(row.publishedAt) <= asOf()).sort((a, b) => at(b.publishedAt) - at(a.publishedAt));
+  $("recentUpdatesCount").textContent = `${exact(rows.length)} 条 · 最近发布优先`;
+  $("recentUpdatesList").innerHTML = rows.length ? rows.map((row) => `<li><a class="update-link" href="${esc(row.url)}" target="_blank" rel="noopener noreferrer">${videoThumb(row)}<span class="video-copy"><strong>${esc(row.title)}</strong><span class="video-meta"><b>${esc(row.channel)}</b><time>${time(row.publishedAt)}</time><span>${exact(row.viewCount)} 次播放</span></span></span><span class="outbound">↗</span></a></li>`).join("") : `<li class="empty">近 7 日没有已采集的视频。</li>`;
+}
+
 function allChannelIds() { return data.channels.map((channel) => channel.id); }
 function channelChoices(targetId, selected, allAction, allMode = false) {
   const all = allChannelIds();
@@ -372,7 +378,7 @@ function renderSubscriberGrowth() {
     : `${periodName(period)} · 所选频道尚无可用的公开订阅历史快照。`;
 }
 
-function render() { renderSubscribers(); renderViews(); renderUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); }
+function render() { renderSubscribers(); renderViews(); renderUpdates(); renderRecentUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); }
 
 function bindControls() {
   document.addEventListener("click", (event) => {
