@@ -28,6 +28,9 @@ API_BASE = "https://www.googleapis.com/youtube/v3"
 RECENT_VIDEO_LIMIT = 50
 FULL_INVENTORY_INTERVAL = timedelta(days=7)
 MAX_AVATAR_BYTES = 450_000
+COMMENT_VIDEOS_PER_CHANNEL = 1
+COMMENT_MAX_RESULTS = 25
+COMMENT_REFRESH_INTERVAL = timedelta(hours=12)
 
 
 def iso_now() -> str:
@@ -122,6 +125,75 @@ def duration_seconds(value: Any) -> int | None:
     return hours * 3600 + minutes * 60 + seconds
 
 
+def parse_datetime(value: Any) -> datetime | None:
+    if not isinstance(value, str):
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def compact_video_history(rows: list[dict[str, Any]], published_at: Any, now: datetime) -> list[dict[str, Any]]:
+    """Preserve early video milestones while keeping the static JSON compact."""
+    published = parse_datetime(published_at)
+    valid = [row for row in rows if parse_datetime(row.get("observedAt"))]
+    if not valid:
+        return []
+    valid.sort(key=lambda row: row["observedAt"])
+    first = valid[0]
+    kept: dict[tuple[str, ...], dict[str, Any]] = {("first",): first}
+    for row in valid:
+        observed = parse_datetime(row["observedAt"])
+        if not observed:
+            continue
+        age = observed - (published or observed)
+        if age <= timedelta(days=2):
+            local = observed.astimezone(timezone(timedelta(hours=8)))
+            bucket = ("3h", local.date().isoformat(), str(local.hour // 3))
+        elif age <= timedelta(days=30):
+            bucket = ("day", observed.astimezone(timezone(timedelta(hours=8))).date().isoformat())
+        elif age <= timedelta(days=180):
+            local = observed.astimezone(timezone(timedelta(hours=8)))
+            year, week, _ = local.isocalendar()
+            bucket = ("week", str(year), str(week))
+        else:
+            local = observed.astimezone(timezone(timedelta(hours=8)))
+            bucket = ("month", str(local.year), str(local.month))
+        kept[bucket] = row
+    return sorted({row["observedAt"]: row for row in kept.values()}.values(), key=lambda row: row["observedAt"])
+
+
+def comment_samples(video_id: str) -> tuple[list[dict[str, Any]], str | None]:
+    """Fetch a bounded sample of public top-level comments without failing collection."""
+    try:
+        payload = api_get("commentThreads", part="snippet", videoId=video_id, maxResults=str(COMMENT_MAX_RESULTS), order="relevance", textFormat="plainText")
+    except RuntimeError as error:
+        return [], str(error)
+    samples = []
+    for thread in payload.get("items", []):
+        snippet = thread.get("snippet", {}).get("topLevelComment", {}).get("snippet", {})
+        text = str(snippet.get("textDisplay") or "").strip()
+        if text:
+            samples.append({"text": text, "likeCount": numeric(snippet.get("likeCount")) or 0, "publishedAt": snippet.get("publishedAt")})
+    return samples, None
+
+
+def comment_targets(videos: list[dict[str, Any]], catalog_by_id: dict[str, dict[str, Any]], now: datetime) -> set[str]:
+    """Limit public-comment calls to one due sample per channel per scheduled run."""
+    candidates = []
+    for video in videos:
+        if (numeric(video.get("commentCount")) or 0) <= 0:
+            continue
+        prior = catalog_by_id.get(video["id"], {})
+        sampled = parse_datetime(prior.get("commentSampledAt"))
+        if sampled and now - sampled < COMMENT_REFRESH_INTERVAL:
+            continue
+        candidates.append((sampled, video))
+    candidates.sort(key=lambda pair: (pair[0] is not None, pair[0] or datetime.min.replace(tzinfo=timezone.utc), -(parse_datetime(pair[1].get("publishedAt")) or now).timestamp()))
+    return {video["id"] for _, video in candidates[:COMMENT_VIDEOS_PER_CHANNEL]}
+
+
 def cache_avatar(url: str | None, fallback: str | None) -> str | None:
     """Embed a small channel avatar so the static dashboard has no fragile image dependency."""
     if not url:
@@ -169,6 +241,10 @@ def main() -> None:
     items: list[dict[str, Any]] = []
     for group in chunks(ids):
         items.extend(api_get("channels", part="snippet,statistics,contentDetails", id=",".join(group), maxResults="50").get("items", []))
+    try:
+        category_names = {row.get("id"): row.get("snippet", {}).get("title") for row in api_get("videoCategories", part="snippet", regionCode="TW").get("items", [])}
+    except RuntimeError:
+        category_names = {}
     channels_by_id = {item["id"]: item for item in items}
     output_channels = []
     for target in targets:
@@ -198,8 +274,26 @@ def main() -> None:
             if not video:
                 continue
             video_snippet, video_stats, video_content = video.get("snippet", {}), video.get("statistics", {}), video.get("contentDetails", {})
-            videos.append({"id": video_id, "title": video_snippet.get("title", "未命名视频"), "publishedAt": video_snippet.get("publishedAt"), "viewCount": numeric(video_stats.get("viewCount")), "likeCount": numeric(video_stats.get("likeCount")), "commentCount": numeric(video_stats.get("commentCount")), "durationSeconds": duration_seconds(video_content.get("duration")), "liveBroadcastContent": video_snippet.get("liveBroadcastContent"), "thumbnail": thumbnail(video), "url": f"https://www.youtube.com/watch?v={video_id}"})
+            category_id = video_snippet.get("categoryId")
+            videos.append({"id": video_id, "title": video_snippet.get("title", "未命名视频"), "publishedAt": video_snippet.get("publishedAt"), "viewCount": numeric(video_stats.get("viewCount")), "likeCount": numeric(video_stats.get("likeCount")), "commentCount": numeric(video_stats.get("commentCount")), "durationSeconds": duration_seconds(video_content.get("duration")), "liveBroadcastContent": video_snippet.get("liveBroadcastContent"), "tags": [str(tag) for tag in video_snippet.get("tags", []) if str(tag).strip()][:50], "categoryId": category_id, "categoryTitle": category_names.get(category_id), "thumbnail": thumbnail(video), "url": f"https://www.youtube.com/watch?v={video_id}"})
         videos.sort(key=lambda row: row.get("publishedAt") or "", reverse=True)
+        comment_video_ids = comment_targets(videos, catalog_by_id, now)
+        for video in videos:
+            prior_video = catalog_by_id.get(video["id"], {})
+            metrics = [{"observedAt": row.get("observedAt"), "viewCount": numeric(row.get("viewCount")), "likeCount": numeric(row.get("likeCount")), "commentCount": numeric(row.get("commentCount"))} for row in prior_video.get("metricHistory", [])]
+            metrics.append({"observedAt": observed_at, "viewCount": video.get("viewCount"), "likeCount": video.get("likeCount"), "commentCount": video.get("commentCount")})
+            video["metricHistory"] = compact_video_history(metrics, video.get("publishedAt"), now)
+            if video["id"] in comment_video_ids:
+                samples, sample_error = comment_samples(video["id"])
+                video["commentSamples"] = samples
+                video["commentSampledAt"] = observed_at
+                if sample_error:
+                    video["commentSampleError"] = sample_error
+            else:
+                video["commentSamples"] = prior_video.get("commentSamples", [])
+                video["commentSampledAt"] = prior_video.get("commentSampledAt")
+                if prior_video.get("commentSampleError"):
+                    video["commentSampleError"] = prior_video["commentSampleError"]
         if full_inventory:
             present_ids = {video["id"] for video in videos}
             catalog_by_id = {video_id: row for video_id, row in catalog_by_id.items() if row.get("channelId") != target["id"] or video_id in present_ids}
@@ -224,3 +318,4 @@ if __name__ == "__main__":
     except Exception as error:
         print(f"collector failed: {error}", file=sys.stderr)
         raise
+
