@@ -5,7 +5,7 @@ const integer = new Intl.NumberFormat("zh-HK", { maximumFractionDigits: 0 });
 const dateTime = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
 const dateOnly = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit" });
 let data = { channels: [], catalog: [], generatedAt: null };
-const state = { subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "7", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true };
+const state = { subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true };
 
 const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 const number = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
@@ -151,7 +151,7 @@ function renderUpdates() {
   const maximum = Math.max(1, ...rows.map((row) => row.split.total));
   const hasOther = rows.some((row) => row.split.other > 0);
   const total = rows.reduce((sum, row) => sum + row.split.total, 0);
-  $("updateCount").textContent = `近 7 日 · ${rows.length} 个频道`;
+  $("updateCount").textContent = `近 7 日 · ${rows.length} 个频道 · 共 ${exact(total)} 条更新`;
   $("updatesChart").innerHTML = rows.length ? rows.map((row) => {
     const width = row.split.total / maximum * 100;
     return `<div class="channel-update-row"><a class="channel-update-name" href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a><span class="channel-update-track" role="img" aria-label="${esc(row.channel.name)}：共 ${row.split.total} 条更新，长视频 ${row.split.long} 条，Shorts ${row.split.short} 条${row.split.other ? `，其他 ${row.split.other} 条` : ""}"><i class="upload-segment upload-segment--long" style="width:${width * row.split.long / Math.max(1, row.split.total)}%"></i><i class="upload-segment upload-segment--short" style="width:${width * row.split.short / Math.max(1, row.split.total)}%"></i>${row.split.other ? `<i class="upload-segment upload-segment--other" style="width:${width * row.split.other / Math.max(1, row.split.total)}%"></i>` : ""}</span><span class="channel-update-value"><b>${exact(row.split.total)} 条</b><small>长 ${row.split.long} · 短 ${row.split.short}${row.split.other ? ` · 其他 ${row.split.other}` : ""}</small></span></div>`;
