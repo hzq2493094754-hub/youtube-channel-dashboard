@@ -539,7 +539,12 @@ function benchmarkChannelIds() { return data.benchmarks.map((channel) => channel
 function benchmarkChannelChoices(targetId, selected, action, allMode = false) {
   const ids = benchmarkChannelIds();
   const allSelected = selected.size === ids.length;
-  $(targetId).innerHTML = `<button type="button" data-action="${action}:all" aria-pressed="${allMode}">全部频道</button><button type="button" data-action="${action}:select" aria-pressed="${!allMode && allSelected}">全选</button>${data.benchmarks.map((channel) => `<button class="channel-choice" type="button" aria-label="${esc(channel.name)}" data-action="${action}:${esc(channel.id)}" aria-pressed="${!allMode && selected.has(channel.id)}">${avatar(channel)}<span>${esc(channel.name)}</span></button>`).join("")}`;
+  const selectedRows = allMode ? [] : data.benchmarks.filter((channel) => selected.has(channel.id));
+  const selectionLabel = allMode ? `全部频道 · ${exact(ids.length)} 个` : selectedRows.length ? `已选 ${exact(selectedRows.length)} 个` : "未选择频道";
+  const selectionDetail = allMode ? "汇总全部对标账号" : selectedRows.slice(0, 2).map((channel) => channel.name).join("、") + (selectedRows.length > 2 ? ` 等 ${exact(selectedRows.length)} 个` : "");
+  const target = $(targetId);
+  target.className = "choice-buttons benchmark-compact-choices";
+  target.innerHTML = `<div class="benchmark-compact-filter"><details class="benchmark-picker"><summary><span class="benchmark-picker-summary"><span class="benchmark-picker-label">频道筛选</span><b>${esc(selectionLabel)}</b><small>${esc(selectionDetail)}</small></span><span class="benchmark-picker-trigger">筛选 <i>⌄</i></span></summary><div class="benchmark-picker-panel"><label class="benchmark-search"><span>⌕</span><input type="search" data-benchmark-search placeholder="搜索频道名称" autocomplete="off" aria-label="搜索对标频道"></label><div class="benchmark-picker-actions"><button type="button" data-action="${action}:all" aria-pressed="${allMode}">全部频道</button><button type="button" data-action="${action}:select" aria-pressed="${!allMode && allSelected}">全选</button><span data-benchmark-search-count>${exact(ids.length)} 个账号</span></div><div class="benchmark-picker-list">${data.benchmarks.map((channel) => `<button class="channel-choice" type="button" aria-label="${esc(channel.name)}" data-action="${action}:${esc(channel.id)}" aria-pressed="${!allMode && selected.has(channel.id)}">${avatar(channel)}<span>${esc(channel.name)}</span></button>`).join("")}</div></div></details></div>`;
 }
 
 function benchmarkRangeKeys(period, metric = "subscribers") {
@@ -621,17 +626,25 @@ function renderBenchmarkSubscriberGrowth() {
   const keys = benchmarkRangeKeys(period);
   const series = selected.filter((channel) => number(channel.subscriberCount) != null).map((channel) => benchmarkSubscriberGrowthSeries(channel, keys, period));
   const populated = series.filter((row) => row.points.some((point) => number(point.value) != null));
-  const starts = populated.map((row) => row.startedAt).filter(Boolean).map(at);
+  const visibleLimit = state.benchmarkSubscriberGrowthAllMode ? 8 : 12;
+  const ranked = [...populated].sort((a, b) => {
+    const aGrowth = Math.max(...a.points.map((point) => Math.abs(number(point.value) || 0)));
+    const bGrowth = Math.max(...b.points.map((point) => Math.abs(number(point.value) || 0)));
+    return bGrowth - aGrowth || (number(b.currentValue) || 0) - (number(a.currentValue) || 0);
+  });
+  const visibleSeries = ranked.slice(0, visibleLimit);
+  const omitted = Math.max(0, populated.length - visibleSeries.length);
+  const starts = visibleSeries.map((row) => row.startedAt).filter(Boolean).map(at);
   $("benchmarkSubscriberGrowthPeriod").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === period)));
   benchmarkChannelChoices("benchmarkSubscriberGrowthChannels", state.benchmarkSubscriberGrowthChannels, "benchmarkSubscriberGrowth", state.benchmarkSubscriberGrowthAllMode);
-  $("benchmarkSubscriberGrowthDescription").textContent = `${periodName(period)} · 每条折线以该账号窗口内首个可用公开订阅快照为 0，展示之后的净变化。`;
-  drawLineChart("benchmarkSubscriberGrowthChart", populated, "订阅净变化", populated, (row, point) => `订阅净变化 ${signedExact(point.value)} · 当前公开订阅 ${exact(row.currentValue)}`);
-  $("benchmarkSubscriberGrowthLegend").innerHTML = populated.map((row) => {
+  $("benchmarkSubscriberGrowthDescription").textContent = omitted ? `${periodName(period)} · 默认展示订阅变化最显著的 ${visibleSeries.length} 个账号；可通过上方筛选查看其他账号。` : `${periodName(period)} · 每条折线以该账号窗口内首个可用公开订阅快照为 0，展示之后的净变化。`;
+  drawLineChart("benchmarkSubscriberGrowthChart", visibleSeries, "订阅净变化", visibleSeries, (row, point) => `订阅净变化 ${signedExact(point.value)} · 当前公开订阅 ${exact(row.currentValue)}`);
+  $("benchmarkSubscriberGrowthLegend").innerHTML = visibleSeries.map((row) => {
     const latest = [...row.points].reverse().find((point) => number(point.value) != null)?.value;
     return `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)} <b>${signedExact(latest)} · 当前 ${exact(row.currentValue)}</b></span>`;
-  }).join("");
-  $("benchmarkSubscriberGrowthNote").textContent = populated.length
-    ? `${periodName(period)} · 已选择 ${selected.length} 个账号，其中 ${populated.length} 个有公开订阅快照；共同可比较记录自 ${day(Math.max(...starts))} 起。未采集日沿用最近一次公开快照。`
+  }).join("") + (omitted ? `<span class="legend-summary">另 ${exact(omitted)} 个账号可通过筛选查看</span>` : "");
+  $("benchmarkSubscriberGrowthNote").textContent = visibleSeries.length
+    ? `${periodName(period)} · ${omitted ? `已选 ${selected.length} 个账号，图中展示 ${visibleSeries.length} 个。` : `已选择 ${selected.length} 个账号。`} 共同可比较记录自 ${day(Math.max(...starts))} 起。未采集日沿用最近一次公开快照。`
     : `${periodName(period)} · 所选账号尚无可用的公开订阅历史快照。`;
 }
 
@@ -661,10 +674,14 @@ function benchmarkTooltipSummary(metric, row, key) {
 function renderBenchmarkBreakdown(series, metricLabel) {
   const period = state.benchmarkTrendPeriod, metric = state.benchmarkTrendMetric;
   const target = $("benchmarkBreakdownBarChart");
-  $("benchmarkBreakdownLineTitle").textContent = `各频道折线 · ${metricLabel}`;
-  drawLineChart("benchmarkBreakdownLineChart", series, metricLabel, series, (row, point, key) => benchmarkTooltipSummary(metric, row, key), data.benchmarkCatalog);
-  $("benchmarkBreakdownLineLegend").innerHTML = series.map((row) => `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)}</span>`).join("");
-  $("benchmarkBreakdownLineNote").textContent = `${periodName(period)} · ${series.length} 个频道 · 按发布日期每日求和，并非当日新增量。`;
+  const visibleLimit = state.benchmarkTrendAllMode ? 8 : 12;
+  const rankedSeries = [...series].sort((a, b) => b.points.reduce((sum, point) => sum + Math.abs(number(point.value) || 0), 0) - a.points.reduce((sum, point) => sum + Math.abs(number(point.value) || 0), 0));
+  const visibleSeries = rankedSeries.slice(0, visibleLimit);
+  const omittedSeries = Math.max(0, series.length - visibleSeries.length);
+  $("benchmarkBreakdownLineTitle").textContent = `各频道折线 · ${metricLabel}${omittedSeries ? ` · 前 ${visibleSeries.length}` : ""}`;
+  drawLineChart("benchmarkBreakdownLineChart", visibleSeries, metricLabel, visibleSeries, (row, point, key) => benchmarkTooltipSummary(metric, row, key), data.benchmarkCatalog);
+  $("benchmarkBreakdownLineLegend").innerHTML = visibleSeries.map((row) => `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)}</span>`).join("") + (omittedSeries ? `<span class="legend-summary">另 ${exact(omittedSeries)} 个账号已纳入总和</span>` : "");
+  $("benchmarkBreakdownLineNote").textContent = omittedSeries ? `${periodName(period)} · 默认展示指标最高的 ${visibleSeries.length} 个账号；其余 ${exact(omittedSeries)} 个账号已纳入左侧总和。` : `${periodName(period)} · ${series.length} 个频道 · 按发布日期每日求和，并非当日新增量。`;
   $("benchmarkBreakdownBarTitle").textContent = `各频道柱状 · ${metricLabel}`;
   const chosen = state.benchmarkTrendAllMode ? data.benchmarks : data.benchmarks.filter((channel) => state.benchmarkTrendChannels.has(channel.id));
   const rows = chosen.map((channel) => {
@@ -672,8 +689,9 @@ function renderBenchmarkBreakdown(series, metricLabel) {
     const value = metric === "subscribers" ? subscriberDelta(channel, period) : videos.reduce((sum, video) => sum + valueForMetric(video, metric), 0);
     return { channel, value, videos, split: uploadSplit(videos) };
   }).sort((a, b) => (number(b.value) || -Infinity) - (number(a.value) || -Infinity));
-  const maximum = Math.max(1, ...rows.map((row) => Math.abs(number(row.value) || 0)));
-  target.innerHTML = `<div class="breakdown-bars">${rows.map((row) => {
+  const visibleRows = rows.slice(0, visibleLimit);
+  const maximum = Math.max(1, ...visibleRows.map((row) => Math.abs(number(row.value) || 0)));
+  target.innerHTML = `<div class="breakdown-bars">${visibleRows.map((row) => {
     const width = Math.abs(number(row.value) || 0) / maximum * 100;
     const stack = metric === "uploads"
       ? `<span class="bar-track stacked upload-stack" role="img" aria-label="${esc(row.channel.name)}：长视频 ${row.split.long} 条，Shorts ${row.split.short} 条${row.split.other ? `，其他 ${row.split.other} 条` : ""}"><i class="upload-segment upload-segment--long" style="width:${width * row.split.long / Math.max(1, row.split.total)}%"></i><i class="upload-segment upload-segment--short" style="width:${width * row.split.short / Math.max(1, row.split.total)}%"></i>${row.split.other ? `<i class="upload-segment upload-segment--other" style="width:${width * row.split.other / Math.max(1, row.split.total)}%"></i>` : ""}</span>`
@@ -683,11 +701,11 @@ function renderBenchmarkBreakdown(series, metricLabel) {
       : `<b class="metric-bar-value">${exact(row.value)}</b>`;
     return `<div class="metric-bar-row${metric === "uploads" ? " is-upload-breakdown" : ""}"><a class="metric-bar-channel" href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a>${stack}${value}</div>`;
   }).join("")}</div>`;
-  const hasOtherUploads = rows.some((row) => row.split.other > 0);
+  const hasOtherUploads = visibleRows.some((row) => row.split.other > 0);
   $("benchmarkBreakdownBarLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot upload-long-dot"></i>长视频</span><span><i class="series-dot upload-short-dot"></i>短视频</span>${hasOtherUploads ? `<span><i class="series-dot upload-other-dot"></i>其他</span>` : ""}` : "";
   $("benchmarkBreakdownBarNote").textContent = metric === "uploads"
-    ? `${periodName(period)} · ${rows.length} 个频道 · 带 #Shorts 标记或时长不超过 3 分钟归为短视频；直播、待播或缺少时长的项目仅计入总数。`
-    : `${periodName(period)} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
+    ? `${periodName(period)} · ${omittedSeries ? `展示前 ${visibleRows.length} 个账号；其余 ${exact(omittedSeries)} 个已纳入总和。` : `${rows.length} 个频道。`} 带 #Shorts 标记或时长不超过 3 分钟归为短视频。`
+    : `${periodName(period)} · ${omittedSeries ? `展示前 ${visibleRows.length} 个账号；其余 ${exact(omittedSeries)} 个已纳入总和。` : `${rows.length} 个频道。`} 柱状图合计窗口内发布视频的最近累计值。`;
 }
 
 function renderBenchmarkTrend() {
@@ -757,8 +775,11 @@ function renderBenchmarkInsights() {
     const interactions = videos.reduce((sum, video) => sum + (number(video.likeCount) || 0) + (number(video.commentCount) || 0), 0);
     return { channel, videos: videos.length, views, interactions, rate: views ? interactions / views * 1000 : null };
   }).filter((row) => row.rate != null).sort((a, b) => b.rate - a.rate || b.views - a.views);
-  const maxRate = Math.max(1, ...engagementRows.map((row) => row.rate));
-  $("benchmarkInsightEngagement").innerHTML = engagementRows.length ? engagementRows.map((row, index) => `<div class="insight-ranking-row"><span class="insight-rank">${index + 1}</span><a href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a><span class="insight-rate-track"><i style="width:${row.rate / maxRate * 100}%"></i></span><span class="insight-rate-value"><b>${row.rate.toFixed(1)}‰</b><small>${exact(row.interactions)} 次互动 · ${row.videos} 条</small></span></div>`).join("") : `<div class="empty">所选窗口内暂无可比较的播放与互动数据。</div>`;
+  const visibleEngagementRows = engagementRows.slice(0, 8);
+  const omittedEngagementRows = Math.max(0, engagementRows.length - visibleEngagementRows.length);
+  const maxRate = Math.max(1, ...visibleEngagementRows.map((row) => row.rate));
+  $("benchmarkInsightEngagement").innerHTML = visibleEngagementRows.length ? visibleEngagementRows.map((row, index) => `<div class="insight-ranking-row"><span class="insight-rank">${index + 1}</span><a href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a><span class="insight-rate-track"><i style="width:${row.rate / maxRate * 100}%"></i></span><span class="insight-rate-value"><b>${row.rate.toFixed(1)}‰</b><small>${exact(row.interactions)} 次互动 · ${row.videos} 条</small></span></div>`).join("") : `<div class="empty">所选窗口内暂无可比较的播放与互动数据。</div>`;
+  $("benchmarkInsightEngagementNote").textContent = omittedEngagementRows ? `互动率 =（点赞 + 评论）÷ 播放量；默认显示前 8 名，其余 ${exact(omittedEngagementRows)} 个账号可用上方筛选查看。` : "互动率 =（点赞 + 评论）÷ 播放量；用于横向比较公开互动密度，不代表观看时长或转化。";
 
   const split = uploadSplit(rows), total = Math.max(1, split.total);
   const mixPart = (label, count, kind) => `<span><i class="series-dot upload-${kind}-dot"></i><b>${label}</b><strong>${exact(count)} 条</strong><small>${(count / total * 100).toFixed(0)}%</small></span>`;
@@ -826,7 +847,6 @@ function renderBenchmarks() {
   renderBenchmarkUpdates();
   renderBenchmarkInsights();
   renderBenchmarkResearch();
-  renderBenchmarkSubscriberGrowth();
 }
 
 function setWorkspace(workspace) {
@@ -861,7 +881,6 @@ function bindControls() {
     if (inGroup("benchmarkVideoPeriod")) { state.benchmarkVideoPeriod = button.dataset.value; renderBenchmarkInventory(); return; }
     if (inGroup("benchmarkVideoSort")) { state.benchmarkVideoSort = button.dataset.value; renderBenchmarkInventory(); return; }
     if (inGroup("benchmarkInsightPeriod")) { state.benchmarkInsightPeriod = button.dataset.value; renderBenchmarkInsights(); renderBenchmarkResearch(); return; }
-    if (inGroup("benchmarkSubscriberGrowthPeriod")) { state.benchmarkSubscriberGrowthPeriod = button.dataset.value; renderBenchmarkSubscriberGrowth(); return; }
     if (inGroup("benchmarkTrendPeriod")) { state.benchmarkTrendPeriod = button.dataset.value; renderBenchmarkTrend(); return; }
     if (inGroup("benchmarkTrendMetric")) { state.benchmarkTrendMetric = button.dataset.value; renderBenchmarkTrend(); return; }
     if (inGroup("benchmarkBreakdownMode")) { state.benchmarkBreakdownMode = button.dataset.value; renderBenchmarkTrend(); return; }
@@ -899,7 +918,22 @@ function bindControls() {
     if (event.target?.id === "lifecycleVideo") { state.lifecycleVideoId = event.target.value || null; renderResearch(); }
     if (event.target?.id === "benchmarkLifecycleVideo") { state.benchmarkLifecycleVideoId = event.target.value || null; renderBenchmarkResearch(); }
   });
-  window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); renderResearch(); } if (data.benchmarks.length) { renderBenchmarkTrend(); renderBenchmarkResearch(); renderBenchmarkSubscriberGrowth(); } });
+  document.addEventListener("input", (event) => {
+    const input = event.target?.matches?.("[data-benchmark-search]") ? event.target : null;
+    if (!input) return;
+    const keyword = input.value.trim().toLocaleLowerCase();
+    const panel = input.closest(".benchmark-picker-panel");
+    const buttons = [...(panel?.querySelectorAll(".benchmark-picker-list .channel-choice") || [])];
+    let visible = 0;
+    buttons.forEach((button) => {
+      const matched = !keyword || button.textContent.toLocaleLowerCase().includes(keyword);
+      button.hidden = !matched;
+      if (matched) visible += 1;
+    });
+    const count = panel?.querySelector("[data-benchmark-search-count]");
+    if (count) count.textContent = keyword ? `匹配 ${exact(visible)} 个` : `${exact(buttons.length)} 个账号`;
+  });
+  window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); renderResearch(); } if (data.benchmarks.length) { renderBenchmarkTrend(); renderBenchmarkResearch(); } });
 }
 
 function normaliseGroup(sourceChannels, storedRows) {
@@ -928,7 +962,10 @@ async function init() {
     const owned = normaliseGroup(raw.channels, raw.videoCatalog || raw.catalog);
     const benchmarkRows = raw.benchmarks?.length ? raw.benchmarks : seedPayload.benchmarks || [];
     const benchmarks = normaliseGroup(benchmarkRows, raw.benchmarkVideoCatalog || raw.benchmarkCatalog);
-    data = { ...owned, benchmarks: benchmarks.channels, benchmarkCatalog: benchmarks.catalog, generatedAt: raw.generatedAt };
+    const ownedIds = new Set(owned.channels.map((channel) => channel.id));
+    const benchmarkChannels = benchmarks.channels.filter((channel) => !ownedIds.has(channel.id));
+    const benchmarkIds = new Set(benchmarkChannels.map((channel) => channel.id));
+    data = { ...owned, benchmarks: benchmarkChannels, benchmarkCatalog: benchmarks.catalog.filter((video) => benchmarkIds.has(video.channelId)), generatedAt: raw.generatedAt };
     bindControls(); render();
   } catch (error) { $("loadError").hidden = false; $("loadError").textContent = `数据加载失败：${error.message}`; }
 }
