@@ -82,18 +82,25 @@
         </div>
       </header>
       <div class="trend-charts">
-        <section class="trend-figure">
+      <div class="trend-charts">
+        <section class="trend-figure trend-figure--aggregate">
           <header class="figure-heading"><h3 id="aggregateTitle">全部频道总和</h3></header>
           <div id="trendChart" class="trend-chart"></div>
           <div id="trendLegend" class="trend-legend"></div>
         </section>
-        <section class="trend-figure breakdown-figure">
-          <header class="figure-heading"><h3 id="breakdownTitle">各频道数据 · 播放量</h3><div id="breakdownMode" class="choice-buttons breakdown-mode"><button data-value="bar" aria-pressed="true">▥ 柱状图</button><button data-value="line" aria-pressed="false">⌁ 折线图</button></div></header>
-          <div id="breakdownChart"></div>
-          <div id="breakdownLegend" class="trend-legend"></div>
-          <p id="breakdownNote" class="inventory-note"></p>
+        <section class="trend-figure breakdown-figure trend-figure--line">
+          <header class="figure-heading"><h3 id="breakdownLineTitle">各频道折线 · 播放量</h3></header>
+          <div id="breakdownLineChart" class="trend-chart"></div>
+          <div id="breakdownLineLegend" class="trend-legend"></div>
+          <p id="breakdownLineNote" class="inventory-note"></p>
         </section>
-      </div>
+        <section class="trend-figure breakdown-figure trend-figure--bar">
+          <header class="figure-heading"><h3 id="breakdownBarTitle">各频道柱状</h3></header>
+          <div id="breakdownBarChart"></div>
+          <div id="breakdownBarLegend" class="trend-legend"></div>
+          <p id="breakdownBarNote" class="inventory-note"></p>
+        </section>
+      </div></div>
     </section>
 
     <section id="contentInsightsPanel" class="panel insights-panel" aria-labelledby="insightsTitle">
@@ -201,18 +208,25 @@
           </div>
         </header>
         <div class="trend-charts">
-          <section class="trend-figure">
+        <div class="trend-charts">
+          <section class="trend-figure trend-figure--aggregate">
             <header class="figure-heading"><h3 id="benchmarkAggregateTitle">全部频道总和</h3></header>
             <div id="benchmarkTrendChart" class="trend-chart"></div>
             <div id="benchmarkTrendLegend" class="trend-legend"></div>
           </section>
-          <section class="trend-figure breakdown-figure">
-            <header class="figure-heading"><h3 id="benchmarkBreakdownTitle">各频道数据 · 播放量</h3><div id="benchmarkBreakdownMode" class="choice-buttons breakdown-mode"><button data-value="bar" aria-pressed="true">▥ 柱状图</button><button data-value="line" aria-pressed="false">⌁ 折线图</button></div></header>
-            <div id="benchmarkBreakdownChart"></div>
-            <div id="benchmarkBreakdownLegend" class="trend-legend"></div>
-            <p id="benchmarkBreakdownNote" class="inventory-note"></p>
+          <section class="trend-figure breakdown-figure trend-figure--line">
+            <header class="figure-heading"><h3 id="benchmarkBreakdownLineTitle">各频道折线 · 播放量</h3></header>
+            <div id="benchmarkBreakdownLineChart" class="trend-chart"></div>
+            <div id="benchmarkBreakdownLineLegend" class="trend-legend"></div>
+            <p id="benchmarkBreakdownLineNote" class="inventory-note"></p>
           </section>
-        </div>
+          <section class="trend-figure breakdown-figure trend-figure--bar">
+            <header class="figure-heading"><h3 id="benchmarkBreakdownBarTitle">各频道柱状</h3></header>
+            <div id="benchmarkBreakdownBarChart"></div>
+            <div id="benchmarkBreakdownBarLegend" class="trend-legend"></div>
+            <p id="benchmarkBreakdownBarNote" class="inventory-note"></p>
+          </section>
+        </div></div>
       </section>
 
       <section id="benchmarkContentInsightsPanel" class="panel insights-panel" aria-labelledby="benchmarkInsightsTitle">
