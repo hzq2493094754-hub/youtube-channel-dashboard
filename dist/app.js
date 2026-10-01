@@ -1,11 +1,29 @@
 const $ = (id) => document.getElementById(id);
-const COLORS = ["#c98d72", "#5f9c91", "#c6a96a", "#b97a85", "#778fb1", "#5b9eaf", "#9eaa76", "#967eb5", "#b87891", "#8c9aad", "#bda166", "#6aa59d"];
+const COLORS = ["#6f8ea6", "#8b7fa3", "#7f9c91", "#7699a0", "#8492ab", "#6d91aa", "#91969c", "#8aa7b2", "#a18496", "#7e91a7", "#b09a73", "#789c9a"];
 const compact = new Intl.NumberFormat("zh-HK", { notation: "compact", maximumFractionDigits: 1 });
 const integer = new Intl.NumberFormat("zh-HK", { maximumFractionDigits: 0 });
 const dateTime = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
 const dateOnly = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit" });
 let data = { channels: [], catalog: [], benchmarks: [], benchmarkCatalog: [], generatedAt: null };
 const state = { workspace: "owned", subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "7", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "7", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null, benchmarkSubscriberPeriod: "all", benchmarkViewsPeriod: "30", benchmarkVideoPeriod: "7", benchmarkVideoSort: "desc", benchmarkVideoChannels: new Set(), benchmarkInsightPeriod: "7", benchmarkInsightChannels: new Set(), benchmarkInsightAllMode: true, benchmarkLifecycleVideoId: null, benchmarkSubscriberGrowthPeriod: "all", benchmarkSubscriberGrowthChannels: new Set(), benchmarkSubscriberGrowthAllMode: true, benchmarkTrendPeriod: "30", benchmarkTrendMetric: "views", benchmarkTrendChannels: new Set(), benchmarkTrendAllMode: true, benchmarkBreakdownMode: "bar" };
+
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", isDark ? "#111820" : "#e8edf3");
+  const toggle = $("themeToggle");
+  if (!toggle) return;
+  toggle.setAttribute("aria-pressed", String(isDark));
+  toggle.setAttribute("aria-label", isDark ? "切换至白天模式" : "切换至夜间模式");
+  toggle.querySelector(".theme-toggle-icon").textContent = isDark ? "☀" : "☾";
+  toggle.querySelector(".theme-toggle-label").textContent = isDark ? "白天模式" : "夜间模式";
+}
+
+function initialiseTheme() {
+  let saved = null;
+  try { saved = localStorage.getItem("yt-dashboard-theme"); } catch (_) { /* Storage can be disabled by the browser. */ }
+  applyTheme(saved === "dark" ? "dark" : "light");
+}
 
 const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 const number = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
@@ -297,11 +315,11 @@ function metricTotal(channel, period, metric) { if (metric === "subscribers") re
 function renderBreakdown(series, metricLabel) {
   const period = state.trendPeriod, metric = state.trendMetric;
   const target = $("breakdownBarChart");
-  $("breakdownLineTitle").textContent = "各频道折线 · " + metricLabel;
+  $("breakdownLineTitle").textContent = `各频道折线 · ${metricLabel}`;
   drawLineChart("breakdownLineChart", series, metricLabel, series);
-  $("breakdownLineLegend").innerHTML = series.map((row) => '<span><i class="series-dot" style="background:' + row.color + '"></i>' + esc(row.name) + '</span>').join("");
-  $("breakdownLineNote").textContent = periodName(period) + " · " + series.length + " 个频道 · 按发布日期每日求和，并非当日新增量。";
-  $("breakdownBarTitle").textContent = "各频道柱状 · " + metricLabel;
+  $("breakdownLineLegend").innerHTML = series.map((row) => `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)}</span>`).join("");
+  $("breakdownLineNote").textContent = `${periodName(period)} · ${series.length} 个频道 · 按发布日期每日求和，并非当日新增量。`;
+  $("breakdownBarTitle").textContent = `各频道柱状 · ${metricLabel}`;
   const chosen = state.trendAllMode ? data.channels : data.channels.filter((channel) => state.trendChannels.has(channel.id));
   const rows = chosen.map((channel) => {
     const videos = videosFor(channel.id, period);
@@ -643,11 +661,11 @@ function benchmarkTooltipSummary(metric, row, key) {
 function renderBenchmarkBreakdown(series, metricLabel) {
   const period = state.benchmarkTrendPeriod, metric = state.benchmarkTrendMetric;
   const target = $("benchmarkBreakdownBarChart");
-  $("benchmarkBreakdownLineTitle").textContent = "各频道折线 · " + metricLabel;
+  $("benchmarkBreakdownLineTitle").textContent = `各频道折线 · ${metricLabel}`;
   drawLineChart("benchmarkBreakdownLineChart", series, metricLabel, series, (row, point, key) => benchmarkTooltipSummary(metric, row, key), data.benchmarkCatalog);
-  $("benchmarkBreakdownLineLegend").innerHTML = series.map((row) => '<span><i class="series-dot" style="background:' + row.color + '"></i>' + esc(row.name) + '</span>').join("");
-  $("benchmarkBreakdownLineNote").textContent = periodName(period) + " · " + series.length + " 个频道 · 按发布日期每日求和，并非当日新增量。";
-  $("benchmarkBreakdownBarTitle").textContent = "各频道柱状 · " + metricLabel;
+  $("benchmarkBreakdownLineLegend").innerHTML = series.map((row) => `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)}</span>`).join("");
+  $("benchmarkBreakdownLineNote").textContent = `${periodName(period)} · ${series.length} 个频道 · 按发布日期每日求和，并非当日新增量。`;
+  $("benchmarkBreakdownBarTitle").textContent = `各频道柱状 · ${metricLabel}`;
   const chosen = state.benchmarkTrendAllMode ? data.benchmarks : data.benchmarks.filter((channel) => state.benchmarkTrendChannels.has(channel.id));
   const rows = chosen.map((channel) => {
     const videos = benchmarkVideosFor(channel.id, period);
@@ -821,6 +839,11 @@ function setWorkspace(workspace) {
 function render() { renderSubscribers(); renderViews(); renderUpdates(); renderRecentUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); renderInsights(); renderResearch(); renderBenchmarks(); setWorkspace(state.workspace); }
 
 function bindControls() {
+  $("themeToggle")?.addEventListener("click", () => {
+    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(next);
+    try { localStorage.setItem("yt-dashboard-theme", next); } catch (_) { /* The visual switch still works without storage. */ }
+  });
   document.addEventListener("click", (event) => {
     const button = event.target.closest("button"); if (!button) return;
     if (button.dataset.workspace) { setWorkspace(button.dataset.workspace); return; }
@@ -893,6 +916,7 @@ function normaliseGroup(sourceChannels, storedRows) {
 }
 
 async function init() {
+  initialiseTheme();
   try {
     const [response, seedResponse] = await Promise.all([
       fetch("data/dashboard.json", { cache: "no-store" }),
