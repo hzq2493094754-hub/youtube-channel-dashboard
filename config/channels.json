@@ -39,36 +39,325 @@
   ],
   "benchmarks": [
     {
-      "label": "老雷财经",
-      "url": "https://www.youtube.com/@老雷讲财经"
+      "url": "https://www.youtube.com/channel/UCwbwyiCXO7EcS30Zcqu_K5A"
     },
     {
-      "label": "静姐财富经",
-      "url": "https://www.youtube.com/@Jingjiecaifujing"
+      "url": "https://www.youtube.com/channel/UCPOPbIgJnPyO1kwiycyi5Xw"
     },
     {
-      "label": "Ethan的美股笔记",
-      "url": "https://www.youtube.com/@EthanFinanceNote"
+      "url": "https://www.youtube.com/channel/UCvf_c9B7iL0x7aqdhxI4zRg"
     },
     {
-      "label": "阳光财经",
-      "url": "https://www.youtube.com/@SUNNYFINANCE"
+      "url": "https://www.youtube.com/channel/UC2I5em6UyBpQiO-8ZW0nV3w"
     },
     {
-      "label": "美股 炸裂股手",
-      "url": "https://www.youtube.com/@ZLGSKris"
+      "url": "https://www.youtube.com/channel/UCjlPLMYEsq0pjgLL1q24mSg"
     },
     {
-      "label": "邦妮區塊鏈 Bonnie Blockchain",
-      "url": "https://www.youtube.com/@BonnieBlockchain"
+      "url": "https://www.youtube.com/channel/UChYg2EINv5URVkebzlTGbFQ"
     },
     {
-      "label": "懒錢包 Lazy Wallet",
-      "url": "https://www.youtube.com/@TheLazyWallet"
+      "url": "https://www.youtube.com/channel/UCBUH38E0ngqvmTqdchWunwQ"
     },
     {
-      "label": "美投讲美股",
-      "url": "https://www.youtube.com/@MeiTouJun"
+      "url": "https://www.youtube.com/channel/UCYPT3wl0MgbOz63ho166KOw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC1mx_wcSHtfpLk5N_zY0TRg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC0lbAQVpenvfA2QqzsRtL_g"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC_whOg3XES3Fihic53fvo4Q"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCSXb506zUhJOS2r41_gTTAQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCK-qc_POQZwWrMg-Pr-oYtg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCo2gxyermsLBSCxFHvJs0Zg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCcQYrNiWlG7XQyooF4-b0iA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCFhJ8ZFg9W4kLwFTBBNIjOw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCFQsi7WaF5X41tcuOryDk8w"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCzM2jQWmoeTvpEw63x5Rsdg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCaIIFXfdQUYf3OHPIFNDdrQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC25CsqDNQv6CdzDq_hsazIw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCETuQf4lzTrfevoHdSGo8Ew"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCeTLfPD7thTMabtL7w87Aug"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC99pEneQfxE8Tg3uNa9QXEw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCk3xelRbKIPavMvYkYY98dw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCdwPn2TO60Ec8QDIFRx50lQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCWyPo32TSKPr8Py7gb7NhYw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCT3uWFvKLVpRnEealmRwvrw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCdTxhKgAELUs-dFRL8IYs1g"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCZ8uQ1mAm-ixl3zzFePcelQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCps9PAN_ZHD8IaTlI5yR6cA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCzTAEHQ9DAJxifHb2FCy-uA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UChkQqUGyk23wUbYSPa4tiZw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCIBKyyYZsr8lqbHWXj-GONw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC74Jk8SttQxRJakbtSL64PQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCvvLY6LcEfMWlpvBa3cLPBw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCZuj0RPlwgNf51xKKLeEjvw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCxLjaMzWcHCNnbbiVezLEYA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCuFCmTlAJM8dP57coJT0kqw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCL2JKimITPdd37tEzJrHPAg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC6K_jdAGqW0atmXrIG5Pthw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCrBkGEXO63rp7c8rlZVZ5TA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCgHSb3y8AAPAIkN_sP4iR4A"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCilwQlk62k1z7aUEZPOB6yw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UChfl3auNxAxOR3wy8a8ysQQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCdWNwPuaS1o2dIzugNMXWtw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCWMxmoBhchU3swFAciqagnw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCG_uX93skERZf3kIadGfU-A"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC55ahPQ7m5iJdVWcOfmuE6g"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCvj1qp0qh7VQY4Bz5VGdCVA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC1EG67JfgUKaZ4Z_l4euycw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCKazZ4Z7qb2Mzieb17Wdmtw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC4douYiP0O4ABtxoMuo9yNA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC9Q8KmHEHhDl_2LSiQNGLaQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCGpj3DO_5_TUDCNUgS9mjiQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCWNzVtz0t-e4jMKxaXqvfYA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCiBLyIFu3KjG2opa7uQHZbQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCBvFouJU54XDPl-MfdTWTNA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCVomjkM_t0EcctTWSE1Jvxg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC3GeULpLgXi1TNDAv0nyN5Q"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCv1A3TfyyeOg5q43J9pnpOw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC23rnlQU_qE3cec9x709peA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCnhChRhpGPBCCkgXtH343tw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCalPYf4c96yADeRPBIdHOxw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCfAcqaaxkb6LJkeOcKlbSJQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCJthBchDkrwSJKeJGymEJ0Q"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCQufQATeQPFNc75V7qDUjHQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCvWgTHmCsP2NP9brYfTMypw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC2x6Dy8O6JGHcyS27oAI4zg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCQB4EC3veH8RuCZXA6CimbA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCbhnnXYof5o5vEEyAtQSmdA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC9cfcOuTT9rYkyUimMjLxuw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCyckQMYsvusrVFzzB2MKYuw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCYeVndp1-Hv3LV_tGZEPfIw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCRy_bzi03Q0aYoDpPcQwIGw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCjuvy7VvwUGPtTnbpfYY1QQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCvt0UsNeasAbPujZ929jlaw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCBNiFkexNB37xCP7LYnDM0Q"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCYWrfIFckZ_su_G_XtF9LZA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCPgM9Mc_fHYoSz9iKzDaMMw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCPqyYS3n6yyXL2jygauXpzg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC7Ykax2jVVprg_P3vzvWBpw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCEdn4fm5YQAm-Z5pKl4QDxA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCrN_Xut9_10_6LWfp7s37YQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC9qLZ3IBLy6frYBfzOQgjqg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCDt0TPBLQMTpdi6UhXcJtMA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCoPdeuXtggl0lRo-72vGoyw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCN2e-SFJ9LdLdtJmssca8qg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCrvRFJUQQTamzhI62ccXGxQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCFRsDfBlETkcEhaCNxHvPkw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCg4-H4n8s0C7IWnLh7TFsbg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCIIcSp0vkdJLfTgElnY71YQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC4Svj9iQMpRTQGIfj7rgSGg"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UClCrbNUQUeykzwd5RCVrs3A"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCPiSlh2-zATwjj-cixqPi8Q"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCNd3EYfxOJ5h2ksY0hyMS7Q"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCDmmzz8LKWInHzbG3OQii-A"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCUzyRc77mAKkzrHFjDsEEVA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCPHCkq07H2gMBM015Nu9jxA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCtIxMD1Re1HkXWtO0MjBmew"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCQcuQh8vFKNiVikGjxa6yHw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCwHaukEX_qPfAsykNJXLp2A"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC4F6N_C61Xx1x-K9Y4kknSA"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCAcj4RJM-l_F-Mcynpo8I3A"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC9HM-HB8fX0VzBLQE1OnbMQ"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCA3ANBYHd6kVngAmjYNC0fw"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCBEhgq3VNI1kxWKsxXq8z8g"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCEDUHg0FGytPLZhVX8whusA"
     }
   ]
 }
