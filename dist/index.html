@@ -151,37 +151,122 @@
     </section>
     </div>
 
-    <section id="benchmarkWorkspace" class="workspace benchmark-workspace" aria-labelledby="benchmarkTitle" hidden>
-      <header class="benchmark-page-heading">
-        <div>
-          <p class="eyebrow">BENCHMARK WATCHLIST</p>
-          <h2 id="benchmarkTitle">对标分析</h2>
-          <p id="benchmarkDescription" class="trend-description">独立采集公开频道与视频数据；不会计入自有频道的订阅、播放或更新合计。</p>
-        </div>
-        <span id="benchmarkUpdated" class="note"></span>
-      </header>
+    <section id="benchmarkWorkspace" class="workspace benchmark-workspace" aria-label="对标分析" hidden>
+      <h2 class="sr-only">对标分析</h2>
 
-      <section class="benchmark-summary-grid" aria-label="对标账号概览">
-        <article class="benchmark-stat"><span>对标账号</span><strong id="benchmarkAccountCount">—</strong><small id="benchmarkAccountNote">已纳入观察池</small></article>
-        <article class="benchmark-stat"><span>公开订阅合计</span><strong id="benchmarkSubscriberTotal">—</strong><small id="benchmarkSubscriberNote">仅统计公开显示的频道</small></article>
-        <article class="benchmark-stat"><span>近 30 日发布</span><strong id="benchmarkUploadTotal">—</strong><small id="benchmarkUploadNote">等待首轮公开数据采集</small></article>
-        <article class="benchmark-stat"><span>近 30 日播放</span><strong id="benchmarkViewsTotal">—</strong><small id="benchmarkViewsNote">发布视频的当前公开播放</small></article>
+      <section class="chart-grid" aria-label="对标频道汇总">
+        <article class="panel chart-panel">
+          <header class="panel-heading">
+            <div><p class="eyebrow">SUBSCRIBERS</p><h2>公开订阅合计</h2></div>
+            <div class="metric-actions"><span id="benchmarkSubscriberNote" class="note"></span><div id="benchmarkSubscriberPeriod" class="period-switch" aria-label="对标账号公开订阅比较区间"><button data-period="7" aria-pressed="false">7D</button><button data-period="30" aria-pressed="false">30D</button><button data-period="all" aria-pressed="true">ALL</button></div></div>
+          </header>
+          <div id="benchmarkSubscriberChart" class="donut" aria-live="polite"></div>
+        </article>
+        <article class="panel chart-panel">
+          <header class="panel-heading">
+            <div><p class="eyebrow">CHANNEL VIEWS</p><h2>频道总播放合计</h2></div>
+            <div class="metric-actions"><span id="benchmarkViewsNote" class="note"></span><div id="benchmarkViewsPeriod" class="period-switch" aria-label="对标频道播放比较区间"><button data-period="7" aria-pressed="false">7D</button><button data-period="30" aria-pressed="true">30D</button><button data-period="all" aria-pressed="false">ALL</button></div></div>
+          </header>
+          <div id="benchmarkViewsChart" class="donut" aria-live="polite"></div>
+        </article>
+        <section id="benchmarkUpdatesPanel" class="panel updates-panel channel-updates-panel" aria-labelledby="benchmarkUpdatesTitle">
+          <header class="panel-heading updates-heading"><div><p class="eyebrow">CHANNEL UPDATES</p><h2 id="benchmarkUpdatesTitle">各频道更新数量</h2></div><span id="benchmarkUpdateCount" class="note"></span></header>
+          <div id="benchmarkUpdatesChart" class="channel-updates-chart" aria-live="polite"></div>
+          <footer class="channel-updates-footer"><div id="benchmarkUpdatesLegend" class="trend-legend"></div><p id="benchmarkUpdatesNote" class="inventory-note"></p></footer>
+        </section>
       </section>
 
-      <div class="benchmark-grid">
-        <section class="panel benchmark-panel" aria-labelledby="benchmarkScaleTitle">
-          <header class="insight-card-heading"><div><p class="eyebrow">CHANNEL SCALE</p><h3 id="benchmarkScaleTitle">公开订阅规模</h3></div><span class="note">仅作横向参照</span></header>
-          <div id="benchmarkSubscriptionRank" class="benchmark-ranking" aria-live="polite"></div>
+      <div class="video-content-columns">
+        <section class="panel inventory-panel" aria-labelledby="benchmarkAllVideosTitle">
+          <header class="trend-title-row"><div><p class="eyebrow">ALL VIDEOS</p><h2 id="benchmarkAllVideosTitle">全部视频播放量</h2><p class="inventory-note">默认近 7 日发布；播放量为最近一次采集时的公开累计值，并非窗口内新增播放。</p></div><div id="benchmarkVideoPeriod" class="period-switch" aria-label="对标账号全部视频时间窗口"><button data-value="7" aria-pressed="true">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="all" aria-pressed="false">ALL</button></div></header>
+          <div class="video-filters"><div class="selector-row"><span>频道·多选</span><div id="benchmarkVideoChannels" class="choice-buttons channel-choices" role="group" aria-label="选择对标频道，可多选"></div></div><div class="selector-row"><span>播放排序</span><div id="benchmarkVideoSort" class="choice-buttons compact-choices"><button data-value="desc" aria-pressed="true">↓ 从高到低</button><button data-value="asc" aria-pressed="false">↑ 从低到高</button></div></div></div>
+          <p id="benchmarkAllVideosCount" class="inventory-note" aria-live="polite"></p>
+          <ol id="benchmarkAllVideosList" class="all-videos-list" tabindex="0"></ol>
         </section>
-        <section class="panel benchmark-panel" aria-labelledby="benchmarkVideoTitle">
-          <header class="insight-card-heading"><div><p class="eyebrow">RECENT CONTENT</p><h3 id="benchmarkVideoTitle">近 30 日内容表现</h3></div><span id="benchmarkVideoCount" class="note"></span></header>
-          <ol id="benchmarkVideoRank" class="benchmark-video-list" aria-live="polite"></ol>
+        <section class="panel recent-updates-panel" aria-labelledby="benchmarkRecentUpdatesTitle">
+          <header class="panel-heading updates-heading"><div><p class="eyebrow">LAST 7 DAYS</p><h2 id="benchmarkRecentUpdatesTitle">近 7 日更新量</h2></div><span id="benchmarkRecentUpdatesCount" class="note"></span></header>
+          <ol id="benchmarkRecentUpdatesList" class="updates-list recent-updates-list" tabindex="0"></ol>
         </section>
       </div>
 
-      <section class="panel benchmark-watchlist" aria-labelledby="benchmarkWatchlistTitle">
-        <header class="insight-card-heading"><div><p class="eyebrow">WATCHLIST</p><h3 id="benchmarkWatchlistTitle">对标账号列表</h3></div><span class="note">点击可前往频道主页</span></header>
-        <div id="benchmarkCards" class="benchmark-cards" aria-live="polite"></div>
+      <section id="benchmarkTrendPanel" class="panel trend-panel" aria-labelledby="benchmarkTrendTitle">
+        <header class="trend-header">
+          <div class="trend-title-row">
+            <div><p class="eyebrow">VIDEO TREND</p><h2 id="benchmarkTrendTitle">频道内容趋势</h2><p id="benchmarkTrendDescription" class="trend-description"></p></div>
+            <div id="benchmarkTrendPeriod" class="period-switch trend-period-switch" aria-label="对标频道内容趋势时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="true">30D</button><button data-value="90" aria-pressed="false">90D</button><button data-value="all" aria-pressed="false">ALL</button></div>
+          </div>
+          <div class="trend-controls">
+            <div class="selector-row"><span>频道·多选</span><div id="benchmarkTrendChannels" class="choice-buttons channel-choices" role="group" aria-label="选择对标趋势频道，可多选；全部频道显示总和"></div></div>
+            <div class="selector-row"><span>指标</span><div id="benchmarkTrendMetric" class="choice-buttons compact-choices" role="group"><button data-value="views" aria-pressed="true"><i>▶</i>播放量</button><button data-value="subscribers" aria-pressed="false"><i>♟</i>新增订阅</button><button data-value="likes" aria-pressed="false"><i>♥</i>点赞数量</button><button data-value="comments" aria-pressed="false"><i>▰</i>评论数量</button><button data-value="uploads" aria-pressed="false"><i>↻</i>更新数量</button></div></div>
+          </div>
+        </header>
+        <div class="trend-charts">
+          <section class="trend-figure">
+            <header class="figure-heading"><h3 id="benchmarkAggregateTitle">全部频道总和</h3></header>
+            <div id="benchmarkTrendChart" class="trend-chart"></div>
+            <div id="benchmarkTrendLegend" class="trend-legend"></div>
+          </section>
+          <section class="trend-figure breakdown-figure">
+            <header class="figure-heading"><h3 id="benchmarkBreakdownTitle">各频道数据 · 播放量</h3><div id="benchmarkBreakdownMode" class="choice-buttons breakdown-mode"><button data-value="bar" aria-pressed="true">▥ 柱状图</button><button data-value="line" aria-pressed="false">⌁ 折线图</button></div></header>
+            <div id="benchmarkBreakdownChart"></div>
+            <div id="benchmarkBreakdownLegend" class="trend-legend"></div>
+            <p id="benchmarkBreakdownNote" class="inventory-note"></p>
+          </section>
+        </div>
+      </section>
+
+      <section id="benchmarkContentInsightsPanel" class="panel insights-panel" aria-labelledby="benchmarkInsightsTitle">
+        <header class="trend-header">
+          <div class="trend-title-row">
+            <div><p class="eyebrow">CONTENT INTELLIGENCE</p><h2 id="benchmarkInsightsTitle">内容洞察</h2><p id="benchmarkInsightsDescription" class="trend-description"></p></div>
+            <div id="benchmarkInsightPeriod" class="period-switch" aria-label="对标账号内容洞察时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="true">30D</button><button data-value="all" aria-pressed="false">ALL</button></div>
+          </div>
+          <div class="trend-controls"><div class="selector-row"><span>频道·多选</span><div id="benchmarkInsightChannels" class="choice-buttons channel-choices" role="group" aria-label="选择要分析的对标账号，可多选"></div></div></div>
+        </header>
+        <div class="insights-grid">
+          <article class="insight-card insight-top-videos" aria-labelledby="benchmarkInsightTopVideosTitle">
+            <header class="insight-card-heading"><div><p class="eyebrow">TOP CONTENT</p><h3 id="benchmarkInsightTopVideosTitle">近期内容表现</h3></div><span id="benchmarkInsightVideoCount" class="note"></span></header>
+            <ol id="benchmarkInsightTopVideos" class="insight-video-list" aria-live="polite"></ol>
+          </article>
+          <article class="insight-card" aria-labelledby="benchmarkInsightEngagementTitle">
+            <header class="insight-card-heading"><div><p class="eyebrow">ENGAGEMENT</p><h3 id="benchmarkInsightEngagementTitle">互动质量排行</h3></div><span class="note">每千次播放</span></header>
+            <div id="benchmarkInsightEngagement" class="insight-ranking" aria-live="polite"></div>
+            <p class="insight-footnote">互动率 =（点赞 + 评论）÷ 播放量；用于横向比较公开互动密度，不代表观看时长或转化。</p>
+          </article>
+          <article class="insight-card insight-mix-card" aria-labelledby="benchmarkInsightMixTitle">
+            <header class="insight-card-heading"><div><p class="eyebrow">CONTENT MIX</p><h3 id="benchmarkInsightMixTitle">内容结构与发布节奏</h3></div></header>
+            <div id="benchmarkInsightMix" aria-live="polite"></div>
+            <div class="cadence-divider"></div>
+            <div id="benchmarkInsightCadence" aria-live="polite"></div>
+          </article>
+        </div>
+        <p id="benchmarkInsightsNote" class="inventory-note"></p>
+      </section>
+
+      <section id="benchmarkResearchPanel" class="panel research-panel" aria-labelledby="benchmarkResearchTitle">
+        <header class="trend-header">
+          <div class="trend-title-row"><div><p class="eyebrow">CONTENT RESEARCH</p><h2 id="benchmarkResearchTitle">深度内容研究</h2><p id="benchmarkResearchDescription" class="trend-description">跟随上方“内容洞察”的时间窗口与频道筛选。</p></div></div>
+        </header>
+        <div class="research-grid">
+          <article class="research-card lifecycle-card" aria-labelledby="benchmarkLifecycleTitle">
+            <header class="insight-card-heading"><div><p class="eyebrow">LIFECYCLE</p><h3 id="benchmarkLifecycleTitle">发布后表现曲线</h3></div><label class="video-picker"><span>选择视频</span><select id="benchmarkLifecycleVideo" aria-label="选择要查看发布后表现的对标视频"></select></label></header>
+            <div id="benchmarkLifecycleMilestones" class="lifecycle-milestones" aria-live="polite"></div>
+            <div id="benchmarkLifecycleChart" class="lifecycle-chart"></div>
+            <p id="benchmarkLifecycleNote" class="insight-footnote"></p>
+          </article>
+          <article class="research-card metadata-card" aria-labelledby="benchmarkMetadataTitle">
+            <header class="insight-card-heading"><div><p class="eyebrow">METADATA</p><h3 id="benchmarkMetadataTitle">标题、题材与 # 标签</h3></div></header>
+            <div class="research-list-group"><h4>标题关键词</h4><div id="benchmarkTitleKeywords" class="token-ranking" aria-live="polite"></div></div>
+            <div class="research-list-group"><h4>题材 / 分类排行</h4><div id="benchmarkCategoryRanking" class="token-ranking" aria-live="polite"></div></div>
+            <div class="research-list-group"><h4># 标签排行</h4><div id="benchmarkHashtagRanking" class="token-ranking" aria-live="polite"></div></div>
+          </article>
+          <article class="research-card comments-card" aria-labelledby="benchmarkCommentsResearchTitle">
+            <header class="insight-card-heading"><div><p class="eyebrow">PUBLIC COMMENTS</p><h3 id="benchmarkCommentsResearchTitle">评论话题与高频问题</h3></div><span id="benchmarkCommentSampleCount" class="note"></span></header>
+            <div class="research-list-group"><h4>高频讨论词</h4><div id="benchmarkCommentTopics" class="token-ranking" aria-live="polite"></div></div>
+            <div class="research-list-group question-group"><h4>值得关注的问题</h4><ol id="benchmarkCommentQuestions" class="question-list" aria-live="polite"></ol></div>
+            <p id="benchmarkCommentsResearchNote" class="insight-footnote"></p>
+          </article>
+        </div>
       </section>
     </section>
     <div id="loadError" class="load-error" hidden></div>
