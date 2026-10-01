@@ -32,7 +32,20 @@ button { cursor: pointer; }
 .chart-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .panel { border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(24, 33, 48, .97), rgba(13, 20, 31, .99)); box-shadow: var(--shadow); }
 .chart-panel { min-width: 0; height: 560px; padding: 20px 22px; overflow: hidden; }
-.panel-heading, .trend-title-row, .figure-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.panel-heading, .trend-title-row, .trend-figure--bar { min-width: 250px; }
+.trend-figure--bar .metric-bar-row { grid-template-columns: minmax(86px, .8fr) minmax(74px, 1.2fr) auto; gap: 7px; min-height: 26px; padding: 2px 0; }
+.trend-figure--bar .metric-bar-channel { font-size: 11px; }
+.trend-figure--bar .metric-bar-channel .avatar { width: 22px; height: 22px; }
+.trend-figure--bar .metric-bar-value { justify-self: end; font-size: 11px; }
+.trend-figure--bar .metric-bar-row.is-upload-breakdown { grid-template-columns: minmax(86px, .8fr) minmax(74px, 1.2fr) auto; min-height: 26px; gap: 7px; }
+.trend-figure--bar .metric-bar-row.is-upload-breakdown .metric-bar-channel { gap: 5px; font-size: 11px; font-weight: 500; }
+.trend-figure--bar .metric-bar-row.is-upload-breakdown .mini-avatar { width: 22px; height: 22px; }
+.trend-figure--bar .update-value { display: block; }
+.trend-figure--bar .update-value b { font-size: 11px; }
+.trend-figure--bar .update-value small { display: none; }
+.trend-figure--bar .trend-legend, .trend-figure--bar .inventory-note { font-size: 10px; }
+#trendPanel .trend-chart, #benchmarkTrendPanel .trend-chart { min-height: 260px; }
+.figure-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
 .panel-heading h2, .trend-header h2, .inventory-panel h2 { margin: 0; letter-spacing: -.04em; }
 .chart-panel .panel-heading h2 { font-size: clamp(24px, 2vw, 28px); }
 .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: 10px; font-weight: 850; letter-spacing: .2em; }
@@ -123,7 +136,7 @@ button { cursor: pointer; }
 .compact-choices button i { display: grid; place-items: center; width: 15px; color: currentColor; font-style: normal; font-size: 12px; }
 .compact-choices button { min-width: 82px; }
 
-.trend-charts { display: grid; grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr); gap: 16px; margin-top: 12px; }
+.trend-charts { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(250px, .58fr); gap: 16px; margin-top: 12px; }
 .trend-figure { min-width: 0; padding-top: 10px; border-top: 1px solid var(--line); }
 .figure-heading { align-items: center; flex-wrap: wrap; gap: 6px 12px; min-height: 34px; margin-bottom: 4px; }
 .figure-heading h3 { margin: 0; font-size: 16px; }
