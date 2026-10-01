@@ -5,7 +5,7 @@ const integer = new Intl.NumberFormat("zh-HK", { maximumFractionDigits: 0 });
 const dateTime = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
 const dateOnly = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit" });
 let data = { channels: [], catalog: [], benchmarks: [], benchmarkCatalog: [], generatedAt: null };
-const state = { workspace: "owned", subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "30", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null, benchmarkSubscriberPeriod: "all", benchmarkViewsPeriod: "30", benchmarkVideoPeriod: "7", benchmarkVideoSort: "desc", benchmarkVideoChannels: new Set(), benchmarkInsightPeriod: "30", benchmarkInsightChannels: new Set(), benchmarkInsightAllMode: true, benchmarkLifecycleVideoId: null, benchmarkTrendPeriod: "30", benchmarkTrendMetric: "views", benchmarkTrendChannels: new Set(), benchmarkTrendAllMode: true, benchmarkBreakdownMode: "bar" };
+const state = { workspace: "owned", subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "30", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null, benchmarkSubscriberPeriod: "all", benchmarkViewsPeriod: "30", benchmarkVideoPeriod: "7", benchmarkVideoSort: "desc", benchmarkVideoChannels: new Set(), benchmarkInsightPeriod: "30", benchmarkInsightChannels: new Set(), benchmarkInsightAllMode: true, benchmarkLifecycleVideoId: null, benchmarkSubscriberGrowthPeriod: "all", benchmarkSubscriberGrowthChannels: new Set(), benchmarkSubscriberGrowthAllMode: true, benchmarkTrendPeriod: "30", benchmarkTrendMetric: "views", benchmarkTrendChannels: new Set(), benchmarkTrendAllMode: true, benchmarkBreakdownMode: "bar" };
 
 const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 const number = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
@@ -538,6 +538,24 @@ function benchmarkRangeKeys(period, metric = "subscribers") {
   return output.slice(-1095);
 }
 
+function benchmarkSubscriberGrowthSeries(channel, keys, period) {
+  const history = channelHistory(channel).filter((row) => number(row.subscriberCount) != null).sort((a, b) => at(a.observedAt) - at(b.observedAt));
+  const base = baseline(channel, period);
+  const baseValue = number(base?.subscriberCount);
+  const color = COLORS[data.benchmarks.findIndex((item) => item.id === channel.id) % COLORS.length];
+  if (baseValue == null) return { id: channel.id, name: channel.name, color, points: keys.map((key) => ({ key, value: null })), currentValue: number(channel.subscriberCount), startedAt: null };
+  const baseTime = at(base.observedAt), baseKey = day(base.observedAt);
+  const dailySamples = new Map();
+  history.filter((row) => at(row.observedAt) >= baseTime).forEach((row) => dailySamples.set(day(row.observedAt), Number(row.subscriberCount)));
+  let latest = null;
+  const points = keys.map((key) => {
+    if (key === baseKey) latest = baseValue;
+    else if (dailySamples.has(key)) latest = dailySamples.get(key);
+    return { key, value: latest == null ? null : latest - baseValue };
+  });
+  return { id: channel.id, name: channel.name, color, points, currentValue: number(channel.subscriberCount), startedAt: base.observedAt };
+}
+
 function benchmarkWindowViews(channel, period) {
   if (period === "all") return number(channel.channelViews) || 0;
   return benchmarkVideosFor(channel.id, period).reduce((sum, video) => sum + (number(video.viewCount) || 0), 0);
@@ -580,6 +598,26 @@ function renderBenchmarkRecentUpdates() {
   const rows = data.benchmarkCatalog.filter((row) => at(row.publishedAt) >= periodStart("7") && at(row.publishedAt) <= asOf()).sort((a, b) => at(b.publishedAt) - at(a.publishedAt));
   $("benchmarkRecentUpdatesCount").textContent = `${exact(rows.length)} 条 · 最近发布优先`;
   $("benchmarkRecentUpdatesList").innerHTML = rows.length ? rows.map((row) => `<li><a class="update-link" href="${esc(row.url)}" target="_blank" rel="noopener noreferrer">${videoThumb(row)}<span class="video-copy"><strong>${esc(row.title)}</strong><span class="video-meta"><b>${esc(row.channel)}</b><time>${time(row.publishedAt)}</time><span>${exact(row.viewCount)} 次播放</span></span></span><span class="outbound">↗</span></a></li>`).join("") : `<li class="empty">近 7 日没有已采集的视频。</li>`;
+}
+
+function renderBenchmarkSubscriberGrowth() {
+  const period = state.benchmarkSubscriberGrowthPeriod;
+  const selected = state.benchmarkSubscriberGrowthAllMode ? data.benchmarks : data.benchmarks.filter((channel) => state.benchmarkSubscriberGrowthChannels.has(channel.id));
+  const keys = benchmarkRangeKeys(period);
+  const series = selected.filter((channel) => number(channel.subscriberCount) != null).map((channel) => benchmarkSubscriberGrowthSeries(channel, keys, period));
+  const populated = series.filter((row) => row.points.some((point) => number(point.value) != null));
+  const starts = populated.map((row) => row.startedAt).filter(Boolean).map(at);
+  $("benchmarkSubscriberGrowthPeriod").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === period)));
+  benchmarkChannelChoices("benchmarkSubscriberGrowthChannels", state.benchmarkSubscriberGrowthChannels, "benchmarkSubscriberGrowth", state.benchmarkSubscriberGrowthAllMode);
+  $("benchmarkSubscriberGrowthDescription").textContent = `${periodName(period)} · 每条折线以该账号窗口内首个可用公开订阅快照为 0，展示之后的净变化。`;
+  drawLineChart("benchmarkSubscriberGrowthChart", populated, "订阅净变化", populated, (row, point) => `订阅净变化 ${signedExact(point.value)} · 当前公开订阅 ${exact(row.currentValue)}`);
+  $("benchmarkSubscriberGrowthLegend").innerHTML = populated.map((row) => {
+    const latest = [...row.points].reverse().find((point) => number(point.value) != null)?.value;
+    return `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)} <b>${signedExact(latest)} · 当前 ${exact(row.currentValue)}</b></span>`;
+  }).join("");
+  $("benchmarkSubscriberGrowthNote").textContent = populated.length
+    ? `${periodName(period)} · 已选择 ${selected.length} 个账号，其中 ${populated.length} 个有公开订阅快照；共同可比较记录自 ${day(Math.max(...starts))} 起。未采集日沿用最近一次公开快照。`
+    : `${periodName(period)} · 所选账号尚无可用的公开订阅历史快照。`;
 }
 
 function benchmarkVideosFor(channelId, period = "all") {
@@ -776,6 +814,7 @@ function renderBenchmarks() {
   renderBenchmarkUpdates();
   renderBenchmarkInsights();
   renderBenchmarkResearch();
+  renderBenchmarkSubscriberGrowth();
 }
 
 function setWorkspace(workspace) {
@@ -805,18 +844,20 @@ function bindControls() {
     if (inGroup("benchmarkVideoPeriod")) { state.benchmarkVideoPeriod = button.dataset.value; renderBenchmarkInventory(); return; }
     if (inGroup("benchmarkVideoSort")) { state.benchmarkVideoSort = button.dataset.value; renderBenchmarkInventory(); return; }
     if (inGroup("benchmarkInsightPeriod")) { state.benchmarkInsightPeriod = button.dataset.value; renderBenchmarkInsights(); renderBenchmarkResearch(); return; }
+    if (inGroup("benchmarkSubscriberGrowthPeriod")) { state.benchmarkSubscriberGrowthPeriod = button.dataset.value; renderBenchmarkSubscriberGrowth(); return; }
     if (inGroup("benchmarkTrendPeriod")) { state.benchmarkTrendPeriod = button.dataset.value; renderBenchmarkTrend(); return; }
     if (inGroup("benchmarkTrendMetric")) { state.benchmarkTrendMetric = button.dataset.value; renderBenchmarkTrend(); return; }
     if (inGroup("benchmarkBreakdownMode")) { state.benchmarkBreakdownMode = button.dataset.value; renderBenchmarkTrend(); return; }
     if (inGroup("insightPeriod")) { state.insightPeriod = button.dataset.value; renderInsights(); renderResearch(); return; }
     const action = button.dataset.action; if (!action) return;
-    const [kind, value] = action.split(":"); const isBenchmark = kind === "benchmarkVideo" || kind === "benchmarkInsight" || kind === "benchmarkTrend"; const ids = isBenchmark ? benchmarkChannelIds() : allChannelIds(); const target = kind === "trend" ? state.trendChannels : kind === "subscriberGrowth" ? state.subscriberGrowthChannels : kind === "insight" ? state.insightChannels : kind === "benchmarkInsight" ? state.benchmarkInsightChannels : kind === "benchmarkTrend" ? state.benchmarkTrendChannels : kind === "benchmarkVideo" ? state.benchmarkVideoChannels : state.videoChannels;
+    const [kind, value] = action.split(":"); const isBenchmark = kind === "benchmarkVideo" || kind === "benchmarkInsight" || kind === "benchmarkSubscriberGrowth" || kind === "benchmarkTrend"; const ids = isBenchmark ? benchmarkChannelIds() : allChannelIds(); const target = kind === "trend" ? state.trendChannels : kind === "subscriberGrowth" ? state.subscriberGrowthChannels : kind === "insight" ? state.insightChannels : kind === "benchmarkInsight" ? state.benchmarkInsightChannels : kind === "benchmarkSubscriberGrowth" ? state.benchmarkSubscriberGrowthChannels : kind === "benchmarkTrend" ? state.benchmarkTrendChannels : kind === "benchmarkVideo" ? state.benchmarkVideoChannels : state.videoChannels;
     if (value === "all") {
       target.clear();
       if (kind === "trend") state.trendAllMode = true;
       if (kind === "subscriberGrowth") state.subscriberGrowthAllMode = true;
       if (kind === "insight") state.insightAllMode = true;
       if (kind === "benchmarkInsight") state.benchmarkInsightAllMode = true;
+      if (kind === "benchmarkSubscriberGrowth") state.benchmarkSubscriberGrowthAllMode = true;
       if (kind === "benchmarkTrend") state.benchmarkTrendAllMode = true;
     } else if (value === "select") {
       target.clear(); ids.forEach((id) => target.add(id));
@@ -824,22 +865,24 @@ function bindControls() {
       if (kind === "subscriberGrowth") state.subscriberGrowthAllMode = false;
       if (kind === "insight") state.insightAllMode = false;
       if (kind === "benchmarkInsight") state.benchmarkInsightAllMode = false;
+      if (kind === "benchmarkSubscriberGrowth") state.benchmarkSubscriberGrowthAllMode = false;
       if (kind === "benchmarkTrend") state.benchmarkTrendAllMode = false;
     } else {
       if (kind === "trend" && state.trendAllMode) { state.trendAllMode = false; target.clear(); }
       if (kind === "subscriberGrowth" && state.subscriberGrowthAllMode) { state.subscriberGrowthAllMode = false; target.clear(); }
       if (kind === "insight" && state.insightAllMode) { state.insightAllMode = false; target.clear(); }
       if (kind === "benchmarkInsight" && state.benchmarkInsightAllMode) { state.benchmarkInsightAllMode = false; target.clear(); }
+      if (kind === "benchmarkSubscriberGrowth" && state.benchmarkSubscriberGrowthAllMode) { state.benchmarkSubscriberGrowthAllMode = false; target.clear(); }
       if (kind === "benchmarkTrend" && state.benchmarkTrendAllMode) { state.benchmarkTrendAllMode = false; target.clear(); }
       if (target.has(value)) target.delete(value); else target.add(value);
     }
-    if (kind === "trend") renderTrend(); else if (kind === "subscriberGrowth") renderSubscriberGrowth(); else if (kind === "insight") { renderInsights(); renderResearch(); } else if (kind === "benchmarkInsight") { renderBenchmarkInsights(); renderBenchmarkResearch(); } else if (kind === "benchmarkTrend") renderBenchmarkTrend(); else if (kind === "benchmarkVideo") renderBenchmarkInventory(); else renderInventory();
+    if (kind === "trend") renderTrend(); else if (kind === "subscriberGrowth") renderSubscriberGrowth(); else if (kind === "insight") { renderInsights(); renderResearch(); } else if (kind === "benchmarkInsight") { renderBenchmarkInsights(); renderBenchmarkResearch(); } else if (kind === "benchmarkSubscriberGrowth") renderBenchmarkSubscriberGrowth(); else if (kind === "benchmarkTrend") renderBenchmarkTrend(); else if (kind === "benchmarkVideo") renderBenchmarkInventory(); else renderInventory();
   });
   document.addEventListener("change", (event) => {
     if (event.target?.id === "lifecycleVideo") { state.lifecycleVideoId = event.target.value || null; renderResearch(); }
     if (event.target?.id === "benchmarkLifecycleVideo") { state.benchmarkLifecycleVideoId = event.target.value || null; renderBenchmarkResearch(); }
   });
-  window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); renderResearch(); } if (data.benchmarks.length) { renderBenchmarkTrend(); renderBenchmarkResearch(); } });
+  window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); renderResearch(); } if (data.benchmarks.length) { renderBenchmarkTrend(); renderBenchmarkResearch(); renderBenchmarkSubscriberGrowth(); } });
 }
 
 function normaliseGroup(sourceChannels, storedRows) {
