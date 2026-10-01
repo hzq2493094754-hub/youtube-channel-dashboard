@@ -36,5 +36,39 @@
     {
       "url": "https://www.youtube.com/channel/UCtkUpmfJckdTZyNvyWBl_rg"
     }
+  ],
+  "benchmarks": [
+    {
+      "label": "老雷财经",
+      "url": "https://www.youtube.com/@老雷讲财经"
+    },
+    {
+      "label": "静姐财富经",
+      "url": "https://www.youtube.com/@Jingjiecaifujing"
+    },
+    {
+      "label": "Ethan的美股笔记",
+      "url": "https://www.youtube.com/@EthanFinanceNote"
+    },
+    {
+      "label": "阳光财经",
+      "url": "https://www.youtube.com/@SUNNYFINANCE"
+    },
+    {
+      "label": "美股 炸裂股手",
+      "url": "https://www.youtube.com/@ZLGSKris"
+    },
+    {
+      "label": "邦妮區塊鏈 Bonnie Blockchain",
+      "url": "https://www.youtube.com/@BonnieBlockchain"
+    },
+    {
+      "label": "懒錢包 Lazy Wallet",
+      "url": "https://www.youtube.com/@TheLazyWallet"
+    },
+    {
+      "label": "美投讲美股",
+      "url": "https://www.youtube.com/@MeiTouJun"
+    }
   ]
 }
