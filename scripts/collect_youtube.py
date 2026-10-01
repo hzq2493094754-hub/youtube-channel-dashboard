@@ -350,7 +350,7 @@ def main() -> None:
         category_names = {}
 
     channels, catalog = collect_group(targets, {channel["id"]: channel for channel in previous.get("channels", []) if channel.get("id")}, owned_catalog_by_id, category_names, now, observed_at, full_inventory, include_comments=True)
-    benchmarks, benchmark_catalog = collect_group(benchmark_targets, {channel["id"]: channel for channel in previous.get("benchmarks", []) if channel.get("id")}, benchmark_catalog_by_id, category_names, now, observed_at, benchmark_full_inventory, include_comments=False)
+    benchmarks, benchmark_catalog = collect_group(benchmark_targets, {channel["id"]: channel for channel in previous.get("benchmarks", []) if channel.get("id")}, benchmark_catalog_by_id, category_names, now, observed_at, benchmark_full_inventory, include_comments=True)
     payload = {
         "generatedAt": observed_at,
         "collector": {
