@@ -27,6 +27,8 @@ button { cursor: pointer; }
 .workspace-tabs small { font-size: 9px; font-weight: 800; opacity: .75; }
 .workspace[hidden] { display: none !important; }
 .benchmark-workspace { display: block; }
+#ownedWorkspace { display: flex; flex-direction: column; }
+#subscriberGrowthPanel { order: 1; }
 .chart-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .panel { border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(24, 33, 48, .97), rgba(13, 20, 31, .99)); box-shadow: var(--shadow); }
 .chart-panel { min-width: 0; height: 560px; padding: 20px 22px; overflow: hidden; }
