@@ -4,8 +4,8 @@ const compact = new Intl.NumberFormat("zh-HK", { notation: "compact", maximumFra
 const integer = new Intl.NumberFormat("zh-HK", { maximumFractionDigits: 0 });
 const dateTime = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
 const dateOnly = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit" });
-let data = { channels: [], catalog: [], generatedAt: null };
-const state = { subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "30", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null };
+let data = { channels: [], catalog: [], benchmarks: [], benchmarkCatalog: [], generatedAt: null };
+const state = { workspace: "owned", subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "all", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "30", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null };
 
 const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 const number = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
@@ -519,11 +519,65 @@ function renderResearch() {
     : `采集器会按频道轮换抽样近期可评论视频，每条最多保存 25 条公开顶级评论。`;
 }
 
-function render() { renderSubscribers(); renderViews(); renderUpdates(); renderRecentUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); renderInsights(); renderResearch(); }
+function renderBenchmarks() {
+  const channels = data.benchmarks;
+  const catalog = data.benchmarkCatalog;
+  const recent = catalog.filter((video) => at(video.publishedAt) >= periodStart("30") && at(video.publishedAt) <= asOf());
+  const publicSubscribers = channels.filter((channel) => number(channel.subscriberCount) != null);
+  const hasCollectedMetrics = catalog.length > 0 || channels.some((channel) => number(channel.subscriberCount) != null || number(channel.channelViews) != null || channel.lastPublishedAt);
+  const totalSubscribers = publicSubscribers.reduce((sum, channel) => sum + Number(channel.subscriberCount), 0);
+  const totalViews = recent.reduce((sum, video) => sum + (number(video.viewCount) || 0), 0);
+
+  $("ownedWorkspaceCount").textContent = `${exact(data.channels.length)} 个频道`;
+  $("benchmarkWorkspaceCount").textContent = `${exact(channels.length)} 个账号`;
+  $("benchmarkAccountCount").textContent = exact(channels.length);
+  $("benchmarkAccountNote").textContent = channels.length ? "已独立纳入观察池" : "尚未添加对标账号";
+  $("benchmarkSubscriberTotal").textContent = publicSubscribers.length ? fmt(totalSubscribers) : "—";
+  $("benchmarkSubscriberNote").textContent = publicSubscribers.length ? `${exact(publicSubscribers.length)} 个频道公开显示` : "将在首次采集后显示";
+  $("benchmarkUploadTotal").textContent = hasCollectedMetrics ? exact(recent.length) : "—";
+  $("benchmarkUploadNote").textContent = hasCollectedMetrics ? "近 30 日公开发布视频" : "等待首次公开数据采集";
+  $("benchmarkViewsTotal").textContent = hasCollectedMetrics ? fmt(totalViews) : "—";
+  $("benchmarkViewsNote").textContent = hasCollectedMetrics ? "近 30 日发布视频的当前播放" : "不会纳入自有频道汇总";
+  $("benchmarkUpdated").textContent = hasCollectedMetrics ? `最近采集 · ${time(data.generatedAt)}` : "待首次采集";
+  $("benchmarkDescription").textContent = hasCollectedMetrics
+    ? `独立采集 ${exact(channels.length)} 个公开频道；不计入自有频道的订阅、播放或更新合计。`
+    : `已从 Chrome 中打开的频道／视频页建立 ${exact(channels.length)} 个账号的对标观察池；发布后会在下一次自动采集填充公开数据。`;
+
+  const rankedChannels = [...publicSubscribers].sort((a, b) => Number(b.subscriberCount) - Number(a.subscriberCount));
+  const maxSubscribers = Math.max(1, ...rankedChannels.map((channel) => Number(channel.subscriberCount)));
+  $("benchmarkSubscriptionRank").innerHTML = rankedChannels.length
+    ? rankedChannels.map((channel, index) => `<a class="benchmark-rank-row" href="${esc(channel.url)}" target="_blank" rel="noopener noreferrer"><span class="benchmark-rank-index">${index + 1}</span>${avatar(channel)}<b>${esc(channel.name)}</b><span class="benchmark-rank-track"><i style="width:${Number(channel.subscriberCount) / maxSubscribers * 100}%"></i></span><strong>${fmt(channel.subscriberCount)}</strong></a>`).join("")
+    : `<p class="benchmark-empty">账号链接已纳入观察池。首次自动采集完成后，这里会显示公开订阅规模对比。</p>`;
+
+  const rankedVideos = [...recent].sort((a, b) => (number(b.viewCount) || 0) - (number(a.viewCount) || 0)).slice(0, 8);
+  $("benchmarkVideoCount").textContent = hasCollectedMetrics ? `${exact(recent.length)} 条视频` : "待采集";
+  $("benchmarkVideoRank").innerHTML = rankedVideos.length
+    ? rankedVideos.map((video, index) => `<li><a href="${esc(video.url)}" target="_blank" rel="noopener noreferrer"><span class="benchmark-video-index">${index + 1}</span>${videoThumb(video)}<span class="benchmark-video-copy"><strong>${esc(video.title)}</strong><small>${esc(video.channel)} · ${day(video.publishedAt)}</small></span><span class="benchmark-video-value"><b>${fmt(video.viewCount)}</b><small>当前播放</small></span></a></li>`).join("")
+    : `<li class="benchmark-empty">首轮采集会读取每个对标频道的近期公开视频，再按当前播放量排序。</li>`;
+
+  $("benchmarkCards").innerHTML = channels.length
+    ? channels.map((channel) => {
+      const published = channel.lastPublishedAt ? `最近发布 ${day(channel.lastPublishedAt)}` : "等待近期视频采集";
+      const scale = number(channel.subscriberCount) != null ? `公开订阅 ${fmt(channel.subscriberCount)}` : "等待公开频道数据";
+      const count = number(channel.videoCount) != null ? `${exact(channel.videoCount)} 条视频` : "";
+      return `<a class="benchmark-card" href="${esc(channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(channel)}<span><strong>${esc(channel.name)}</strong><small>${esc(scale)}${count ? ` · ${count}` : ""}</small><em>${esc(published)}</em></span><i aria-hidden="true">↗</i></a>`;
+    }).join("")
+    : `<p class="benchmark-empty">暂时没有对标账号。</p>`;
+}
+
+function setWorkspace(workspace) {
+  state.workspace = workspace === "benchmarks" ? "benchmarks" : "owned";
+  $("ownedWorkspace").hidden = state.workspace !== "owned";
+  $("benchmarkWorkspace").hidden = state.workspace !== "benchmarks";
+  document.querySelectorAll("[data-workspace]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.workspace === state.workspace)));
+}
+
+function render() { renderSubscribers(); renderViews(); renderUpdates(); renderRecentUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); renderInsights(); renderResearch(); renderBenchmarks(); setWorkspace(state.workspace); }
 
 function bindControls() {
   document.addEventListener("click", (event) => {
     const button = event.target.closest("button"); if (!button) return;
+    if (button.dataset.workspace) { setWorkspace(button.dataset.workspace); return; }
     const inGroup = (id) => button.closest(`#${id}`);
     if (inGroup("subscriberPeriod")) { state.subscriberPeriod = button.dataset.period; renderSubscribers(); return; }
     if (inGroup("viewsPeriod")) { state.viewsPeriod = button.dataset.period; renderViews(); return; }
@@ -560,18 +614,33 @@ function bindControls() {
   window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); renderResearch(); } });
 }
 
+function normaliseGroup(sourceChannels, storedRows) {
+  const channels = (sourceChannels || []).map((row) => ({ ...row, id: row.id || row.channelId, name: row.name || row.channel || row.id }));
+  const byId = new Map(channels.map((row) => [row.id, row]));
+  const fallback = channels.flatMap((channel) => (channel.videos || []).map((video) => ({ ...video, channelId: channel.id, channel: channel.name })));
+  const stored = storedRows || fallback;
+  const catalog = [...new Map(stored.map((video) => {
+    const channel = byId.get(video.channelId || video.channel_id);
+    const id = video.id || video.videoId;
+    return [id, { ...video, id, channelId: channel?.id || video.channelId, channel: channel?.name || video.channel || "未知频道", url: video.url || `https://www.youtube.com/watch?v=${id}` }];
+  })).values()].filter((video) => video.id && video.channelId && video.publishedAt);
+  return { channels, catalog };
+}
+
 async function init() {
   try {
-    const response = await fetch("data/dashboard.json", { cache: "no-store" });
+    const [response, seedResponse] = await Promise.all([
+      fetch("data/dashboard.json", { cache: "no-store" }),
+      fetch("data/benchmark-seeds.json", { cache: "no-store" }).catch(() => null),
+    ]);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const raw = await response.json();
-    const channels = (raw.channels || []).map((row) => ({ ...row, id: row.id || row.channelId, name: row.name || row.channel || row.id }));
-    const byId = new Map(channels.map((row) => [row.id, row]));
-    const stored = raw.videoCatalog || raw.catalog || channels.flatMap((channel) => (channel.videos || []).map((video) => ({ ...video, channelId: channel.id, channel: channel.name })));
-    const catalog = [...new Map(stored.map((video) => { const channel = byId.get(video.channelId || video.channel_id); const id = video.id || video.videoId; return [id, { ...video, id, channelId: channel?.id || video.channelId, channel: channel?.name || video.channel || "未知频道", url: video.url || `https://www.youtube.com/watch?v=${id}` }]; })).values()].filter((video) => video.id && video.channelId && video.publishedAt);
-    data = { channels, catalog, generatedAt: raw.generatedAt };
+    const seedPayload = seedResponse?.ok ? await seedResponse.json() : {};
+    const owned = normaliseGroup(raw.channels, raw.videoCatalog || raw.catalog);
+    const benchmarkRows = raw.benchmarks?.length ? raw.benchmarks : seedPayload.benchmarks || [];
+    const benchmarks = normaliseGroup(benchmarkRows, raw.benchmarkVideoCatalog || raw.benchmarkCatalog);
+    data = { ...owned, benchmarks: benchmarks.channels, benchmarkCatalog: benchmarks.catalog, generatedAt: raw.generatedAt };
     bindControls(); render();
   } catch (error) { $("loadError").hidden = false; $("loadError").textContent = `数据加载失败：${error.message}`; }
 }
 init();
-
