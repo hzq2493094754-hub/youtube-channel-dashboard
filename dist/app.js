@@ -296,15 +296,12 @@ function metricTotal(channel, period, metric) { if (metric === "subscribers") re
 
 function renderBreakdown(series, metricLabel) {
   const period = state.trendPeriod, metric = state.trendMetric;
-  const target = $("breakdownChart");
-  $("breakdownTitle").textContent = `各频道数据 · ${metricLabel}`;
-  $("breakdownMode").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === state.breakdownMode)));
-  if (state.breakdownMode === "line") {
-    drawLineChart("breakdownChart", series, metricLabel, series);
-    $("breakdownLegend").innerHTML = series.map((row) => `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)}</span>`).join("");
-    $("breakdownNote").textContent = `${periodName(period)} · ${series.length} 个频道 · 折线按发布日期每日求和，并非当日新增量。`;
-    return;
-  }
+  const target = $("breakdownBarChart");
+  $("breakdownLineTitle").textContent = "各频道折线 · " + metricLabel;
+  drawLineChart("breakdownLineChart", series, metricLabel, series);
+  $("breakdownLineLegend").innerHTML = series.map((row) => '<span><i class="series-dot" style="background:' + row.color + '"></i>' + esc(row.name) + '</span>').join("");
+  $("breakdownLineNote").textContent = periodName(period) + " · " + series.length + " 个频道 · 按发布日期每日求和，并非当日新增量。";
+  $("breakdownBarTitle").textContent = "各频道柱状 · " + metricLabel;
   const chosen = state.trendAllMode ? data.channels : data.channels.filter((channel) => state.trendChannels.has(channel.id));
   const rows = chosen.map((channel) => {
     const videos = videosFor(channel.id, period);
@@ -322,8 +319,8 @@ function renderBreakdown(series, metricLabel) {
     return `<div class="metric-bar-row${metric === "uploads" ? " is-upload-breakdown" : ""}"><a class="metric-bar-channel" href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a>${stack}${value}</div>`;
   }).join("")}</div>`;
   const hasOtherUploads = rows.some((row) => row.split.other > 0);
-  $("breakdownLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot upload-long-dot"></i>长视频</span><span><i class="series-dot upload-short-dot"></i>短视频</span>${hasOtherUploads ? `<span><i class="series-dot upload-other-dot"></i>其他</span>` : ""}` : "";
-  $("breakdownNote").textContent = metric === "uploads"
+  $("breakdownBarLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot upload-long-dot"></i>长视频</span><span><i class="series-dot upload-short-dot"></i>短视频</span>${hasOtherUploads ? `<span><i class="series-dot upload-other-dot"></i>其他</span>` : ""}` : "";
+  $("breakdownBarNote").textContent = metric === "uploads"
     ? `${periodName(period)} · ${rows.length} 个频道 · 带 #Shorts 标记或时长不超过 3 分钟归为短视频，其余为长视频；直播、待播或缺少时长的项目仅计入总数。`
     : `${periodName(period)} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
 }
@@ -645,15 +642,12 @@ function benchmarkTooltipSummary(metric, row, key) {
 
 function renderBenchmarkBreakdown(series, metricLabel) {
   const period = state.benchmarkTrendPeriod, metric = state.benchmarkTrendMetric;
-  const target = $("benchmarkBreakdownChart");
-  $("benchmarkBreakdownTitle").textContent = `各频道数据 · ${metricLabel}`;
-  $("benchmarkBreakdownMode").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === state.benchmarkBreakdownMode)));
-  if (state.benchmarkBreakdownMode === "line") {
-    drawLineChart("benchmarkBreakdownChart", series, metricLabel, series, (row, point, key) => benchmarkTooltipSummary(metric, row, key), data.benchmarkCatalog);
-    $("benchmarkBreakdownLegend").innerHTML = series.map((row) => `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)}</span>`).join("");
-    $("benchmarkBreakdownNote").textContent = `${periodName(period)} · ${series.length} 个频道 · 折线按发布日期每日求和，并非当日新增量。`;
-    return;
-  }
+  const target = $("benchmarkBreakdownBarChart");
+  $("benchmarkBreakdownLineTitle").textContent = "各频道折线 · " + metricLabel;
+  drawLineChart("benchmarkBreakdownLineChart", series, metricLabel, series, (row, point, key) => benchmarkTooltipSummary(metric, row, key), data.benchmarkCatalog);
+  $("benchmarkBreakdownLineLegend").innerHTML = series.map((row) => '<span><i class="series-dot" style="background:' + row.color + '"></i>' + esc(row.name) + '</span>').join("");
+  $("benchmarkBreakdownLineNote").textContent = periodName(period) + " · " + series.length + " 个频道 · 按发布日期每日求和，并非当日新增量。";
+  $("benchmarkBreakdownBarTitle").textContent = "各频道柱状 · " + metricLabel;
   const chosen = state.benchmarkTrendAllMode ? data.benchmarks : data.benchmarks.filter((channel) => state.benchmarkTrendChannels.has(channel.id));
   const rows = chosen.map((channel) => {
     const videos = benchmarkVideosFor(channel.id, period);
@@ -672,8 +666,8 @@ function renderBenchmarkBreakdown(series, metricLabel) {
     return `<div class="metric-bar-row${metric === "uploads" ? " is-upload-breakdown" : ""}"><a class="metric-bar-channel" href="${esc(row.channel.url)}" target="_blank" rel="noopener noreferrer">${avatar(row.channel)}<span>${esc(row.channel.name)}</span></a>${stack}${value}</div>`;
   }).join("")}</div>`;
   const hasOtherUploads = rows.some((row) => row.split.other > 0);
-  $("benchmarkBreakdownLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot upload-long-dot"></i>长视频</span><span><i class="series-dot upload-short-dot"></i>短视频</span>${hasOtherUploads ? `<span><i class="series-dot upload-other-dot"></i>其他</span>` : ""}` : "";
-  $("benchmarkBreakdownNote").textContent = metric === "uploads"
+  $("benchmarkBreakdownBarLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot upload-long-dot"></i>长视频</span><span><i class="series-dot upload-short-dot"></i>短视频</span>${hasOtherUploads ? `<span><i class="series-dot upload-other-dot"></i>其他</span>` : ""}` : "";
+  $("benchmarkBreakdownBarNote").textContent = metric === "uploads"
     ? `${periodName(period)} · ${rows.length} 个频道 · 带 #Shorts 标记或时长不超过 3 分钟归为短视频；直播、待播或缺少时长的项目仅计入总数。`
     : `${periodName(period)} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
 }
