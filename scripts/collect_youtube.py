@@ -223,7 +223,13 @@ def configured_targets(entries: list[Any]) -> list[dict[str, str | None]]:
         link = entry.get("url", "") if isinstance(entry, dict) else str(entry)
         if not link:
             continue
-        channel_id = resolve_channel(link)
+        try:
+            channel_id = resolve_channel(link)
+        except ValueError as error:
+            # A channel can be renamed or removed after it is added to the
+            # watchlist. Keep the rest of the scheduled collection healthy.
+            print(f"Skipping unavailable channel: {error}", file=sys.stderr)
+            continue
         if channel_id in known:
             continue
         known.add(channel_id)
@@ -333,6 +339,8 @@ def main() -> None:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     targets = configured_targets(config.get("channels", []))
     benchmark_targets = configured_targets(config.get("benchmarks", []))
+    owned_channel_ids = {str(target["id"]) for target in targets}
+    benchmark_targets = [target for target in benchmark_targets if str(target["id"]) not in owned_channel_ids]
     if not targets:
         raise RuntimeError("Add at least one channel URL to config/channels.json")
 
