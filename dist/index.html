@@ -12,6 +12,13 @@
   <main class="dashboard">
     <h1 class="sr-only">YouTube 频道数据</h1>
 
+    <nav class="workspace-tabs" aria-label="数据工作区">
+      <button type="button" data-workspace="owned" aria-pressed="true"><span>自有频道矩阵</span><small id="ownedWorkspaceCount"></small></button>
+      <button type="button" data-workspace="benchmarks" aria-pressed="false"><span>对标分析</span><small id="benchmarkWorkspaceCount"></small></button>
+    </nav>
+
+    <div id="ownedWorkspace" class="workspace">
+
     <section class="chart-grid" aria-label="频道汇总">
       <article class="panel chart-panel">
         <header class="panel-heading">
@@ -142,9 +149,43 @@
         </article>
       </div>
     </section>
+    </div>
+
+    <section id="benchmarkWorkspace" class="workspace benchmark-workspace" aria-labelledby="benchmarkTitle" hidden>
+      <header class="benchmark-page-heading">
+        <div>
+          <p class="eyebrow">BENCHMARK WATCHLIST</p>
+          <h2 id="benchmarkTitle">对标分析</h2>
+          <p id="benchmarkDescription" class="trend-description">独立采集公开频道与视频数据；不会计入自有频道的订阅、播放或更新合计。</p>
+        </div>
+        <span id="benchmarkUpdated" class="note"></span>
+      </header>
+
+      <section class="benchmark-summary-grid" aria-label="对标账号概览">
+        <article class="benchmark-stat"><span>对标账号</span><strong id="benchmarkAccountCount">—</strong><small id="benchmarkAccountNote">已纳入观察池</small></article>
+        <article class="benchmark-stat"><span>公开订阅合计</span><strong id="benchmarkSubscriberTotal">—</strong><small id="benchmarkSubscriberNote">仅统计公开显示的频道</small></article>
+        <article class="benchmark-stat"><span>近 30 日发布</span><strong id="benchmarkUploadTotal">—</strong><small id="benchmarkUploadNote">等待首轮公开数据采集</small></article>
+        <article class="benchmark-stat"><span>近 30 日播放</span><strong id="benchmarkViewsTotal">—</strong><small id="benchmarkViewsNote">发布视频的当前公开播放</small></article>
+      </section>
+
+      <div class="benchmark-grid">
+        <section class="panel benchmark-panel" aria-labelledby="benchmarkScaleTitle">
+          <header class="insight-card-heading"><div><p class="eyebrow">CHANNEL SCALE</p><h3 id="benchmarkScaleTitle">公开订阅规模</h3></div><span class="note">仅作横向参照</span></header>
+          <div id="benchmarkSubscriptionRank" class="benchmark-ranking" aria-live="polite"></div>
+        </section>
+        <section class="panel benchmark-panel" aria-labelledby="benchmarkVideoTitle">
+          <header class="insight-card-heading"><div><p class="eyebrow">RECENT CONTENT</p><h3 id="benchmarkVideoTitle">近 30 日内容表现</h3></div><span id="benchmarkVideoCount" class="note"></span></header>
+          <ol id="benchmarkVideoRank" class="benchmark-video-list" aria-live="polite"></ol>
+        </section>
+      </div>
+
+      <section class="panel benchmark-watchlist" aria-labelledby="benchmarkWatchlistTitle">
+        <header class="insight-card-heading"><div><p class="eyebrow">WATCHLIST</p><h3 id="benchmarkWatchlistTitle">对标账号列表</h3></div><span class="note">点击可前往频道主页</span></header>
+        <div id="benchmarkCards" class="benchmark-cards" aria-live="polite"></div>
+      </section>
+    </section>
     <div id="loadError" class="load-error" hidden></div>
   </main>
   <script src="app.js" defer></script>
 </body>
 </html>
-
