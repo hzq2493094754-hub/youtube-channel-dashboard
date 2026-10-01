@@ -12,10 +12,13 @@
   <main class="dashboard">
     <h1 class="sr-only">YouTube 频道数据</h1>
 
-    <nav class="workspace-tabs" aria-label="数据工作区">
-      <button type="button" data-workspace="owned" aria-pressed="true"><span>自有频道矩阵</span><small id="ownedWorkspaceCount"></small></button>
-      <button type="button" data-workspace="benchmarks" aria-pressed="false"><span>对标分析</span><small id="benchmarkWorkspaceCount"></small></button>
-    </nav>
+    <div class="workspace-toolbar">
+      <nav class="workspace-tabs" aria-label="数据工作区">
+        <button type="button" data-workspace="owned" aria-pressed="true"><span>自有频道矩阵</span><small id="ownedWorkspaceCount"></small></button>
+        <button type="button" data-workspace="benchmarks" aria-pressed="false"><span>对标分析</span><small id="benchmarkWorkspaceCount"></small></button>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="切换至夜间模式"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">夜间模式</span></button>
+    </div>
 
     <div id="ownedWorkspace" class="workspace">
 
