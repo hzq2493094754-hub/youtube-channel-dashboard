@@ -123,6 +123,35 @@ button { cursor: pointer; }
 .compact-choices button i { display: grid; place-items: center; width: 15px; color: currentColor; font-style: normal; font-size: 12px; }
 .compact-choices button { min-width: 82px; }
 
+/* Large benchmark watchlists stay compact until the user needs to search them. */
+.benchmark-compact-choices { overflow: visible; padding: 0; }
+.benchmark-compact-filter { position: relative; width: min(100%, 580px); }
+.benchmark-picker { position: relative; width: 100%; }
+.benchmark-picker summary { display: flex; align-items: center; justify-content: space-between; min-height: 42px; gap: 14px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 11px; color: var(--text); background: var(--surface); box-shadow: 0 3px 12px rgba(52, 68, 82, .04); cursor: pointer; list-style: none; transition: border-color .16s ease, box-shadow .16s ease, background .16s ease; }
+.benchmark-picker summary::-webkit-details-marker { display: none; }
+.benchmark-picker summary:hover, .benchmark-picker summary:focus-visible { border-color: rgba(96, 125, 152, .4); box-shadow: 0 8px 20px rgba(52, 68, 82, .08); outline: none; }
+.benchmark-picker[open] summary { border-color: var(--accent-strong); border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; background: #fff; }
+.benchmark-picker-summary { display: grid; min-width: 0; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 8px; }
+.benchmark-picker-label { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.benchmark-picker-summary b { color: var(--text); font-size: 12px; }
+.benchmark-picker-summary small { overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.benchmark-picker-trigger { display: inline-flex; align-items: center; flex: 0 0 auto; gap: 5px; color: var(--accent-strong); font-size: 11px; font-weight: 800; }
+.benchmark-picker-trigger i { display: inline-block; font-style: normal; transition: transform .16s ease; }
+.benchmark-picker[open] .benchmark-picker-trigger i { transform: rotate(180deg); }
+.benchmark-picker-panel { position: absolute; z-index: 40; top: calc(100% + 7px); left: 0; width: min(680px, calc(100vw - 128px)); padding: 12px; border: 1px solid rgba(79, 101, 122, .18); border-radius: 14px; background: rgba(255, 255, 255, .98); box-shadow: 0 18px 42px rgba(41, 56, 70, .17); backdrop-filter: blur(18px); }
+.benchmark-search { display: flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 11px; border: 1px solid rgba(79, 101, 122, .17); border-radius: 9px; color: var(--muted); background: #f4f7f9; }
+.benchmark-search:focus-within { border-color: var(--accent-strong); background: #fff; box-shadow: 0 0 0 3px rgba(96, 125, 152, .12); }
+.benchmark-search input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--text); background: transparent; font: inherit; font-size: 12px; }
+.benchmark-search input::placeholder { color: #8b949d; }
+.benchmark-picker-actions { display: flex; align-items: center; gap: 7px; margin: 10px 0; }
+.benchmark-picker-actions button { min-height: 28px; padding: 4px 9px; font-size: 11px; }
+.benchmark-picker-actions span { margin-left: auto; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.benchmark-picker-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 296px; gap: 6px; padding: 2px; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: var(--line) transparent; }
+.benchmark-picker-list .channel-choice { min-width: 0; min-height: 38px; padding: 6px 9px; overflow: hidden; text-align: left; }
+.benchmark-picker-list .channel-choice span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.benchmark-picker-list .channel-choice::before { content: ""; width: 10px; height: 10px; flex: 0 0 auto; border: 1px solid currentColor; border-radius: 3px; }
+.benchmark-picker-list .channel-choice[aria-pressed="true"]::before { content: "✓"; display: grid; place-items: center; font-size: 10px; line-height: 1; }
+
 .trend-charts { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(250px, .58fr); gap: 16px; margin-top: 12px; }
 .trend-figure { min-width: 0; padding-top: 10px; border-top: 1px solid var(--line); }
 .trend-figure--bar { min-width: 250px; }
@@ -163,6 +192,7 @@ button { cursor: pointer; }
 .trend-legend span { display: flex; align-items: center; gap: 4px; font-size: 11px; }
 .trend-legend i { width: 9px; height: 9px; flex: 0 0 auto; border-radius: 50%; }
 .trend-legend b { color: var(--muted); font-size: 10px; font-weight: 500; }
+.trend-legend .legend-summary { color: var(--muted); font-size: 10px; font-style: italic; }
 .breakdown-figure .trend-legend { gap: 6px 16px; }
 .breakdown-figure .trend-legend:empty { display: none; }
 .breakdown-bars { display: grid; gap: 4px; margin-top: 4px; }
@@ -638,6 +668,13 @@ body {
 :root[data-theme="dark"] .choice-buttons button[aria-pressed="true"],
 :root[data-theme="dark"] .workspace-tabs button[aria-pressed="true"],
 :root[data-theme="dark"] .period-switch button[aria-pressed="true"] { color: #fff; background: var(--accent-strong); }
+:root[data-theme="dark"] .benchmark-picker summary { border-color: rgba(182, 198, 209, .16); color: #edf1f2; background: #1d2933; box-shadow: 0 4px 13px rgba(0, 0, 0, .14); }
+:root[data-theme="dark"] .benchmark-picker[open] summary { border-color: var(--accent-strong); background: #23313c; }
+:root[data-theme="dark"] .benchmark-picker-panel { border-color: rgba(182, 198, 209, .18); background: rgba(25, 36, 46, .98); box-shadow: 0 20px 44px rgba(0, 0, 0, .34); }
+:root[data-theme="dark"] .benchmark-search { border-color: rgba(182, 198, 209, .16); background: #202d37; }
+:root[data-theme="dark"] .benchmark-search:focus-within { background: #263641; }
+:root[data-theme="dark"] .benchmark-search input { color: #edf1f2; }
+:root[data-theme="dark"] .benchmark-search input::placeholder { color: #9eacb6; }
 :root[data-theme="dark"] .note,
 :root[data-theme="dark"] .trend-description,
 :root[data-theme="dark"] .donut-center span,
@@ -659,6 +696,12 @@ body {
   .workspace-toolbar .workspace-tabs { flex: 1; width: auto; }
   .theme-toggle { flex: 0 0 45px; width: 45px; padding: 0; }
   .theme-toggle-label { display: none; }
+  .benchmark-compact-filter { width: 100%; }
+  .benchmark-picker summary { min-height: 46px; gap: 8px; }
+  .benchmark-picker-summary { grid-template-columns: auto minmax(0, 1fr); gap: 3px 7px; }
+  .benchmark-picker-summary small { grid-column: 1 / -1; }
+  .benchmark-picker-panel { width: calc(100vw - 74px); padding: 10px; }
+  .benchmark-picker-list { grid-template-columns: 1fr; max-height: 272px; }
 }
 
 /* Deep research uses the same soft paper cards as Content Intelligence. */
