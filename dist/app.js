@@ -8,7 +8,7 @@ const BENCHMARK_EXCLUSIONS = new Set(["UCETuQf4lzTrfevoHdSGo8Ew", "UCUzyRc77mAKk
 const BENCHMARK_ACTIVITY_DAYS = 14;
 const BENCHMARK_MIN_UPDATES = 3;
 let data = { channels: [], catalog: [], benchmarks: [], benchmarkCatalog: [], generatedAt: null };
-const state = { workspace: "owned", subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "7", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "7", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null, benchmarkSubscriberPeriod: "all", benchmarkViewsPeriod: "30", benchmarkVideoPeriod: "7", benchmarkVideoSort: "desc", benchmarkVideoChannels: new Set(), benchmarkInsightPeriod: "7", benchmarkInsightChannels: new Set(), benchmarkInsightAllMode: true, benchmarkLifecycleVideoId: null, benchmarkSubscriberGrowthPeriod: "all", benchmarkSubscriberGrowthChannels: new Set(), benchmarkSubscriberGrowthAllMode: true, benchmarkTrendPeriod: "30", benchmarkTrendMetric: "views", benchmarkTrendChannels: new Set(), benchmarkTrendAllMode: true, benchmarkBreakdownMode: "bar" };
+const state = { workspace: "owned", subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, trendRangeStart: null, trendRangeEnd: null, trendRangeOpen: false, breakdownMode: "bar", videoPeriod: "7", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "7", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null, benchmarkSubscriberPeriod: "all", benchmarkViewsPeriod: "30", benchmarkVideoPeriod: "7", benchmarkVideoSort: "desc", benchmarkVideoChannels: new Set(), benchmarkInsightPeriod: "7", benchmarkInsightChannels: new Set(), benchmarkInsightAllMode: true, benchmarkLifecycleVideoId: null, benchmarkSubscriberGrowthPeriod: "all", benchmarkSubscriberGrowthChannels: new Set(), benchmarkSubscriberGrowthAllMode: true, benchmarkTrendPeriod: "30", benchmarkTrendMetric: "views", benchmarkTrendChannels: new Set(), benchmarkTrendAllMode: true, benchmarkBreakdownMode: "bar" };
 
 function applyTheme(theme) {
   const isDark = theme === "dark";
@@ -74,6 +74,31 @@ function subscriberDelta(channel, period) {
 function videosFor(channelId, period = "all") {
   const start = periodStart(period);
   return data.catalog.filter((row) => row.channelId === channelId && at(row.publishedAt) >= start && at(row.publishedAt) <= asOf());
+}
+
+function isDateKey(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
+function keyInRange(key, range) { return key >= range.startKey && key <= range.endKey; }
+function calendarStamp(key) { return new Date(`${key}T12:00:00+08:00`).getTime(); }
+function trendDateRange(metric) {
+  if (isDateKey(state.trendRangeStart) && isDateKey(state.trendRangeEnd) && state.trendRangeStart <= state.trendRangeEnd) return { startKey: state.trendRangeStart, endKey: state.trendRangeEnd, label: `${state.trendRangeStart} 至 ${state.trendRangeEnd}`, custom: true };
+  let start = periodStart(state.trendPeriod);
+  if (state.trendPeriod === "all") {
+    const values = metric === "subscribers" ? data.channels.flatMap((channel) => channelHistory(channel).map((row) => at(row.observedAt))) : data.catalog.map((row) => at(row.publishedAt));
+    start = values.length ? Math.min(...values) : asOf();
+  }
+  return { startKey: day(start), endKey: day(asOf()), label: periodName(state.trendPeriod), custom: false };
+}
+function videosForTrendRange(channelId, period, range) { return range.custom ? data.catalog.filter((row) => row.channelId === channelId && keyInRange(day(row.publishedAt), range)) : videosFor(channelId, period); }
+function baselineForTrendRange(channel, period, range) {
+  if (!range.custom) return baseline(channel, period);
+  const rows = channelHistory(channel).filter((row) => number(row.subscriberCount) != null);
+  return rows.filter((row) => day(row.observedAt) <= range.startKey).at(-1) || rows.find((row) => keyInRange(day(row.observedAt), range)) || rows[0] || null;
+}
+function subscriberDeltaForTrendRange(channel, period, range) {
+  if (!range.custom) return subscriberDelta(channel, period);
+  const base = baselineForTrendRange(channel, period, range);
+  const latest = channelHistory(channel).filter((row) => number(row.subscriberCount) != null && keyInRange(day(row.observedAt), range)).at(-1);
+  return !base || !latest ? null : Number(latest.subscriberCount) - Number(base.subscriberCount);
 }
 
 function windowViews(channel, period) {
@@ -194,7 +219,12 @@ function channelChoices(targetId, selected, allAction, allMode = false) {
   $(targetId).innerHTML = `<button type="button" data-action="${allAction}:all" aria-pressed="${allMode}">全部频道</button><button type="button" data-action="${allAction}:select" aria-pressed="${!allMode && allSelected}">全选</button>${data.channels.map((channel) => `<button class="channel-choice" type="button" aria-label="${esc(channel.name)}" data-action="${allAction}:${esc(channel.id)}" aria-pressed="${!allMode && selected.has(channel.id)}">${avatar(channel)}<span>${esc(channel.name)}</span></button>`).join("")}`;
 }
 
-function rangeKeys(period, metric) {
+function rangeKeys(period, metric, range = null) {
+  if (range?.custom) {
+    const output = [];
+    for (let stamp = calendarStamp(range.startKey), end = calendarStamp(range.endKey); stamp <= end; stamp += 86400000) output.push(day(stamp));
+    return output.slice(-1095);
+  }
   let start = periodStart(period);
   if (period === "all") {
     const values = metric === "subscribers" ? data.channels.flatMap((channel) => channelHistory(channel).map((row) => at(row.observedAt))) : data.catalog.map((row) => at(row.publishedAt));
@@ -212,13 +242,13 @@ function valueForMetric(video, metric) {
   return 1;
 }
 
-function channelSeries(channel, keys, period, metric) {
+function channelSeries(channel, keys, period, metric, range = { custom: false }) {
   const values = new Map(keys.map((key) => [key, metric === "subscribers" ? null : 0]));
   if (metric === "subscribers") {
-    const base = baseline(channel, period);
-    channelHistory(channel).filter((row) => at(row.observedAt) >= periodStart(period) && number(row.subscriberCount) != null).forEach((row) => values.set(day(row.observedAt), Number(row.subscriberCount) - Number(base?.subscriberCount || row.subscriberCount)));
+    const base = baselineForTrendRange(channel, period, range);
+    channelHistory(channel).filter((row) => (range.custom ? keyInRange(day(row.observedAt), range) : at(row.observedAt) >= periodStart(period)) && number(row.subscriberCount) != null).forEach((row) => values.set(day(row.observedAt), Number(row.subscriberCount) - Number(base?.subscriberCount || row.subscriberCount)));
   } else {
-    videosFor(channel.id, period).forEach((video) => { const key = day(video.publishedAt); if (values.has(key)) values.set(key, (values.get(key) || 0) + valueForMetric(video, metric)); });
+    videosForTrendRange(channel.id, period, range).forEach((video) => { const key = day(video.publishedAt); if (values.has(key)) values.set(key, (values.get(key) || 0) + valueForMetric(video, metric)); });
   }
   return { id: channel.id, name: channel.name, color: COLORS[data.channels.findIndex((item) => item.id === channel.id) % COLORS.length], points: keys.map((key) => ({ key, value: values.get(key) })) };
 }
@@ -313,20 +343,21 @@ function uploadSplit(videos) {
     return split;
   }, { long: 0, short: 0, other: 0, total: 0 });
 }
-function metricTotal(channel, period, metric) { if (metric === "subscribers") return subscriberDelta(channel, period); return videosFor(channel.id, period).reduce((sum, video) => sum + valueForMetric(video, metric), 0); }
+function metricTotal(channel, period, metric, range = { custom: false }) { if (metric === "subscribers") return subscriberDeltaForTrendRange(channel, period, range); return videosForTrendRange(channel.id, period, range).reduce((sum, video) => sum + valueForMetric(video, metric), 0); }
 
 function renderBreakdown(series, metricLabel) {
   const period = state.trendPeriod, metric = state.trendMetric;
+  const range = trendDateRange(metric);
   const target = $("breakdownBarChart");
   $("breakdownLineTitle").textContent = `各频道折线 · ${metricLabel}`;
   drawLineChart("breakdownLineChart", series, metricLabel, series);
   $("breakdownLineLegend").innerHTML = series.map((row) => `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)}</span>`).join("");
-  $("breakdownLineNote").textContent = `${periodName(period)} · ${series.length} 个频道 · 按发布日期每日求和，并非当日新增量。`;
+  $("breakdownLineNote").textContent = `${range.label} · ${series.length} 个频道 · 按发布日期每日求和，并非当日新增量。`;
   $("breakdownBarTitle").textContent = `各频道柱状 · ${metricLabel}`;
   const chosen = state.trendAllMode ? data.channels : data.channels.filter((channel) => state.trendChannels.has(channel.id));
   const rows = chosen.map((channel) => {
-    const videos = videosFor(channel.id, period);
-    return { channel, value: metricTotal(channel, period, metric), videos, split: uploadSplit(videos) };
+    const videos = videosForTrendRange(channel.id, period, range);
+    return { channel, value: metricTotal(channel, period, metric, range), videos, split: uploadSplit(videos) };
   }).sort((a, b) => (number(b.value) || -Infinity) - (number(a.value) || -Infinity));
   const maximum = Math.max(1, ...rows.map((row) => Math.abs(number(row.value) || 0)));
   target.innerHTML = `<div class="breakdown-bars">${rows.map((row) => {
@@ -342,22 +373,33 @@ function renderBreakdown(series, metricLabel) {
   const hasOtherUploads = rows.some((row) => row.split.other > 0);
   $("breakdownBarLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot upload-long-dot"></i>长视频</span><span><i class="series-dot upload-short-dot"></i>短视频</span>${hasOtherUploads ? `<span><i class="series-dot upload-other-dot"></i>其他</span>` : ""}` : "";
   $("breakdownBarNote").textContent = metric === "uploads"
-    ? `${periodName(period)} · ${rows.length} 个频道 · 带 #Shorts 标记或时长不超过 3 分钟归为短视频，其余为长视频；直播、待播或缺少时长的项目仅计入总数。`
-    : `${periodName(period)} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
+    ? `${range.label} · ${rows.length} 个频道 · 带 #Shorts 标记或时长不超过 3 分钟归为短视频，其余为长视频；直播、待播或缺少时长的项目仅计入总数。`
+    : `${range.label} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
 }
 
 function renderTrend() {
   const metric = state.trendMetric, period = state.trendPeriod;
   const labels = { views: "播放量", subscribers: "新增订阅", likes: "点赞数量", comments: "评论数量", uploads: "更新数量" };
-  const keys = rangeKeys(period, metric);
+  const range = trendDateRange(metric);
+  const keys = rangeKeys(period, metric, range);
   const chosen = state.trendAllMode ? data.channels : data.channels.filter((channel) => state.trendChannels.has(channel.id));
-  const source = chosen.map((channel) => channelSeries(channel, keys, period, metric));
+  const source = chosen.map((channel) => channelSeries(channel, keys, period, metric, range));
   const all = state.trendAllMode;
   const main = chosen.length === 1 ? source : [aggregateSeries(source, keys, all ? "全部频道总和" : `所选频道总和 · ${chosen.length} 个频道`)];
   main.forEach((row) => { if (row.id === "aggregate") row.color = "#c6a96a"; });
   $("aggregateTitle").textContent = main[0]?.name || "全部频道总和";
-  $("trendDescription").textContent = metric === "subscribers" ? `${periodName(period)} · ${main[0]?.name || "全部频道总和"}；公开订阅快照差值，历史不足时显示已累积区间。` : `${periodName(period)} · ${main[0]?.name || "全部频道总和"}；按视频发布日期每日求和，采用最近采集的累计值，并非当日新增量。`;
+  $("trendDescription").textContent = metric === "subscribers" ? `${range.label} · ${main[0]?.name || "全部频道总和"}；公开订阅快照差值，历史不足时显示已累积区间。` : `${range.label} · ${main[0]?.name || "全部频道总和"}；按视频发布日期每日求和，采用最近采集的累计值，并非当日新增量。`;
   $("trendPeriod").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === period)));
+  $("trendRangeToggle").setAttribute("aria-pressed", String(range.custom));
+  $("trendRangeToggle").setAttribute("aria-expanded", String(state.trendRangeOpen));
+  $("trendRangePicker").hidden = !state.trendRangeOpen;
+  const availableDates = data.catalog.map((row) => day(row.publishedAt)).sort();
+  const earliest = availableDates[0] || day(asOf()), latest = day(asOf());
+  $("trendRangeStart").min = earliest; $("trendRangeStart").max = latest;
+  $("trendRangeEnd").min = earliest; $("trendRangeEnd").max = latest;
+  $("trendRangeStart").value = state.trendRangeStart || earliest;
+  $("trendRangeEnd").value = state.trendRangeEnd || latest;
+  $("trendRangeError").textContent = "";
   $("trendMetric").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === metric)));
   channelChoices("trendChannels", state.trendChannels, "trend", state.trendAllMode);
   drawLineChart("trendChart", main, labels[metric], source);
@@ -870,10 +912,12 @@ function bindControls() {
   document.addEventListener("click", (event) => {
     const button = event.target.closest("button"); if (!button) return;
     if (button.dataset.workspace) { setWorkspace(button.dataset.workspace); return; }
+    if (button.id === "trendRangeToggle") { state.trendRangeOpen = !state.trendRangeOpen; renderTrend(); return; }
+    if (button.id === "trendRangeClear") { state.trendRangeStart = null; state.trendRangeEnd = null; state.trendRangeOpen = false; renderTrend(); return; }
     const inGroup = (id) => button.closest(`#${id}`);
     if (inGroup("subscriberPeriod")) { state.subscriberPeriod = button.dataset.period; renderSubscribers(); return; }
     if (inGroup("viewsPeriod")) { state.viewsPeriod = button.dataset.period; renderViews(); return; }
-    if (inGroup("trendPeriod")) { state.trendPeriod = button.dataset.value; renderTrend(); return; }
+    if (inGroup("trendPeriod")) { state.trendPeriod = button.dataset.value; state.trendRangeStart = null; state.trendRangeEnd = null; state.trendRangeOpen = false; renderTrend(); return; }
     if (inGroup("trendMetric")) { state.trendMetric = button.dataset.value; renderTrend(); return; }
     if (inGroup("breakdownMode")) { state.breakdownMode = button.dataset.value; renderTrend(); return; }
     if (inGroup("videoPeriod")) { state.videoPeriod = button.dataset.value; renderInventory(); return; }
@@ -935,6 +979,18 @@ function bindControls() {
     });
     const count = panel?.querySelector("[data-benchmark-search-count]");
     if (count) count.textContent = keyword ? `匹配 ${exact(visible)} 个` : `${exact(buttons.length)} 个账号`;
+  });
+  $("trendRangePicker")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const start = $("trendRangeStart").value, end = $("trendRangeEnd").value;
+    if (!isDateKey(start) || !isDateKey(end) || start > end) {
+      $("trendRangeError").textContent = "请选择有效的起止日期。";
+      return;
+    }
+    state.trendRangeStart = start;
+    state.trendRangeEnd = end;
+    state.trendRangeOpen = false;
+    renderTrend();
   });
   window.addEventListener("resize", () => { if (data.channels.length) { renderTrend(); renderSubscriberGrowth(); renderResearch(); } if (data.benchmarks.length) { renderBenchmarkTrend(); renderBenchmarkResearch(); } });
 }
