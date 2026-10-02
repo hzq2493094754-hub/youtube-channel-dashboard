@@ -4,6 +4,9 @@ const compact = new Intl.NumberFormat("zh-HK", { notation: "compact", maximumFra
 const integer = new Intl.NumberFormat("zh-HK", { maximumFractionDigits: 0 });
 const dateTime = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
 const dateOnly = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", year: "numeric", month: "2-digit", day: "2-digit" });
+const BENCHMARK_EXCLUSIONS = new Set(["UCETuQf4lzTrfevoHdSGo8Ew", "UCUzyRc77mAKkzrHFjDsEEVA"]);
+const BENCHMARK_ACTIVITY_DAYS = 14;
+const BENCHMARK_MIN_UPDATES = 3;
 let data = { channels: [], catalog: [], benchmarks: [], benchmarkCatalog: [], generatedAt: null };
 const state = { workspace: "owned", subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, breakdownMode: "bar", videoPeriod: "7", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "7", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null, benchmarkSubscriberPeriod: "all", benchmarkViewsPeriod: "30", benchmarkVideoPeriod: "7", benchmarkVideoSort: "desc", benchmarkVideoChannels: new Set(), benchmarkInsightPeriod: "7", benchmarkInsightChannels: new Set(), benchmarkInsightAllMode: true, benchmarkLifecycleVideoId: null, benchmarkSubscriberGrowthPeriod: "all", benchmarkSubscriberGrowthChannels: new Set(), benchmarkSubscriberGrowthAllMode: true, benchmarkTrendPeriod: "30", benchmarkTrendMetric: "views", benchmarkTrendChannels: new Set(), benchmarkTrendAllMode: true, benchmarkBreakdownMode: "bar" };
 
@@ -949,6 +952,18 @@ function normaliseGroup(sourceChannels, storedRows) {
   return { channels, catalog };
 }
 
+function activeBenchmarkGroup(channels, catalog, generatedAt) {
+  const end = at(generatedAt) || Date.now();
+  const start = end - BENCHMARK_ACTIVITY_DAYS * 86400000;
+  const updates = new Map(channels.map((channel) => [channel.id, 0]));
+  catalog.forEach((video) => {
+    const published = at(video.publishedAt);
+    if (published >= start && published <= end) updates.set(video.channelId, (updates.get(video.channelId) || 0) + 1);
+  });
+  const activeIds = new Set(channels.filter((channel) => !BENCHMARK_EXCLUSIONS.has(channel.id) && (updates.get(channel.id) || 0) >= BENCHMARK_MIN_UPDATES).map((channel) => channel.id));
+  return { channels: channels.filter((channel) => activeIds.has(channel.id)), catalog: catalog.filter((video) => activeIds.has(video.channelId)) };
+}
+
 async function init() {
   initialiseTheme();
   try {
@@ -963,9 +978,9 @@ async function init() {
     const benchmarkRows = raw.benchmarks?.length ? raw.benchmarks : seedPayload.benchmarks || [];
     const benchmarks = normaliseGroup(benchmarkRows, raw.benchmarkVideoCatalog || raw.benchmarkCatalog);
     const ownedIds = new Set(owned.channels.map((channel) => channel.id));
-    const benchmarkChannels = benchmarks.channels.filter((channel) => !ownedIds.has(channel.id));
-    const benchmarkIds = new Set(benchmarkChannels.map((channel) => channel.id));
-    data = { ...owned, benchmarks: benchmarkChannels, benchmarkCatalog: benchmarks.catalog.filter((video) => benchmarkIds.has(video.channelId)), generatedAt: raw.generatedAt };
+    const benchmarkCandidates = benchmarks.channels.filter((channel) => !ownedIds.has(channel.id));
+    const eligibleBenchmarks = activeBenchmarkGroup(benchmarkCandidates, benchmarks.catalog, raw.generatedAt);
+    data = { ...owned, benchmarks: eligibleBenchmarks.channels, benchmarkCatalog: eligibleBenchmarks.catalog, generatedAt: raw.generatedAt };
     bindControls(); render();
   } catch (error) { $("loadError").hidden = false; $("loadError").textContent = `数据加载失败：${error.message}`; }
 }

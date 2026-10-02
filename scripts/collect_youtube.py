@@ -31,6 +31,8 @@ MAX_AVATAR_BYTES = 450_000
 COMMENT_VIDEOS_PER_CHANNEL = 1
 COMMENT_MAX_RESULTS = 25
 COMMENT_REFRESH_INTERVAL = timedelta(hours=12)
+BENCHMARK_ACTIVITY_DAYS = 14
+BENCHMARK_MIN_UPDATES = 3
 
 
 def iso_now() -> str:
@@ -339,8 +341,9 @@ def main() -> None:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     targets = configured_targets(config.get("channels", []))
     benchmark_targets = configured_targets(config.get("benchmarks", []))
+    benchmark_exclusions = {str(channel_id).strip() for channel_id in config.get("benchmarkExclusions", []) if str(channel_id).strip()}
     owned_channel_ids = {str(target["id"]) for target in targets}
-    benchmark_targets = [target for target in benchmark_targets if str(target["id"]) not in owned_channel_ids]
+    benchmark_targets = [target for target in benchmark_targets if str(target["id"]) not in owned_channel_ids and str(target["id"]) not in benchmark_exclusions]
     if not targets:
         raise RuntimeError("Add at least one channel URL to config/channels.json")
 
@@ -359,6 +362,14 @@ def main() -> None:
 
     channels, catalog = collect_group(targets, {channel["id"]: channel for channel in previous.get("channels", []) if channel.get("id")}, owned_catalog_by_id, category_names, now, observed_at, full_inventory, include_comments=True)
     benchmarks, benchmark_catalog = collect_group(benchmark_targets, {channel["id"]: channel for channel in previous.get("benchmarks", []) if channel.get("id")}, benchmark_catalog_by_id, category_names, now, observed_at, benchmark_full_inventory, include_comments=True)
+    benchmark_cutoff = now - timedelta(days=BENCHMARK_ACTIVITY_DAYS)
+    benchmark_updates = {
+        channel["id"]: sum(1 for video in benchmark_catalog if video.get("channelId") == channel["id"] and (published_at := parse_datetime(video.get("publishedAt"))) and benchmark_cutoff <= published_at <= now)
+        for channel in benchmarks
+    }
+    active_benchmark_ids = {channel["id"] for channel in benchmarks if benchmark_updates.get(channel["id"], 0) >= BENCHMARK_MIN_UPDATES}
+    benchmarks = [channel for channel in benchmarks if channel["id"] in active_benchmark_ids]
+    benchmark_catalog = [video for video in benchmark_catalog if video.get("channelId") in active_benchmark_ids]
     payload = {
         "generatedAt": observed_at,
         "collector": {
@@ -366,6 +377,7 @@ def main() -> None:
             "message": "已从 YouTube Data API 刷新自有频道与对标账号的公开数据。",
             "channelsCollected": len(channels),
             "benchmarksCollected": len(benchmarks),
+            "benchmarksExcludedForActivity": len(benchmark_targets) - len(benchmarks),
             "fullInventoryScannedAt": observed_at if full_inventory else collector.get("fullInventoryScannedAt"),
             "benchmarkFullInventoryScannedAt": observed_at if benchmark_full_inventory else collector.get("benchmarkFullInventoryScannedAt"),
         },
