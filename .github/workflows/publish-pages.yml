@@ -35,13 +35,16 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
           if [ -n "$YOUTUBE_API_KEY" ]; then
-            python scripts/collect_youtube.py
-            cp public/data/dashboard.json dist/data/dashboard.json
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add public/data/dashboard.json dist/data/dashboard.json
-            git diff --cached --quiet || git commit -m "chore: refresh YouTube snapshot"
-            git push
+            if python scripts/collect_youtube.py; then
+              cp public/data/dashboard.json dist/data/dashboard.json
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git add public/data/dashboard.json dist/data/dashboard.json
+              git diff --cached --quiet || git commit -m "chore: refresh YouTube snapshot"
+              git push
+            else
+              echo "YouTube collection failed (for example, quota exhaustion); publishing the last committed snapshot."
+            fi
           else
             echo "YOUTUBE_API_KEY is not configured; publishing the committed snapshot."
           fi
