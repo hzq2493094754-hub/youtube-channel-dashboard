@@ -32,7 +32,7 @@
       </article>
       <article class="panel chart-panel">
         <header class="panel-heading">
-          <div><p class="eyebrow">CHANNEL VIEWS</p><h2>频道总播放合计</h2></div>
+          <div><p class="eyebrow">CHANNEL VIEWS</p><h2 id="viewsTitle">所选视频累计播放</h2></div>
           <div class="metric-actions"><span id="viewsNote" class="note"></span><div id="viewsPeriod" class="period-switch" aria-label="频道播放比较区间"><button data-period="7" aria-pressed="false">7D</button><button data-period="30" aria-pressed="true">30D</button><button data-period="all" aria-pressed="false">ALL</button></div></div>
         </header>
         <div id="viewsChart" class="donut" aria-live="polite"></div>
@@ -90,7 +90,7 @@
         </div>
         <div class="trend-controls">
           <div class="selector-row"><span>频道·多选</span><div id="trendChannels" class="choice-buttons channel-choices" role="group" aria-label="选择趋势频道，可多选；全部频道显示总和"></div></div>
-          <div class="selector-row"><span>指标</span><div id="trendMetric" class="choice-buttons compact-choices" role="group"><button data-value="views" aria-pressed="true"><i>▶</i>播放量</button><button data-value="subscribers" aria-pressed="false"><i>♟</i>新增订阅</button><button data-value="likes" aria-pressed="false"><i>♥</i>点赞数量</button><button data-value="comments" aria-pressed="false"><i>▰</i>评论数量</button><button data-value="uploads" aria-pressed="false"><i>↻</i>更新数量</button></div></div>
+          <div class="selector-row"><span>指标</span><div id="trendMetric" class="choice-buttons compact-choices" role="group"><button data-value="views" aria-pressed="true"><i>▶</i>视频累计播放</button><button data-value="viewGrowth" aria-pressed="false"><i>↗</i>播放增长</button><button data-value="subscribers" aria-pressed="false"><i>♟</i>新增订阅</button><button data-value="likes" aria-pressed="false"><i>♥</i>点赞数量</button><button data-value="comments" aria-pressed="false"><i>▰</i>评论数量</button><button data-value="uploads" aria-pressed="false"><i>↻</i>更新数量</button></div></div>
         </div>
       </header>
       <div class="trend-charts">
@@ -296,6 +296,6 @@
     </section>
     <div id="loadError" class="load-error" hidden></div>
   </main>
-  <script src="app.js?v=trend-date-range-v1" defer></script>
+  <script src="app.js?v=view-growth-v1" defer></script>
 </body>
 </html>

@@ -184,9 +184,10 @@ function renderViews() {
   const period = state.viewsPeriod;
   const all = period === "all";
   const rows = data.channels.map((channel, index) => ({ channel, value: windowViews(channel, period), videos: videosFor(channel.id, period).length, color: COLORS[index % COLORS.length] })).sort((a, b) => b.value - a.value);
-  $("viewsNote").textContent = all ? "频道公开累计值" : `${periodName(period)}发布视频当前播放`;
+  $("viewsTitle").textContent = all ? "频道总播放合计" : "所选视频累计播放";
+  $("viewsNote").textContent = all ? "YouTube 频道公开总播放" : `${periodName(period)}发布视频的最近累计值`;
   $("viewsPeriod").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.period === period)));
-  renderDonut("viewsChart", rows, all ? "频道总播放 · 全部记录" : `视频播放 · ${periodName(period)}`, (row) => all ? `频道总播放：${exact(row.value)}` : `视频播放：${exact(row.value)} · 发布视频 ${row.videos} 条`);
+  renderDonut("viewsChart", rows, all ? "频道总播放 · 全部记录" : `视频累计播放 · ${periodName(period)}`, (row) => all ? `频道总播放：${exact(row.value)}` : `视频累计播放：${exact(row.value)} · 发布视频 ${row.videos} 条`);
 }
 
 function renderUpdates() {
@@ -242,11 +243,35 @@ function valueForMetric(video, metric) {
   return 1;
 }
 
+function videoMetricHistory(video) {
+  const samples = [...(video.metricHistory || []), { observedAt: video.observedAt || data.generatedAt, viewCount: video.viewCount }]
+    .filter((row) => row.observedAt && Number.isFinite(at(row.observedAt)) && number(row.viewCount) != null);
+  const byTime = new Map(samples.map((row) => [row.observedAt, { observedAt: row.observedAt, viewCount: Number(row.viewCount) }]));
+  return [...byTime.values()].sort((a, b) => at(a.observedAt) - at(b.observedAt));
+}
+function viewGrowthValues(channelId, keys, range) {
+  const values = new Map(keys.map((key) => [key, 0]));
+  data.catalog.filter((video) => video.channelId === channelId && day(video.publishedAt) <= range.endKey).forEach((video) => {
+    const samples = videoMetricHistory(video);
+    keys.forEach((key) => {
+      const today = samples.filter((sample) => day(sample.observedAt) === key).at(-1);
+      if (!today) return;
+      const previous = samples.filter((sample) => at(sample.observedAt) < at(today.observedAt)).at(-1);
+      if (!previous) return;
+      values.set(key, (values.get(key) || 0) + Math.max(0, Number(today.viewCount) - Number(previous.viewCount)));
+    });
+  });
+  return values;
+}
+function growthVideosForTrend(channelId, range) { return data.catalog.filter((video) => video.channelId === channelId && day(video.publishedAt) <= range.endKey); }
+
 function channelSeries(channel, keys, period, metric, range = { custom: false }) {
   const values = new Map(keys.map((key) => [key, metric === "subscribers" ? null : 0]));
   if (metric === "subscribers") {
     const base = baselineForTrendRange(channel, period, range);
     channelHistory(channel).filter((row) => (range.custom ? keyInRange(day(row.observedAt), range) : at(row.observedAt) >= periodStart(period)) && number(row.subscriberCount) != null).forEach((row) => values.set(day(row.observedAt), Number(row.subscriberCount) - Number(base?.subscriberCount || row.subscriberCount)));
+  } else if (metric === "viewGrowth") {
+    viewGrowthValues(channel.id, keys, range).forEach((value, key) => values.set(key, value));
   } else {
     videosForTrendRange(channel.id, period, range).forEach((video) => { const key = day(video.publishedAt); if (values.has(key)) values.set(key, (values.get(key) || 0) + valueForMetric(video, metric)); });
   }
@@ -306,7 +331,7 @@ function drawLineChart(targetId, series, metricLabel, detailSeries = series, too
     const detail = list.map(({ row, point }) => {
       const videos = detailsFor(row, key);
       const kinds = uploadSplit(videos);
-      const summary = tooltipSummary ? tooltipSummary(row, point, key) : state.trendMetric === "uploads" ? `${videos.length} 条视频 · 长 ${kinds.long} / 短 ${kinds.short}${kinds.other ? ` / 其他 ${kinds.other}` : ""}` : videos.length ? `${videos.length} 条视频 · ${videos.slice(0, 2).map((video) => video.title).join(" · ")}` : "当天没有可展开的视频明细";
+      const summary = tooltipSummary ? tooltipSummary(row, point, key) : state.trendMetric === "viewGrowth" ? "按该日相邻采集快照差值计算；未采样视频不估算。" : state.trendMetric === "uploads" ? `${videos.length} 条视频 · 长 ${kinds.long} / 短 ${kinds.short}${kinds.other ? ` / 其他 ${kinds.other}` : ""}` : videos.length ? `${videos.length} 条视频 · ${videos.slice(0, 2).map((video) => video.title).join(" · ")}` : "当天没有可展开的视频明细";
       return `<div class="trend-tooltip-row"><span><i style="background:${row.color}"></i>${esc(row.name)}</span><b>${fmt(point.value)}</b><small>${esc(summary)}</small></div>`;
     }).join("");
     tip.innerHTML = `<strong>${key} · ${esc(metricLabel)}</strong>${detail}`;
@@ -343,7 +368,11 @@ function uploadSplit(videos) {
     return split;
   }, { long: 0, short: 0, other: 0, total: 0 });
 }
-function metricTotal(channel, period, metric, range = { custom: false }) { if (metric === "subscribers") return subscriberDeltaForTrendRange(channel, period, range); return videosForTrendRange(channel.id, period, range).reduce((sum, video) => sum + valueForMetric(video, metric), 0); }
+function metricTotal(channel, period, metric, range = { custom: false }, keys = []) {
+  if (metric === "subscribers") return subscriberDeltaForTrendRange(channel, period, range);
+  if (metric === "viewGrowth") return [...viewGrowthValues(channel.id, keys, range).values()].reduce((sum, value) => sum + value, 0);
+  return videosForTrendRange(channel.id, period, range).reduce((sum, video) => sum + valueForMetric(video, metric), 0);
+}
 
 function renderBreakdown(series, metricLabel) {
   const period = state.trendPeriod, metric = state.trendMetric;
@@ -352,12 +381,12 @@ function renderBreakdown(series, metricLabel) {
   $("breakdownLineTitle").textContent = `各频道折线 · ${metricLabel}`;
   drawLineChart("breakdownLineChart", series, metricLabel, series);
   $("breakdownLineLegend").innerHTML = series.map((row) => `<span><i class="series-dot" style="background:${row.color}"></i>${esc(row.name)}</span>`).join("");
-  $("breakdownLineNote").textContent = `${range.label} · ${series.length} 个频道 · 按发布日期每日求和，并非当日新增量。`;
+  $("breakdownLineNote").textContent = metric === "viewGrowth" ? `${range.label} · ${series.length} 个频道 · 按每条视频相邻采集快照差值每日求和；未采集到快照的日期不会估算。` : `${range.label} · ${series.length} 个频道 · 按发布日期每日求和，并非当日新增量。`;
   $("breakdownBarTitle").textContent = `各频道柱状 · ${metricLabel}`;
   const chosen = state.trendAllMode ? data.channels : data.channels.filter((channel) => state.trendChannels.has(channel.id));
   const rows = chosen.map((channel) => {
-    const videos = videosForTrendRange(channel.id, period, range);
-    return { channel, value: metricTotal(channel, period, metric, range), videos, split: uploadSplit(videos) };
+    const videos = metric === "viewGrowth" ? growthVideosForTrend(channel.id, range) : videosForTrendRange(channel.id, period, range);
+    return { channel, value: metricTotal(channel, period, metric, range, series[0]?.points.map((point) => point.key) || []), videos, split: uploadSplit(videos) };
   }).sort((a, b) => (number(b.value) || -Infinity) - (number(a.value) || -Infinity));
   const maximum = Math.max(1, ...rows.map((row) => Math.abs(number(row.value) || 0)));
   target.innerHTML = `<div class="breakdown-bars">${rows.map((row) => {
@@ -372,14 +401,18 @@ function renderBreakdown(series, metricLabel) {
   }).join("")}</div>`;
   const hasOtherUploads = rows.some((row) => row.split.other > 0);
   $("breakdownBarLegend").innerHTML = metric === "uploads" ? `<span><i class="series-dot upload-long-dot"></i>长视频</span><span><i class="series-dot upload-short-dot"></i>短视频</span>${hasOtherUploads ? `<span><i class="series-dot upload-other-dot"></i>其他</span>` : ""}` : "";
-  $("breakdownBarNote").textContent = metric === "uploads"
+  $("breakdownBarNote").textContent = metric === "viewGrowth"
+    ? `${range.label} · ${rows.length} 个频道 · 使用每条视频的已保存快照计算净增长；与频道首页的累计总播放不是同一个指标。`
+    : metric === "uploads"
     ? `${range.label} · ${rows.length} 个频道 · 带 #Shorts 标记或时长不超过 3 分钟归为短视频，其余为长视频；直播、待播或缺少时长的项目仅计入总数。`
-    : `${range.label} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
+    : metric === "views"
+      ? `${range.label} · ${rows.length} 个频道 · 合计所选日期内发布视频的最近累计播放，不等同频道首页的总播放。`
+      : `${range.label} · ${rows.length} 个频道 · 跟随上方指标与时间窗口；柱状图合计窗口内发布视频的最近累计值；折线按发布日期每日求和，并非当日新增量。`;
 }
 
 function renderTrend() {
   const metric = state.trendMetric, period = state.trendPeriod;
-  const labels = { views: "播放量", subscribers: "新增订阅", likes: "点赞数量", comments: "评论数量", uploads: "更新数量" };
+  const labels = { views: "视频累计播放", viewGrowth: "播放增长", subscribers: "新增订阅", likes: "点赞数量", comments: "评论数量", uploads: "更新数量" };
   const range = trendDateRange(metric);
   const keys = rangeKeys(period, metric, range);
   const chosen = state.trendAllMode ? data.channels : data.channels.filter((channel) => state.trendChannels.has(channel.id));
@@ -388,7 +421,11 @@ function renderTrend() {
   const main = chosen.length === 1 ? source : [aggregateSeries(source, keys, all ? "全部频道总和" : `所选频道总和 · ${chosen.length} 个频道`)];
   main.forEach((row) => { if (row.id === "aggregate") row.color = "#c6a96a"; });
   $("aggregateTitle").textContent = main[0]?.name || "全部频道总和";
-  $("trendDescription").textContent = metric === "subscribers" ? `${range.label} · ${main[0]?.name || "全部频道总和"}；公开订阅快照差值，历史不足时显示已累积区间。` : `${range.label} · ${main[0]?.name || "全部频道总和"}；按视频发布日期每日求和，采用最近采集的累计值，并非当日新增量。`;
+  $("trendDescription").textContent = metric === "subscribers"
+    ? `${range.label} · ${main[0]?.name || "全部频道总和"}；公开订阅快照差值，历史不足时显示已累积区间。`
+    : metric === "viewGrowth"
+      ? `${range.label} · ${main[0]?.name || "全部频道总和"}；按每条视频相邻采集快照计算播放净增长。`
+      : `${range.label} · ${main[0]?.name || "全部频道总和"}；所选日期内发布视频在最近一次采集时的累计播放合计，不等同频道首页的总播放。`;
   $("trendPeriod").querySelectorAll("button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.value === period)));
   $("trendRangeToggle").setAttribute("aria-pressed", String(range.custom));
   $("trendRangeToggle").setAttribute("aria-expanded", String(state.trendRangeOpen));
