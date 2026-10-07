@@ -753,6 +753,44 @@ body {
 .lifecycle-milestones span { background: #f0f5f7; }
 .token-item { border-color: rgba(79, 101, 122, .12); }
 .video-picker select { border-color: rgba(79, 101, 122, .18); background-color: #f0f5f7; color: var(--text); }
+
+/* Day mode readability: preserve the restrained palette while giving labels and
+   chart annotations enough contrast to be scanned at a glance. */
+:root[data-theme="light"] {
+  --muted: #4d5e6b;
+}
+:root[data-theme="light"] .note,
+:root[data-theme="light"] .trend-description,
+:root[data-theme="light"] .inventory-note,
+:root[data-theme="light"] .insight-footnote {
+  color: #52636f;
+}
+:root[data-theme="light"] .donut-center span,
+:root[data-theme="light"] .legend-item span {
+  color: #3e4e5a;
+  font-weight: 650;
+}
+:root[data-theme="light"] .trend-legend,
+:root[data-theme="light"] .trend-legend b {
+  color: #465865;
+}
+:root[data-theme="light"] .trend-legend b {
+  font-weight: 720;
+}
+:root[data-theme="light"] .trend-grid text,
+:root[data-theme="light"] .axis-date {
+  fill: #5a6a76;
+}
+:root[data-theme="light"] .workspace-tabs button,
+:root[data-theme="light"] .period-switch button,
+:root[data-theme="light"] .trend-range-toggle {
+  color: #4a5b68;
+  font-weight: 720;
+}
+:root[data-theme="light"] .choice-buttons button {
+  color: #42535f;
+  font-weight: 680;
+}
 :root[data-theme="dark"] .research-card .insight-card-heading,
 :root[data-theme="dark"] .research-list-group,
 :root[data-theme="dark"] .question-list li,

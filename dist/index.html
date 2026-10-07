@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0a1019">
   <meta name="description" content="YouTube 频道的公开订阅、播放、更新数量与全部视频数据">
   <title>YouTube 频道数据</title>
-  <link rel="stylesheet" href="styles.css?v=trend-date-range-v1">
+  <link rel="stylesheet" href="styles.css?v=light-contrast-preview-v1">
 </head>
 <body>
   <main class="dashboard">
@@ -57,21 +57,6 @@
         <ol id="recentUpdatesList" class="updates-list recent-updates-list" tabindex="0"></ol>
       </section>
     </div>
-
-    <section id="subscriberGrowthPanel" class="panel subscriber-growth-panel" aria-labelledby="subscriberGrowthTitle">
-      <header class="trend-header">
-        <div class="trend-title-row">
-          <div><p class="eyebrow">SUBSCRIBER GROWTH</p><h2 id="subscriberGrowthTitle">订阅变化趋势</h2><p id="subscriberGrowthDescription" class="trend-description"></p></div>
-          <div id="subscriberGrowthPeriod" class="period-switch trend-period-switch" aria-label="订阅变化趋势时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="90" aria-pressed="false">90D</button><button data-value="all" aria-pressed="true">ALL</button></div>
-        </div>
-        <div class="trend-controls"><div class="selector-row"><span>频道·多选</span><div id="subscriberGrowthChannels" class="choice-buttons channel-choices" role="group" aria-label="选择要比较订阅变化的频道，可多选"></div></div></div>
-      </header>
-      <div class="subscriber-growth-figure">
-        <div id="subscriberGrowthChart" class="trend-chart" aria-live="polite"></div>
-        <div id="subscriberGrowthLegend" class="trend-legend"></div>
-        <p id="subscriberGrowthNote" class="inventory-note"></p>
-      </div>
-    </section>
 
     <section id="trendPanel" class="panel trend-panel" aria-labelledby="trendTitle">
       <header class="trend-header">
@@ -140,6 +125,21 @@
         </article>
       </div>
       <p id="insightsNote" class="inventory-note"></p>
+    </section>
+
+    <section id="subscriberGrowthPanel" class="panel subscriber-growth-panel" aria-labelledby="subscriberGrowthTitle">
+      <header class="trend-header">
+        <div class="trend-title-row">
+          <div><p class="eyebrow">SUBSCRIBER GROWTH</p><h2 id="subscriberGrowthTitle">订阅变化趋势</h2><p id="subscriberGrowthDescription" class="trend-description"></p></div>
+          <div id="subscriberGrowthPeriod" class="period-switch trend-period-switch" aria-label="订阅变化趋势时间窗口"><button data-value="7" aria-pressed="false">7D</button><button data-value="30" aria-pressed="false">30D</button><button data-value="90" aria-pressed="false">90D</button><button data-value="all" aria-pressed="true">ALL</button></div>
+        </div>
+        <div class="trend-controls"><div class="selector-row"><span>频道·多选</span><div id="subscriberGrowthChannels" class="choice-buttons channel-choices" role="group" aria-label="选择要比较订阅变化的频道，可多选"></div></div></div>
+      </header>
+      <div class="subscriber-growth-figure">
+        <div id="subscriberGrowthChart" class="trend-chart" aria-live="polite"></div>
+        <div id="subscriberGrowthLegend" class="trend-legend"></div>
+        <p id="subscriberGrowthNote" class="inventory-note"></p>
+      </div>
     </section>
 
     <section id="researchPanel" class="panel research-panel" aria-labelledby="researchTitle">
