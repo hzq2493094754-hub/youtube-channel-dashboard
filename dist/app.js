@@ -29,6 +29,14 @@ function initialiseTheme() {
   applyTheme(saved === "dark" ? "dark" : "light");
 }
 
+function setLoadStatus(message = "", isError = false) {
+  const status = $("loadStatus");
+  if (!status) return;
+  status.hidden = !message;
+  status.textContent = message;
+  status.classList.toggle("is-error", isError);
+}
+
 const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 const number = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
 const fmt = (value) => number(value) == null ? "—" : compact.format(Number(value));
@@ -955,12 +963,15 @@ async function setWorkspace(workspace) {
   document.querySelectorAll("[data-workspace]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.workspace === state.workspace)));
   if (state.workspace === "benchmarks" && !data.benchmarkLoaded) {
     $("benchmarkWorkspaceCount").textContent = "加载中…";
+    setLoadStatus("正在加载对标账号数据…");
     try {
       await ensureBenchmarks();
       renderBenchmarks();
+      setLoadStatus();
     } catch (error) {
       $("loadError").hidden = false;
       $("loadError").textContent = `对标数据加载失败：${error.message}`;
+      setLoadStatus(`对标数据加载失败：${error.message}`, true);
     }
   }
 }
@@ -1096,7 +1107,11 @@ async function init() {
     const raw = await response.json();
     const owned = normaliseGroup(raw.channels, raw.videoCatalog || raw.catalog);
     data = { ...owned, benchmarks: [], benchmarkCatalog: [], generatedAt: raw.generatedAt, benchmarkLoaded: false };
-    bindControls(); render();
-  } catch (error) { $("loadError").hidden = false; $("loadError").textContent = `数据加载失败：${error.message}`; }
+    bindControls(); render(); setLoadStatus();
+  } catch (error) {
+    $("loadError").hidden = false;
+    $("loadError").textContent = `数据加载失败：${error.message}`;
+    setLoadStatus(`数据加载失败：${error.message}`, true);
+  }
 }
 init();
