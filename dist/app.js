@@ -7,7 +7,8 @@ const dateOnly = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong", 
 const BENCHMARK_EXCLUSIONS = new Set(["UCETuQf4lzTrfevoHdSGo8Ew", "UCUzyRc77mAKkzrHFjDsEEVA"]);
 const BENCHMARK_ACTIVITY_DAYS = 14;
 const BENCHMARK_MIN_UPDATES = 3;
-let data = { channels: [], catalog: [], benchmarks: [], benchmarkCatalog: [], generatedAt: null };
+let data = { channels: [], catalog: [], benchmarks: [], benchmarkCatalog: [], generatedAt: null, benchmarkLoaded: false };
+let benchmarkLoadPromise = null;
 const state = { workspace: "owned", subscriberPeriod: "all", viewsPeriod: "30", trendPeriod: "30", trendMetric: "views", trendChannels: new Set(), trendAllMode: true, trendRangeStart: null, trendRangeEnd: null, trendRangeOpen: false, breakdownMode: "bar", videoPeriod: "7", videoSort: "desc", videoChannels: new Set(), subscriberGrowthPeriod: "all", subscriberGrowthChannels: new Set(), subscriberGrowthAllMode: true, insightPeriod: "7", insightChannels: new Set(), insightAllMode: true, lifecycleVideoId: null, benchmarkSubscriberPeriod: "all", benchmarkViewsPeriod: "30", benchmarkVideoPeriod: "7", benchmarkVideoSort: "desc", benchmarkVideoChannels: new Set(), benchmarkInsightPeriod: "7", benchmarkInsightChannels: new Set(), benchmarkInsightAllMode: true, benchmarkLifecycleVideoId: null, benchmarkSubscriberGrowthPeriod: "all", benchmarkSubscriberGrowthChannels: new Set(), benchmarkSubscriberGrowthAllMode: true, benchmarkTrendPeriod: "30", benchmarkTrendMetric: "views", benchmarkTrendChannels: new Set(), benchmarkTrendAllMode: true, benchmarkBreakdownMode: "bar" };
 
 function applyTheme(theme) {
@@ -931,14 +932,44 @@ function renderBenchmarks() {
   renderBenchmarkResearch();
 }
 
-function setWorkspace(workspace) {
+async function ensureBenchmarks() {
+  if (data.benchmarkLoaded) return;
+  if (!benchmarkLoadPromise) {
+    benchmarkLoadPromise = fetch("data/benchmark-dashboard.json", { cache: "default" }).then(async (response) => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const raw = await response.json();
+      const benchmarks = normaliseGroup(raw.benchmarks || [], raw.benchmarkVideoCatalog || raw.benchmarkCatalog);
+      const ownedIds = new Set(data.channels.map((channel) => channel.id));
+      const candidates = benchmarks.channels.filter((channel) => !ownedIds.has(channel.id));
+      const eligible = activeBenchmarkGroup(candidates, benchmarks.catalog, raw.generatedAt);
+      data = { ...data, benchmarks: eligible.channels, benchmarkCatalog: eligible.catalog, benchmarkLoaded: true };
+    }).finally(() => { benchmarkLoadPromise = null; });
+  }
+  await benchmarkLoadPromise;
+}
+
+async function setWorkspace(workspace) {
   state.workspace = workspace === "benchmarks" ? "benchmarks" : "owned";
   $("ownedWorkspace").hidden = state.workspace !== "owned";
   $("benchmarkWorkspace").hidden = state.workspace !== "benchmarks";
   document.querySelectorAll("[data-workspace]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.workspace === state.workspace)));
+  if (state.workspace === "benchmarks" && !data.benchmarkLoaded) {
+    $("benchmarkWorkspaceCount").textContent = "加载中…";
+    try {
+      await ensureBenchmarks();
+      renderBenchmarks();
+    } catch (error) {
+      $("loadError").hidden = false;
+      $("loadError").textContent = `对标数据加载失败：${error.message}`;
+    }
+  }
 }
 
-function render() { renderSubscribers(); renderViews(); renderUpdates(); renderRecentUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); renderInsights(); renderResearch(); renderBenchmarks(); setWorkspace(state.workspace); }
+function render() {
+  renderSubscribers(); renderViews(); renderUpdates(); renderRecentUpdates(); renderTrend(); renderInventory(); renderSubscriberGrowth(); renderInsights(); renderResearch();
+  $("ownedWorkspaceCount").textContent = `${exact(data.channels.length)} 个频道`;
+  void setWorkspace(state.workspace);
+}
 
 function bindControls() {
   $("themeToggle")?.addEventListener("click", () => {
@@ -948,7 +979,7 @@ function bindControls() {
   });
   document.addEventListener("click", (event) => {
     const button = event.target.closest("button"); if (!button) return;
-    if (button.dataset.workspace) { setWorkspace(button.dataset.workspace); return; }
+    if (button.dataset.workspace) { void setWorkspace(button.dataset.workspace); return; }
     if (button.id === "trendRangeToggle") { state.trendRangeOpen = !state.trendRangeOpen; renderTrend(); return; }
     if (button.id === "trendRangeClear") { state.trendRangeStart = null; state.trendRangeEnd = null; state.trendRangeOpen = false; renderTrend(); return; }
     const inGroup = (id) => button.closest(`#${id}`);
@@ -1060,20 +1091,11 @@ function activeBenchmarkGroup(channels, catalog, generatedAt) {
 async function init() {
   initialiseTheme();
   try {
-    const [response, seedResponse] = await Promise.all([
-      fetch("data/dashboard.json", { cache: "no-store" }),
-      fetch("data/benchmark-seeds.json", { cache: "no-store" }).catch(() => null),
-    ]);
+    const response = await fetch("data/owned-dashboard.json", { cache: "default" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const raw = await response.json();
-    const seedPayload = seedResponse?.ok ? await seedResponse.json() : {};
     const owned = normaliseGroup(raw.channels, raw.videoCatalog || raw.catalog);
-    const benchmarkRows = raw.benchmarks?.length ? raw.benchmarks : seedPayload.benchmarks || [];
-    const benchmarks = normaliseGroup(benchmarkRows, raw.benchmarkVideoCatalog || raw.benchmarkCatalog);
-    const ownedIds = new Set(owned.channels.map((channel) => channel.id));
-    const benchmarkCandidates = benchmarks.channels.filter((channel) => !ownedIds.has(channel.id));
-    const eligibleBenchmarks = activeBenchmarkGroup(benchmarkCandidates, benchmarks.catalog, raw.generatedAt);
-    data = { ...owned, benchmarks: eligibleBenchmarks.channels, benchmarkCatalog: eligibleBenchmarks.catalog, generatedAt: raw.generatedAt };
+    data = { ...owned, benchmarks: [], benchmarkCatalog: [], generatedAt: raw.generatedAt, benchmarkLoaded: false };
     bindControls(); render();
   } catch (error) { $("loadError").hidden = false; $("loadError").textContent = `数据加载失败：${error.message}`; }
 }

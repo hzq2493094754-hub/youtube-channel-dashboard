@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect public YouTube metrics into public/data/dashboard.json.
+"""Collect public YouTube metrics and build lean client data payloads.
 
 The API key stays in the collector environment. It is never copied into the
 static dashboard or sent to a visitor's browser.
@@ -24,6 +24,8 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "channels.json"
 DATA_PATH = ROOT / "public" / "data" / "dashboard.json"
+OWNED_CLIENT_DATA_PATH = ROOT / "public" / "data" / "owned-dashboard.json"
+BENCHMARK_CLIENT_DATA_PATH = ROOT / "public" / "data" / "benchmark-dashboard.json"
 API_BASE = "https://www.googleapis.com/youtube/v3"
 RECENT_VIDEO_LIMIT = 50
 FULL_INVENTORY_INTERVAL = timedelta(days=7)
@@ -246,6 +248,28 @@ def needs_full_inventory(catalog: dict[str, dict[str, Any]], scan_at: Any, now: 
         return True
 
 
+def client_channel(channel: dict[str, Any]) -> dict[str, Any]:
+    """Keep channel summaries in client payloads; videos live in the catalog."""
+    return {key: value for key, value in channel.items() if key != "videos"}
+
+
+def write_client_payloads(payload: dict[str, Any]) -> None:
+    """Write workspace-specific files so the default dashboard avoids benchmark data."""
+    common = {"generatedAt": payload["generatedAt"], "collector": payload["collector"]}
+    owned = {
+        **common,
+        "channels": [client_channel(channel) for channel in payload["channels"]],
+        "videoCatalog": payload["videoCatalog"],
+    }
+    benchmarks = {
+        **common,
+        "benchmarks": [client_channel(channel) for channel in payload["benchmarks"]],
+        "benchmarkVideoCatalog": payload["benchmarkVideoCatalog"],
+    }
+    OWNED_CLIENT_DATA_PATH.write_text(json.dumps(owned, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    BENCHMARK_CLIENT_DATA_PATH.write_text(json.dumps(benchmarks, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+
 def collect_group(
     targets: list[dict[str, str | None]],
     previous_by_id: dict[str, dict[str, Any]],
@@ -387,6 +411,7 @@ def main() -> None:
         "benchmarkVideoCatalog": benchmark_catalog,
     }
     DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_client_payloads(payload)
     print(json.dumps({"channelsCollected": len(channels), "benchmarksCollected": len(benchmarks), "generatedAt": observed_at}, ensure_ascii=False))
 
 
