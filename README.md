@@ -39,7 +39,7 @@ $key = Read-Host 'YouTube API Key' -AsSecureString
 .\scripts\update_dashboard.ps1
 ```
 
-安装每 30 分钟运行一次的 Windows 计划任务：
+安装每天北京时间 08:00 运行一次的 Windows 计划任务：
 
 ```powershell
 .\scripts\install_refresh_task.ps1
@@ -49,7 +49,7 @@ $key = Read-Host 'YouTube API Key' -AsSecureString
 
 ## GitHub Pages 自动发布
 
-仓库内的 `.github/workflows/publish-pages.yml` 会在每次推送后发布网页，并每 30 分钟自动采集一次公开数据、保留历史快照后重新发布。
+仓库内的 `.github/workflows/publish-pages.yml` 会在每次推送后发布网页，并在每天北京时间 08:00 由 GitHub 云端自动采集公开数据、保留历史快照后重新发布。
 
 首次连接 GitHub 后，请在仓库网页完成三项一次性设置：
 
