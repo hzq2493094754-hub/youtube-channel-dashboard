@@ -35,6 +35,11 @@ COMMENT_MAX_RESULTS = 25
 COMMENT_REFRESH_INTERVAL = timedelta(hours=12)
 BENCHMARK_ACTIVITY_DAYS = 14
 BENCHMARK_MIN_UPDATES = 3
+# 对标账号数量多，完整历史视频库会很快超过 GitHub 的单文件上限。看板
+# 的最长内容窗口为 90 天，因此仅保存这一窗口内的视频明细；频道级历史
+# 仍然会保留，用于订阅和频道总播放趋势。
+BENCHMARK_CATALOG_RETENTION_DAYS = 90
+BENCHMARK_COMMENT_RETENTION_DAYS = 30
 
 
 def iso_now() -> str:
@@ -270,6 +275,27 @@ def write_client_payloads(payload: dict[str, Any]) -> None:
     BENCHMARK_CLIENT_DATA_PATH.write_text(json.dumps(benchmarks, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 
+def compact_benchmark_catalog(catalog: list[dict[str, Any]], now: datetime) -> list[dict[str, Any]]:
+    """Keep the benchmark client/archive payload bounded without losing dashboard windows."""
+    video_cutoff = now - timedelta(days=BENCHMARK_CATALOG_RETENTION_DAYS)
+    comment_cutoff = now - timedelta(days=BENCHMARK_COMMENT_RETENTION_DAYS)
+    retained: list[dict[str, Any]] = []
+    for row in catalog:
+        published_at = parse_datetime(row.get("publishedAt"))
+        if not published_at or published_at < video_cutoff:
+            continue
+        compact = dict(row)
+        # Comment research is only shown for recent content. Dropping older samples
+        # saves several megabytes while retaining the useful current discussion.
+        if published_at < comment_cutoff:
+            compact.pop("commentSamples", None)
+            compact.pop("commentSampledAt", None)
+            compact.pop("commentSampleError", None)
+        retained.append(compact)
+    retained.sort(key=lambda row: row.get("publishedAt") or "", reverse=True)
+    return retained
+
+
 def collect_group(
     targets: list[dict[str, str | None]],
     previous_by_id: dict[str, dict[str, Any]],
@@ -279,6 +305,7 @@ def collect_group(
     observed_at: str,
     full_inventory: bool,
     include_comments: bool,
+    catalog_cutoff: datetime | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Collect a self-contained channel group without mixing it with another group."""
     if not targets:
@@ -304,9 +331,15 @@ def collect_group(
             if page_token:
                 params["pageToken"] = page_token
             page = api_get("playlistItems", **params)
-            playlist_items.extend(page.get("items", []))
+            page_items = page.get("items", [])
+            playlist_items.extend(page_items)
             page_token = page.get("nextPageToken")
             if not full_inventory or not page_token:
+                break
+            # Upload playlists are newest first. Once this page reaches the
+            # retention boundary, older pages cannot contribute to the dashboard.
+            published = [parse_datetime(item.get("contentDetails", {}).get("videoPublishedAt") or item.get("snippet", {}).get("publishedAt")) for item in page_items]
+            if catalog_cutoff and any(value and value < catalog_cutoff for value in published):
                 break
 
         video_ids = [row.get("contentDetails", {}).get("videoId") or row.get("snippet", {}).get("resourceId", {}).get("videoId") for row in playlist_items]
@@ -323,6 +356,8 @@ def collect_group(
             category_id = video_snippet.get("categoryId")
             videos.append({"id": video_id, "title": video_snippet.get("title", "未命名视频"), "publishedAt": video_snippet.get("publishedAt"), "viewCount": numeric(video_stats.get("viewCount")), "likeCount": numeric(video_stats.get("likeCount")), "commentCount": numeric(video_stats.get("commentCount")), "durationSeconds": duration_seconds(video_content.get("duration")), "liveBroadcastContent": video_snippet.get("liveBroadcastContent"), "tags": [str(tag) for tag in video_snippet.get("tags", []) if str(tag).strip()][:50], "categoryId": category_id, "categoryTitle": category_names.get(category_id), "thumbnail": thumbnail(video), "url": f"https://www.youtube.com/watch?v={video_id}"})
         videos.sort(key=lambda row: row.get("publishedAt") or "", reverse=True)
+        if catalog_cutoff:
+            videos = [video for video in videos if (published_at := parse_datetime(video.get("publishedAt"))) and published_at >= catalog_cutoff]
         comment_video_ids = comment_targets(videos, catalog_by_id, now) if include_comments else set()
 
         for video in videos:
@@ -353,7 +388,7 @@ def collect_group(
         for video in videos:
             catalog_by_id[video["id"]] = {**video, "channelId": channel_id, "channel": name, "observedAt": observed_at}
         avatar_url = thumbnail(item)
-        output_channels.append({"id": channel_id, "name": name, "url": f"https://www.youtube.com/channel/{channel_id}", "avatar": avatar_url, "avatarDataUrl": cache_avatar(avatar_url, prior.get("avatarDataUrl")), "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount")), "videoCount": numeric(stats.get("videoCount")), "lastPublishedAt": videos[0].get("publishedAt") if videos else None, "uploads7d": sum(1 for published_at in published if now - published_at <= timedelta(days=7)), "history": [{key: value for key, value in row.items() if key != "id"} for row in history], "videos": videos[:RECENT_VIDEO_LIMIT]})
+        output_channels.append({"id": channel_id, "name": name, "url": f"https://www.youtube.com/channel/{channel_id}", "avatar": avatar_url, "avatarDataUrl": cache_avatar(avatar_url, prior.get("avatarDataUrl")), "subscriberCount": None if stats.get("hiddenSubscriberCount") else numeric(stats.get("subscriberCount")), "channelViews": numeric(stats.get("viewCount")), "videoCount": numeric(stats.get("videoCount")), "lastPublishedAt": videos[0].get("publishedAt") if videos else None, "uploads7d": sum(1 for published_at in published if now - published_at <= timedelta(days=7)), "history": [{key: value for key, value in row.items() if key != "id"} for row in history]})
 
     kept_ids = {channel["id"] for channel in output_channels}
     catalog = [row for row in catalog_by_id.values() if row.get("channelId") in kept_ids]
@@ -385,7 +420,8 @@ def main() -> None:
         category_names = {}
 
     channels, catalog = collect_group(targets, {channel["id"]: channel for channel in previous.get("channels", []) if channel.get("id")}, owned_catalog_by_id, category_names, now, observed_at, full_inventory, include_comments=True)
-    benchmarks, benchmark_catalog = collect_group(benchmark_targets, {channel["id"]: channel for channel in previous.get("benchmarks", []) if channel.get("id")}, benchmark_catalog_by_id, category_names, now, observed_at, benchmark_full_inventory, include_comments=True)
+    benchmark_video_cutoff = now - timedelta(days=BENCHMARK_CATALOG_RETENTION_DAYS)
+    benchmarks, benchmark_catalog = collect_group(benchmark_targets, {channel["id"]: channel for channel in previous.get("benchmarks", []) if channel.get("id")}, benchmark_catalog_by_id, category_names, now, observed_at, benchmark_full_inventory, include_comments=True, catalog_cutoff=benchmark_video_cutoff)
     benchmark_cutoff = now - timedelta(days=BENCHMARK_ACTIVITY_DAYS)
     benchmark_updates = {
         channel["id"]: sum(1 for video in benchmark_catalog if video.get("channelId") == channel["id"] and (published_at := parse_datetime(video.get("publishedAt"))) and benchmark_cutoff <= published_at <= now)
@@ -393,7 +429,11 @@ def main() -> None:
     }
     active_benchmark_ids = {channel["id"] for channel in benchmarks if benchmark_updates.get(channel["id"], 0) >= BENCHMARK_MIN_UPDATES}
     benchmarks = [channel for channel in benchmarks if channel["id"] in active_benchmark_ids]
-    benchmark_catalog = [video for video in benchmark_catalog if video.get("channelId") in active_benchmark_ids]
+    # Embedded avatar data and old videos were the two largest contributors to
+    # repository size. External YouTube avatar URLs remain available to the UI.
+    for channel in benchmarks:
+        channel.pop("avatarDataUrl", None)
+    benchmark_catalog = compact_benchmark_catalog([video for video in benchmark_catalog if video.get("channelId") in active_benchmark_ids], now)
     payload = {
         "generatedAt": observed_at,
         "collector": {
@@ -402,6 +442,7 @@ def main() -> None:
             "channelsCollected": len(channels),
             "benchmarksCollected": len(benchmarks),
             "benchmarksExcludedForActivity": len(benchmark_targets) - len(benchmarks),
+            "benchmarkVideoRetentionDays": BENCHMARK_CATALOG_RETENTION_DAYS,
             "fullInventoryScannedAt": observed_at if full_inventory else collector.get("fullInventoryScannedAt"),
             "benchmarkFullInventoryScannedAt": observed_at if benchmark_full_inventory else collector.get("benchmarkFullInventoryScannedAt"),
         },
