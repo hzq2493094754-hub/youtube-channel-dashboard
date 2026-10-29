@@ -31,6 +31,24 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Refresh public Douyin Index boards
+        run: |
+          if node scripts/collect_douyin.cjs; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dist/data/douyin-hotspots.json
+            git diff --cached --quiet || git commit -m "chore: refresh Douyin hotspot boards"
+            git push
+          else
+            echo "::warning::Douyin collection failed; publishing the last successful hotspot snapshot."
+            test -s dist/data/douyin-hotspots.json
+          fi
+
       - name: Refresh public YouTube snapshot
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}

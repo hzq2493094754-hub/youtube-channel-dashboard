@@ -957,10 +957,19 @@ async function ensureBenchmarks() {
 }
 
 async function setWorkspace(workspace) {
-  state.workspace = workspace === "benchmarks" ? "benchmarks" : "owned";
+  state.workspace = ["owned", "benchmarks", "hotspots"].includes(workspace) ? workspace : "owned";
   $("ownedWorkspace").hidden = state.workspace !== "owned";
   $("benchmarkWorkspace").hidden = state.workspace !== "benchmarks";
+  $("hotspotsWorkspace").hidden = state.workspace !== "hotspots";
   document.querySelectorAll("[data-workspace]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.workspace === state.workspace)));
+  if (state.workspace === "hotspots") {
+    setLoadStatus();
+    $("loadError").hidden = true;
+    if (location.hash !== "#hotspots") history.replaceState(null, "", `${location.pathname}${location.search}#hotspots`);
+    await window.douyinHotspots.load();
+    return;
+  }
+  if (location.hash === "#hotspots") history.replaceState(null, "", `${location.pathname}${location.search}`);
   if (state.workspace === "benchmarks" && !data.benchmarkLoaded) {
     $("benchmarkWorkspaceCount").textContent = "加载中…";
     setLoadStatus("正在加载对标账号数据…");
@@ -1101,17 +1110,22 @@ function activeBenchmarkGroup(channels, catalog, generatedAt) {
 
 async function init() {
   initialiseTheme();
+  bindControls();
+  if (location.hash === "#hotspots") void setWorkspace("hotspots");
   try {
     const response = await fetch("data/owned-dashboard.json", { cache: "default" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const raw = await response.json();
     const owned = normaliseGroup(raw.channels, raw.videoCatalog || raw.catalog);
     data = { ...owned, benchmarks: [], benchmarkCatalog: [], generatedAt: raw.generatedAt, benchmarkLoaded: false };
-    bindControls(); render(); setLoadStatus();
+    render();
+    if (state.workspace !== "benchmarks") setLoadStatus();
   } catch (error) {
-    $("loadError").hidden = false;
-    $("loadError").textContent = `数据加载失败：${error.message}`;
-    setLoadStatus(`数据加载失败：${error.message}`, true);
+    if (state.workspace === "owned") {
+      $("loadError").hidden = false;
+      $("loadError").textContent = `数据加载失败：${error.message}`;
+      setLoadStatus(`数据加载失败：${error.message}`, true);
+    }
   }
 }
 init();
