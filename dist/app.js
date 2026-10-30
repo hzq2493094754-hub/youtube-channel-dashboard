@@ -1113,7 +1113,7 @@ async function init() {
   bindControls();
   if (location.hash === "#hotspots") void setWorkspace("hotspots");
   try {
-    const response = await fetch("data/owned-dashboard.json", { cache: "default" });
+    const response = await fetch("data/owned-dashboard.json", { cache: "no-cache" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const raw = await response.json();
     const owned = normaliseGroup(raw.channels, raw.videoCatalog || raw.catalog);
