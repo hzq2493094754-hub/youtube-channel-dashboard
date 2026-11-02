@@ -49,7 +49,12 @@ $key = Read-Host 'YouTube API Key' -AsSecureString
 
 ## GitHub Pages 自动发布
 
-仓库内的 `.github/workflows/publish-pages.yml` 会在每次推送后发布网页，并在每天北京时间 08:00 由 GitHub 云端自动采集公开数据、保留历史快照后重新发布。
+仓库内的 `.github/workflows/publish-pages.yml` 会在每次推送后发布网页。定时采集和发布在 GitHub 云端执行，无需本机开机，时间均为北京时间：
+
+- YouTube 频道数据：每天 08:00 采集，保留历史快照后重新发布。
+- 抖音热点：每天 09:00、13:00 采集并发布，实时热点和飙升热点各 30 条；这两次定时任务只采集抖音。
+
+推送更新或手动运行工作流时会刷新两类数据。GitHub 定时任务可能因排队延迟，页面显示最近一次成功采集的时间；采集失败时保留上次有效数据。
 
 首次连接 GitHub 后，请在仓库网页完成三项一次性设置：
 
