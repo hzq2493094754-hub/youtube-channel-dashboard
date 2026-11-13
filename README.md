@@ -39,7 +39,7 @@ $key = Read-Host 'YouTube API Key' -AsSecureString
 .\scripts\update_dashboard.ps1
 ```
 
-安装每天北京时间 08:00 运行一次的 Windows 计划任务：
+安装每天 08:30 运行一次的 Windows 计划任务（本机应使用北京时间）：
 
 ```powershell
 .\scripts\install_refresh_task.ps1
@@ -51,8 +51,8 @@ $key = Read-Host 'YouTube API Key' -AsSecureString
 
 仓库内的 `.github/workflows/publish-pages.yml` 会在每次推送后发布网页。定时采集和发布在 GitHub 云端执行，无需本机开机，时间均为北京时间：
 
-- YouTube 频道数据：每天 08:00 采集，保留历史快照后重新发布。
-- 抖音热点：每天 09:00、13:00 采集并发布，实时热点和飙升热点各 30 条；这两次定时任务只采集抖音。
+- 整个看板每天 08:30 统一采集并发布，包括 YouTube 自有频道、对标频道和抖音榜单。
+- 抖音板块展示四个榜单：热点榜 50 条、社会榜 50 条、实时热点 30 条、飙升热点 30 条。各榜单保留独立采集时间；单个来源失败时保留该榜单上次有效数据，其他来源继续更新。
 
 推送更新或手动运行工作流时会刷新两类数据。GitHub 定时任务可能因排队延迟，页面显示最近一次成功采集的时间；采集失败时保留上次有效数据。
 

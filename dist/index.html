@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0a1019">
   <meta name="description" content="YouTube 频道的公开订阅、播放、更新数量与全部视频数据">
   <title>YouTube 频道数据</title>
-  <link rel="stylesheet" href="styles.css?v=douyin-hotspots-v1">
+  <link rel="stylesheet" href="styles.css?v=douyin-four-boards-v2">
 </head>
 <body>
   <main class="dashboard">
@@ -16,7 +16,7 @@
       <nav class="workspace-tabs" aria-label="数据工作区">
         <button type="button" data-workspace="owned" aria-pressed="true"><span>自有频道矩阵</span><small id="ownedWorkspaceCount"></small></button>
         <button type="button" data-workspace="benchmarks" aria-pressed="false"><span>对标分析</span><small id="benchmarkWorkspaceCount"></small></button>
-        <button type="button" data-workspace="hotspots" aria-pressed="false" aria-controls="hotspotsWorkspace"><span>抖音热点</span><small id="hotspotsWorkspaceCount">双榜</small></button>
+        <button type="button" data-workspace="hotspots" aria-pressed="false" aria-controls="hotspotsWorkspace"><span>抖音热点</span><small id="hotspotsWorkspaceCount">四榜</small></button>
       </nav>
       <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="切换至夜间模式"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">夜间模式</span></button>
     </div>
@@ -298,25 +298,38 @@
     </section>
     <section id="hotspotsWorkspace" class="workspace hotspots-workspace" aria-labelledby="hotspotsTitle" hidden>
       <header class="panel hotspots-heading">
-        <div><p class="eyebrow">DOUYIN INDEX</p><h2 id="hotspotsTitle">抖音热点</h2><p class="hotspots-description">实时关注正在发生的热点，发现快速升温的新话题。</p></div>
-        <div class="hotspots-heading-meta"><span id="hotspotsCapturedAt">正在读取榜单…</span><a href="https://creator.douyin.com/creator-micro/creator-count/arithmetic-index?type=1&amp;source=creator" target="_blank" rel="noopener noreferrer">抖音指数原页面 ↗</a></div>
+        <div><p class="eyebrow">DOUYIN HOTSPOTS</p><h2 id="hotspotsTitle">抖音热点</h2><p class="hotspots-description">热点榜与社会榜各 50 条，实时热点与飙升热点各 30 条。点击话题查看相关内容。</p></div>
+        <div class="hotspots-heading-meta"><span class="hotspots-schedule">每天 8:30 更新 · 北京时间</span><span id="hotspotsCapturedAt">正在读取榜单…</span></div>
       </header>
       <p id="hotspotsStatus" class="hotspots-status" role="status" aria-live="polite">正在加载热点数据…</p>
       <div class="hotspots-grid">
+        <article class="panel hotspots-board" aria-labelledby="hotspotsHotlistTitle">
+          <header class="hotspots-board-heading"><div><p class="eyebrow">HOT RANKING</p><h3 id="hotspotsHotlistTitle">抖音热点榜</h3></div><span id="hotspotsHotlistCount" class="hotspots-count">—</span></header>
+          <p id="hotspotsPinned" class="hotspots-pinned" hidden></p>
+          <div class="hotspots-table-scroll" role="region" aria-label="抖音热点榜完整排名，可滚动" tabindex="0"><table class="hotspots-table"><caption class="sr-only">抖音热点榜排名、话题与热度</caption><thead><tr><th scope="col">排名</th><th scope="col">热点名称</th><th scope="col" class="hotspots-number">热度</th></tr></thead><tbody id="hotspotsHotlistRows"></tbody></table></div>
+          <footer class="hotspots-board-footer"><span id="hotspotsHotlistUpdatedAt">等待采集</span><a href="https://so-landing.douyin.com/landings/hotlist?board_type=0" target="_blank" rel="noopener noreferrer">榜单来源 ↗</a></footer>
+        </article>
+        <article class="panel hotspots-board" aria-labelledby="hotspotsSocialTitle">
+          <header class="hotspots-board-heading"><div><p class="eyebrow">SOCIAL RANKING</p><h3 id="hotspotsSocialTitle">抖音社会榜</h3></div><span id="hotspotsSocialCount" class="hotspots-count">—</span></header>
+          <div class="hotspots-table-scroll" role="region" aria-label="抖音社会榜完整排名，可滚动" tabindex="0"><table class="hotspots-table"><caption class="sr-only">抖音社会榜排名、话题与热度</caption><thead><tr><th scope="col">排名</th><th scope="col">热点名称</th><th scope="col" class="hotspots-number">热度</th></tr></thead><tbody id="hotspotsSocialRows"></tbody></table></div>
+          <footer class="hotspots-board-footer"><span id="hotspotsSocialUpdatedAt">等待采集</span><a href="https://so-landing.douyin.com/landings/hotlist?board_type=2&amp;board_sub_type=4" target="_blank" rel="noopener noreferrer">榜单来源 ↗</a></footer>
+        </article>
         <article class="panel hotspots-board" aria-labelledby="hotspotsCurrentTitle">
           <header class="hotspots-board-heading"><div><p class="eyebrow">LIVE TOPICS</p><h3 id="hotspotsCurrentTitle">抖音实时热点</h3></div><span id="hotspotsCurrentCount" class="hotspots-count">—</span></header>
-          <table class="hotspots-table"><caption class="sr-only">抖音实时热点排名、名称、热点指数、变化方向与分类</caption><thead><tr><th scope="col">排名</th><th scope="col">热点名称</th><th scope="col" class="hotspots-number">热点指数</th><th scope="col" class="hotspots-direction">变化</th><th scope="col">分类</th></tr></thead><tbody id="hotspotsCurrentRows"></tbody></table>
+          <div class="hotspots-table-scroll" role="region" aria-label="抖音实时热点完整排名，可滚动" tabindex="0"><table class="hotspots-table"><caption class="sr-only">抖音实时热点排名、名称、热点指数、变化方向与分类</caption><thead><tr><th scope="col">排名</th><th scope="col">热点名称</th><th scope="col" class="hotspots-number">热点指数</th><th scope="col" class="hotspots-direction">变化</th><th scope="col">分类</th></tr></thead><tbody id="hotspotsCurrentRows"></tbody></table></div>
+          <footer class="hotspots-board-footer"><span id="hotspotsCurrentUpdatedAt">等待采集</span><a href="https://creator.douyin.com/creator-micro/creator-count/arithmetic-index?type=1&amp;source=creator" target="_blank" rel="noopener noreferrer">榜单来源 ↗</a></footer>
         </article>
         <article class="panel hotspots-board" aria-labelledby="hotspotsRisingTitle">
           <header class="hotspots-board-heading"><div><p class="eyebrow">RISING TOPICS</p><h3 id="hotspotsRisingTitle">抖音飙升热点</h3></div><span id="hotspotsRisingCount" class="hotspots-count">—</span></header>
-          <table class="hotspots-table"><caption class="sr-only">抖音飙升热点排名、名称、热点指数、变化方向与分类</caption><thead><tr><th scope="col">排名</th><th scope="col">热点名称</th><th scope="col" class="hotspots-number">热点指数</th><th scope="col" class="hotspots-direction">变化</th><th scope="col">分类</th></tr></thead><tbody id="hotspotsRisingRows"></tbody></table>
+          <div class="hotspots-table-scroll" role="region" aria-label="抖音飙升热点完整排名，可滚动" tabindex="0"><table class="hotspots-table"><caption class="sr-only">抖音飙升热点排名、名称、热点指数、变化方向与分类</caption><thead><tr><th scope="col">排名</th><th scope="col">热点名称</th><th scope="col" class="hotspots-number">热点指数</th><th scope="col" class="hotspots-direction">变化</th><th scope="col">分类</th></tr></thead><tbody id="hotspotsRisingRows"></tbody></table></div>
+          <footer class="hotspots-board-footer"><span id="hotspotsRisingUpdatedAt">等待采集</span><a href="https://creator.douyin.com/creator-micro/creator-count/arithmetic-index?type=1&amp;source=creator" target="_blank" rel="noopener noreferrer">榜单来源 ↗</a></footer>
         </article>
       </div>
-      <footer class="hotspots-footer">每天上午 8 点（北京时间）启动自动采集，云端任务完成后同步。时间为抓取时间；热点指数为平台热度指标。点击热点名称可在抖音搜索相关内容。</footer>
+      <footer class="hotspots-footer">整个看板每天北京时间 8:30 启动云端采集，任务完成后同步。每个榜单分别显示最近成功采集时间；未及时更新时保留上次有效数据并标注。热度为平台指标。</footer>
     </section>
     <div id="loadError" class="load-error" hidden></div>
   </main>
-  <script src="hotspots.js?v=douyin-hotspots-v1" defer></script>
+  <script src="hotspots.js?v=douyin-four-boards-v2" defer></script>
   <script src="app.js?v=owned-five-channels-v1" defer></script>
 </body>
 </html>
