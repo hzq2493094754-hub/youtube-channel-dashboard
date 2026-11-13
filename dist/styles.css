@@ -819,7 +819,7 @@ body {
 :root[data-theme="dark"] .lifecycle-milestones span,
 :root[data-theme="dark"] .video-picker select { border-color: rgba(182, 198, 209, .14); color: var(--text); background: #273440; }
 
-/* Douyin Index is the third workspace; its small payload loads only on demand. */
+/* Douyin data is isolated from the YouTube workspace and loads on demand. */
 .hotspots-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 28px; margin-bottom: 20px; }
 .hotspots-heading h2 { margin: 0; font-size: clamp(26px, 2.4vw, 36px); letter-spacing: -.04em; }
 .hotspots-description { margin: 9px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
@@ -867,6 +867,87 @@ body {
 .hotspots-status.is-error { color: #9b423c; }
 .hotspots-status button { padding: 6px 10px; border: 1px solid currentColor; border-radius: 8px; color: inherit; background: transparent; }
 .hotspots-workspace a:focus-visible, .hotspots-status button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.hotwords-panel { min-width: 0; margin-bottom: 24px; overflow: hidden; padding: 0; }
+.hotwords-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 22px; padding: 26px 28px 18px; }
+.hotwords-header h3 { margin: 0; font-size: 25px; letter-spacing: -.03em; }
+.hotwords-meta { margin: 9px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.hotwords-period { flex: 0 0 auto; }
+.hotwords-period button { min-width: 70px; }
+.hotwords-period button[aria-pressed="true"], :root[data-theme="light"] .hotwords-period button[aria-pressed="true"], :root[data-theme="dark"] .hotwords-period button[aria-pressed="true"] { color: #fff; }
+.hotwords-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 0 28px 20px; }
+.hotwords-search { flex: 1 1 220px; max-width: 420px; }
+.hotwords-search input, .hotwords-sort select { width: 100%; min-width: 0; min-height: 40px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); background: var(--surface); font: inherit; font-size: 13px; padding: 8px 12px; }
+.hotwords-search input::placeholder { color: var(--muted); opacity: 1; }
+.hotwords-sort { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 12px; }
+.hotwords-sort select { width: auto; max-width: 200px; }
+.hotwords-count { color: var(--accent-strong); font-size: 13px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hotwords-export { min-height: 40px; padding: 8px 14px; margin-left: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font-size: 13px; font-weight: 650; }
+.hotwords-export:hover:not(:disabled) { border-color: var(--accent); background: var(--surface-2); }
+.hotwords-export:disabled { opacity: .5; cursor: default; }
+.hotwords-panel > .hotspots-status { margin: 0 28px 18px; }
+.hotwords-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); border-top: 1px solid var(--line); }
+.hotwords-table-scroll { min-width: 0; height: 530px; max-height: 68vh; min-height: 320px; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.hotwords-table { table-layout: fixed; }
+.hotwords-table thead { position: sticky; top: 0; z-index: 1; background: var(--surface); }
+.hotwords-table th:first-child { width: 70px; }
+.hotwords-table th:nth-child(3) { width: 126px; }
+.hotwords-table th:nth-child(4) { width: 112px; }
+.hotwords-table td { padding-block: 10px; }
+.hotwords-hint { margin-left: 8px; font-weight: 400; font-size: 11px; }
+.hotword-title { display: block; width: 100%; min-height: 26px; padding: 0; border: 0; background: transparent; color: var(--text); text-align: left; font-size: 14px; font-weight: 650; line-height: 1.6; overflow-wrap: anywhere; }
+.hotwords-table tr.is-selected { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.hotwords-table tr.is-selected .hotword-title { color: var(--accent-strong); }
+.hotword-ratio { font-size: 13px; color: var(--muted); }
+.hotword-detail { min-width: 0; max-height: 530px; overflow: auto; padding: 24px 28px; border-left: 1px solid var(--line); background: color-mix(in srgb, var(--surface-2) 38%, transparent); scrollbar-width: thin; }
+.hotword-detail-title { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.hotword-detail a, .hotwords-footer a { color: var(--accent-strong); font-size: 12px; text-decoration: none; }
+.hotword-detail h4 { margin: 12px 0 0; color: var(--text); font-size: 25px; line-height: 1.4; overflow-wrap: anywhere; letter-spacing: -.025em; }
+.hotword-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 20px 0 24px; }
+.hotword-metrics div { min-width: 0; }
+.hotword-metrics dt { color: var(--muted); font-size: 11px; }
+.hotword-metrics dd { margin: 7px 0 0; color: var(--text); font-size: clamp(16px, 1.45vw, 24px); font-weight: 700; letter-spacing: -.025em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.hotword-chart-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.hotword-chart-heading h5 { margin: 0; font-size: 14px; }
+.hotword-chart-heading span { font-size: 11px; color: var(--muted); }
+.hotword-chart svg { display: block; width: 100%; margin-top: 8px; overflow: visible; }
+.hotword-chart text { font: 11px system-ui, sans-serif; fill: var(--muted); }
+.hotword-grid { stroke: var(--line); stroke-width: 1; }
+.hotword-line { stroke: var(--accent-strong); stroke-width: 2.5; stroke-linecap: round; fill: none; }
+.hotword-line.has-gap { stroke-dasharray: 4 5; opacity: .65; }
+.hotword-point { fill: var(--accent-strong); stroke: var(--surface); stroke-width: 1.5; }
+.hotword-point:hover { r: 5; }
+.hotword-chart-note { margin: 12px 0 0; color: var(--muted); font-size: 11px; line-height: 1.75; }
+.hotword-points { margin-top: 14px; color: var(--muted); font-size: 12px; }
+.hotword-points summary { width: fit-content; cursor: pointer; color: var(--accent-strong); }
+.hotword-point-list { max-height: 180px; overflow: auto; margin-top: 10px; }
+.hotword-point-list > div { display: flex; justify-content: space-between; gap: 18px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.hotword-point-list b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+.hotwords-footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 20px; padding: 15px 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.7; }
+.hotwords-placeholder { padding: 40px 20px; text-align: center; font-size: 13px; line-height: 1.8; color: var(--muted); }
+.hotwords-panel :is(button, input, select, summary):focus-visible, .hotwords-table-scroll:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: -2px; }
+@media (max-width: 1100px) {
+  .hotwords-layout { grid-template-columns: 1fr; }
+  .hotword-detail { border-left: 0; border-top: 1px solid var(--line); max-height: none; }
+  .hotword-chart { max-width: 650px; }
+  .hotword-metrics { max-width: 700px; }
+}
+@media (max-width: 700px) {
+  .hotwords-header { flex-direction: column; padding: 22px 18px 16px; gap: 16px; }
+  .hotwords-toolbar { padding: 0 18px 16px; gap: 10px; }
+  .hotwords-search { flex-basis: 100%; max-width: none; }
+  .hotwords-sort select { max-width: 160px; }
+  .hotwords-export { padding-inline: 10px; }
+  .hotwords-hint { display: none; }
+  .hotwords-table th:first-child { width: 50px; }
+  .hotwords-table th:nth-child(3) { width: 104px; }
+  .hotwords-table th:nth-child(4) { width: 78px; }
+  .hotwords-table .hotspots-number { font-size: 12px; }
+  .hotword-title { font-size: 13px; }
+  .hotword-detail { padding: 22px 18px; }
+  .hotword-detail h4 { font-size: 23px; }
+  .hotwords-footer { padding: 14px 18px; }
+  .hotwords-panel > .hotspots-status { margin-inline: 18px; }
+}
 .workspace-tabs button[aria-pressed="true"] { color: #fff; }
 :root[data-theme="light"] .workspace-tabs button[aria-pressed="true"] { color: #fff; }
 :root[data-theme="dark"] .hotspots-up { color: #e2a797; }

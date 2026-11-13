@@ -63,6 +63,7 @@
   }
 
   async function load() {
+    void window.douyinContentWords?.load();
     if (snapshot) { render(); return; }
     if (pending) return pending;
     const status = $("hotspotsStatus");

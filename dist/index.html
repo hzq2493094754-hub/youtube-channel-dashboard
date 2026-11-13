@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0a1019">
   <meta name="description" content="YouTube 频道的公开订阅、播放、更新数量与全部视频数据">
   <title>YouTube 频道数据</title>
-  <link rel="stylesheet" href="styles.css?v=douyin-four-boards-v2">
+  <link rel="stylesheet" href="styles.css?v=douyin-content-words-v3">
 </head>
 <body>
   <main class="dashboard">
@@ -298,9 +298,29 @@
     </section>
     <section id="hotspotsWorkspace" class="workspace hotspots-workspace" aria-labelledby="hotspotsTitle" hidden>
       <header class="panel hotspots-heading">
-        <div><p class="eyebrow">DOUYIN HOTSPOTS</p><h2 id="hotspotsTitle">抖音热点</h2><p class="hotspots-description">热点榜与社会榜各 50 条，实时热点与飙升热点各 30 条。点击话题查看相关内容。</p></div>
-        <div class="hotspots-heading-meta"><span class="hotspots-schedule">每天 8:30 更新 · 北京时间</span><span id="hotspotsCapturedAt">正在读取榜单…</span></div>
+        <div><p class="eyebrow">DOUYIN HOTSPOTS</p><h2 id="hotspotsTitle">抖音热点</h2><p class="hotspots-description">内容词趋势与四类热点榜单，集中发现选题。内容词支持近 1、7、30 天各前 200 条。</p></div>
+        <div class="hotspots-heading-meta"><span class="hotspots-schedule">四榜每天 8:30 云端更新 · 北京时间</span><span id="hotspotsCapturedAt">正在读取榜单…</span></div>
       </header>
+      <section id="hotwordsPanel" class="panel hotwords-panel" aria-labelledby="hotwordsTitle">
+        <header class="hotwords-header">
+          <div><p class="eyebrow">CONTENT WORDS</p><h3 id="hotwordsTitle">内容词趋势</h3><p id="hotwordsMeta" class="hotwords-meta">正在读取内容词…</p></div>
+          <div id="hotwordsPeriod" class="period-switch hotwords-period" role="group" aria-label="内容词统计周期"><button type="button" data-days="1" aria-pressed="true">近 1 天</button><button type="button" data-days="7" aria-pressed="false">近 7 天</button><button type="button" data-days="30" aria-pressed="false">近 30 天</button></div>
+        </header>
+        <div class="hotwords-toolbar">
+          <label class="hotwords-search"><span class="sr-only">搜索内容词</span><input id="hotwordsSearch" type="search" placeholder="搜索前 200 条内容词" autocomplete="off" maxlength="100"></label>
+          <label class="hotwords-sort"><span>排序</span><select id="hotwordsSort"><option value="rank">平台排名</option><option value="heat">指数从高到低</option><option value="growth">飙升比例从高到低</option></select></label>
+          <span id="hotwordsCount" class="hotwords-count" aria-live="polite">—</span>
+          <button type="button" id="hotwordsExport" class="hotwords-export" disabled>导出 CSV ↓</button>
+        </div>
+        <p id="hotwordsStatus" class="hotspots-status" role="status" aria-live="polite">正在加载内容词…</p>
+        <div class="hotwords-layout">
+          <div class="hotwords-table-scroll" role="region" aria-label="内容词排名，可滚动查看前 200 条" tabindex="0">
+            <table class="hotspots-table hotwords-table"><caption class="sr-only">内容词排名、名称、飙升指数与飙升比例。点击名称查看趋势。</caption><thead><tr><th scope="col">排名</th><th scope="col">内容词 <span class="hotwords-hint">点击查看趋势</span></th><th scope="col" class="hotspots-number">飙升指数</th><th scope="col" class="hotspots-number" title="平台 rising_ratio 原值，不转换为百分比">飙升比例 ⓘ</th></tr></thead><tbody id="hotwordsRows"></tbody></table>
+          </div>
+          <aside id="hotwordDetail" class="hotword-detail" aria-label="所选内容词详情" aria-live="polite"><p class="hotwords-placeholder">选择内容词，查看平台提供的热度曲线与详细指标。</p></aside>
+        </div>
+        <footer class="hotwords-footer"><span id="hotwordsUpdatedAt">等待有效采集</span><span>本机登录采集后同步 · 非云端定时数据</span><a href="data/douyin-hotwords.json" download="douyin-content-words.json">完整 JSON ↓</a><a href="https://douhot.douyin.com/square/trend?active_tab=hotword_all" target="_blank" rel="noopener noreferrer">热点宝来源 ↗</a></footer>
+      </section>
       <p id="hotspotsStatus" class="hotspots-status" role="status" aria-live="polite">正在加载热点数据…</p>
       <div class="hotspots-grid">
         <article class="panel hotspots-board" aria-labelledby="hotspotsHotlistTitle">
@@ -325,11 +345,12 @@
           <footer class="hotspots-board-footer"><span id="hotspotsRisingUpdatedAt">等待采集</span><a href="https://creator.douyin.com/creator-micro/creator-count/arithmetic-index?type=1&amp;source=creator" target="_blank" rel="noopener noreferrer">榜单来源 ↗</a></footer>
         </article>
       </div>
-      <footer class="hotspots-footer">整个看板每天北京时间 8:30 启动云端采集，任务完成后同步。每个榜单分别显示最近成功采集时间；未及时更新时保留上次有效数据并标注。热度为平台指标。</footer>
+      <footer class="hotspots-footer">YouTube 与四个公开榜单每天北京时间 8:30 启动云端采集，任务完成后同步；内容词依赖本机登录采集后发布，单独显示采集时间。未及时更新时保留上次有效数据并标注。热度为平台指标。</footer>
     </section>
     <div id="loadError" class="load-error" hidden></div>
   </main>
-  <script src="hotspots.js?v=douyin-four-boards-v2" defer></script>
+  <script src="hotwords.js?v=douyin-content-words-v3" defer></script>
+  <script src="hotspots.js?v=douyin-content-words-v3" defer></script>
   <script src="app.js?v=owned-five-channels-v1" defer></script>
 </body>
 </html>
